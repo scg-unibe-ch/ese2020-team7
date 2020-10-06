@@ -13,9 +13,13 @@ export class UserService {
 
     public login(loginRequestee: LoginRequest): Promise<User | LoginResponse> {
         const secret = process.env.JWT_SECRET;
+        const { Op } = require("sequelize");
         return User.findOne({
             where: {
-                userName: loginRequestee.userName
+                [Op.or]: [
+                    { userName: loginRequestee.userNameOrMail },
+                    { email: loginRequestee.userNameOrMail }
+                ]
             }
         })
         .then(user => {

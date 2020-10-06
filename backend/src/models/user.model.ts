@@ -9,7 +9,7 @@ export interface UserAttributes {
     firstName: string;
     lastName: string;
     gender: string;
-    telephoneNumber: string;
+    telephoneNumber: number;
     street: string;
     pinCode: number;
     city: string;
@@ -27,7 +27,7 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
     firstName!: string;
     lastName!: string;
     gender!: string;
-    telephoneNumber!: string;
+    telephoneNumber!: number;
     street!: string;
     pinCode!: number;
     city!: string;
@@ -62,26 +62,33 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
                 allowNull: false
             },
             gender: {
-                type: DataTypes.STRING
+                type: DataTypes.STRING,
+                allowNull: true
             },
             telephoneNumber: {
-                type: DataTypes.STRING
+                type: DataTypes.NUMBER,
+                allowNull: true
             },
             street: {
-                type: DataTypes.STRING
+                type: DataTypes.STRING,
+                allowNull: true
             },
             pinCode: {
-                type: DataTypes.NUMBER
+                type: DataTypes.NUMBER,
+                allowNull: true
             },
             city: {
-                type: DataTypes.STRING
+                type: DataTypes.STRING,
+                allowNull: true
             },
             country: {
-                type: DataTypes.STRING
+                type: DataTypes.STRING,
+                allowNull: true
             },
             admin: {
                 type: DataTypes.BOOLEAN,
-                defaultValue: false
+                defaultValue: false,
+                allowNull: false
             }
         },
             {
