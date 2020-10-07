@@ -63,27 +63,21 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
             },
             gender: {
                 type: DataTypes.STRING,
-                allowNull: true
             },
             telephoneNumber: {
-                type: DataTypes.NUMBER,
-                allowNull: true
+               type: DataTypes.NUMBER,
             },
             street: {
                 type: DataTypes.STRING,
-                allowNull: true
             },
             pinCode: {
                 type: DataTypes.NUMBER,
-                allowNull: true
             },
             city: {
                 type: DataTypes.STRING,
-                allowNull: true
             },
             country: {
                 type: DataTypes.STRING,
-                allowNull: true
             },
             admin: {
                 type: DataTypes.BOOLEAN,
