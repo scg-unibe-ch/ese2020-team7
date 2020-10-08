@@ -3,7 +3,37 @@
 
 ![Use Case Diagram](Use_Case_Diagram.png)
 
+## Use Cases
+
+- Registration
+- Login
+
 ## Use Case Description
+
+| User Registration |               |
+| ----------------- | ------------- |
+| Description       | A new user comes to the website and wants to create an account. |
+| Actors            | New User |
+| Pre-Condition     | The system must be online. The user must have an e-mail address. |
+| Post-Condition    | The user will have an account. |
+| Main Scenario     | 1. The user enters at least the necessary data. |
+|                   | 2. The website checks wether the entered data matches the requirements. |
+|                   | 3. The user is logged in and has an account |
+| Extensions        | 1a. The user doesn't fill out every necessary field. A message showing that this field is necessary is sent. |
+|                   | 2a. The entered username or e-mail is already used. A message asking for a different one is sent. |
+|                   | 2b. The entered password doesn't meet the requirements. A message for a different one is sent, showing what is missing. |
+
+| User Login        |               |
+| ----------------- | ------------- |
+| Description       | A user comes to the website and can log in to his previously created account. |
+| Actors            | Registered User |
+| Pre-Condition     | The system must be online. The user must have an account. |
+| Post-Condition    | The user is logged in. |
+| Main Scenario     | 1. The user enters his username or e-mail and his password. |
+|                   | 2. The website checks wether an account with these informations exists. |
+|                   | 3. The user is logged in. |
+| Extensions        | 2a. The user enters a wrong username or e-mail. A message showing that no user with such a username or e-mail exists is sent. |
+|                   | 2b. The user enters a wrong password. A message showing that the wrong password was entered is sent. |
 
 ## User Stories
 
@@ -49,3 +79,7 @@ by using his username/email and password.
 
 - Privacy: The stored user data must be kept private and only be accessible for the user.
 The user may ask for the data to be deleted.
+
+## CRC Cards
+
+
