@@ -81,9 +81,10 @@ by using his username/email and password.
 The user may ask for the data to be deleted.
 
 ## CRC Cards
-|Product                  |               |
-| ----------------------- | ------------- |
-| Hold Product Information| Product       |
+|Product                        |             |
+| ------------------------------| ----------- |
+| Hold Product Information      | Product     |
+| Manipulate Product information| Product     |
 
 |User                     |               |
 | ----------------------- | ------------- |
