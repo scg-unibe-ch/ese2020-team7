@@ -17,12 +17,16 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { UserLoginComponent } from './user-login/user-login.component';
 
+import { CatalogComponent } from './catalog/catalog.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     TodoListComponent,
     TodoItemComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    CatalogComponent
   ],
   imports: [
     BrowserModule,
