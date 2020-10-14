@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d777af06-c630-4138-8628-5dc5880c6ae6",
+		"_postman_id": "7f5a1390-ae25-4b2e-8106-7a9950d29275",
 		"name": "ese2020",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -26,6 +26,25 @@
 			"response": []
 		},
 		{
+			"name": "welcome page",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "secured endpoint",
 			"request": {
 				"auth": {
@@ -33,7 +52,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkpvbmF0aGFuIiwidXNlcklkIjoyLCJpYXQiOjE1OTk0NzgwMTYsImV4cCI6MTU5OTQ4NTIxNn0.Jr97kF4fFvM0cAujHBsXL3m1BNRXV2jS4lwzlUIljME",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkhhbnMiLCJ1c2VySWQiOjEsImlhdCI6MTYwMjA1MzU3MiwiZXhwIjoxNjAyMDYwNzcyfQ.wFkbqSTfdfwMvkTJfWjcNWdVpWQywjsST1FQv6nhsNQ",
 							"type": "string"
 						}
 					]
@@ -55,66 +74,18 @@
 			"response": []
 		},
 		{
-			"name": "user login",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"userName\": \"Jonathan\",\r\n    \"password\": \"notSecure2\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3000/user/login",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"user",
-						"login"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "user registration",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"userName\":\"Nora\",\r\n    \"password\":\"notSecure12\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3000/user/register",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"user",
-						"register"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "user list",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkhhbnMiLCJ1c2VySWQiOjEsImlhdCI6MTYwMjUwOTg0OSwiZXhwIjoxNjAyNTE3MDQ5fQ.NtZLIVuJwYTLILCDp3hRQ9HJ8eXhppMY6bGH6O5EFpE",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
@@ -152,13 +123,119 @@
 			"response": []
 		},
 		{
+			"name": "product list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user registration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\":\"Hans\",\r\n    \"password\":\"notSecure10\",\r\n    \"email\":\"hans@gmail.com\",\r\n    \"firstName\":\"Hans\",\r\n    \"lastName\":\"Müller\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/user/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userNameOrMail\": \"Hans\",\r\n    \"password\": \"notSecure10\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user login nora",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userNameOrMail\":\"nora@gmail.com\",\r\n    \"password\":\"notSecure12\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "todolist add",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"ESE-2020\"\r\n}",
+					"raw": "{\r\n    \"name\":\"ESE-2020-Test\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -174,46 +251,6 @@
 					"port": "3000",
 					"path": [
 						"todolist"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "todoitem delete",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/todoitem/7",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"todoitem",
-						"7"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "todolist delete",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/todolist/4",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"todolist",
-						"4"
 					]
 				}
 			},
@@ -248,32 +285,13 @@
 			"response": []
 		},
 		{
-			"name": "welcome page",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "user login nora",
+			"name": "product add",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"userName\":\"Nora\",\r\n    \"password\":\"notSecure12\"\r\n}",
+					"raw": "{\r\n    \"title\":\"Cleaning Service\",\r\n    \"type\":\"Service\",\r\n    \"price\":\"30\",\r\n    \"description\":\"I will clean your whole house\",\r\n    \"location\":\"Zürich\",\r\n    \"isSelling\":\"false\",\r\n    \"isAvailable\":\"true\",\r\n    \"isDeliverable\":\"false\",\r\n    \"userId\":\"2\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -281,15 +299,103 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/user/login",
+					"raw": "http://localhost:3000/product",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"user",
-						"login"
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\":\"I will clean your whole house except for the basement\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/product/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "todolist delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/todolist/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"todolist",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "todoitem delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/todoitem/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"todoitem",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/product/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"2"
 					]
 				}
 			},
