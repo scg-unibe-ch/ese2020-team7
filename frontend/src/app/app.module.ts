@@ -16,8 +16,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { UserLoginComponent } from './user-login/user-login.component';
-
 import { CatalogComponent } from './catalog/catalog.component';
+import { AdminPanelComponent } from './user-login/admin-panel/admin-panel.component';
 
 
 @NgModule({
@@ -26,7 +26,8 @@ import { CatalogComponent } from './catalog/catalog.component';
     TodoListComponent,
     TodoItemComponent,
     UserLoginComponent,
-    CatalogComponent
+    CatalogComponent,
+    AdminPanelComponent
   ],
   imports: [
     BrowserModule,
