@@ -19,7 +19,16 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48aedc62-dd60-497f-a653-449b6d494897" name="Default Changelist" comment="Admin-Panel Componnent implemented" />
+    <list default="true" id="48aedc62-dd60-497f-a653-449b6d494897" name="Default Changelist" comment="Admin-Panel Componnent implemented">
+      <change afterPath="$PROJECT_DIR$/frontend/src/app/catalog/product/product.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/app/catalog/product/product.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/app/catalog/product/product.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/app/models/product.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/catalog/catalog.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/catalog/catalog.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/catalog/catalog.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/catalog/catalog.component.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -106,6 +115,14 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state width="1107" height="277" key="GridCell.Tab.0.right/0.0.2560.1440@0.0.2560.1440" timestamp="1602721021149" />
+    <state x="255" y="133" key="MergeDialog" timestamp="1602731419599">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="255" y="133" key="MergeDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1602731419599" />
+    <state x="916" y="488" key="MultipleFileMergeDialog" timestamp="1602731419619">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="916" y="488" key="MultipleFileMergeDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1602731419619" />
     <state x="1596" y="460" key="Vcs.Push.Dialog.v2" timestamp="1602729406155">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
