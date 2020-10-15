@@ -1,0 +1,13 @@
+.main-div{
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  height: fit-content; /* Make this site really long */
+  overflow:hidden
+}
+
+
+.mat-card {
+  width: 50%;
+  alignment: top;
+}

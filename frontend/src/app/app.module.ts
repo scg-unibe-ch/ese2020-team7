@@ -18,6 +18,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { UserLoginComponent } from './user-login/user-login.component';
 
 import { CatalogComponent } from './catalog/catalog.component';
+import { ProductComponent } from './catalog/product/product.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { CatalogComponent } from './catalog/catalog.component';
     TodoListComponent,
     TodoItemComponent,
     UserLoginComponent,
-    CatalogComponent
+    CatalogComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
