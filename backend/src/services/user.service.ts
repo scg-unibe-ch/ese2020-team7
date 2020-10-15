@@ -55,6 +55,6 @@ export class UserService {
     }
 
     public getAll(): Promise<User[]> {
-        return User.findAll();
+        return User.findAll({ include: [User.associations.products] });
     }
 }

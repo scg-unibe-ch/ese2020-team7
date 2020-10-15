@@ -3,6 +3,7 @@ import { User } from './user.model';
 
 export interface ProductAttributes {
     productId: number;
+    isApproved: boolean;
     title: string;
     type: string;
     price: number;
@@ -11,12 +12,16 @@ export interface ProductAttributes {
     isSelling: boolean;
     isAvailable: boolean;
     isDeliverable: boolean;
+    image: Blob;
+    review: string;
+    userId: number;
 }
 
 export interface ProductCreationAttributes extends Optional<ProductAttributes, 'productId'> { }
 
 export class Product extends Model<ProductAttributes, ProductCreationAttributes> implements ProductAttributes {
     productId!: number;
+    isApproved!: boolean;
     title!: string;
     type!: string;
     price!: number;
@@ -25,6 +30,9 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
     isSelling!: boolean;
     isAvailable!: boolean;
     isDeliverable!: boolean;
+    image!: Blob;
+    review!: string;
+    userId!: number;
 
     public static initialize(sequelize: Sequelize) {
         Product.init({
@@ -32,6 +40,11 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
                 type: DataTypes.INTEGER,
                 autoIncrement: true,
                 primaryKey: true
+            },
+            isApproved: {
+                type: DataTypes.BOOLEAN,
+                defaultValue: false,
+                allowNull: false
             },
             title: {
                 type: DataTypes.STRING,
@@ -63,6 +76,16 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
             },
             isDeliverable: {
                 type: DataTypes.BOOLEAN,
+                allowNull: false
+            },
+            image: {
+                type: DataTypes.BLOB
+            },
+            review: {
+                type: DataTypes.STRING
+            },
+            userId: {
+                type: DataTypes.INTEGER,
                 allowNull: false
             }
         },

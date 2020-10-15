@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+/*
 import { HttpClient } from '@angular/common/http';
 import { Product } from '../../models/product.model';
 import { environment } from '../../../environments/environment';
-
+*/
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
-export class ProductComponent implements OnInit {
-
+// Very messy WIP
+export class ProductComponent{
+/*
   newProductName = '';
   products: Product[] = [];
 
@@ -49,4 +51,5 @@ export class ProductComponent implements OnInit {
       this.todoLists.splice(this.todoLists.indexOf(product), 1);
     });
   }
+ */
 }
