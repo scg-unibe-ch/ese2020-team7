@@ -81,7 +81,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkhhbnMiLCJ1c2VySWQiOjEsImlhdCI6MTYwMjUwOTg0OSwiZXhwIjoxNjAyNTE3MDQ5fQ.NtZLIVuJwYTLILCDp3hRQ9HJ8eXhppMY6bGH6O5EFpE",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkhhbnMiLCJ1c2VySWQiOjIsImlhdCI6MTYwMjc1MTIwOSwiZXhwIjoxNjAyNzU4NDA5fQ.Ln64ZBgUAh-VaXtvip6U03pklXg9EQGVwsqhpFvgPUU",
 							"type": "string"
 						}
 					]
@@ -148,7 +148,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"userName\":\"Hans\",\r\n    \"password\":\"notSecure10\",\r\n    \"email\":\"hans@gmail.com\",\r\n    \"firstName\":\"Hans\",\r\n    \"lastName\":\"Müller\"\r\n\r\n}",
+					"raw": "{\r\n    \"userName\":\"Hans\",\r\n    \"password\":\"notSecure10\",\r\n    \"email\":\"hans@gmail.com\",\r\n    \"firstName\":\"Hans\",\r\n    \"lastName\":\"Müller\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -291,7 +291,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"title\":\"Cleaning Service\",\r\n    \"type\":\"Service\",\r\n    \"price\":\"30\",\r\n    \"description\":\"I will clean your whole house\",\r\n    \"location\":\"Zürich\",\r\n    \"isSelling\":\"false\",\r\n    \"isAvailable\":\"true\",\r\n    \"isDeliverable\":\"false\",\r\n    \"userId\":\"2\"\r\n}",
+					"raw": "{\r\n    \"title\":\"IPhone\",\r\n    \"type\":\"Product\",\r\n    \"price\":\"500\",\r\n    \"description\":\"IPhone 6 still in good condition\",\r\n    \"location\":\"Bern\",\r\n    \"isSelling\":\"true\",\r\n    \"isAvailable\":\"true\",\r\n    \"isDeliverable\":\"true\",\r\n    \"userId\":\"2\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
