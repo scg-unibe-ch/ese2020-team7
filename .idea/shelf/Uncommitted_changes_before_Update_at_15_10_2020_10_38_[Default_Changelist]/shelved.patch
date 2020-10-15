@@ -1,0 +1,44 @@
+Index: frontend/e2e/src/app.po.ts
+===================================================================
+--- frontend/e2e/src/app.po.ts	(revision 6cac69e5e1ca5869abde5c12778993ffcf7db60e)
++++ frontend/e2e/src/app.po.ts	(revision 6cac69e5e1ca5869abde5c12778993ffcf7db60e)
+@@ -1,11 +0,0 @@
+-import { browser, by, element } from 'protractor';
+-
+-export class AppPage {
+-  navigateTo(): Promise<unknown> {
+-    return browser.get(browser.baseUrl) as Promise<unknown>;
+-  }
+-
+-  getTitleText(): Promise<string> {
+-    return element(by.css('app-root .content span')).getText() as Promise<string>;
+-  }
+-}
+Index: frontend/e2e/src/app.e2e-spec.ts
+===================================================================
+--- frontend/e2e/src/app.e2e-spec.ts	(revision 6cac69e5e1ca5869abde5c12778993ffcf7db60e)
++++ frontend/e2e/src/app.e2e-spec.ts	(revision 6cac69e5e1ca5869abde5c12778993ffcf7db60e)
+@@ -1,23 +0,0 @@
+-import { AppPage } from './app.po';
+-import { browser, logging } from 'protractor';
+-
+-describe('workspace-project App', () => {
+-  let page: AppPage;
+-
+-  beforeEach(() => {
+-    page = new AppPage();
+-  });
+-
+-  it('should display welcome message', () => {
+-    page.navigateTo();
+-    expect(page.getTitleText()).toEqual('frontend app is running!');
+-  });
+-
+-  afterEach(async () => {
+-    // Assert that there are no errors emitted from the browser
+-    const logs = await browser.manage().logs().get(logging.Type.BROWSER);
+-    expect(logs).not.toContain(jasmine.objectContaining({
+-      level: logging.Level.SEVERE,
+-    } as logging.Entry));
+-  });
+-});
