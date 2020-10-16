@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-user-login',
@@ -14,10 +15,12 @@ export class UserLoginComponent implements OnInit {
 
   userToken: string;
   loggedIn = false;
+  isAdmin: boolean;
 
   secureEndpointResponse = '';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient,
+              private  router: Router) { }
 
   ngOnInit(): void {
     this.checkUserStatus();
@@ -40,7 +43,7 @@ export class UserLoginComponent implements OnInit {
       // Set user data in local storage
       localStorage.setItem('userToken', res.token);
       localStorage.setItem('userName', res.user.userName);
-
+      this.isAdmin = res.user.admin;
       this.checkUserStatus();
     });
   }
