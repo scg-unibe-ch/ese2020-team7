@@ -1,23 +1,31 @@
 <p>Registration Component</p>
 
 <mat-card>
-  <div *ngIf="!loggedIn">
+  <div *ngIf="!registrationDone">
     <mat-form-field>
-      <input matInput placeholder="First name" [(ngModel)]="firstName" name="firstName">
+      <input matInput placeholder="First name" [(ngModel)]="firstName" name="firstName" required>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Last Name" [(ngModel)]="lastName" name="lastName">
+      <input matInput placeholder="Last Name" [(ngModel)]="lastName" name="lastName" required>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Email" [(ngModel)]="email" name="email">
+      <input matInput placeholder="Email" [(ngModel)]="email" name="email" required>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="User Name" [(ngModel)]="userName" name="userName">
+      <input matInput placeholder="User Name" [(ngModel)]="userName" name="userName" required>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Password" [(ngModel)]="password" name="password" type="password">
+      <input matInput placeholder="Password" [(ngModel)]="password" name="password" type="password" required>
     </mat-form-field>
 
     <button mat-flat-button color="primary" (click)="register()">Register</button>
+
+    <div *ngIf="error" class="error">
+      {{ errorMessage }}
+    </div>
+
+    <div *ngIf="registrationDone">
+      Thank you , you are registered. You can connect from login page.
+    </div>
   </div>
 </mat-card>
