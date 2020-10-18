@@ -15,10 +15,14 @@ import { TodoItemComponent } from './todo-list/todo-item/todo-item.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSelectModule } from '@angular/material/select';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import { ProductComponent } from './catalog/product/product.component';
+import { AddAdminComponent } from './admin-panel/add-admin/add-admin.component';
+
 
 
 @NgModule({
@@ -29,7 +33,8 @@ import { ProductComponent } from './catalog/product/product.component';
     UserLoginComponent,
     AdminPanelComponent,
     CatalogComponent,
-    ProductComponent
+    ProductComponent,
+    AddAdminComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +47,9 @@ import { ProductComponent } from './catalog/product/product.component';
     MatCheckboxModule,
     MatCardModule,
     MatTabsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatExpansionModule,
+    MatSelectModule
   ],
   providers: [
     {
