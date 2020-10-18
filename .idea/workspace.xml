@@ -16,6 +16,7 @@
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
+<<<<<<< HEAD
     <select>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
@@ -25,11 +26,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="357cbc4e-a82e-4682-b860-79eabf185a79" name="Default Changelist" comment="Just try to merge..." />
+=======
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5fd01f11-678d-4f2f-97ae-fdf911324288" name="Default Changelist" comment="?" />
+>>>>>>> master
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -46,6 +54,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1ilq6nJCZwXQUKgfnAQ5uNSeKYY" />
+=======
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1isIAOU8QurE23OvDUpKgsgAR69" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="false" id="Update" />
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+>>>>>>> master
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -53,10 +71,15 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< HEAD
+=======
+    <property name="dart.analysis.tool.window.visible" value="false" />
+>>>>>>> master
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+<<<<<<< HEAD
     <property name="ts.external.directory.path" value="C:\Users\lotta\ESE\ese2020-team7\frontend\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -83,6 +106,36 @@
       <updated>1603025673138</updated>
     </task>
     <option name="localTasksCounter" value="2" />
+=======
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="48aedc62-dd60-497f-a653-449b6d494897" name="Default Changelist" comment="" />
+      <created>1602689739666</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1602689739666</updated>
+      <workItem from="1602689747291" duration="12156000" />
+    </task>
+    <task id="LOCAL-00001" summary="Admin-Panel Componnent implemented">
+      <created>1602728544154</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1602728544179</updated>
+    </task>
+    <task id="LOCAL-00002" summary="?">
+      <created>1602751654805</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1602751654805</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+>>>>>>> master
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -101,6 +154,7 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+<<<<<<< HEAD
     <MESSAGE value="Just try to merge..." />
     <option name="LAST_COMMIT_MESSAGE" value="Just try to merge..." />
   </component>
@@ -137,5 +191,56 @@
       <screen x="0" y="0" width="1368" height="872" />
     </state>
     <state x="347" y="204" width="672" height="677" key="run.anything.popup/0.0.1368.872@0.0.1368.872" timestamp="1602785916330" />
+=======
+    <MESSAGE value="Admin-Panel Componnent implemented" />
+    <MESSAGE value="?" />
+    <option name="LAST_COMMIT_MESSAGE" value="?" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="544" y="120" width="1829" height="1024" key="DiffContextDialog" timestamp="1602712757994">
+      <screen x="0" y="22" width="2560" height="1331" />
+    </state>
+    <state x="544" y="120" width="1829" height="1024" key="DiffContextDialog/0.22.2560.1331@0.22.2560.1331" timestamp="1602712757994" />
+    <state width="1107" height="277" key="GridCell.Tab.0.bottom" timestamp="1602721021150">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state width="1107" height="277" key="GridCell.Tab.0.bottom/0.0.2560.1440@0.0.2560.1440" timestamp="1602721021150" />
+    <state width="1107" height="277" key="GridCell.Tab.0.center" timestamp="1602721021149">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state width="1107" height="277" key="GridCell.Tab.0.center/0.0.2560.1440@0.0.2560.1440" timestamp="1602721021149" />
+    <state width="1107" height="277" key="GridCell.Tab.0.left" timestamp="1602721021147">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state width="1107" height="277" key="GridCell.Tab.0.left/0.0.2560.1440@0.0.2560.1440" timestamp="1602721021147" />
+    <state width="1107" height="277" key="GridCell.Tab.0.right" timestamp="1602721021149">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state width="1107" height="277" key="GridCell.Tab.0.right/0.0.2560.1440@0.0.2560.1440" timestamp="1602721021149" />
+    <state x="255" y="133" key="MergeDialog" timestamp="1602731419599">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="255" y="133" key="MergeDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1602731419599" />
+    <state x="916" y="488" key="MultipleFileMergeDialog" timestamp="1602731419619">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="916" y="488" key="MultipleFileMergeDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1602731419619" />
+    <state x="1596" y="460" key="Vcs.Push.Dialog.v2" timestamp="1602729406155">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="1596" y="460" key="Vcs.Push.Dialog.v2/0.0.2560.1440@0.0.2560.1440" timestamp="1602729406155" />
+    <state x="978" y="501" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1602712014557">
+      <screen x="0" y="22" width="2560" height="1331" />
+    </state>
+    <state x="978" y="501" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.22.2560.1331@0.22.2560.1331" timestamp="1602712014557" />
+    <state x="1868" y="614" width="350" height="300" key="org.angular.cli.generate" timestamp="1602722445216">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="1868" y="614" width="350" height="300" key="org.angular.cli.generate/0.0.2560.1440@0.0.2560.1440" timestamp="1602722445216" />
+    <state x="1661" y="331" width="670" height="676" key="search.everywhere.popup" timestamp="1602725372909">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="1661" y="331" width="670" height="676" key="search.everywhere.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1602725372909" />
+>>>>>>> master
   </component>
 </project>

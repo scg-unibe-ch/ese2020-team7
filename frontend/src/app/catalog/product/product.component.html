@@ -1,0 +1,62 @@
+<div class="main-div">
+<mat-card>
+
+
+  <mat-form-field>
+    <input matInput placeholder="Listing Name" name="name">
+  </mat-form-field>
+  <br>
+  <hr>
+  <br>
+  <p>What's the type of your listing?</p>
+  <input type="radio" id="pr" name="type" value="Product">
+  <label for="pr"> Product</label>
+  <input type="radio" id="se" name="type" value="Service">
+  <label for="se"> Service</label>
+  <br>
+  <hr>
+  <br>
+
+  <mat-form-field>
+    <input matInput placeholder="Price" name="name">
+  </mat-form-field>
+  <br>
+  <hr>
+  <br>
+
+  <p>Write a description of your listing:</p>
+  <textarea id="desc" name="descr" rows="6" cols="60"></textarea>
+  <br>
+  <hr>
+  <br>
+
+  <mat-form-field>
+    <input matInput placeholder="Location" name="name">
+  </mat-form-field>
+  <br>
+  <hr>
+  <br>
+
+  <p>Is your listing to sell or lend a product?</p>
+  <input type="radio" id="mc" name="selllend" value="Sell">
+  <label for="mc"> Sell</label>
+  <input type="radio" id="vi" name="selllend" value="Lend">
+  <label for="vi"> Lend</label>
+
+  <br><hr><br>
+
+  <p>Is it deliverable?</p>
+  <input type="radio" id="deltrue" name="deliverable" value=true>
+  <label for="deltrue"> Yes</label>
+  <input type="radio" id="delfalse" name="deliverable" value=false>
+  <label for="delfalse"> No</label>
+
+  <br><br><hr><hr> <br>
+
+  <button mat-flat-button color="warn">Submit</button>   <button mat-flat-button color="primary">Cancel</button>
+
+  <br>
+</mat-card>
+</div>
+
+

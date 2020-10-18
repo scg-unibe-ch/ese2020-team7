@@ -1,0 +1,13 @@
+.redText
+{
+  color: #ff0000;
+}
+.mat-card {
+  width: 50%;
+}
+.main-div{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

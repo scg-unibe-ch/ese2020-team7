@@ -1,0 +1,23 @@
+<!-- list of products-->
+
+<div *ngFor="let product of products">
+  <mat-card>
+    <h2>
+      <a [title]="product.title + ' details'">
+        {{ product.title }}
+      </a>
+      <span class="redText">
+        <b>{{ product.price }}CHF</b>
+      </span>
+    </h2>
+
+    <p *ngIf="product.description">
+      {{ product.description }}
+    </p>
+
+    <button mat-flat-button color="primary" (click)="purchase()">
+      Purchase
+    </button>
+  </mat-card>
+</div>
+<div *ngIf="products.length === 0">No Products available.</div>
