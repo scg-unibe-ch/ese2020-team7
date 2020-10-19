@@ -18,6 +18,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSelectModule } from '@angular/material/select';
 import { UserLoginComponent } from './user-login/user-login.component';
+import { RegistrationComponent } from './registration/registration.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import { ProductComponent } from './catalog/product/product.component';
@@ -31,6 +32,7 @@ import { AddAdminComponent } from './admin-panel/add-admin/add-admin.component';
     TodoListComponent,
     TodoItemComponent,
     UserLoginComponent,
+    RegistrationComponent,
     AdminPanelComponent,
     CatalogComponent,
     ProductComponent,
