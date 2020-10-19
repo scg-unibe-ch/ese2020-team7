@@ -19,7 +19,9 @@ export class UserService {
         })
         .then(newUser => {
             if (newUser) {
-                if (newUser.userName === user.userName) {
+                if (newUser.userName === user.userName && newUser.email === user.email) {
+                    return Promise.reject({ message: 'Both username and email are already taken!'});
+                } else if (newUser.userName === user.userName) {
                     return Promise.reject({ message: 'This username is already taken!'});
                 } else {
                     return Promise.reject({ message: 'This e-mail is already taken!'});
@@ -53,6 +55,6 @@ export class UserService {
     }
 
     public getAll(): Promise<User[]> {
-        return User.findAll();
+        return User.findAll({ include: [User.associations.products] });
     }
 }
