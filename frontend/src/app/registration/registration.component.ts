@@ -17,7 +17,7 @@ export class RegistrationComponent implements OnInit {
               private formBuilder: FormBuilder) {
   }
 
-  passwordPattern = '^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\\D*\\d)[A-Za-z\\d!$%@#£€*?&]{7,}$';
+  passwordPattern = '^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{7,}$';
 
   userName = '';
   userToken: string;
