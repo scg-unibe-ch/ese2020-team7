@@ -20,6 +20,8 @@ import { RegistrationComponent } from './registration/registration.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import { ProductComponent } from './catalog/product/product.component';
+import {AddAdminComponent} from './admin-panel/add-admin/add-admin.component';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 @NgModule({
@@ -31,7 +33,8 @@ import { ProductComponent } from './catalog/product/product.component';
     RegistrationComponent,
     AdminPanelComponent,
     CatalogComponent,
-    ProductComponent
+    ProductComponent,
+    AddAdminComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,8 @@ import { ProductComponent } from './catalog/product/product.component';
     MatCardModule,
     MatTabsModule,
     MatToolbarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatExpansionModule
   ],
   providers: [
     {
