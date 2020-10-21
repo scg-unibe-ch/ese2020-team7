@@ -22,6 +22,7 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { ProductComponent } from './catalog/product/product.component';
 import {AddAdminComponent} from './admin-panel/add-admin/add-admin.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { RouterModule, Routes } from '@angular/router';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatTabsModule,
     MatToolbarModule,
     ReactiveFormsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    RouterModule.forRoot([])
   ],
   providers: [
     {
