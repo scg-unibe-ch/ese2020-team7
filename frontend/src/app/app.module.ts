@@ -19,10 +19,11 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { CatalogComponent } from './catalog/catalog.component';
-import { ProductComponent } from './catalog/product/product.component';
+import { AddProductComponent } from './catalog/add-product/add-product.component';
 import {AddAdminComponent} from './admin-panel/add-admin/add-admin.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { RouterModule, Routes } from '@angular/router';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 @NgModule({
@@ -34,7 +35,7 @@ import { RouterModule, Routes } from '@angular/router';
     RegistrationComponent,
     AdminPanelComponent,
     CatalogComponent,
-    ProductComponent,
+    AddProductComponent,
     AddAdminComponent
   ],
   imports: [
@@ -51,7 +52,8 @@ import { RouterModule, Routes } from '@angular/router';
     MatToolbarModule,
     ReactiveFormsModule,
     MatExpansionModule,
-    RouterModule.forRoot([])
+    RouterModule.forRoot([]),
+    MatRadioModule
   ],
   providers: [
     {

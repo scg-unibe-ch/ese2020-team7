@@ -10,7 +10,7 @@ export class CatalogComponent {
   products = products;
 
   purchase(): void {
-    window.alert('The product has been bought! Hooray!');
+    window.alert('The add-product has been bought! Hooray!');
   }
 }
 
