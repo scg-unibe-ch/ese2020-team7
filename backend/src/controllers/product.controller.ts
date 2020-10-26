@@ -1,52 +1,36 @@
 import express, { Router, Request, Response } from 'express';
-import { Product } from '../models/product.model';
+import { ProductService } from '../services/product.service';
 
 const productController: Router = express.Router();
+const productService = new ProductService;
 
 productController.post('/',
     (req: Request, res: Response) => {
-        Product.create(req.body)
+        productService.create(req.body)
         .then(added => res.send(added))
         .catch(err => res.status(500).send(err));
     }
 );
 
-productController.put('/:id',
+productController.put('/:productId',
     (req: Request, res: Response) => {
-        Product.findByPk(req.params.id)
-        .then(found => {
-            if (found != null) {
-                found.update(req.body).then(updated => {
-                    res.status(200).send(updated);
-                });
-            } else {
-                res.sendStatus(404);
-            }
-
-        })
+        productService.update(parseInt(req.params.productId, 10), req.body)
+        .then(updated => res.send(updated))
         .catch(err => res.status(500).send(err));
     }
 );
 
-productController.delete('/:id',
+productController.delete('/:productId',
     (req: Request, res: Response) => {
-        Product.findByPk(req.params.id)
-        .then(found => {
-            if (found != null) {
-                found.destroy()
-                    .then(product => res.status(200).send({ deleted: product }))
-                    .catch(err => res.status(500).send(err));
-            } else {
-                res.sendStatus(404);
-            }
-        })
+        productService.delete(parseInt(req.params.productId, 10))
+        .then(deleted => res.send(deleted))
         .catch(err => res.status(500).send(err));
     }
 );
 
 productController.get('/',
     (req: Request, res: Response) => {
-        Product.findAll()
+        productService.getAll()
         .then(products => res.send(products))
         .catch(err => res.status(500).send(err));
     }
