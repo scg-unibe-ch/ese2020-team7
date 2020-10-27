@@ -1,3 +1,10 @@
 .mat-panel-description {
+    text-align: left;
     margin-left: 8px;
+    background-color: lightblue;
+}
+.mat-expansion-panel-header {
+    text-align: left;
+    border-left: 6px solid tomato;
+    background-color: lightblue;
 }
