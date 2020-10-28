@@ -81,7 +81,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkhhbnMiLCJ1c2VySWQiOjIsImlhdCI6MTYwMjc1MTIwOSwiZXhwIjoxNjAyNzU4NDA5fQ.Ln64ZBgUAh-VaXtvip6U03pklXg9EQGVwsqhpFvgPUU",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5vcmEiLCJ1c2VySWQiOjIsImlhdCI6MTYwMzg4MDczNSwiZXhwIjoxNjAzODg3OTM1fQ.mYa0qEdueXw2h6F90h6-bYVSZjEhdIwu-lehO0fQZrI",
 							"type": "string"
 						}
 					]
@@ -148,7 +148,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"userName\":\"Hans\",\r\n    \"password\":\"notSecure10\",\r\n    \"email\":\"hans@gmail.com\",\r\n    \"firstName\":\"Hans\",\r\n    \"lastName\":\"Müller\"\r\n}",
+					"raw": "{\r\n    \"userName\":\"Lewis\",\r\n    \"password\":\"notSecure20\",\r\n    \"email\":\"lewis@gmail.com\",\r\n    \"firstName\":\"Lewis\",\r\n    \"lastName\":\"Holt\",\r\n    \"admin\":\"true\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -178,6 +178,35 @@
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"userNameOrMail\": \"Hans\",\r\n    \"password\": \"notSecure10\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user login admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userNameOrMail\": \"Lewis\",\r\n    \"password\": \"notSecure20\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -287,11 +316,21 @@
 		{
 			"name": "product add",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5vcmEiLCJ1c2VySWQiOjIsImlhdCI6MTYwMzg4MDczNSwiZXhwIjoxNjAzODg3OTM1fQ.mYa0qEdueXw2h6F90h6-bYVSZjEhdIwu-lehO0fQZrI",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"title\":\"IPhone\",\r\n    \"type\":\"Product\",\r\n    \"price\":\"500\",\r\n    \"description\":\"IPhone 6 still in good condition\",\r\n    \"location\":\"Bern\",\r\n    \"isSelling\":\"true\",\r\n    \"isAvailable\":\"true\",\r\n    \"isDeliverable\":\"true\",\r\n    \"userId\":\"2\"\r\n}",
+					"raw": "{\r\n    \"title\":\"Laptop\",\r\n    \"type\":\"Product\",\r\n    \"price\":\"999\",\r\n    \"description\":\"MacBook Pro\",\r\n    \"location\":\"Basel\",\r\n    \"isSelling\":\"true\",\r\n    \"isAvailable\":\"true\",\r\n    \"isDeliverable\":\"true\",\r\n    \"userId\":\"1\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -299,14 +338,15 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/product",
+					"raw": "http://localhost:3000/product/add",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"product"
+						"product",
+						"add"
 					]
 				}
 			},
@@ -315,11 +355,21 @@
 		{
 			"name": "product update",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkhhbnMiLCJ1c2VySWQiOjEsImlhdCI6MTYwMzg4NTYzNSwiZXhwIjoxNjAzODkyODM1fQ.QVhqvHZC3Mg_y0CREiNmqhhlJsGXmjHVi8sLkdTU4iQ",
+							"type": "string"
+						}
+					]
+				},
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"description\":\"I will clean your whole house except for the basement\"\r\n}",
+					"raw": "{\r\n    \"price\":\"1000\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -327,7 +377,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/product/4",
+					"raw": "http://localhost:3000/product/update/3",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -335,7 +385,69 @@
 					"port": "3000",
 					"path": [
 						"product",
-						"4"
+						"update",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "approve product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ikxld2lzIiwidXNlcklkIjozLCJpYXQiOjE2MDM4ODQ5MjgsImV4cCI6MTYwMzg5MjEyOH0.5Ifvsf2qHXuA3NA0uT6AZu83gm5FfNlFmF-kMngPyWo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/product/approve/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"approve",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reject product",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"rejectionReason\":\"You posted a product just recently, wait a little bit and try again!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/product/reject/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"reject",
+						"1"
 					]
 				}
 			},
@@ -384,10 +496,20 @@
 		{
 			"name": "product delete",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5vcmEiLCJ1c2VySWQiOjIsImlhdCI6MTYwMzg4NTc1NiwiZXhwIjoxNjAzODkyOTU2fQ.VfC_2CC7gH3RhhG4uDaj801YKxifgvs8AvARjtWZPxU",
+							"type": "string"
+						}
+					]
+				},
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/product/2",
+					"raw": "http://localhost:3000/product/delete/4",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -395,7 +517,8 @@
 					"port": "3000",
 					"path": [
 						"product",
-						"2"
+						"delete",
+						"4"
 					]
 				}
 			},

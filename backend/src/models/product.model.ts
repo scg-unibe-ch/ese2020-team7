@@ -12,6 +12,7 @@ export interface ProductAttributes {
     isSelling: boolean;
     isAvailable: boolean;
     isDeliverable: boolean;
+    rejectionReason: string;
     image: Blob;
     review: string;
     userId: number;
@@ -30,6 +31,7 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
     isSelling!: boolean;
     isAvailable!: boolean;
     isDeliverable!: boolean;
+    rejectionReason!: string;
     image!: Blob;
     review!: string;
     userId!: number;
@@ -77,6 +79,9 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
             isDeliverable: {
                 type: DataTypes.BOOLEAN,
                 allowNull: false
+            },
+            rejectionReason: {
+                type: DataTypes.STRING
             },
             image: {
                 type: DataTypes.BLOB

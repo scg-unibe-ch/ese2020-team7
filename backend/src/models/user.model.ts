@@ -15,6 +15,7 @@ export interface UserAttributes {
     city: string;
     country: string;
     admin: boolean;
+    wallet: number;
 }
 
 export interface UserCreationAttributes extends Optional<UserAttributes, 'userId'> { }
@@ -33,6 +34,7 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
     city!: string;
     country!: string;
     admin!: boolean;
+    wallet!: number;
 
     public static initialize(sequelize: Sequelize) {
         User.init({
@@ -82,6 +84,11 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
             admin: {
                 type: DataTypes.BOOLEAN,
                 defaultValue: false,
+                allowNull: false
+            },
+            wallet: {
+                type: DataTypes.NUMBER,
+                defaultValue: 500,
                 allowNull: false
             }
         },
