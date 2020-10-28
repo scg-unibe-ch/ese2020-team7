@@ -45,9 +45,49 @@ productController.delete('/delete/:productId', verifyToken, verifyProductOwner,
     }
 );
 
-productController.get('/',
+productController.get('/allProducts',
     (req: Request, res: Response) => {
-        productService.getAll()
+        productService.getAllProducts()
+        .then(products => res.send(products))
+        .catch(err => res.status(500).send(err));
+    }
+);
+
+productController.get('/approvedProducts',
+    (req: Request, res: Response) => {
+        productService.getApprovedProducts()
+        .then(products => res.send(products))
+        .catch(err => res.status(500).send(err));
+    }
+);
+
+productController.get('/rejectedProducts', verifyToken, verifyAdmin,
+    (req: Request, res: Response) => {
+        productService.getRejectedProducts()
+        .then(products => res.send(products))
+        .catch(err => res.status(500).send(err));
+    }
+);
+
+productController.get('/uncheckedProducts', verifyToken, verifyAdmin,
+    (req: Request, res: Response) => {
+        productService.getUncheckedProducts()
+        .then(products => res.send(products))
+        .catch(err => res.status(500).send(err));
+    }
+);
+
+productController.get('/myProducts', verifyToken,
+    (req: Request, res: Response) => {
+        productService.getMyProducts(req.body.tokenPayload.userId)
+        .then(products => res.send(products))
+        .catch(err => res.status(500).send(err));
+    }
+);
+
+productController.get('/myRejectedProducts', verifyToken,
+    (req: Request, res: Response) => {
+        productService.getMyRejectedProducts(req.body.tokenPayload.userId)
         .then(products => res.send(products))
         .catch(err => res.status(500).send(err));
     }

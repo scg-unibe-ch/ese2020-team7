@@ -1,4 +1,3 @@
-import { HostNotFoundError } from 'sequelize/types';
 import { Product, ProductAttributes } from './../models/product.model';
 
 export class ProductService {
@@ -48,7 +47,60 @@ export class ProductService {
         .catch(err => Promise.reject(err));
     }
 
-    public getAll(): Promise<Product[]> {
+    public getAllProducts(): Promise<Product[]> {
         return Product.findAll();
+    }
+
+    public getApprovedProducts(): Promise<Product[]> {
+        return Product.findAll({
+            where: {
+                isApproved: true
+            }
+        });
+    }
+
+    public getRejectedProducts(): Promise<Product[]> {
+        const { Op } = require('sequelize');
+        return Product.findAll({
+            where: {
+                [ Op.and ]: [
+                    { isApproved: false },
+                    { rejectionReason: { [ Op.not ]: null }}
+                ]
+            }
+        });
+    }
+
+    public getUncheckedProducts(): Promise<Product[]> {
+        const { Op } = require('sequelize');
+        return Product.findAll({
+            where: {
+                [ Op.and ]: [
+                    { isApproved: false },
+                    { rejectionReason: null}
+                ]
+            }
+        });
+    }
+
+    public getMyProducts(thisUserId: number): Promise<Product[]> {
+        return Product.findAll({
+            where: {
+                userId: thisUserId
+            }
+        });
+    }
+
+    public getMyRejectedProducts(thisUserId: number): Promise<Product[]> {
+        const { Op } = require('sequelize');
+        return Product.findAll({
+            where: {
+                [ Op.and ]: [
+                    { userId: thisUserId },
+                    { isApproved: false},
+                    { rejectionReason: { [ Op.not ]: null }}
+                ]
+            }
+        });
     }
 }

@@ -81,7 +81,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5vcmEiLCJ1c2VySWQiOjIsImlhdCI6MTYwMzg4MDczNSwiZXhwIjoxNjAzODg3OTM1fQ.mYa0qEdueXw2h6F90h6-bYVSZjEhdIwu-lehO0fQZrI",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkhhbnMiLCJ1c2VySWQiOjEsImlhdCI6MTYwMzkyMDY4NywiZXhwIjoxNjAzOTI3ODg3fQ.2_4AH0p91jvd-R6ezMEQQO6zc5EO8dQHmUL7u77gVvk",
 							"type": "string"
 						}
 					]
@@ -128,14 +128,145 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/product",
+					"raw": "http://localhost:3000/product/allProducts",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"product"
+						"product",
+						"allProducts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "approved product list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/product/approvedProducts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"approvedProducts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "rejected product list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/product/rejectedProducts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"rejectedProducts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "unchecked product list",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkhhbnMiLCJ1c2VySWQiOjEsImlhdCI6MTYwMzkyMzUwMCwiZXhwIjoxNjAzOTMwNzAwfQ.bDXS9uN2eKKH915OwZqzYHHZANAwNVTVswA8I23QIfk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/product/uncheckedProducts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"uncheckedProducts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "my product list",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkhhbnMiLCJ1c2VySWQiOjEsImlhdCI6MTYwMzkyMzUwMCwiZXhwIjoxNjAzOTMwNzAwfQ.bDXS9uN2eKKH915OwZqzYHHZANAwNVTVswA8I23QIfk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/product/myProducts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"myProducts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "my rejected product list",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkhhbnMiLCJ1c2VySWQiOjEsImlhdCI6MTYwMzkyMzUwMCwiZXhwIjoxNjAzOTMwNzAwfQ.bDXS9uN2eKKH915OwZqzYHHZANAwNVTVswA8I23QIfk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/product/myRejectedProducts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"myRejectedProducts"
 					]
 				}
 			},
@@ -321,7 +452,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5vcmEiLCJ1c2VySWQiOjIsImlhdCI6MTYwMzg4MDczNSwiZXhwIjoxNjAzODg3OTM1fQ.mYa0qEdueXw2h6F90h6-bYVSZjEhdIwu-lehO0fQZrI",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkhhbnMiLCJ1c2VySWQiOjEsImlhdCI6MTYwMzkyMzA2OCwiZXhwIjoxNjAzOTMwMjY4fQ.rlkCN2Dg3ABrIqSUiMP6f8w8cTLcm2lsVOufK-8ecHo",
 							"type": "string"
 						}
 					]
@@ -330,7 +461,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"title\":\"Laptop\",\r\n    \"type\":\"Product\",\r\n    \"price\":\"999\",\r\n    \"description\":\"MacBook Pro\",\r\n    \"location\":\"Basel\",\r\n    \"isSelling\":\"true\",\r\n    \"isAvailable\":\"true\",\r\n    \"isDeliverable\":\"true\",\r\n    \"userId\":\"1\"\r\n}",
+					"raw": "{\r\n    \"title\":\"Water Bottle\",\r\n    \"type\":\"Product\",\r\n    \"price\":\"15\",\r\n    \"description\":\"Chilly's Water Bottle\",\r\n    \"location\":\"Bern\",\r\n    \"isSelling\":\"true\",\r\n    \"isAvailable\":\"true\",\r\n    \"isDeliverable\":\"true\",\r\n    \"userId\":\"1\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -426,6 +557,16 @@
 		{
 			"name": "reject product",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ikxld2lzIiwidXNlcklkIjozLCJpYXQiOjE2MDM5MjM0NTksImV4cCI6MTYwMzkzMDY1OX0.o-PL1Vxn06n7SFbpmdYf0rqwOIkzVizjK8jw5z8cB7w",
+							"type": "string"
+						}
+					]
+				},
 				"method": "PUT",
 				"header": [],
 				"body": {
@@ -438,7 +579,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/product/reject/1",
+					"raw": "http://localhost:3000/product/reject/5",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -447,7 +588,7 @@
 					"path": [
 						"product",
 						"reject",
-						"1"
+						"5"
 					]
 				}
 			},
@@ -501,7 +642,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5vcmEiLCJ1c2VySWQiOjIsImlhdCI6MTYwMzg4NTc1NiwiZXhwIjoxNjAzODkyOTU2fQ.VfC_2CC7gH3RhhG4uDaj801YKxifgvs8AvARjtWZPxU",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkhhbnMiLCJ1c2VySWQiOjEsImlhdCI6MTYwMzkyMzA2OCwiZXhwIjoxNjAzOTMwMjY4fQ.rlkCN2Dg3ABrIqSUiMP6f8w8cTLcm2lsVOufK-8ecHo",
 							"type": "string"
 						}
 					]
@@ -509,7 +650,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/product/delete/4",
+					"raw": "http://localhost:3000/product/delete/6",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -518,7 +659,7 @@
 					"path": [
 						"product",
 						"delete",
-						"4"
+						"6"
 					]
 				}
 			},
