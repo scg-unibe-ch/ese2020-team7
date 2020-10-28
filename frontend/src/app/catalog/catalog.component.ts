@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import { products } from './products';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-catalog',

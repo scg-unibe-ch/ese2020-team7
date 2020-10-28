@@ -24,7 +24,7 @@ import {AddAdminComponent} from './admin-panel/add-admin/add-admin.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { RouterModule, Routes } from '@angular/router';
 import {MatRadioModule} from '@angular/material/radio';
-import {PaginatorComponent} from './catalog/paginator/paginator.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 @NgModule({
@@ -38,7 +38,6 @@ import {PaginatorComponent} from './catalog/paginator/paginator.component';
     CatalogComponent,
     AddProductComponent,
     AddAdminComponent,
-    PaginatorComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +54,8 @@ import {PaginatorComponent} from './catalog/paginator/paginator.component';
     ReactiveFormsModule,
     MatExpansionModule,
     RouterModule.forRoot([]),
-    MatRadioModule
+    MatRadioModule,
+    MatPaginatorModule
   ],
   providers: [
     {
