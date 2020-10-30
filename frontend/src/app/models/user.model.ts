@@ -13,6 +13,7 @@ export class User{
     public pinCode: number,
     public city: string,
     public country: string,
-    public admin: boolean
+    public admin: boolean,
+    public wallet: number
   ) {}
 }
