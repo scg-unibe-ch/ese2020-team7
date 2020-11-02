@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import { products } from './products';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-catalog',
@@ -10,7 +11,7 @@ export class CatalogComponent {
   products = products;
 
   purchase(): void {
-    window.alert('The product has been bought! Hooray!');
+    window.alert('The add-product has been bought! Hooray!');
   }
 }
 

@@ -1,3 +1,5 @@
+<router-outlet></router-outlet>
+
 <mat-toolbar color="primary">
   <mat-toolbar-row>
     <span>ESE-2020 Frontend Scaffolding</span>
@@ -27,6 +29,10 @@
     <app-user-login></app-user-login>
   </mat-tab>
 
+  <mat-tab label="User registration Example">
+    <app-registration></app-registration>
+  </mat-tab>
+
   <mat-tab label="Catalog">
     <p></p>
     <h1>Current Listings</h1>
@@ -36,7 +42,11 @@
   <mat-tab label="Sell">
     <p></p>
     <h1>Make a new Listing</h1>
-    <app-product></app-product>
+    <app-add-product></app-add-product>
+  </mat-tab>
+
+  <mat-tab label="Admin-Panel">
+    <app-admin-panel></app-admin-panel>
   </mat-tab>
 
 </mat-tab-group>

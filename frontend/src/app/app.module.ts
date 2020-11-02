@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
@@ -16,9 +16,15 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { UserLoginComponent } from './user-login/user-login.component';
-import { AdminPanelComponent } from './user-login/admin-panel/admin-panel.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { CatalogComponent } from './catalog/catalog.component';
-import { ProductComponent } from './catalog/product/product.component';
+import { AddProductComponent } from './catalog/add-product/add-product.component';
+import {AddAdminComponent} from './admin-panel/add-admin/add-admin.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { RouterModule, Routes } from '@angular/router';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 @NgModule({
@@ -27,9 +33,11 @@ import { ProductComponent } from './catalog/product/product.component';
     TodoListComponent,
     TodoItemComponent,
     UserLoginComponent,
+    RegistrationComponent,
     AdminPanelComponent,
     CatalogComponent,
-    ProductComponent
+    AddProductComponent,
+    AddAdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +50,12 @@ import { ProductComponent } from './catalog/product/product.component';
     MatCheckboxModule,
     MatCardModule,
     MatTabsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    ReactiveFormsModule,
+    MatExpansionModule,
+    RouterModule.forRoot([]),
+    MatRadioModule,
+    MatPaginatorModule
   ],
   providers: [
     {
