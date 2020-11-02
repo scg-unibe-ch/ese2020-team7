@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 })
 export class UserLoginComponent implements OnInit {
 
-  userName = '';
+  userNameOrMail = '';
   password = '';
 
   userToken: string;
@@ -31,7 +31,7 @@ export class UserLoginComponent implements OnInit {
   checkUserStatus(): void {
     // Get user data from local storage
     this.userToken = localStorage.getItem('userToken');
-    this.userName = localStorage.getItem('userName');
+    this.userNameOrMail = localStorage.getItem('userName');
 
     // Set boolean whether a user is logged in or not
     this.loggedIn = !!(this.userToken);
@@ -39,7 +39,7 @@ export class UserLoginComponent implements OnInit {
 
   login(): void {
     this.httpClient.post(environment.endpointURL + 'user/login', {
-      userName: this.userName,
+      userNameOrMail: this.userNameOrMail,
       password: this.password
     }).subscribe((res: any) => {
       // Set user data in local storage

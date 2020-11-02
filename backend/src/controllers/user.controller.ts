@@ -18,6 +18,14 @@ userController.post('/login',
     }
 );
 
+userController.put('/update/:userId', verifyToken,
+    (req: Request, res: Response) => {
+        userService.update(parseInt(req.params.userId, 10), req.body)
+        .then(updated => res.send(updated))
+        .catch(err => res.status(500).send(err));
+    }
+);
+
 userController.get('/', verifyToken, // you can add middleware on specific requests like that
     (req: Request, res: Response) => {
         userService.getAll().then(users => res.send(users)).catch(err => res.status(500).send(err));
