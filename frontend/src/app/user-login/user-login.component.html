@@ -1,7 +1,7 @@
 <mat-card>
   <div *ngIf="!loggedIn">
     <mat-form-field>
-      <input matInput placeholder="User Name" [(ngModel)]="userName" name="userName">
+      <input matInput placeholder="User Name" [(ngModel)]="userNameOrMail" name="userName">
     </mat-form-field>
     <mat-form-field>
       <input matInput placeholder="Password" [(ngModel)]="password" name="password" type="password">
