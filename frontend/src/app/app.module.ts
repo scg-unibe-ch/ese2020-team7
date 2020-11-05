@@ -25,6 +25,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { RouterModule, Routes } from '@angular/router';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { ConfirmProductsComponent } from './admin-panel/confirm-products/confirm-products.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     CatalogComponent,
     AddProductComponent,
     AddAdminComponent,
+    ConfirmProductsComponent,
   ],
   imports: [
     BrowserModule,
