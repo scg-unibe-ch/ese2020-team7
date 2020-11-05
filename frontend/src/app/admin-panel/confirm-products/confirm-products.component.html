@@ -1,0 +1,16 @@
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Confirm Added Products
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-panel-description>
+      <mat-selection-list #products>
+        <mat-list-option *ngFor="let products of addedProducts">
+          {{products}}
+        </mat-list-option>
+      </mat-selection-list>
+    </mat-panel-description>
+  </mat-expansion-panel>
+</mat-accordion>
