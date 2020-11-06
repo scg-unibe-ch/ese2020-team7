@@ -22,7 +22,7 @@ export class RegistrationComponent implements OnInit {
   userName = '';
   userToken: string;
   loggedIn = false;
-  registrationDone: boolean;
+  registrationDone = false;
   submitted = false;
 
   error: boolean;
@@ -33,7 +33,7 @@ export class RegistrationComponent implements OnInit {
     password: ['', [Validators.required, Validators.pattern(this.passwordPattern)]],
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
-    email: ['', Validators.required, Validators.email]
+    email: ['', Validators.required]
   });
 
   // convenience getter for easy access to form fields
@@ -52,10 +52,11 @@ export class RegistrationComponent implements OnInit {
   }
 
   register(): void{
+    this.submitted = true;
     if (this.userForm.invalid) {
       return;
     }
-    this.submitted = true;
+
     this.httpClient.post(environment.endpointURL + 'user/register', {
       userName: this.userForm.get('userName').value,
       password: this.userForm.get('password').value,
