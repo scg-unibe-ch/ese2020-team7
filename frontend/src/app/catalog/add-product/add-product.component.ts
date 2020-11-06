@@ -29,7 +29,7 @@ export class AddProductComponent{
     if (this.productForm.invalid) {
       return;
     }
-    this.httpClient.post(environment.endpointURL + '/add', {
+    this.httpClient.post(environment.endpointURL + 'product/add', {
       title: this.productForm.get('title').value,
       type: this.productForm.get('type').value,
       price: this.productForm.get('price').value,
