@@ -1,48 +1,68 @@
-<p>Registration Component</p>
 
+
+<div class="main-div">
 <mat-card>
   <div *ngIf="!registrationDone">
+
+    <h1>Registration</h1>
+    <br>
+
     <form [formGroup]="userForm">
-      <div class="form-group">
-        <label >First Name</label>
-        <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
-        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-          <div *ngIf="f.firstName.errors.required">First Name is required</div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Last Name</label>
-        <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
-        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-          <div *ngIf="f.lastName.errors.required">Last Name is required</div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Email</label>
-        <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
-        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-          <div *ngIf="f.email.errors.required">Last Name is required</div>
-          <div *ngIf="f.email.errors.email">Please enter a valid e-mail address</div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Username</label>
-        <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-          <div *ngIf="f.username.errors.required">Username is required</div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Password
-        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+
+      <mat-form-field appearance="fill">
+        <mat-label>First Name</mat-label>
+        <label>
+          <input matInput type="text" formControlName="firstName">
         </label>
-        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-          <div *ngIf="f.password.errors.required">Password is required</div>
-          <div *ngIf="f.password.errors.pattern">
-            Password must be at least 7 characters and contain uppercase letters, lowercase letters, numbers and special characters
-          </div>
+      </mat-form-field>
+      <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+        <div *ngIf="f.firstName.errors.required">First Name is required</div>
+      </div>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <label>
+          <input matInput type="text" formControlName="lastName">
+        </label>
+      </mat-form-field>
+      <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+        <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+      </div>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <label>
+          <input matInput formControlName="email">
+        </label>
+      </mat-form-field>
+      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.email.errors.required">Last Name is required</div>
+        <div *ngIf="f.email.errors.email">Please enter a valid e-mail address</div>
+      </div>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <label>
+          <input matInput formControlName="userName">
+        </label>
+      </mat-form-field>
+      <div *ngIf="submitted && f.userName.errors" class="invalid-feedback">
+        <div *ngIf="f.userName.errors.required">Username is required</div>
+      </div>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <label>
+          <input matInput  type="password" formControlName="password">
+        </label>
+      </mat-form-field>
+      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+        <div *ngIf="f.password.errors.required">Password is required</div>
+        <div *ngIf="f.password.errors.pattern">
+          Password must be at least 7 characters and contain uppercase letters, lowercase letters, numbers and special characters
         </div>
       </div>
+
     </form>
 
     <button mat-flat-button color="primary" (click)="register()">Register</button>
@@ -50,9 +70,11 @@
     <div *ngIf="error" class="error">
       {{ errorMessage }}
     </div>
-
-    <div *ngIf="registrationDone">
-      Thank you , you are registered. You can connect from login page.
-    </div>
   </div>
+
+  <div *ngIf="registrationDone">
+      Thank you , you are registered. You can connect from login page.
+  </div>
+
 </mat-card>
+</div>
