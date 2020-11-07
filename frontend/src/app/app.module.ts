@@ -27,12 +27,12 @@ import { RouterModule, Routes } from '@angular/router';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { ConfirmProductsComponent } from './admin-panel/confirm-products/confirm-products.component';
+import {HomeComponent} from './home/home.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AppRoutingModule,
     TodoListComponent,
     TodoItemComponent,
     UserLoginComponent,
@@ -42,8 +42,10 @@ import { ConfirmProductsComponent } from './admin-panel/confirm-products/confirm
     AddProductComponent,
     AddAdminComponent,
     ConfirmProductsComponent,
+    HomeComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,

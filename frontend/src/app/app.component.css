@@ -1,0 +1,14 @@
+.max-spacer{
+  flex: 1 1 auto;
+}
+
+mat-toolbar a{
+  display: inline-block;
+  margin: 0 10px;
+  color: white;
+  text-decoration: none;
+}
+
+.content{
+  margin: 30px;
+}
