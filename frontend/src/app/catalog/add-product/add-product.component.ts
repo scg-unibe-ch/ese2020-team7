@@ -1,4 +1,4 @@
-import {Component, Input,} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Product } from '../../models/product.model';
 import { environment } from '../../../environments/environment';
@@ -11,12 +11,11 @@ import {ProductAttributes} from '../../../../../backend/src/models/product.model
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.css']
 })
-export class AddProductComponent{
+export class AddProductComponent implements OnInit{
 
   @Input()
   product: Product = new Product(null, false, '', '', null, '', '', null, null, null, '', null, '', null);
-  constructor(private httpClient: HttpClient,
-              private formBuilder: FormBuilder) {}
+
 
   userName = '';
   userToken: string;
@@ -25,10 +24,6 @@ export class AddProductComponent{
   submitted = false;
   error: boolean;
   errorMessage: string;
-
-  generic = new FormControl('', [Validators.required]);
-  pricePattern = '/^\d+\.\d{0,2}$/';
-  price = new FormControl('', [Validators.required, Validators.pattern(this.pricePattern)]);
   email = new FormControl('', [Validators.required, Validators.email]);
 
   productForm = this.formBuilder.group({
@@ -40,13 +35,21 @@ export class AddProductComponent{
     isSelling: [null, Validators.required],
     isDeliverable: [null, Validators.required]
   });
+  constructor(private httpClient: HttpClient,
+              private formBuilder: FormBuilder) {}
 
   get f(): any { return this.productForm.controls; }
 
+  ngOnInit(): void {
+    this.checkUserStatus();
+  }
 
   checkUserStatus(): void {
+    // Get user data from local storage
     this.userToken = localStorage.getItem('userToken');
     this.userName = localStorage.getItem('userName');
+
+    // Set boolean whether a user is logged in or not
     this.loggedIn = !!(this.userToken);
   }
 
@@ -77,22 +80,12 @@ export class AddProductComponent{
     this.submissionDone = false;
     this.productForm.reset();
   }
-
-  getErrorMessageTest(): string {
-    if (this.generic.hasError('required')) {
-      return 'You must enter a value';
-    }
-    if (this.price.hasError('required')) {
-      return 'The price must be in the form 100.00';
-    }
-    return;
-  }
-
+/*
   getErrorMessage(): string {
     if (this.email.hasError('required')) {
       return 'You must enter a value';
     }
-
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
+*/
 }
