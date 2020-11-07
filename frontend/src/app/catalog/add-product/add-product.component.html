@@ -1,76 +1,103 @@
 <div class="main-div">
-<mat-card>
+  <mat-card>
+    <div *ngIf="!submissionDone">
+      <form [formGroup]="productForm">
+        <div class="form-group">
 
-<form [formGroup]="productForm">
+          <mat-form-field appearance="fill">
+            <mat-label>Listing Name</mat-label>
+            <input matInput
+                   type="text"
+                   formControlName="title">
+          </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Listing Name</mat-label>
-      <label>
-        <input matInput formControlName="title">
-      </label>
-    </mat-form-field>
+          <br><hr><br>
 
-    <br><hr><br>
+          <p>What's the type of your listing?</p>
+          <mat-radio-group formControlName="type">
+            <mat-radio-button value="Product">Product</mat-radio-button>
+            <mat-radio-button value="Service">Service</mat-radio-button>
+          </mat-radio-group>
 
-    <p>What's the type of your listing?</p>
-    <mat-radio-group>
-      <mat-radio-button value="Product">Product</mat-radio-button>
-      <mat-radio-button value="Service">Service</mat-radio-button>
-    </mat-radio-group>
+          <br><hr><br>
 
-    <br><hr><br>
+          <mat-form-field>
+            <label>
+              <input matInput
+                     type="number"
+                     placeholder="Price"
+                     formControlName="price"/>
+            </label>
+            <span matSuffix>CHF</span>
+          </mat-form-field>
 
-    <mat-form-field>
-      <label>
-        <input matInput placeholder="Price" formControlName="price">
-      </label>
-      <span matSuffix>CHF</span>
+          <br><hr><br>
 
-    </mat-form-field>
+          <p>Write a description of your listing:</p>
+          <mat-form-field appearance="outline">
+            <label>
+            <textarea matInput
+                      type="text"
+                      formControlName="description"
+                      rows="5"
+                      cols="120"></textarea>
 
-    <br><hr><br>
+            </label>
+          </mat-form-field>
 
-    <p>Write a description of your listing:</p>
-    <mat-form-field appearance="outline">
-      <label>
-        <textarea matInput formControlName="description" rows="5" cols="120"></textarea>
-      </label>
-    </mat-form-field>
+          <br><hr><br>
 
+          <mat-form-field>
+            <label>
+              <input matInput
+                     type="text"
+                     placeholder="Location"
+                     formControlName="location"/>
+            </label>
+          </mat-form-field>
 
-    <br><hr><br>
+          <br><hr><br>
 
-    <mat-form-field>
-      <label>
-        <input matInput placeholder="Location" formControlName="location">
-      </label>
-    </mat-form-field>
+          <p>Is your listing to sell or lend a product?</p>
+          <mat-radio-group formControlName="isSelling" >
+            <mat-radio-button value=true>Sell</mat-radio-button>
+            <mat-radio-button value=false>Lend</mat-radio-button>
+          </mat-radio-group>
 
-    <br><hr><br>
+          <br><hr><br>
 
-    <p>Is your listing to sell or lend a product?</p>
-  <mat-radio-group>
-    <mat-radio-button formControlName="isSelling" value=true>Sell</mat-radio-button>
-    <mat-radio-button formControlName="isSelling" value=false>Lend</mat-radio-button>
-  </mat-radio-group>
+          <p>Is it deliverable?</p>
+          <mat-radio-group formControlName="isDeliverable" >
+            <mat-radio-button value=true>Yes</mat-radio-button>
+            <mat-radio-button value=false>No</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <br><br><hr><hr><br>
+      </form>
 
-    <br><hr><br>
+      <button mat-flat-button color="warn" (click)="submit()">Submit</button>
+      <button mat-raised-button (click)="productForm.reset()">Reset</button>
+      <br>
+    </div>
 
-    <p>Is it deliverable?</p>
-  <mat-radio-group>
-    <mat-radio-button formControlName="isDeliverable" value=true>Yes</mat-radio-button>
-    <mat-radio-button formControlName="isDeliverable" value=false>No</mat-radio-button>
-  </mat-radio-group>
+    <div *ngIf="error" class="error">
+      {{ errorMessage }}
+    </div>
 
-    <br><br><hr><hr><br>
-</form>
+    <div *ngIf="submissionDone">
+      Thank you for your submission. It will be reviewed by an admin. <br><br>
+      <button mat-flat-button color="warn" (click)="newSubmission()">Make a new submission</button>
+    </div>
+  </mat-card>
+</div>
 
-<button mat-flat-button color="warn" (click)="submit()">Submit</button>
-
-  <button mat-flat-button color="primary">Cancel</button>
-
-  <br>
-</mat-card>
+<div class="example-container">
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your email</mat-label>
+    <input matInput type="text"
+           formControlName="title" placeholder="pat@example.com" [formControl]="email" required>
+    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
 </div>
 
 
