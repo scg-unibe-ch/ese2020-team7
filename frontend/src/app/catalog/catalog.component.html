@@ -18,6 +18,9 @@
     <button mat-flat-button color="primary" (click)="purchase()">
       Purchase
     </button>
+
+    <app-add-to-shopping-cart></app-add-to-shopping-cart>
+
   </mat-card>
 </div>
 <div *ngIf="products.length === 0">No Products available.</div>

@@ -26,7 +26,8 @@ import { RouterModule, Routes } from '@angular/router';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { ConfirmProductsComponent } from './admin-panel/confirm-products/confirm-products.component';
-
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { AddToShoppingCartComponent } from './shopping-cart/add-to-shopping-cart/add-to-shopping-cart.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,8 @@ import { ConfirmProductsComponent } from './admin-panel/confirm-products/confirm
     AddProductComponent,
     AddAdminComponent,
     ConfirmProductsComponent,
+    ShoppingCartComponent,
+    AddToShoppingCartComponent,
   ],
   imports: [
     BrowserModule,
