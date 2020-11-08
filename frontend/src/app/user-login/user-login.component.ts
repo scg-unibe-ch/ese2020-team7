@@ -45,6 +45,8 @@ export class UserLoginComponent implements OnInit {
       // Set user data in local storage
       localStorage.setItem('userToken', res.token);
       localStorage.setItem('userName', res.user.userName);
+      localStorage.setItem('admin', res.user.admin);
+      localStorage.setItem('userId', res.user.userId);
       this.isAdmin = res.user.admin;
       this.checkUserStatus();
     }, (error) => {

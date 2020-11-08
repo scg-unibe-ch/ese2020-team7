@@ -1,4 +1,9 @@
 <p></p>
-<h1>Welcome to the Admin-Panel!</h1>
-<app-add-admin></app-add-admin>
-<app-confirm-products></app-confirm-products>
+<div *ngIf="isAdmin">
+  <h1>Welcome to the Admin-Panel!</h1>
+  <app-add-admin></app-add-admin>
+  <app-confirm-products></app-confirm-products>
+</div>
+<div *ngIf="!isAdmin">
+  <h1>Only Admins are authorized to view this panel.</h1>
+</div>
