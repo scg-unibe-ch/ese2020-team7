@@ -16,7 +16,7 @@ export class AddProductComponent implements OnInit{
   @Input()
   product: Product = new Product(null, false, '', '', null, '', '', null, null, null, '', null, '', null);
 
-
+  userId: number;
   userName = '';
   userToken: string;
   loggedIn = false;
@@ -24,7 +24,6 @@ export class AddProductComponent implements OnInit{
   submitted = false;
   error: boolean;
   errorMessage: string;
-  email = new FormControl('', [Validators.required, Validators.email]);
 
   productForm = this.formBuilder.group({
     title: ['', Validators.required],
@@ -48,7 +47,7 @@ export class AddProductComponent implements OnInit{
     // Get user data from local storage
     this.userToken = localStorage.getItem('userToken');
     this.userName = localStorage.getItem('userName');
-
+    this.userId = JSON.parse(localStorage.getItem('userId'));
     // Set boolean whether a user is logged in or not
     this.loggedIn = !!(this.userToken);
   }
@@ -67,7 +66,7 @@ export class AddProductComponent implements OnInit{
       isSelling: this.productForm.get('isSelling').value,
       isAvailable: true,
       isDeliverable: this.productForm.get('isSelling').value,
-      userId: 1
+      userId: this.userId
     }).subscribe((instance: ProductAttributes) => {
       this.submissionDone = true;
       // tslint:disable-next-line:no-unused-expression
@@ -80,12 +79,4 @@ export class AddProductComponent implements OnInit{
     this.submissionDone = false;
     this.productForm.reset();
   }
-/*
-  getErrorMessage(): string {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
-    }
-    return this.email.hasError('email') ? 'Not a valid email' : '';
-  }
-*/
 }
