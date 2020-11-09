@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -28,6 +29,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { ConfirmProductsComponent } from './admin-panel/confirm-products/confirm-products.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { AddToShoppingCartComponent } from './shopping-cart/add-to-shopping-cart/add-to-shopping-cart.component';
+import {HomeComponent} from './home/home.component';
+
 
 @NgModule({
   declarations: [
@@ -43,8 +46,10 @@ import { AddToShoppingCartComponent } from './shopping-cart/add-to-shopping-cart
     ConfirmProductsComponent,
     ShoppingCartComponent,
     AddToShoppingCartComponent,
+    HomeComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
