@@ -7,7 +7,8 @@ import {Component} from '@angular/core';
 
   export class AddToShoppingCartComponent {
 
-      addToShCart(): void {
-          //...
-        window.alert('The product has been added to the shopping cart!');
-      }
+  addToShCart(): void {
+    //...
+    window.alert('The product has been added to the shopping cart!');
+  }
+}
