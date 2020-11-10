@@ -5,7 +5,7 @@ export interface ProductAttributes {
     productId: number;
     isApproved: boolean;
     title: string;
-    type: string;
+    isProduct: boolean;
     price: number;
     description: string;
     location: string;
@@ -24,7 +24,7 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
     productId!: number;
     isApproved!: boolean;
     title!: string;
-    type!: string;
+    isProduct!: boolean;
     price!: number;
     description!: string;
     location!: string;
@@ -52,8 +52,8 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
                 type: DataTypes.STRING,
                 allowNull: false
             },
-            type: {
-                type: DataTypes.STRING,
+            isProduct: {
+                type: DataTypes.BOOLEAN,
                 allowNull: false
             },
             price: {

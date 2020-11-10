@@ -7,6 +7,9 @@ const productService = new ProductService;
 
 productController.post('/add', verifyToken,
     (req: Request, res: Response) => {
+        const thisUserId = req.body.tokenPayload.userId;
+        req.body.userId = thisUserId;
+
         productService.create(req.body)
         .then(added => res.send(added))
         .catch(err => res.status(500).send(err));
@@ -88,6 +91,14 @@ productController.get('/myProducts', verifyToken,
 productController.get('/myRejectedProducts', verifyToken,
     (req: Request, res: Response) => {
         productService.getMyRejectedProducts(req.body.tokenPayload.userId)
+        .then(products => res.send(products))
+        .catch(err => res.status(500).send(err));
+    }
+);
+
+productController.get('/searchedProducts',
+    (req: Request, res: Response) => {
+        productService.search(req.body)
         .then(products => res.send(products))
         .catch(err => res.status(500).send(err));
     }
