@@ -1,3 +1,4 @@
+import { SearchRequest } from '../models/search.model';
 import { Product, ProductAttributes } from './../models/product.model';
 
 export class ProductService {
@@ -101,6 +102,57 @@ export class ProductService {
                     { rejectionReason: { [ Op.not ]: null }}
                 ]
             }
+        });
+    }
+
+    public search(filters: SearchRequest): Promise<Product[]> {
+        const { Op } = require('sequelize');
+        const title = filters.title;
+        const location = filters.location;
+        const minPrice = filters.minPrice;
+        const maxPrice = filters.maxPrice;
+        const isDeliverable = filters.isDeliverable;
+
+        const options: any = {};
+
+        if (title) {
+            options.title = {
+                [ Op.substring ]: title
+            };
+        }
+
+        if (location) {
+            options.location = {
+                [ Op.substring ]: location
+            };
+        }
+
+        if (minPrice && maxPrice) {
+            options.price = {
+                [ Op.between ]: [ minPrice, maxPrice]
+            };
+        } else if (minPrice && !maxPrice) {
+            options.price = {
+                [ Op.gte ]: minPrice
+            };
+        } else if (!minPrice && maxPrice) {
+            options.price = {
+                [ Op.lte ]: maxPrice
+            };
+        }
+
+        if (isDeliverable != null) {
+            options.isDeliverable = {
+                [ Op.is ]: true
+            };
+        }
+
+        options.isApproved = {
+            [ Op.is ]: true
+        };
+
+        return Product.findAll({
+            where: options
         });
     }
 }
