@@ -14,7 +14,7 @@ productController.post('/add', verifyToken,
         .then(added => res.send(added))
         .catch(err => res.status(500).send(err));
     }
-);
+);  // needs all important ProductAttributes
 
 productController.put('/update/:productId', verifyToken, verifyProductOwner,
     (req: Request, res: Response) => {
@@ -22,7 +22,7 @@ productController.put('/update/:productId', verifyToken, verifyProductOwner,
         .then(updated => res.send(updated))
         .catch(err => res.status(500).send(err));
     }
-);
+);  // needs attribute subject to change and updated information
 
 productController.put('/approve/:productId', verifyToken, verifyAdmin,
     (req: Request, res: Response) => {
@@ -102,6 +102,6 @@ productController.get('/searchedProducts',
         .then(products => res.send(products))
         .catch(err => res.status(500).send(err));
     }
-);
+); // needs attributes from search model but not all have to have a value
 
 export const ProductController: Router = productController;
