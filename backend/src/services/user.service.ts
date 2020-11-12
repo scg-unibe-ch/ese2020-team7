@@ -67,4 +67,32 @@ export class UserService {
     public getAll(): Promise<User[]> {
         return User.findAll({ include: [User.associations.products] });
     }
+
+    public makeAdmin(user: UserAttributes): Promise<User> {
+        return User.findOne({
+            where: {
+                userName: user.userName
+            }
+        })
+        .then(found =>
+            found.update({admin: true})
+            .then(() => { return Promise.resolve(found);
+            })
+        )
+        .catch(err => Promise.reject(err));
+    }
+
+    public removeAdmin(user: UserAttributes): Promise<User> {
+        return User.findOne({
+            where: {
+                userName: user.userName
+            }
+        })
+        .then(found =>
+            found.update({admin: false})
+            .then(() => { return Promise.resolve(found);
+            })
+        )
+        .catch(err => Promise.reject(err));
+    }
 }
