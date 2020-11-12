@@ -14,7 +14,7 @@ import {ProductAttributes} from '../../../../../backend/src/models/product.model
 export class AddProductComponent implements OnInit{
 
   @Input()
-  product: Product = new Product(null, false, '', '', null, '', '', null, null, null, '', null, '', null);
+  product: Product = new Product(null, false, '', null, null, '', '', null, null, null, '', null, '', null);
 
   userId: number;
   userName = '';
@@ -27,7 +27,7 @@ export class AddProductComponent implements OnInit{
 
   productForm = this.formBuilder.group({
     title: ['', Validators.required],
-    type: ['', Validators.required],
+    isProduct: [null, Validators.required],
     price: ['', Validators.required],
     description: ['', Validators.required],
     location: ['', Validators.required],
@@ -59,7 +59,7 @@ export class AddProductComponent implements OnInit{
     this.submitted = true;
     this.httpClient.post(environment.endpointURL + 'product/add', {
       title: this.productForm.get('title').value,
-      type: this.productForm.get('type').value,
+      isProduct: this.productForm.get('isProduct').value,
       price: this.productForm.get('price').value,
       description: this.productForm.get('description').value,
       location: this.productForm.get('location').value,
@@ -75,6 +75,8 @@ export class AddProductComponent implements OnInit{
       this.errorMessage = error;
     });
   }
+
+
   newSubmission(): void{
     this.submissionDone = false;
     this.productForm.reset();
