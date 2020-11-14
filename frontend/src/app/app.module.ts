@@ -30,6 +30,9 @@ import { ConfirmProductsComponent } from './admin-panel/confirm-products/confirm
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { AddToShoppingCartComponent } from './shopping-cart/add-to-shopping-cart/add-to-shopping-cart.component';
 import {HomeComponent} from './home/home.component';
+import { UserPanelComponent } from './user-panel/user-panel.component';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 @NgModule({
@@ -46,7 +49,8 @@ import {HomeComponent} from './home/home.component';
     ConfirmProductsComponent,
     ShoppingCartComponent,
     AddToShoppingCartComponent,
-    HomeComponent
+    HomeComponent,
+    UserPanelComponent
   ],
   imports: [
     AppRoutingModule,
@@ -65,7 +69,9 @@ import {HomeComponent} from './home/home.component';
     MatExpansionModule,
     RouterModule.forRoot([]),
     MatRadioModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatIconModule,
+    MatMenuModule
   ],
   providers: [
     {

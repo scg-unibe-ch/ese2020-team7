@@ -2,6 +2,7 @@
   <mat-card>
     <div *ngIf="!loggedIn">
       <h2 >You aren't logged in yet! Please log in to make a listing.</h2>
+      <button mat-flat-button color="warn" routerLink="/login"> Log in</button>
     </div>
     <div *ngIf="loggedIn">
       <div *ngIf="!submissionDone">

@@ -1,0 +1,45 @@
+<div *ngIf="!loggedIn">
+  <mat-card>
+    <h1>Please log in to see your products</h1>
+    <button mat-flat-button color="warn" routerLink="/login"> Log in</button>
+  </mat-card>
+</div>
+
+<!--***********************************************************************-->
+
+<div *ngIf="loggedIn">
+  <mat-tab-group animationDuration="800ms">
+    <mat-tab label="My offers">
+      <div *ngFor="let product of products">
+        <mat-card>
+          <h2>
+            <a [title]="product.title + ' details'">
+              {{ product.title }}
+            </a>
+            <span class="redText">
+            <b>{{ product.price }}CHF</b>
+          </span>
+          </h2>
+
+          <p *ngIf="product.description">
+            {{ product.description }}
+          </p>
+
+        </mat-card>
+      </div>
+
+      <div *ngIf="products.length === 0">
+        <mat-card>
+          <p>No Products available.</p>
+        </mat-card>
+      </div>
+
+    </mat-tab>
+    <mat-tab label="acquired">
+
+    </mat-tab>
+  </mat-tab-group>
+
+
+</div>
+
