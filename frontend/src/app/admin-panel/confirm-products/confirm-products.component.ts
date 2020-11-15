@@ -11,10 +11,7 @@ import {environment} from '../../../environments/environment';
 })
 export class ConfirmProductsComponent implements OnInit{
 
-  addedProducts: string[] = ['Phone', 'Tomato', 'Rock'];
   products: Product[] = [];
-  rejectField = false;
-  rejectionReason = '';
 
   constructor(private httpClient: HttpClient) {}
 
@@ -32,11 +29,8 @@ export class ConfirmProductsComponent implements OnInit{
 
   reject(product: Product): void {
     this.httpClient.put(environment.endpointURL + 'product/reject/' + product.productId, {
-      rejectionReason: this.rejectionReason
+      rejectionReason: product.rejectionReason
     }).subscribe();
-  }
-  openReject(): void {
-    this.rejectField = true;
   }
 }
 
