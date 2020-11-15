@@ -1,10 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Product } from '../../models/product.model';
 import { environment } from '../../../environments/environment';
-import {FormControl, FormBuilder, Validators} from '@angular/forms';
-import {ProductAttributes} from '../../../../../backend/src/models/product.model';
-
+import {FormBuilder, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-add-product',
@@ -13,22 +10,23 @@ import {ProductAttributes} from '../../../../../backend/src/models/product.model
 })
 export class AddProductComponent implements OnInit{
 
-  @Input()
-  product: Product = new Product(null, false, '', null, null, '', '', null, null, null, '', null, '', null);
-
   userId: number;
   userName = '';
   userToken: string;
   loggedIn = false;
   submissionDone = false;
   submitted = false;
+  isProductChecked = true;
+
   error: boolean;
   errorMessage: string;
+
+  pricePattern = '^[0-9]\\d*(?:\\.\\d)?5?$';
 
   productForm = this.formBuilder.group({
     title: ['', Validators.required],
     isProduct: [null, Validators.required],
-    price: ['', Validators.required],
+    price: ['', [Validators.required, Validators.pattern(this.pricePattern)]],
     description: ['', Validators.required],
     location: ['', Validators.required],
     isSelling: [null, Validators.required],
@@ -53,10 +51,10 @@ export class AddProductComponent implements OnInit{
   }
 
   submit(): void{
+    this.submitted = true;
     if (this.productForm.invalid) {
       return;
     }
-    this.submitted = true;
     this.httpClient.post(environment.endpointURL + 'product/add', {
       title: this.productForm.get('title').value,
       isProduct: this.productForm.get('isProduct').value,
@@ -65,9 +63,9 @@ export class AddProductComponent implements OnInit{
       location: this.productForm.get('location').value,
       isSelling: this.productForm.get('isSelling').value,
       isAvailable: true,
-      isDeliverable: this.productForm.get('isSelling').value,
+      isDeliverable: this.productForm.get('isDeliverable').value,
       userId: this.userId
-    }).subscribe((instance: ProductAttributes) => {
+    }).subscribe(() => {
       this.submissionDone = true;
       // tslint:disable-next-line:no-unused-expression
     }), (error => {
@@ -76,9 +74,25 @@ export class AddProductComponent implements OnInit{
     });
   }
 
-
   newSubmission(): void{
     this.submissionDone = false;
     this.productForm.reset();
+    this.submitted = false;
+    this.isProductChecked = true;
+  }
+
+  checkIsProduct(): void{
+    this.isProductChecked = true;
+    this.productForm.patchValue({
+      isSelling: null,
+      isDeliverable: null,
+    });
+  }
+  uncheckIsProduct(): void {
+    this.isProductChecked = false;
+    this.productForm.patchValue({
+      isSelling: false,
+      isDeliverable: false,
+    });
   }
 }
