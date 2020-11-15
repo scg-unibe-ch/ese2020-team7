@@ -33,13 +33,15 @@ export class EditProductComponent implements OnInit {
 
   pricePattern = '^[0-9]\\d*(?:\\.\\d)?5?$';
 
-  titleOpen = false;
-  priceOpen = false;
-  isProductOpen = false;
-  descriptionOpen = false;
-  locationOpen = false;
-  isSellingOpen = false;
-  isDeliverableOpen = false;
+  titleOpen = true;
+  priceOpen = true;
+  isProductOpen = true;
+  descriptionOpen = true;
+  locationOpen = true;
+  isSellingOpen = true;
+  isDeliverableOpen = true;
+
+  selectedRadio = true; // default value
 
   productForm = this.formBuilder.group({
     title: ['', Validators.required],
@@ -126,24 +128,28 @@ export class EditProductComponent implements OnInit {
   }
 
   openTitle(): void{
-    this.titleOpen = true;
+    this.titleOpen = false;
   }
   openPrice(): void{
-    this.priceOpen = true;
+    this.priceOpen = false;
   }
   openIsProduct(): void{
-    this.isProductOpen = true;
+    this.isProductOpen = false;
   }
   openDescription(): void{
-    this.descriptionOpen = true;
+    this.descriptionOpen = false;
   }
   openLocation(): void{
-    this.locationOpen = true;
+    this.locationOpen = false;
   }
   openIsSelling(): void{
-    this.isSellingOpen = true;
+    this.isSellingOpen = false;
   }
   openIsDeliverable(): void{
-    this.isDeliverableOpen = true;
+    this.isDeliverableOpen = false;
+  }
+
+  radioChange(): void{
+    console.log(this.selectedRadio);
   }
 }
