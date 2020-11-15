@@ -1,0 +1,394 @@
+<div class="main-div">
+  <mat-card>
+    <div *ngIf="!loggedIn">
+      <h2>You have no permission to visit this page. Please <a routerLink="/login" class="link">log in</a> to edit a listing.</h2>
+    </div>
+    <div *ngIf="loggedIn">
+      <div *ngIf="!submissionDone">
+        <form [formGroup]="productForm">
+          <div class="form-group">
+            <!-----------------------------------------------------------------------------------------------TITLE----->
+              <br *ngIf="!(submitted && f.title.errors)" class="invalid-feedback">
+              <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                <div *ngIf="f.title.errors.required" style="color:#ff0000; font-size:13px;">Listing name is required</div>
+              </div>
+              <mat-form-field appearance="fill" style="width: 250px;">
+                <mat-label>Listing Name</mat-label>
+                <label>
+                  <input matInput
+                         type="text"
+                         formControlName="title"
+                         [disabled]="titleOpen">
+                </label>
+              </mat-form-field>
+            <span *ngIf="titleOpen" class="material-icons" (click) ="openTitle()">edit</span>
+
+
+            <hr> <!----------------------------------------------------------------------------------IsPRODUCT--------->
+
+              <br *ngIf="!(submitted && f.isProduct.errors)" class="invalid-feedback">
+              <div *ngIf="submitted && f.isProduct.errors" class="invalid-feedback">
+                <div *ngIf="f.isProduct.errors.required" style="color:red; font-size:13px;">Please choose a type</div>
+              </div>
+              <p>What is the type of your listing?</p>
+
+            <mat-radio-group formControlName="isProduct" >
+              <mat-radio-button value=true (click)="checkIsProduct()">Product</mat-radio-button>
+              <mat-radio-button value=false checked=true (click)="uncheckIsProduct()">Service</mat-radio-button>
+            </mat-radio-group>
+
+
+
+            <br><br>
+            <hr><!------------------------------------------------------------------------------------------PRICE------>
+
+
+              <br *ngIf="!(submitted && f.price.errors)" class="invalid-feedback">
+              <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
+                <div *ngIf="f.price.errors.required" style="color:red; font-size:13px;">Price is required</div>
+                <div *ngIf="f.price.errors.pattern" style="color:red; font-size:13px;">Price must be in the form 12.95</div>
+              </div>
+              <mat-form-field appearance="fill" style="width: 250px;">
+                <mat-label>Price</mat-label>
+                <label>
+                  <input matInput
+                         type="number"
+                         placeholder="Example: 12.95"
+                         formControlName="price"/>
+                </label>
+                <span matSuffix>CHF</span>
+              </mat-form-field>
+
+
+            <hr><!------------------------------------------------------------------------------------DESCRIPTION------>
+
+
+              <br *ngIf="!(submitted && f.description.errors)" class="invalid-feedback">
+              <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                <div *ngIf="f.description.errors.required" style="color:red; font-size:13px;">Please write a description</div>
+              </div>
+              <p>Write a description of your listing:</p>
+              <mat-form-field appearance="outline" style="width: 400px;">
+                <label>
+                 <textarea matInput
+                           type="text"
+                           formControlName="description"
+                           cols="40"
+                           cdkTextareaAutosize
+                           cdkAutosizeMinRows="3"
+                           cdkAutosizeMaxRows="7"></textarea>
+                </label>
+              </mat-form-field>
+
+
+            <hr><!--------------------------------------------------------------------------------------LOCATION------->
+
+
+              <br *ngIf="!(submitted && f.location.errors)" class="invalid-feedback">
+              <div *ngIf="submitted && f.location.errors" class="invalid-feedback">
+                <div *ngIf="f.location.errors.required" style="color:red; font-size:13px;">Location is required</div>
+              </div>
+              <mat-form-field appearance="fill" style="width: 250px;">
+                <mat-label>Location</mat-label>
+                <label>
+                  <input matInput
+                         type="text"
+                         formControlName="location"/>
+                </label>
+              </mat-form-field>
+
+
+            <hr><!--------------------------------------------------------------------------------------IsSELLING------>
+
+            <div *ngIf="isProductChecked">
+              <br *ngIf="!(submitted && f.isSelling.errors)" class="invalid-feedback">
+              <div *ngIf="submitted && f.isSelling.errors" class="invalid-feedback">
+                <div *ngIf="f.isSelling.errors.required" style="color:red; font-size:13px;">Please choose</div>
+              </div>
+              <p>Is your listing to sell or lend a product?</p>
+              <mat-radio-group formControlName="isSelling" [(ngModel)]="selectedRadio"
+                                (change)="radioChange($event)">
+                <mat-radio-button value=true>Sell</mat-radio-button>
+                <mat-radio-button value=false>Lend</mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <div *ngIf="!isProductChecked">
+              <br>
+              <p style="color: #b3b3b3">Is your listing to sell or lend a product?</p>
+              <mat-radio-group disabled>
+                <mat-radio-button >Sell</mat-radio-button>
+                <mat-radio-button >Lend</mat-radio-button>
+              </mat-radio-group>
+            </div>
+
+            <br>
+            <hr><!-------------------------------------------------------------------------------IsDELIVERABLE--------->
+
+            <div *ngIf="isProductChecked">
+              <br *ngIf="!(submitted && f.isDeliverable.errors)" class="invalid-feedback)">
+              <div *ngIf="submitted && f.isDeliverable.errors" class="invalid-feedback">
+                <div *ngIf="f.isDeliverable.errors.required" style="color:red; font-size:13px;">Please choose</div>
+              </div>
+              <p>Is it deliverable?</p>
+              <mat-radio-group formControlName="isDeliverable">
+                <mat-radio-button value=true>Yes</mat-radio-button>
+                <mat-radio-button value=false>No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <div *ngIf="!isProductChecked">
+              <br>
+              <p style="color: #b3b3b3">Is it deliverable?</p>
+              <mat-radio-group  disabled>
+                <mat-radio-button >Yes</mat-radio-button>
+                <mat-radio-button >No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+
+
+          </div>
+          <br><hr><hr><br>
+        </form>
+
+        <button mat-flat-button color="warn" (click)="edit()">Submit</button>
+        <br>
+      </div>
+
+      <div *ngIf="error" class="error">
+        {{ errorMessage }}
+      </div>
+
+      <div *ngIf="submissionDone">
+        Thank you for your edit. It will be reviewed by an admin. <br><br>
+      </div>
+    </div>
+  </mat-card>
+</div>
+
+
+<!---
+<div class="main-div">
+  <mat-card>
+    <div *ngIf="!loggedIn">
+      <h2>You have no permission to visit this page. Please <a routerLink="/login" class="link">log in</a> to edit a listing.</h2>
+    </div>
+    <div *ngIf="loggedIn">
+      <div *ngIf="!submissionDone">
+        <form [formGroup]="productForm">
+          <div class="form-group">
+            ----------------------------------------------------------------------------------------------TITLE-----
+            <div *ngIf="!titleOpen">
+              <br>
+              <mat-form-field appearance="fill" style="width: 250px;" disabled>
+                <mat-label>Listing Name</mat-label>
+                <label>
+                  <input matInput
+                         type="text"
+                         style="font-weight: 400; font-size: 15px"
+                         value="{{product.title}}"
+                         disabled>
+                </label>
+              </mat-form-field>
+              <span class="material-icons" (click) ="openTitle()">edit</span>
+            </div>
+            <div *ngIf="titleOpen">
+              <br *ngIf="!(submitted && f.title.errors)" class="invalid-feedback">
+              <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                <div *ngIf="f.title.errors.required" style="color:#ff0000; font-size:13px;">Listing name is required</div>
+              </div>
+              <mat-form-field appearance="fill" style="width: 250px;">
+                <mat-label>Listing Name</mat-label>
+                <label>
+                  <input matInput
+                         type="text"
+                         formControlName="title">
+                </label>
+              </mat-form-field>
+            </div>
+
+            <hr> ---------------------------------------------------------------------------------IsPRODUCT---------
+
+            <div *ngIf="!isProductOpen"><br>
+              <p>What is the type of your listing?</p>
+              <a *ngIf="product.isProduct">
+                <mat-radio-group disabled>
+                  <mat-radio-button value=true checked>Product</mat-radio-button>
+                  <mat-radio-button value=false >Service</mat-radio-button>
+                </mat-radio-group>
+              </a>
+              <a *ngIf="!product.isProduct">
+                <mat-radio-group disabled>
+                  <mat-radio-button value=true >Product</mat-radio-button>
+                  <mat-radio-button value=false checked>Service</mat-radio-button>
+                </mat-radio-group>
+              </a>
+              <span class="material-icons" (click) ="openIsProduct()">edit</span>
+            </div>
+            <div *ngIf="isProductOpen">
+              <br *ngIf="!(submitted && f.isProduct.errors)" class="invalid-feedback">
+              <div *ngIf="submitted && f.isProduct.errors" class="invalid-feedback">
+                <div *ngIf="f.isProduct.errors.required" style="color:red; font-size:13px;">Please choose a type</div>
+              </div>
+              <p>What is the type of your listing?</p>
+              <mat-radio-group formControlName="isProduct">
+                <mat-radio-button value=true (click)="checkIsProduct()">Product</mat-radio-button>
+                <mat-radio-button value=false (click)="uncheckIsProduct()">Service</mat-radio-button>
+              </mat-radio-group>
+            </div>
+
+            <br><br>
+            <hr>-----------------------------------------------------------------------------------------PRICE------
+
+            <div *ngIf="!priceOpen">
+              <br>
+              <mat-form-field appearance="fill" style="width: 250px;" disabled>
+                <mat-label>Price</mat-label>
+                <label>
+                  <input matInput
+                         type="text"
+                         style="font-weight: 400; font-size: 15px"
+                         value="{{product.price}}"
+                         disabled>
+                </label>
+                <span matSuffix>CHF</span>
+              </mat-form-field>
+              <span class="material-icons" (click) ="openPrice()">edit</span>
+            </div>
+            <div *ngIf="priceOpen">
+              <br *ngIf="!(submitted && f.price.errors)" class="invalid-feedback">
+              <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
+                <div *ngIf="f.price.errors.required" style="color:red; font-size:13px;">Price is required</div>
+                <div *ngIf="f.price.errors.pattern" style="color:red; font-size:13px;">Price must be in the form 12.95</div>
+              </div>
+              <mat-form-field appearance="fill" style="width: 250px;">
+                <mat-label>Price</mat-label>
+                <label>
+                  <input matInput
+                         type="number"
+                         placeholder="Example: 12.95"
+                         formControlName="price"/>
+                </label>
+                <span matSuffix>CHF</span>
+              </mat-form-field>
+            </div>
+
+            <hr>----------------------------------------------------------------------------------DESCRIPTION------
+
+            <div *ngIf="!descriptionOpen">
+              <br>
+              <p>Write a description of your listing:</p>
+              <mat-form-field appearance="outline" style="width: 400px;">
+                <label>
+                 <textarea matInput
+                           type="text"
+                           value="{{product.description}}"
+                           cols="40"
+                           cdkTextareaAutosize
+                           cdkAutosizeMinRows="3"
+                           cdkAutosizeMaxRows="7"
+                           disabled></textarea>
+                </label>
+              </mat-form-field>
+              <span class="material-icons" (click) ="openDescription()">edit</span>
+            </div>
+            <div *ngIf="descriptionOpen">
+              <br *ngIf="!(submitted && f.description.errors)" class="invalid-feedback">
+              <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                <div *ngIf="f.description.errors.required" style="color:red; font-size:13px;">Please write a description</div>
+              </div>
+              <p>Write a description of your listing:</p>
+              <mat-form-field appearance="outline" style="width: 400px;">
+                <label>
+                 <textarea matInput
+                           type="text"
+                           formControlName="description"
+                           cols="40"
+                           cdkTextareaAutosize
+                           cdkAutosizeMinRows="3"
+                           cdkAutosizeMaxRows="7"></textarea>
+                </label>
+              </mat-form-field>
+            </div>
+
+            <hr><-------------------------------------------------------------------------------------LOCATION-------
+
+            <div *ngIf="!locationOpen"></div>
+            <div *ngIf="locationOpen">
+              <br *ngIf="!(submitted && f.location.errors)" class="invalid-feedback">
+              <div *ngIf="submitted && f.location.errors" class="invalid-feedback">
+                <div *ngIf="f.location.errors.required" style="color:red; font-size:13px;">Location is required</div>
+              </div>
+              <mat-form-field appearance="fill" style="width: 250px;">
+                <mat-label>Location</mat-label>
+                <label>
+                  <input matInput
+                         type="text"
+                         formControlName="location"/>
+                </label>
+              </mat-form-field>
+            </div>
+
+            <hr><--------------------------------------------------------------------------------------IsSELLING------
+            <div *ngIf="isProductChecked">
+              <br *ngIf="!(submitted && f.isSelling.errors)" class="invalid-feedback">
+              <div *ngIf="submitted && f.isSelling.errors" class="invalid-feedback">
+                <div *ngIf="f.isSelling.errors.required" style="color:red; font-size:13px;">Please choose</div>
+              </div>
+              <p>Is your listing to sell or lend a product?</p>
+              <mat-radio-group formControlName="isSelling" >
+                <mat-radio-button value=true>Sell</mat-radio-button>
+                <mat-radio-button value=false>Lend</mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <div *ngIf="!isProductChecked">
+              <br>
+              <p style="color: #b3b3b3">Is your listing to sell or lend a product?</p>
+              <mat-radio-group disabled>
+                <mat-radio-button >Sell</mat-radio-button>
+                <mat-radio-button >Lend</mat-radio-button>
+              </mat-radio-group>
+            </div>
+
+            <br>
+            <hr><-------------------------------------------------------------------------------IsDELIVERABLE---------
+
+            <div *ngIf="isProductChecked">
+              <br *ngIf="!(submitted && f.isDeliverable.errors)" class="invalid-feedback)">
+              <div *ngIf="submitted && f.isDeliverable.errors" class="invalid-feedback">
+                <div *ngIf="f.isDeliverable.errors.required" style="color:red; font-size:13px;">Please choose</div>
+              </div>
+              <p>Is it deliverable?</p>
+              <mat-radio-group formControlName="isDeliverable">
+                <mat-radio-button value=true>Yes</mat-radio-button>
+                <mat-radio-button value=false>No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <div *ngIf="!isProductChecked">
+              <br>
+              <p style="color: #b3b3b3">Is it deliverable?</p>
+              <mat-radio-group  disabled>
+                <mat-radio-button >Yes</mat-radio-button>
+                <mat-radio-button >No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+
+
+          </div>
+          <br><hr><hr><br>
+        </form>
+
+        <button mat-flat-button color="warn" (click)="edit()">Submit</button>
+        <br>
+      </div>
+
+      <div *ngIf="error" class="error">
+        {{ errorMessage }}
+      </div>
+
+      <div *ngIf="submissionDone">
+        Thank you for your edit. It will be reviewed by an admin. <br><br>
+      </div>
+    </div>
+  </mat-card>
+</div>
+
+-->
