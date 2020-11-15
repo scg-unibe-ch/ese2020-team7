@@ -15,11 +15,11 @@
       {{ product.description }}
     </p>
 
-    <button mat-flat-button color="primary" (click)="purchase()">
-      Purchase
-    </button>
+    <button mat-flat-button color="primary" (click)="purchase()">Purchase</button>
 
     <app-add-to-shopping-cart></app-add-to-shopping-cart>
+
+    <button mat-flat-button color="primary" *ngIf="product.userId == this.userId" [routerLink]="['/edit', product.productId]">Edit</button>
 
   </mat-card>
 </div>

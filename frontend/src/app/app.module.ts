@@ -31,6 +31,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { AddToShoppingCartComponent } from './shopping-cart/add-to-shopping-cart/add-to-shopping-cart.component';
 import {HomeComponent} from './home/home.component';
 import { ProductsComponent } from './admin-panel/confirm-products/products/products.component';
+import { EditProductComponent } from './catalog/edit-product/edit-product.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { ProductsComponent } from './admin-panel/confirm-products/products/produ
     ShoppingCartComponent,
     AddToShoppingCartComponent,
     HomeComponent,
-    ProductsComponent
+    ProductsComponent,
+    EditProductComponent
   ],
   imports: [
     AppRoutingModule,

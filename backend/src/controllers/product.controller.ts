@@ -88,6 +88,14 @@ productController.get('/myProducts', verifyToken,
     }
 );
 
+productController.get('/id/:productId', verifyToken, verifyProductOwner,
+    (req: Request, res: Response) => {
+        productService.getProduct(parseInt(req.params.productId, 10))
+            .then(product => res.send(product))
+            .catch(err => res.status(500).send(err));
+    }
+);
+
 productController.get('/myRejectedProducts', verifyToken,
     (req: Request, res: Response) => {
         productService.getMyRejectedProducts(req.body.tokenPayload.userId)

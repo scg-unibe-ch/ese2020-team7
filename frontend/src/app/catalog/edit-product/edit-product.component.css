@@ -1,0 +1,23 @@
+.main-div{
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  height: fit-content;
+  overflow:hidden
+}
+
+.mat-card {
+  width: 50%;
+  alignment: top;
+}
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+.link{
+  color: deepskyblue;
+  text-decoration: none;
+}
+
+:disabled {
+  color: black;
+}
