@@ -91,8 +91,8 @@ productController.get('/myProducts', verifyToken,
 productController.get('/id/:productId',
     (req: Request, res: Response) => {
         productService.getProduct(parseInt(req.params.productId, 10))
-            .then(product => res.send(product))
-            .catch(err => res.status(500).send(err));
+        .then(product => res.send(product))
+        .catch(err => res.status(500).send(err));
     }
 );
 
@@ -103,6 +103,23 @@ productController.get('/myRejectedProducts', verifyToken,
         .catch(err => res.status(500).send(err));
     }
 );
+
+productController.get('/myPendingProducts', verifyToken,
+    (req: Request, res: Response) => {
+        productService.getMyPendingProducts(req.body.tokenPayload.userId)
+        .then(products => res.send(products))
+        .catch(err => res.status(500).send(err));
+    }
+);
+
+productController.get('/myApprovedProducts', verifyToken,
+    (req: Request, res: Response) => {
+        productService.getMyApprovedProducts(req.body.tokenPayload.userId)
+        .then(products => res.send(products))
+        .catch(err => res.status(500).send(err));
+    }
+);
+
 
 productController.get('/searchedProducts',
     (req: Request, res: Response) => {
