@@ -33,6 +33,8 @@ import {HomeComponent} from './home/home.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
+import { EditProductComponent } from './user-panel/edit-product/edit-product.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -50,7 +52,8 @@ import {MatMenuModule} from '@angular/material/menu';
     ShoppingCartComponent,
     AddToShoppingCartComponent,
     HomeComponent,
-    UserPanelComponent
+    UserPanelComponent,
+    EditProductComponent
   ],
   imports: [
     AppRoutingModule,
@@ -71,7 +74,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatRadioModule,
     MatPaginatorModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDialogModule
   ],
   providers: [
     {
