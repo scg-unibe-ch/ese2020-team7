@@ -4,7 +4,8 @@
 
   <span class="max-spacer"></span>
 
-  <button mat-button routerLink="/add-offer"><mat-icon>add_circle</mat-icon>  List a new offer</button>
+  <button mat-button routerLink="/add-offer">
+    <mat-icon>add_circle</mat-icon>  List a new offer</button>
 
   <div *ngIf="!loggedIn">
     <button mat-button routerLink="/login">Login</button>
@@ -26,6 +27,11 @@
       <button mat-menu-item (click)="logout()"><mat-icon>login</mat-icon>Logout</button>
     </mat-menu>
   </div>
+
+  <div *ngIf="isAdmin">
+    <button mat-flat-button routerLink="/admin">Admin</button>
+  </div>
+
 </mat-toolbar>
 
 <router-outlet class="content"></router-outlet>

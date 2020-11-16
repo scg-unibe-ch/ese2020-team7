@@ -8,7 +8,7 @@ import {AddProductComponent} from './catalog/add-product/add-product.component';
 import {UserPanelComponent} from './user-panel/user-panel.component';
 import {EditProductComponent} from './catalog/edit-product/edit-product.component';
 import {ProductDetailComponent} from './catalog/product-detail/product-detail.component';
-
+import { AdminPanelComponent} from './admin-panel/admin-panel.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -18,7 +18,8 @@ const routes: Routes = [
   { path: 'add-offer', component: AddProductComponent},
   { path: 'user-products', component: UserPanelComponent},
   { path: 'edit/:id', component: EditProductComponent },
-  { path: 'product/:id', component: ProductDetailComponent }
+  { path: 'product/:id', component: ProductDetailComponent },
+  { path: 'admin', component: AdminPanelComponent}
 ];
 
 @NgModule({

@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   userName = '';
   userToken: string;
   loggedIn = false;
+  isAdmin: boolean;
 
   ngOnInit(): void {
     this.checkUserStatus();
@@ -21,6 +22,7 @@ export class AppComponent implements OnInit {
     // Get user data from local storage
     this.userToken = localStorage.getItem('userToken');
     this.userName = localStorage.getItem('userName');
+    this.isAdmin = JSON.parse(localStorage.getItem('admin'));
 
     // Set boolean whether a user is logged in or not
     this.loggedIn = !!(this.userToken);
