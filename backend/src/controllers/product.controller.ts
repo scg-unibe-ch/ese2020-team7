@@ -88,7 +88,7 @@ productController.get('/myProducts', verifyToken,
     }
 );
 
-productController.get('/id/:productId', verifyToken, verifyProductOwner,
+productController.get('/id/:productId',
     (req: Request, res: Response) => {
         productService.getProduct(parseInt(req.params.productId, 10))
             .then(product => res.send(product))

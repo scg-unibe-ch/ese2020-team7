@@ -1,7 +1,7 @@
 
 import express, { Router, Request, Response } from 'express';
 import { UserService } from '../services/user.service';
-import { verifyAdmin, verifyToken } from '../middlewares/checkAuth';
+import {verifyAdmin, verifyToken} from '../middlewares/checkAuth';
 
 const userController: Router = express.Router();
 const userService = new UserService();
@@ -29,6 +29,14 @@ userController.put('/update/:userId', verifyToken,
 userController.get('/', verifyToken, // you can add middleware on specific requests like that
     (req: Request, res: Response) => {
         userService.getAll().then(users => res.send(users)).catch(err => res.status(500).send(err));
+    }
+);
+
+userController.get('/id/:userId',
+    (req: Request, res: Response) => {
+        userService.getUser(parseInt(req.params.userId, 10))
+            .then(user => res.send(user))
+            .catch(err => res.status(500).send(err));
     }
 );
 
