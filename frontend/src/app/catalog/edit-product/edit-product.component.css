@@ -17,3 +17,9 @@
   color: deepskyblue;
   text-decoration: none;
 }
+
+:disabled {
+  color: black;
+}
+
+

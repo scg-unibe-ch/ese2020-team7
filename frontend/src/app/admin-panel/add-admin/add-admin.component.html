@@ -1,16 +1,15 @@
-<mat-accordion>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                Add administrators
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-            <mat-panel-description>
-                <mat-selection-list #users>
-                    <mat-list-option *ngFor="let user of allUsers">
-                        {{user}}
-                    </mat-list-option>
-                </mat-selection-list>
-            </mat-panel-description>
-    </mat-expansion-panel>
-</mat-accordion>
+<div *ngFor="let user of users">
+  <mat-card>
+    <h2>
+      <a [title]="user.userName">
+        {{ user.userName }}
+      </a>
+    </h2>
+     <div>
+       <button mat-flat-button color="primary" (click)="promoteAdmin(user)" *ngIf="isAdmin" disabled>Promote</button>
+       <button mat-flat-button color="red" (click)="demoteAdmin(user)" *ngIf="!isAdmin" disabled>Demote</button>
+    </div>
+  </mat-card>
+</div>
+<div *ngIf="users.length === 0"> No user to be reviewed</div>
+

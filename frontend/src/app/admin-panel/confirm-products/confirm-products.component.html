@@ -17,31 +17,10 @@
 </mat-accordion>
 -->
 
-<div *ngFor="let product of products">
-  <mat-card>
-    <h2>
-      <a [title]="product.title + ' details'">
-        {{ product.title }}
-      </a>
-      <span class="redText">
-        <b>{{ product.price }}CHF</b>
-      </span>
-    </h2>
-
-    <p *ngIf="product.description">
-      {{ product.description }}
-    </p>
-
-    <button mat-flat-button color="primary" (click)="approve(product)">Approve</button>
-
-    <button *ngIf="!rejectField" mat-flat-button color="primary" (click)="openReject()">Reject</button>
-
-    <div *ngIf="rejectField">
-      <mat-form-field>
-        <input matInput placeholder="Rejection reason" [(ngModel)]="rejectionReason" name="name">
-      </mat-form-field>
-      <button mat-flat-button color="primary" (click)="reject(product)">Send</button>
-    </div>
-  </mat-card>
-</div>
-<div *ngIf="products.length === 0">No Products to be reviewed.</div>
+<h1>Review products</h1>
+<app-unapproved-products
+  *ngFor="let product of products" [product]="product"
+  (update)="approve($event)"
+  (delete)="reject($event)"
+></app-unapproved-products>
+<div *ngIf="products.length === 0">There are currently no products to be reviewed.</div>

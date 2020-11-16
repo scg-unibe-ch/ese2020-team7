@@ -4,7 +4,7 @@ export class Product{
     public productId: number,
     public isApproved: boolean,
     public title: string,
-    public type: string,
+    public isProduct: boolean,
     public price: number,
     public description: string,
     public location: string,

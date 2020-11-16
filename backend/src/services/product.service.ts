@@ -92,6 +92,14 @@ export class ProductService {
         });
     }
 
+    public getProduct(thisProductId: number): Promise<Product> {
+        return Product.findOne({
+            where: {
+                productId: thisProductId
+            }
+        });
+    }
+
     public getMyRejectedProducts(thisUserId: number): Promise<Product[]> {
         const { Op } = require('sequelize');
         return Product.findAll({
