@@ -3,8 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Product} from '../models/product.model';
 import {MatDialog} from '@angular/material/dialog';
-import {EditProductComponent} from './edit-product/edit-product.component';
-
 
 @Component({
   selector: 'app-user-panel',
@@ -47,11 +45,5 @@ export class UserPanelComponent implements OnInit {
     // Set boolean whether a user is logged in or not
     this.loggedIn = !!(this.userToken);
   }
-
-
-  openEditWindow(thing: any){
-    this.dialog.open(EditProductComponent, {data: {firstData: this.dataForChild, secondData: 'hello', name: thing.name, age: thing.age}});
-  }
-
 
 }
