@@ -1,0 +1,114 @@
+<div *ngIf="!loggedIn">
+  <mat-card>
+    <h1>Please log in to see your products</h1>
+    <button mat-flat-button color="warn" routerLink="/login"> Log in</button>
+  </mat-card>
+</div>
+
+<!--***********************************************************************-->
+
+<div *ngIf="loggedIn" class="main-div">
+  <mat-tab-group animationDuration="800ms">
+    <mat-tab label="My offers">
+
+      <h2>Posted products waiting to be approved</h2>
+      <div *ngFor="let product of uncheckedProducts">
+        <mat-card>
+          <h2>
+            <a [title]="product.title + ' details'">
+              {{ product.title }}
+            </a>
+            <span class="redText">
+              <b>{{ product.price }}CHF</b>
+            </span>
+          </h2>
+
+          <p *ngIf="product.description">
+            {{ product.description }}
+          </p>
+
+        </mat-card>
+      </div>
+
+      <div *ngIf="uncheckedProducts.length === 0">
+        <mat-card>
+          <p>No approved products</p>
+        </mat-card>
+      </div>
+
+      <h2>Approved products</h2>
+      <div *ngFor="let product of approvedProducts">
+        <mat-card style="background: #E4EEB5">
+          <h2>
+            <a [title]="product.title + ' details'">
+              {{ product.title }}
+            </a>
+            <span class="redText">
+              <b>{{ product.price }}CHF</b>
+            </span>
+          </h2>
+
+          <p *ngIf="product.description">
+            {{ product.description }}
+          </p>
+
+        </mat-card>
+      </div>
+
+      <div *ngIf="approvedProducts.length === 0">
+        <mat-card>
+          <p>No approved products</p>
+        </mat-card>
+      </div>
+
+      <h2>Rejected products</h2>
+      <div *ngFor="let product of rejectedProducts">
+        <mat-card style="background: #FFDAC9">
+          <h2>
+            <a [title]="product.title + ' details'">
+              {{ product.title }}
+            </a>
+            <span class="redText">
+              <b>{{ product.price }}CHF</b>
+            </span>
+          </h2>
+
+          <p *ngIf="product.description">
+            {{ product.description }}
+          </p>
+
+        </mat-card>
+      </div>
+
+      <div *ngIf="rejectedProducts.length === 0">
+        <mat-card>
+          <p>No rejected products</p>
+        </mat-card>
+      </div>
+
+    </mat-tab>
+
+    <mat-tab label="acquired">
+
+    </mat-tab>
+
+    <mat-tab label="Merkliste">
+
+    </mat-tab>
+
+    <mat-tab label="was fehlt noch?">
+
+    </mat-tab>
+
+  </mat-tab-group>
+
+
+</div>
+
+<!--********************************************************************************************-->
+
+<mat-divider></mat-divider>
+
+<div class="main-div">
+  <button mat-stroked-button color="warn" (click)="openEditWindow(person)">Open dialog</button>
+</div>

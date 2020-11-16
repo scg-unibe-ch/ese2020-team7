@@ -33,6 +33,10 @@ import {HomeComponent} from './home/home.component';
 import { ProductsComponent } from './admin-panel/confirm-products/products/products.component';
 import { EditProductComponent } from './catalog/edit-product/edit-product.component';
 import { ProductDetailComponent } from './catalog/product-detail/product-detail.component';
+import { UserPanelComponent } from './user-panel/user-panel.component';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -52,7 +56,8 @@ import { ProductDetailComponent } from './catalog/product-detail/product-detail.
     HomeComponent,
     ProductsComponent,
     EditProductComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    UserPanelComponent
   ],
   imports: [
     AppRoutingModule,
@@ -71,7 +76,10 @@ import { ProductDetailComponent } from './catalog/product-detail/product-detail.
     MatExpansionModule,
     RouterModule.forRoot([]),
     MatRadioModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatIconModule,
+    MatMenuModule,
+    MatDialogModule
   ],
   providers: [
     {
