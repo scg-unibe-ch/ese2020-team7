@@ -15,26 +15,22 @@ export class UserPanelComponent implements OnInit {
               public dialog: MatDialog) {
   }
 
-  // public dialog: MatDialog
-
   userName = '';
   userToken: string;
   loggedIn = false;
   rejectedProducts: Product[] = [];
   uncheckedProducts: Product[] = [];
   approvedProducts: Product[] = [];
-  public dataForChild = 'hello Child';
-  person = {name: 'lotta', age: 21};
 
 
   ngOnInit(): void {
     this.checkUserStatus();
-    this.httpClient.get(environment.endpointURL + '/myRejectedProducts').subscribe((data: Product[]) => {
+    this.httpClient.get(environment.endpointURL + 'product/myRejectedProducts').subscribe((data: Product[]) => {
       console.log(data);
       this.rejectedProducts = data;
     });
     // get uncheckedProducts
-    // get checkedProducts
+    // get approvedProducts
   }
 
   checkUserStatus(): void {

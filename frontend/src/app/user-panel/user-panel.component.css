@@ -6,6 +6,10 @@
   overflow:hidden
 }
 
+.redText
+{
+  color: #ff0000;
+}
 
 .mat-card {
   width: 80%;
