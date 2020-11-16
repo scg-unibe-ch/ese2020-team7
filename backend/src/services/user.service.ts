@@ -68,6 +68,14 @@ export class UserService {
         return User.findAll({ include: [User.associations.products] });
     }
 
+    public getUser(thisUserId: number): Promise<User> {
+        return User.findOne({
+            where: {
+                userId: thisUserId
+            }
+        });
+    }
+
     public makeAdmin(user: UserAttributes): Promise<User> {
         return User.findOne({
             where: {

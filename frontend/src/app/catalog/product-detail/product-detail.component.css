@@ -1,0 +1,16 @@
+.mat-card {
+  height: fit-content;
+  min-height: 460px;
+  padding-top: 30px;
+  padding-bottom: 50px;
+  box-sizing: border-box;
+  background-color: #f3f3ec;
+}
+.buttons{
+  margin-bottom: 30px;
+  alignment: bottom;
+}
+
+.information{
+  margin-left: 30px;
+}
