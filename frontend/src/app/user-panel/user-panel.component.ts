@@ -29,8 +29,14 @@ export class UserPanelComponent implements OnInit {
       console.log(data);
       this.rejectedProducts = data;
     });
-    // get uncheckedProducts
-    // get approvedProducts
+    this.httpClient.get(environment.endpointURL + 'product/myPendantProducts').subscribe((data: Product[]) => {
+      console.log(data);
+      this.uncheckedProducts = data;
+    });
+    this.httpClient.get(environment.endpointURL + 'product/myApprovedProducts').subscribe((data: Product[]) => {
+      console.log(data);
+      this.approvedProducts = data;
+    });
   }
 
   checkUserStatus(): void {
