@@ -19,18 +19,11 @@
       Purchase
     </button>
 
-    <app-add-to-shopping-cart></app-add-to-shopping-cart>
+    <button mat-raised-button color="basic" (click)="addToBookmarks(product)">
+      <mat-icon>favorite</mat-icon>
+      Add to bookmarks!
+    </button>
 
   </mat-card>
 </div>
-<div *ngIf="products.length === 0">No Products available.</div>
-
-<!--<mat-paginator
-     [length]="totalProducts"
-     [pageSize]="productsPerPage"
-     [pageIndex]="0"
-     [pageSizeOptions]="[2, 5, 10, 20]"
-     (page)="pageEvent = $event"
-     showFirstLastButtons>
-</mat-paginator>-->
-
+<div *ngIf="products.length === 0">No Products available. </div>

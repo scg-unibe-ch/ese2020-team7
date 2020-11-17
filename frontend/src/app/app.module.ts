@@ -27,9 +27,11 @@ import { RouterModule, Routes } from '@angular/router';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { ConfirmProductsComponent } from './admin-panel/confirm-products/confirm-products.component';
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
-import { AddToShoppingCartComponent } from './shopping-cart/add-to-shopping-cart/add-to-shopping-cart.component';
+import { BookmarksComponent } from './bookmarks/bookmarks.component';
+//import { AddToBookmarksComponent } from './bookmarks/add-to-bookmarks/add-to-bookmarks.component';
 import {HomeComponent} from './home/home.component';
+import {MatIconModule} from '@angular/material/icon';
+import { BookmarksService } from './bookmarks/bookmarks.service';
 
 
 @NgModule({
@@ -44,8 +46,8 @@ import {HomeComponent} from './home/home.component';
     AddProductComponent,
     AddAdminComponent,
     ConfirmProductsComponent,
-    ShoppingCartComponent,
-    AddToShoppingCartComponent,
+    BookmarksComponent,
+    //AddToBookmarksComponent,
     HomeComponent
   ],
   imports: [
@@ -65,14 +67,16 @@ import {HomeComponent} from './home/home.component';
     MatExpansionModule,
     RouterModule.forRoot([]),
     MatRadioModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatIconModule
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true
-    }
+      multi: true,
+    },
+    BookmarksService
   ],
   bootstrap: [
     AppComponent
