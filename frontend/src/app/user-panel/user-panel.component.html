@@ -21,6 +21,10 @@
             <span class="redText">
               <b>{{ product.price }}CHF</b>
             </span>
+            <span class="max-spacer"></span>
+            <button mat-mini-fab color="primary" [routerLink]="['/edit', product.productId]">
+              <mat-icon>edit</mat-icon>
+            </button>
           </h2>
 
           <p *ngIf="product.description">
@@ -46,6 +50,10 @@
             <span class="redText">
               <b>{{ product.price }}CHF</b>
             </span>
+            <span class="max-spacer"></span>
+            <button mat-mini-fab color="primary" [routerLink]="['/edit', product.productId]">
+              <mat-icon>edit</mat-icon>
+            </button>
           </h2>
 
           <p *ngIf="product.description">
@@ -71,6 +79,10 @@
             <span class="redText">
               <b>{{ product.price }}CHF</b>
             </span>
+            <span class="max-spacer"></span>
+            <button mat-mini-fab color="primary" [routerLink]="['/edit', product.productId]">
+              <mat-icon>edit</mat-icon>
+            </button>
           </h2>
 
           <p *ngIf="product.description">
