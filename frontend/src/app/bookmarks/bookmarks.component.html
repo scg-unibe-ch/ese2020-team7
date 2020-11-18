@@ -8,11 +8,12 @@
         <b>{{ product.price }}CHF</b>
       </span>
     </h2>
-
     <p *ngIf="product.description">
       {{ product.description }}
     </p>
-
+    <button mat-flat-button color="primary" (click)="deleteBookmarksItem(product)">
+      Remove from bookmarks
+    </button>
   </mat-card>
 </div>
 <div *ngIf="localBookmarks.length === 0">You have not added any products to your bookmarks yet!</div>

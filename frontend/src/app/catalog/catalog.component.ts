@@ -23,7 +23,7 @@ export class CatalogComponent implements OnInit{
 
   addToBookmarks(product: Product): void {
     console.log("product",product);
-    this.bookmarksService.addFinalToBookmarks(product)
+    this.bookmarksService.addFinalToBookmarks(product);
     this.bookmarksService.fetchBookmarksProduct();
     window.alert('The product has been added to your bookmarks!');
   }

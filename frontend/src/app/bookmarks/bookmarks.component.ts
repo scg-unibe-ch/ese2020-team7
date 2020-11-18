@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import { Product } from '../models/product.model';
-import { CatalogComponent } from '../catalog/catalog.component';
 import { BookmarksService } from './bookmarks.service';
 
 @Component({
@@ -19,19 +18,14 @@ export class BookmarksComponent implements OnInit {
     this.localBookmarks = this.bookmarkService.fetchBookmarksProduct();
   }
 
-  addItemToBookmarks(product: Product) {
+  addItemToBookmarks(product: Product) : void {
     this.bookmarkService.addFinalToBookmarks(product)
     this.localBookmarks = this.bookmarkService.fetchBookmarksProduct();
   }
 
-  deleteBookmarksItem(product: Product) {
+  deleteBookmarksItem(product: Product): void {
     console.log("0000>>>", product);
     this.bookmarkService.removeBookmarksItem(product);
     this.localBookmarks = this.bookmarkService.fetchBookmarksProduct();
   }
-
-
-
-
- 
 }
