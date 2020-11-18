@@ -1,3 +1,4 @@
+<div class="main-div">
 <mat-card>
   <div *ngIf="!loggedIn">
     <mat-form-field>
@@ -17,9 +18,11 @@
     You are currently logged in as {{ userNameOrMail }}
   </div>
 </mat-card>
+</div>
 
-
+<div class="main-div">
 <mat-card>
   <button mat-flat-button color="primary" (click)="accessSecuredEndpoint()">Access Secure Endpoint (only for logged in users)</button>
   {{ secureEndpointResponse }}
 </mat-card>
+</div>

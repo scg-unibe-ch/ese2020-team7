@@ -1,0 +1,43 @@
+<mat-card *ngIf="!(rejected || approved)">
+  <h2>
+    <a [title]="product.title + ' details'">
+      {{ product.title }}
+    </a>
+    <span class="redText">
+      <b>{{ product.price }}CHF</b>
+    </span>
+  </h2>
+
+  <p *ngIf="product.description">
+    {{ product.description }}
+  </p>
+
+  <button mat-flat-button color="primary" (click)="approve()">Approve</button>
+
+  <button *ngIf="!rejectField" mat-flat-button color="primary" (click)="openReject()">Reject</button>
+
+  <div *ngIf="rejectField">
+    <mat-form-field>
+      <label>
+        <input matInput placeholder="Rejection reason" [(ngModel)]="product.rejectionReason" name="rejectionReason">
+      </label>
+    </mat-form-field>
+    <button mat-flat-button color="primary" (click)="reject()">Send</button>
+  </div>
+</mat-card>
+
+<mat-card *ngIf="rejected">
+  <h3>
+    <a [title]="product.title + ' details'">
+      <b>{{ product.title }}</b> has been rejected. Reason: {{product.rejectionReason}}
+    </a>
+  </h3>
+</mat-card>
+
+<mat-card *ngIf="approved">
+  <h3>
+    <a [title]="product.title + ' details'">
+      <b>{{ product.title }}</b> has been approved.
+    </a>
+  </h3>
+</mat-card>

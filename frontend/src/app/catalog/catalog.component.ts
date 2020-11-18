@@ -14,6 +14,11 @@ export class CatalogComponent implements OnInit{
 
   products: Product[] = [];
   savedProducts: Product[] = [];
+  userNameOrMail = '';
+  userToken: string;
+  loggedIn = false;
+  isAdmin: boolean;
+  userId: number;
 
   constructor(private httpClient: HttpClient, public bookmarksService: BookmarksService) {};
 
@@ -29,9 +34,20 @@ export class CatalogComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this.checkUserStatus();
     this.httpClient.get(environment.endpointURL + 'product/approvedProducts').subscribe((data: Product[]) => {
       console.log(data);
       this.products = data;
     })
+  }
+
+  checkUserStatus(): void {
+    // Get user data from local storage
+    this.userToken = localStorage.getItem('userToken');
+    this.userNameOrMail = localStorage.getItem('userName');
+    this.isAdmin = JSON.parse(localStorage.getItem('admin'));
+    this.userId = JSON.parse(localStorage.getItem('userId'));
+    // Set boolean whether a user is logged in or not
+    this.loggedIn = !!(this.userToken);
   }
 }

@@ -1,0 +1,119 @@
+<div *ngIf="!loggedIn">
+  <mat-card>
+    <h1>Please log in to see your products</h1>
+    <button mat-flat-button color="warn" routerLink="/login"> Log in</button>
+  </mat-card>
+</div>
+
+<!--***********************************************************************-->
+
+<div *ngIf="loggedIn" class="main-div">
+  <mat-tab-group animationDuration="800ms">
+    <mat-tab label="My offers">
+
+      <h2>Posted products waiting to be approved</h2>
+      <div *ngFor="let product of uncheckedProducts">
+        <mat-card>
+          <h2>
+            <a [title]="product.title + ' details'">
+              {{ product.title }}
+            </a>
+            <span class="redText">
+              <b>{{ product.price }}CHF</b>
+            </span>
+            <span class="max-spacer"></span>
+            <button mat-mini-fab color="primary" [routerLink]="['/edit', product.productId]">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </h2>
+
+          <p *ngIf="product.description">
+            {{ product.description }}
+          </p>
+
+        </mat-card>
+      </div>
+
+      <div *ngIf="uncheckedProducts.length === 0">
+          <p>No approved products</p>
+      </div>
+
+      <mat-divider></mat-divider>
+
+      <h2>Approved products</h2>
+      <div *ngFor="let product of approvedProducts">
+        <mat-card style="background: #E4EEB5">
+          <h2>
+            <a [title]="product.title + ' details'">
+              {{ product.title }}
+            </a>
+            <span class="redText">
+              <b>{{ product.price }}CHF</b>
+            </span>
+            <span class="max-spacer"></span>
+            <button mat-mini-fab color="primary" [routerLink]="['/edit', product.productId]">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </h2>
+
+          <p *ngIf="product.description">
+            {{ product.description }}
+          </p>
+
+        </mat-card>
+      </div>
+
+      <div *ngIf="approvedProducts.length === 0">
+        <p>No approved products</p>
+      </div>
+
+      <mat-divider></mat-divider>
+
+      <h2>Rejected products</h2>
+      <div *ngFor="let product of rejectedProducts">
+        <mat-card style="background: #FFDAC9">
+          <h2>
+            <a [title]="product.title + ' details'">
+              {{ product.title }}
+            </a>
+            <span class="redText">
+              <b>{{ product.price }}CHF</b>
+            </span>
+            <span class="max-spacer"></span>
+            <button mat-mini-fab color="primary" [routerLink]="['/edit', product.productId]">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </h2>
+
+          <p *ngIf="product.description">
+            {{ product.description }}
+          </p>
+
+          <p class="redText"><strong>Rejection reason: </strong>{{product.rejectionReason}}</p>
+
+
+        </mat-card>
+      </div>
+
+      <div *ngIf="rejectedProducts.length === 0">
+        <p>No rejected products</p>
+      </div>
+
+    </mat-tab>
+
+    <mat-tab label="acquired">
+
+    </mat-tab>
+
+    <mat-tab label="Merkliste">
+
+    </mat-tab>
+
+    <mat-tab label="was fehlt noch?">
+
+    </mat-tab>
+
+  </mat-tab-group>
+
+
+</div>

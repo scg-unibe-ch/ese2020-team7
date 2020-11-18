@@ -92,6 +92,16 @@ export class ProductService {
         });
     }
 
+    public getProduct(thisProductId: number): Promise<Product> {
+        return Product.findOne({
+            where: {
+                productId: thisProductId
+            }
+        });
+    }
+
+
+
     public getMyRejectedProducts(thisUserId: number): Promise<Product[]> {
         const { Op } = require('sequelize');
         return Product.findAll({
@@ -100,6 +110,31 @@ export class ProductService {
                     { userId: thisUserId },
                     { isApproved: false},
                     { rejectionReason: { [ Op.not ]: null }}
+                ]
+            }
+        });
+    }
+
+    public getMyPendingProducts(thisUserId: number): Promise<Product[]> {
+        const { Op } = require('sequelize');
+        return Product.findAll({
+            where: {
+                [ Op.and ]: [
+                    { userId: thisUserId},
+                    { isApproved: false},
+                    { rejectionReason: null}
+                ]
+            }
+        });
+    }
+
+    public getMyApprovedProducts(thisUserId: number): Promise<Product[]> {
+        const { Op } = require('sequelize');
+        return Product.findAll({
+            where: {
+                [ Op.and ]: [
+                    { userId: thisUserId},
+                    { isApproved: true}
                 ]
             }
         });

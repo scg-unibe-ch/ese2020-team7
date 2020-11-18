@@ -28,10 +28,15 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { ConfirmProductsComponent } from './admin-panel/confirm-products/confirm-products.component';
 import { BookmarksComponent } from './bookmarks/bookmarks.component';
-//import { AddToBookmarksComponent } from './bookmarks/add-to-bookmarks/add-to-bookmarks.component';
 import {HomeComponent} from './home/home.component';
-import {MatIconModule} from '@angular/material/icon';
 import { BookmarksService } from './bookmarks/bookmarks.service';
+import { ProductsComponent } from './admin-panel/confirm-products/products/products.component';
+import { EditProductComponent } from './catalog/edit-product/edit-product.component';
+import { ProductDetailComponent } from './catalog/product-detail/product-detail.component';
+import { UserPanelComponent } from './user-panel/user-panel.component';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -47,8 +52,11 @@ import { BookmarksService } from './bookmarks/bookmarks.service';
     AddAdminComponent,
     ConfirmProductsComponent,
     BookmarksComponent,
-    //AddToBookmarksComponent,
-    HomeComponent
+    HomeComponent,
+    ProductsComponent,
+    EditProductComponent,
+    ProductDetailComponent,
+    UserPanelComponent
   ],
   imports: [
     AppRoutingModule,
@@ -68,7 +76,9 @@ import { BookmarksService } from './bookmarks/bookmarks.service';
     RouterModule.forRoot([]),
     MatRadioModule,
     MatPaginatorModule,
-    MatIconModule
+    MatIconModule,
+    MatMenuModule,
+    MatDialogModule
   ],
   providers: [
     {

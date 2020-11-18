@@ -1,9 +1,37 @@
 
 <mat-toolbar color="primary">
   <a routerLink="/">ESE-2020 Team 7</a>
+
   <span class="max-spacer"></span>
-  <a routerLink="/login">Login</a>
-  <a routerLink="/registration">Register</a>
+
+  <button mat-button routerLink="/add-offer">
+    <mat-icon>add_circle</mat-icon>  List a new offer</button>
+
+  <div *ngIf="!loggedIn">
+    <button mat-button routerLink="/login">Login</button>
+    <button mat-flat-button color="warn" routerLink="/registration">Register</button>
+  </div>
+
+  <div *ngIf="loggedIn">
+    <button mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>
+        account_circle
+      </mat-icon>
+      {{userName}}
+      <mat-icon>
+        arrow_drop_down
+      </mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/user-products"><mat-icon>local_offer</mat-icon>My products</button>
+      <button mat-menu-item (click)="logout()"><mat-icon>login</mat-icon>Logout</button>
+    </mat-menu>
+  </div>
+
+  <div *ngIf="isAdmin">
+    <button mat-flat-button routerLink="/admin">Admin</button>
+  </div>
+
 </mat-toolbar>
 
 <router-outlet class="content"></router-outlet>
