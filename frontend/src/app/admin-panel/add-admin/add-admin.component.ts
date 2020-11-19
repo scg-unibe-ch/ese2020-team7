@@ -13,7 +13,7 @@ import {environment} from '../../../environments/environment';
 
 export class AddAdminComponent implements OnInit {
   users: User [] = [];
-  isAdmin: boolean;
+  isAdmin: false;
 
 
   constructor(private httpClient: HttpClient) {

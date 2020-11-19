@@ -1,15 +1,26 @@
-<div *ngFor="let user of users">
-  <mat-card>
-    <h2>
-      <a [title]="user.userName">
-        {{ user.userName }}
-      </a>
-    </h2>
-     <div>
-       <button mat-flat-button color="primary" (click)="promoteAdmin(user)" *ngIf="isAdmin" disabled>Promote</button>
-       <button mat-flat-button color="red" (click)="demoteAdmin(user)" *ngIf="!isAdmin" disabled>Demote</button>
-    </div>
-  </mat-card>
-</div>
-<div *ngIf="users.length === 0"> No user to be reviewed</div>
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Add administrators
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-panel-description>
+      <mat-selection-list>
+        <div *ngFor="let user of users">
+          <mat-card>
+            <h3>
+              <a [title]="users">
+                {{ user.firstName }} {{user.lastName}}
+                <button mat-flat-button color="basic" (click)="promoteAdmin(user)">Promote</button>
+                <button mat-flat-button color="warn"  (click)="demoteAdmin(user)">Demote</button>
+              </a>
+            </h3>
+          </mat-card>
+        </div>
+        <div *ngIf="users.length === 0"> No user to be reviewed</div>
+      </mat-selection-list>
+    </mat-panel-description>
+  </mat-expansion-panel>
+</mat-accordion>
 
