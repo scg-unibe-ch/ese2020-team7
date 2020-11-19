@@ -120,6 +120,29 @@ productController.get('/myApprovedProducts', verifyToken,
     }
 );
 
+productController.get('/productsIBought', verifyToken,
+    (req: Request, res: Response) => {
+        productService.getProductsIBought(req.body.tokenPayload.userId)
+        .then(products => res.send(products))
+        .catch(err => res.status(500).send(err));
+    }
+);
+
+productController.get('/mySoldProducts', verifyToken,
+    (req: Request, res: Response) => {
+        productService.getMySoldProducts(req.body.tokenPayload.userId)
+        .then(products => res.send(products))
+        .catch(err => res.status(500).send(err));
+    }
+);
+
+productController.put('/deleteProductAfterSold/:productId', verifyToken, verifyProductOwner,
+    (req: Request, res: Response) => {
+        productService.deleteProductAfterSold(parseInt(req.params.productId, 10))
+        .then(deleted => res.send(deleted))
+        .catch(err => res.status(500).send(err));
+    }
+);
 
 productController.get('/searchedProducts',
     (req: Request, res: Response) => {
