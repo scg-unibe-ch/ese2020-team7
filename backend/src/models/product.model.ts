@@ -16,6 +16,9 @@ export interface ProductAttributes {
     image: Blob;
     review: string;
     userId: number;
+    buyerId: number;
+    dateBought: Date;
+    deletedAfterSold: boolean;
 }
 
 export interface ProductCreationAttributes extends Optional<ProductAttributes, 'productId'> { }
@@ -35,6 +38,9 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
     image!: Blob;
     review!: string;
     userId!: number;
+    buyerId!: number;
+    dateBought!: Date;
+    deletedAfterSold!: boolean;
 
     public static initialize(sequelize: Sequelize) {
         Product.init({
@@ -91,6 +97,17 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
             },
             userId: {
                 type: DataTypes.INTEGER,
+                allowNull: false
+            },
+            buyerId: {
+                type: DataTypes.INTEGER
+            },
+            dateBought: {
+                type: DataTypes.DATE
+            },
+            deletedAfterSold: {
+                type: DataTypes.BOOLEAN,
+                defaultValue: false,
                 allowNull: false
             }
         },

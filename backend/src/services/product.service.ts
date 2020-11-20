@@ -100,8 +100,6 @@ export class ProductService {
         });
     }
 
-
-
     public getMyRejectedProducts(thisUserId: number): Promise<Product[]> {
         const { Op } = require('sequelize');
         return Product.findAll({
@@ -138,6 +136,37 @@ export class ProductService {
                 ]
             }
         });
+    }
+
+    public getProductsIBought(thisUserId: number): Promise<Product[]> {
+        return Product.findAll({
+            where: {
+                buyerId: thisUserId
+            }
+        });
+    }
+
+    public getMySoldProducts(thisUserId: number): Promise<Product[]> {
+        const { Op } = require('sequelize');
+        return Product.findAll({
+            where: {
+                [ Op.and ]: [
+                    { userId: thisUserId },
+                    { buyerId: { [ Op.not ]: null }},
+                    { deletedAfterSold: false }
+                ]
+            }
+        });
+    }
+
+    public deleteProductAfterSold(productId: number): Promise<Product> {
+        return Product.findByPk(productId)
+        .then(found =>
+            found.update({deletedAfterSold: true})
+            .then(() => { return Promise.resolve(found);
+            })
+        )
+        .catch(err => Promise.reject(err));
     }
 
     public search(filters: SearchRequest): Promise<Product[]> {
