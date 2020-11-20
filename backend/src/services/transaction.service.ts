@@ -36,6 +36,7 @@ export class TransactionService {
                             transactionStatus: statusMakePayment
                         });
                     } else {
+                        this.createTransactionCallback(createdTransaction);
                         return Promise.reject('Something went wrong in step 1!');
                     }
                 })
@@ -46,6 +47,8 @@ export class TransactionService {
                             transactionStatus: statusReceivePayment
                         });
                     } else {
+                        this.createTransactionCallback(createdTransaction);
+                        this.makePaymentCallback(createdTransaction);
                         return Promise.reject('Something went wrong in step 2!');
                     }
                 })
@@ -53,6 +56,9 @@ export class TransactionService {
                     if (createdTransaction.transactionStatus === 3) {
                         return Promise.resolve(createdTransaction);
                     } else {
+                        this.createTransactionCallback(createdTransaction);
+                        this.makePaymentCallback(createdTransaction);
+                        this.receivePaymentCallback(createdTransaction);
                         return Promise.reject('Something went wrong in step 3!');
                     }
 
@@ -91,6 +97,51 @@ export class TransactionService {
         })
         .then(() => {
             return Promise.resolve(3);
+        })
+        .catch(err => Promise.reject(err));
+    }
+
+    private createTransactionCallback(transaction: Transaction): Promise<void> {
+        return Product.findByPk(transaction.productId)
+        .then(foundProduct => {
+            return foundProduct.update({
+                isAvailable: true,
+                dateBought: null,
+                buyerId: null
+            });
+        })
+        .then(() => {
+            return Promise.resolve();
+        })
+        .catch(err => Promise.reject(err));
+    }
+
+    private makePaymentCallback(transaction: Transaction): Promise<void> {
+        return Product.findByPk(transaction.productId)
+        .then(foundProduct => {
+            return User.increment({ wallet: foundProduct.price }, {
+                where: {
+                    userId: transaction.buyerId
+                }
+            });
+        })
+        .then(() => {
+            return Promise.resolve();
+        })
+        .catch(err => Promise.reject(err));
+    }
+
+    private receivePaymentCallback(transaction: Transaction): Promise<void> {
+        return Product.findByPk(transaction.productId)
+        .then(foundProduct => {
+            return User.increment({ wallet: -foundProduct.price }, {
+                where: {
+                    userId: foundProduct.userId
+                }
+            });
+        })
+        .then(() => {
+            return Promise.resolve();
         })
         .catch(err => Promise.reject(err));
     }
