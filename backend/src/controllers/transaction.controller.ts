@@ -19,4 +19,20 @@ transactionController.post('/buy/:productId', verifyToken,
     }
 );
 
+transactionController.put('/deliveryDetails/:transactionId', verifyToken,
+    (req: Request, res: Response) => {
+        transactionService.setDeliveryDetails(parseInt(req.params.transactionId, 10), req.body)
+        .then(updated => res.send(updated))
+        .catch(err => res.status(500).send(err));
+    }
+);
+
+transactionController.get('/allTransactions',
+    (req: Request, res: Response) => {
+        transactionService.getAll()
+        .then(transactions => res.send(transactions))
+        .catch(err => res.status(500).send(err));
+    }
+);
+
 export const TransactionController: Router = transactionController;

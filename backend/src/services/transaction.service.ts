@@ -145,4 +145,24 @@ export class TransactionService {
         })
         .catch(err => Promise.reject(err));
     }
+
+    public setDeliveryDetails(transactionId: number, transaction: TransactionAttributes): Promise<TransactionAttributes> {
+        return Transaction.findByPk(transactionId)
+        .then(foundTransaction => {
+            return foundTransaction.update({
+                deliveryStreet: transaction.deliveryStreet,
+                deliveryPinCode: transaction.deliveryPinCode,
+                deliveryCity: transaction.deliveryCity,
+                deliveryCountry: transaction.deliveryCountry
+            })
+            .then(() => {
+                return Promise.resolve(foundTransaction);
+            });
+        })
+        .catch(err => Promise.reject(err));
+    }
+
+    public getAll(): Promise<Transaction[]> {
+        return Transaction.findAll();
+    }
 }
