@@ -13,7 +13,7 @@ import {User} from '../../models/user.model';
 })
 export class ProductDetailComponent implements OnInit {
 
-  product: Product = new Product(null, null, '', null, null, '', '', null, null, null, '', null, '', null);
+  product: Product = new Product(null, null, '', null, null, '', '', null, null, null, '', null, '', null, null, null);
   seller: User = new User(null, '', '', '', '', '', '', null, null, null, null, null, null, null);
 
   productId: number;

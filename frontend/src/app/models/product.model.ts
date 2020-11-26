@@ -14,6 +14,8 @@ export class Product{
     public rejectionReason: string,
     public image: Blob,
     public review: string,
-    public userId: number
+    public userId: number,
+    public dateBought: Date,
+    public deletedAfterSold: boolean
   ) {}
 }
