@@ -25,7 +25,7 @@ export class EditProductComponent implements OnInit {
   loggedIn = false;
   submissionDone = false;
   submitted = false;
-  isProductChecked = true;
+  isProductChecked = false;
   userNameOrMail = '';
 
   error: boolean;
@@ -76,6 +76,9 @@ export class EditProductComponent implements OnInit {
         isSelling: product.isSelling,
         isDeliverable: product.isDeliverable
       });
+      if (product.isProduct === true){
+        this.isProductChecked = true;
+      }
     });
   }
 
@@ -118,6 +121,8 @@ export class EditProductComponent implements OnInit {
       isSelling: null,
       isDeliverable: null,
     });
+    this.isSellingOpen = false;
+    this.isDeliverableOpen = false;
   }
   uncheckIsProduct(): void {
     this.isProductChecked = false;
