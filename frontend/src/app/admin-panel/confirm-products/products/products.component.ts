@@ -20,6 +20,7 @@ export class ProductsComponent {
   rejectField = false;
   approved = false;
   rejected = false;
+  rejectionReason = '';
 
   constructor() { }
 
@@ -31,6 +32,7 @@ export class ProductsComponent {
 
   reject(): void {
     // Emits event to parent component that TodoList got updated
+    this.product.rejectionReason = this.rejectionReason;
     this.delete.emit(this.product);
     this.rejected = true;
   }

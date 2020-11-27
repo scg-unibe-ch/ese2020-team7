@@ -19,10 +19,10 @@
   <div *ngIf="rejectField">
     <mat-form-field>
       <label>
-        <input matInput placeholder="Rejection reason" [(ngModel)]="product.rejectionReason" name="rejectionReason">
+        <input matInput placeholder="Rejection reason" [(ngModel)]="rejectionReason" name="rejectionReason">
       </label>
     </mat-form-field>
-    <button mat-flat-button color="primary" (click)="reject()">Send</button>
+    <button mat-flat-button color="primary" (click)="reject()" [disabled]="rejectionReason === '' ">Send</button>
   </div>
 </mat-card>
 
