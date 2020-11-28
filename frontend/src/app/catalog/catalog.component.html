@@ -24,6 +24,8 @@
 
     <button mat-flat-button color="primary" *ngIf="product.userId == this.userId" [routerLink]="['/edit', product.productId]">Edit</button>
     <button mat-flat-button color="primary"  [routerLink]="['/product', product.productId]">Detail</button>
+    <button mat-flat-button color="primary" *ngIf="!(product.userId == this.userId)" [routerLink]="['/buy', product.productId]">Buy</button>
+
 
   </mat-card>
 </div>
