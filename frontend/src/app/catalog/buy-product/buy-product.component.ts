@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {Product} from '../../models/product.model';
+import {Transaction} from '../../models/transaction.model';
 import {User} from '../../models/user.model';
 import {HttpClient} from '@angular/common/http';
 import {ActivatedRoute} from '@angular/router';
 import {environment} from '../../../environments/environment';
+import {FormBuilder, Validators} from '@angular/forms';
+
 
 @Component({
   selector: 'app-buy-product',
@@ -12,9 +15,10 @@ import {environment} from '../../../environments/environment';
 })
 export class BuyProductComponent implements OnInit {
 
-
+  transaction: Transaction = new Transaction(null, null, null, null, '', null, '', '');
   product: Product = new Product(null, null, '', null, null, '', '', null, null, null, '', null, '', null, null, null);
   seller: User = new User(null, '', '', '', '', '', '', null, null, null, null, null, null, null);
+  buyer: User = new User(null, '', '', '', '', '', '', null, null, null, null, null, null, null);
 
   productId: number;
   userId: number;
@@ -23,9 +27,28 @@ export class BuyProductComponent implements OnInit {
   loggedIn = false;
   userNameOrMail = '';
   sellerId: number;
+  submissionDone = false;
+  error: boolean;
+  errorMessage: string;
+  submitted = false;
+
+
+  zipPattern = '^[0-9]*$';
+
+  transactionForm = this.formBuilder.group({
+    deliveryStreet: ['', Validators.required],
+    deliveryPinCode: [null, [Validators.required, Validators.pattern(this.zipPattern)]],
+    deliveryCity: ['', Validators.required],
+    deliveryCountry: ['', Validators.required],
+  });
+
 
   constructor(private httpClient: HttpClient,
-              private route: ActivatedRoute) {}
+              private route: ActivatedRoute,
+              private formBuilder: FormBuilder) {}
+
+  get f(): any { return this.transactionForm.controls; }
+
 
   ngOnInit(): void {
     this.productId = JSON.parse(this.route.snapshot.paramMap.get('id'));
@@ -41,24 +64,31 @@ export class BuyProductComponent implements OnInit {
         return;
       });
     });
+    this.httpClient.get(environment.endpointURL + 'user/id/' + this.userId, {
+    }).subscribe((user: User) => {
+      console.log(user);
+      this.buyer = user;
+      return;
+    });
   }
 
   buy(): void {
-    this.httpClient.post(environment.endpointURL + 'user/login', {
-      userNameOrMail: this.userNameOrMail,
-      password: this.password
+    this.submitted = true;
+    if (this.transactionForm.invalid) {
+      return;
+    }
+    this.httpClient.post(environment.endpointURL + 'transaction/buy/' + this.productId, {
+      deliveryStreet: this.transactionForm.get('deliveryStreet').value,
+      deliveryPinCode: this.transactionForm.get('deliveryPinCode').value,
+      deliveryCity: this.transactionForm.get('deliveryCity').value,
+      deliveryCountry: this.transactionForm.get('deliveryCountry').value,
     }).subscribe((res: any) => {
-      // Set user data in local storage
-      localStorage.setItem('userToken', res.token);
-      localStorage.setItem('userName', res.user.userName);
-      localStorage.setItem('admin', res.user.admin);
-      localStorage.setItem('userId', res.user.userId);
-      this.isAdmin = res.user.admin;
-      this.checkUserStatus();
-      window.location.reload();
-    }, (error) => {
-      this.loginError = true;
-      this.errorMessage = error?.message;
+      console.log(res);
+      this.transaction = res;
+      this.submissionDone = true;
+    }), (error => {
+      this.error = true;
+      this.errorMessage = error;
     });
   }
 
