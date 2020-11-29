@@ -39,7 +39,7 @@ import { Product } from '../models/product.model';
       const index: number = this.bookmarksProductArray.indexOf(product);
       if (index !== -1) {
         this.bookmarksProductArray.splice(index, 1);
-      localStorage.setItem("cart",JSON.stringify(this.bookmarksProductArray));
+      localStorage.setItem("bookmarks",JSON.stringify(this.bookmarksProductArray));
       }    
     }
 
