@@ -128,6 +128,22 @@ productController.get('/productsIBought', verifyToken,
     }
 );
 
+productController.get('/productsImRenting', verifyToken,
+    (req: Request, res: Response) => {
+        productService.getProductsImRenting(req.body.tokenPayload.userId)
+        .then(products => res.send(products))
+        .catch(err => res.status(500).send(err));
+    }
+);
+
+productController.get('/servicesImUtilizing', verifyToken,
+    (req: Request, res: Response) => {
+        productService.getServiceImUtilize(req.body.tokenPayload.userId)
+        .then(services => res.send(services))
+        .catch(err => res.status(500).send(err));
+    }
+);
+
 productController.get('/mySoldProducts', verifyToken,
     (req: Request, res: Response) => {
         productService.getMySoldProducts(req.body.tokenPayload.userId)
@@ -144,7 +160,7 @@ productController.put('/deleteProductAfterSold/:productId', verifyToken, verifyP
     }
 );
 
-productController.get('/searchedProducts',
+productController.post('/searchedProducts',
     (req: Request, res: Response) => {
         productService.search(req.body)
         .then(products => res.send(products))
