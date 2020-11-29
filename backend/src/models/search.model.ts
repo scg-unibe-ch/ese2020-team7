@@ -4,4 +4,6 @@ export interface SearchRequest {
     minPrice: number;
     maxPrice: number;
     isDeliverable: boolean;
+    isProduct: boolean;
+    isSelling: boolean;
 }
