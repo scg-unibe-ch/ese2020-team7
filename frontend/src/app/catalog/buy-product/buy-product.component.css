@@ -19,3 +19,6 @@ hr {
   height: fit-content;
   overflow:hidden
 }
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
