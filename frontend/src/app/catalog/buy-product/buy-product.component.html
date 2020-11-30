@@ -1,32 +1,31 @@
-<p>buy-product works!</p>
-<button mat-flat-button color="warn" (click)="buy()">Buy</button>
-<p>{{transaction.transactionId}}</p>
 
-<div class="main-div">
-  <mat-card>
-    <div *ngIf="!loggedIn">
-      <h2>You aren't logged in yet! Please <a routerLink="/login" class="link">log in</a> to make a listing.</h2>
-    </div>
-    <div *ngIf="loggedIn">
-      <div *ngIf="!submissionDone">
+<div *ngIf="transactionError" class="error">
+  {{ errorMessage }}
+</div>
+
+<div *ngIf="!loggedIn">
+  <h2>You aren't logged in yet! Please <a routerLink="/login" class="link">log in</a> to make a transaction.</h2>
+</div>
+
+<div class="main-div" *ngIf="loggedIn">
+  <mat-card class="inline-block">
+    <h2>Shipping Address</h2><hr style="border: 2px; border-top-style: solid">
+      <div *ngIf="(!submissionDone)&&deliver">
         <form [formGroup]="transactionForm">
           <div class="form-group">
             <br *ngIf="!(submitted && f.deliveryStreet.errors)" class="invalid-feedback">
             <div *ngIf="submitted && f.deliveryStreet.errors" class="invalid-feedback">
-              <div *ngIf="f.deliveryStreet.errors.required" style="color:#ff0000; font-size:13px;">Delivery Street is required</div>
+              <div *ngIf="f.deliveryStreet.errors.required" style="color:#ff0000; font-size:13px;">Street and house number is required</div>
             </div>
             <mat-form-field appearance="fill" style="width: 250px;">
-              <mat-label>Street</mat-label>
+              <mat-label>Street and house number</mat-label>
               <label>
                 <input matInput
                        type="text"
                        formControlName="deliveryStreet">
               </label>
             </mat-form-field>
-
-            <br><br>
             <hr>
-
             <br *ngIf="!(submitted && f.deliveryPinCode.errors)" class="invalid-feedback">
             <div *ngIf="submitted && f.deliveryPinCode.errors" class="invalid-feedback">
               <div *ngIf="f.deliveryPinCode.errors.required" style="color:red; font-size:13px;">Zip Code is required</div>
@@ -41,9 +40,7 @@
                        formControlName="deliveryPinCode"/>
               </label>
             </mat-form-field>
-
             <hr>
-
             <br *ngIf="!(submitted && f.deliveryCity.errors)" class="invalid-feedback">
             <div *ngIf="submitted && f.deliveryCity.errors" class="invalid-feedback">
               <div *ngIf="f.deliveryCity.errors.required" style="color:#ff0000; font-size:13px;">City is required</div>
@@ -72,22 +69,97 @@
                        formControlName="deliveryCountry"/>
               </label>
             </mat-form-field>
-
           </div>
-          <br><hr><hr><br>
+          <hr><hr>
         </form>
-
-        <button mat-flat-button color="warn" (click)="buy()">Buy</button>
-        <br>
+        <button mat-flat-button color="warn" (click)="useAddress()">Use Address saved to account</button>
       </div>
+      <div *ngIf="(!submissionDone)&&(!deliver)"> <!---------------------------------------------DISABLED-->
+        <form [formGroup]="transactionForm">
+          <div class="form-group">
+            <br>
+            <mat-form-field appearance="fill" style="width: 250px;">
+              <mat-label>Street and house number</mat-label>
+              <label>
+                <input matInput
+                       disabled
+                       type="text"
+                       formControlName="deliveryStreet">
+              </label>
+            </mat-form-field>
+            <hr>
+            <br>
+            <mat-form-field appearance="fill" style="width: 250px;">
+              <mat-label>Zip Code</mat-label>
+              <label>
+                <input matInput
+                       disabled
+                       type="number"
+                       placeholder="Example: 2500"
+                       formControlName="deliveryPinCode"/>
+              </label>
+            </mat-form-field>
+            <hr>
+            <br>
 
-      <div *ngIf="error" class="error">
+            <mat-form-field appearance="fill" style="width: 250px;">
+              <mat-label>City</mat-label>
+              <label>
+                <input matInput
+                       disabled
+                       type="text"
+                       formControlName="deliveryCity">
+              </label>
+            </mat-form-field>
+
+            <hr>
+
+            <br>
+
+            <mat-form-field appearance="fill" style="width: 250px;">
+              <mat-label>Country</mat-label>
+              <label>
+                <input matInput
+                       disabled
+                       type="text"
+                       placeholder="Country"
+                       formControlName="deliveryCountry"/>
+              </label>
+            </mat-form-field>
+          </div>
+          <hr><hr>
+        </form>
+        <button mat-flat-button color="warn" disabled (click)="useAddress()">Use Address saved to account</button>
+      </div> <!---------------------------------------------------------------------------->
+
+      <div *ngIf="transactionError" class="error">
         {{ errorMessage }}
       </div>
 
       <div *ngIf="submissionDone">
         Thank you for your purchase! <br><br>
       </div>
-    </div>
   </mat-card>
+
+  <div class="inline-block">
+    <mat-card>
+      <h2>Your Order</h2><hr style="border: 2px; border-top-style: solid">
+
+      <p>{{product.title}} CHF {{product.price | number:'1.2-2' }}</p>
+      <p>Your wallet: CHF {{buyer.wallet}}</p>
+      <button *ngIf="deliver" mat-flat-button color="warn" (click)="buyWithAddress()">Buy</button>
+      <button *ngIf="!deliver" mat-flat-button color="warn" (click)="buyWithoutAddress()">Buy</button>
+
+    </mat-card>
+    <mat-card>
+      <p>This product can be shipped to the Address you provide.</p>
+      <p>You may also pick it up at the address given by the seller.</p>
+      <mat-radio-group>
+        <mat-radio-button value=true [(ngModel)]="deliver" [checked]=true (click)="checkDeliver()">Deliver</mat-radio-button>
+        <mat-radio-button value=false [(ngModel)]="deliver" (click)="uncheckDeliver()" >Pick up</mat-radio-button>
+      </mat-radio-group>
+    </mat-card>
+  </div>
+
 </div>
+<p>{{deliver}}</p>

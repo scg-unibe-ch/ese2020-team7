@@ -144,7 +144,7 @@ productController.put('/deleteProductAfterSold/:productId', verifyToken, verifyP
     }
 );
 
-productController.get('/searchedProducts',
+productController.post('/searchedProducts',
     (req: Request, res: Response) => {
         productService.search(req.body)
         .then(products => res.send(products))

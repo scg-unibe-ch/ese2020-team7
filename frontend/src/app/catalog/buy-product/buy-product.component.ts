@@ -28,9 +28,10 @@ export class BuyProductComponent implements OnInit {
   userNameOrMail = '';
   sellerId: number;
   submissionDone = false;
-  error: boolean;
+  transactionError = false;
   errorMessage: string;
   submitted = false;
+  deliver = false;
 
 
   zipPattern = '^[0-9]*$';
@@ -63,6 +64,9 @@ export class BuyProductComponent implements OnInit {
         this.seller = user;
         return;
       });
+      if (product.isDeliverable) {
+        this.deliver = true;
+      }
     });
     this.httpClient.get(environment.endpointURL + 'user/id/' + this.userId, {
     }).subscribe((user: User) => {
@@ -72,7 +76,7 @@ export class BuyProductComponent implements OnInit {
     });
   }
 
-  buy(): void {
+  buyWithAddress(): void {
     this.submitted = true;
     if (this.transactionForm.invalid) {
       return;
@@ -86,9 +90,34 @@ export class BuyProductComponent implements OnInit {
       console.log(res);
       this.transaction = res;
       this.submissionDone = true;
-    }), (error => {
-      this.error = true;
-      this.errorMessage = error;
+    }, (error) => {
+      this.transactionError = true;
+      this.errorMessage = JSON.parse(error);
+    });
+  }
+
+  buyWithoutAddress(): void {
+    this.submitted = true;
+    if (this.transactionForm.invalid) {
+      return;
+    }
+    this.httpClient.post(environment.endpointURL + 'transaction/buy/' + this.productId, {
+    }).subscribe((res: any) => {
+      console.log(res);
+      this.transaction = res;
+      this.submissionDone = true;
+    }, (error) => {
+      this.transactionError = true;
+      this.errorMessage = JSON.parse(error);
+    });
+  }
+
+  useAddress(): void{
+    this.transactionForm.patchValue({
+      deliveryStreet: this.buyer.street,
+      deliveryPinCode: this.buyer.pinCode,
+      deliveryCity: this.buyer.city,
+      deliveryCountry: this.buyer.country,
     });
   }
 
@@ -97,5 +126,12 @@ export class BuyProductComponent implements OnInit {
     this.userToken = localStorage.getItem('userToken');
     this.userNameOrMail = localStorage.getItem('userName');
     this.loggedIn = !!(this.userToken);
+  }
+
+  checkDeliver(): void {
+    this.deliver = true;
+  }
+  uncheckDeliver(): void {
+    this.deliver = false;
   }
 }
