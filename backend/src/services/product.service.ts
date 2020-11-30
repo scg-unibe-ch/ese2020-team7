@@ -85,9 +85,13 @@ export class ProductService {
     }
 
     public getMyProducts(thisUserId: number): Promise<Product[]> {
+        const { Op } = require('sequelize');
         return Product.findAll({
             where: {
-                userId: thisUserId
+                [ Op.and ]: [
+                    { buyerId: thisUserId},
+                    { deletedAfterSold: false }
+                ]
             }
         });
     }
@@ -132,16 +136,47 @@ export class ProductService {
             where: {
                 [ Op.and ]: [
                     { userId: thisUserId},
-                    { isApproved: true}
+                    { isApproved: true},
+                    { isAvailable: true }
                 ]
             }
         });
     }
 
     public getProductsIBought(thisUserId: number): Promise<Product[]> {
+        const { Op } = require('sequelize');
         return Product.findAll({
             where: {
-                buyerId: thisUserId
+                [ Op.and ]: [
+                    { buyerId: thisUserId},
+                    { isProduct: true },
+                    { isSelling: true }
+                ]
+            }
+        });
+    }
+
+    public getProductsImRenting(thisUserId: number): Promise<Product[]> {
+        const { Op } = require('sequelize');
+        return Product.findAll({
+            where: {
+                [ Op.and ]: [
+                    { buyerId: thisUserId},
+                    { isProduct: true },
+                    { isSelling: false }
+                ]
+            }
+        });
+    }
+
+    public getServiceImUtilize(thisUserId: number): Promise<Product[]> {
+        const { Op } = require('sequelize');
+        return Product.findAll({
+            where: {
+                [ Op.and ]: [
+                    { buyerId: thisUserId},
+                    { isProduct: false },
+                ]
             }
         });
     }
@@ -171,43 +206,50 @@ export class ProductService {
 
     public search(filters: SearchRequest): Promise<Product[]> {
         const { Op } = require('sequelize');
-        const title = filters.title;
-        const location = filters.location;
-        const minPrice = filters.minPrice;
-        const maxPrice = filters.maxPrice;
-        const isDeliverable = filters.isDeliverable;
 
         const options: any = {};
 
-        if (title) {
+        if (filters.title) {
             options.title = {
-                [ Op.substring ]: title
+                [ Op.substring ]: filters.title
             };
         }
 
-        if (location) {
+        if (filters.location) {
             options.location = {
-                [ Op.substring ]: location
+                [ Op.substring ]: filters.location
             };
         }
 
-        if (minPrice && maxPrice) {
+        if (filters.minPrice && filters.maxPrice) {
             options.price = {
-                [ Op.between ]: [ minPrice, maxPrice]
+                [ Op.between ]: [ filters.minPrice, filters.maxPrice]
             };
-        } else if (minPrice && !maxPrice) {
+        } else if (filters.minPrice && !filters.maxPrice) {
             options.price = {
-                [ Op.gte ]: minPrice
+                [ Op.gte ]: filters.minPrice
             };
-        } else if (!minPrice && maxPrice) {
+        } else if (!filters.minPrice && filters.maxPrice) {
             options.price = {
-                [ Op.lte ]: maxPrice
+                [ Op.lte ]: filters.maxPrice
             };
         }
 
-        if (isDeliverable != null) {
+        if (filters.isDeliverable != null) {
             options.isDeliverable = {
-                [ Op.is ]: true
+                [ Op.is ]: filters.isDeliverable
+            };
+        }
+
+        if (filters.isProduct != null) {
+            options.isProduct = {
+                [ Op.is ]: filters.isProduct
+            };
+        }
+
+        if (filters.isSelling != null) {
+            options.isSelling = {
+                [ Op.is ]: filters.isSelling
             };
         }
 
