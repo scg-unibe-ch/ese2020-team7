@@ -41,6 +41,7 @@ import { BuyProductComponent } from './catalog/buy-product/buy-product.component
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatNativeDateModule, MAT_DATE_LOCALE} from '@angular/material/core';
 import { EditUserComponent } from './registration/edit-user/edit-user.component';
+import {SearchComponent} from './search/search.component';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { EditUserComponent } from './registration/edit-user/edit-user.component'
     ProductDetailComponent,
     UserPanelComponent,
     BuyProductComponent,
-    EditUserComponent
+    EditUserComponent,
+    SearchComponent
   ],
   imports: [
     AppRoutingModule,
