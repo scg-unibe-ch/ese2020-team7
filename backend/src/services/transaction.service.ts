@@ -1,5 +1,5 @@
 
-import { Product } from '../models/product.model';
+import { Product, ProductAttributes } from '../models/product.model';
 import { Transaction, TransactionAttributes } from '../models/transaction.model';
 import { User } from '../models/user.model';
 
@@ -21,6 +21,13 @@ export class TransactionService {
                             });
                         } else {
                             return Promise.reject('The buyer does not have enough money!');
+                        }
+                    })
+                    .then(() => {
+                        if (!foundProduct.isSelling) {
+                            return foundProduct.update({
+                                returnedAfterLoan: false
+                            });
                         }
                     });
                 })
@@ -107,7 +114,8 @@ export class TransactionService {
             return foundProduct.update({
                 isAvailable: true,
                 dateBought: null,
-                buyerId: null
+                buyerId: null,
+                returnedAfterLoan: null
             });
         })
         .then(() => {
@@ -157,6 +165,49 @@ export class TransactionService {
             })
             .then(() => {
                 return Promise.resolve(foundTransaction);
+            });
+        })
+        .catch(err => Promise.reject(err));
+    }
+
+    public setRentedUntilDate(productId: number, product: ProductAttributes): Promise<Product> {
+        return Product.findByPk(productId)
+        .then(foundProduct => {
+            return foundProduct.update({
+                rentedUntil: product.rentedUntil
+            })
+            .then(() => {
+                return Promise.resolve(foundProduct);
+            });
+        })
+        .catch(err => Promise.reject(err));
+    }
+
+    public initiateReturn(productId: number): Promise<Product> {
+        return Product.findByPk(productId)
+        .then(foundProduct => {
+            return foundProduct.update({
+                returnedAfterLoan: true
+            })
+            .then(() => {
+                return Promise.resolve(foundProduct);
+            });
+        })
+        .catch(err => Promise.reject(err));
+    }
+
+    public confirmReturn(productId: number): Promise<Product> {
+        return Product.findByPk(productId)
+        .then(foundProduct => {
+            return foundProduct.update({
+                isAvailable: true,
+                dateBought: null,
+                buyerId: null,
+                rentedUntil: null,
+                returnedAfterLoan: null
+            })
+            .then(() => {
+                return Promise.resolve(foundProduct);
             });
         })
         .catch(err => Promise.reject(err));
