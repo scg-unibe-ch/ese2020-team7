@@ -39,10 +39,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BuyProductComponent } from './catalog/buy-product/buy-product.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import {MatNativeDateModule, MAT_DATE_LOCALE, DateAdapter} from '@angular/material/core';
-import { MAT_DATE_FORMATS } from '@angular/material/core';
-import { MY_DATE_FORMATS } from './my-date-formats';
-import {MomentDateAdapter, MomentDateModule} from '@angular/material-moment-adapter';
+import {MatNativeDateModule, MAT_DATE_LOCALE} from '@angular/material/core';
 import { EditUserComponent } from './registration/edit-user/edit-user.component';
 
 
@@ -90,7 +87,6 @@ import { EditUserComponent } from './registration/edit-user/edit-user.component'
     MatDialogModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MomentDateModule
   ],
   providers: [
     {
@@ -101,8 +97,7 @@ import { EditUserComponent } from './registration/edit-user/edit-user.component'
     BookmarksService,
     MatDatepickerModule,
     MatNativeDateModule,
-    {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
-    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS }
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }
     ],
   bootstrap: [
     AppComponent
