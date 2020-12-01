@@ -34,16 +34,17 @@ export class BuyProductComponent implements OnInit {
   errorMessage: string;
   submitted = false;
   deliver = false;
+  testDate = null;
 
 
   zipPattern = '^[0-9]*$';
 
   transactionForm = this.formBuilder.group({
     returnDate: [null, Validators.required],
-    deliveryStreet: ['', Validators.required],
+    deliveryStreet: [null, Validators.required],
     deliveryPinCode: [null, [Validators.required, Validators.pattern(this.zipPattern)]],
-    deliveryCity: ['', Validators.required],
-    deliveryCountry: ['', Validators.required],
+    deliveryCity: [null, Validators.required],
+    deliveryCountry: [null, Validators.required],
   });
 
 
@@ -144,5 +145,9 @@ export class BuyProductComponent implements OnInit {
     this.transactionForm.disable({ emitEvent: false });
     this.transactionForm.controls.requiredControl.clearValidators();
     this.transactionForm.updateValueAndValidity(); // this is to rerun form validation after removing the validation for a field.
+  }
+
+  getDate(): void{
+    this.testDate = this.transactionForm.get('returnDate').value;
   }
 }
