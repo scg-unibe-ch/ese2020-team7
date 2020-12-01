@@ -18,9 +18,14 @@ export class UserPanelComponent implements OnInit {
   userName = '';
   userToken: string;
   loggedIn = false;
+
   rejectedProducts: Product[] = [];
   uncheckedProducts: Product[] = [];
   approvedProducts: Product[] = [];
+  soldProducts: Product[] = [];
+  boughtProducts: Product[] = [];
+  lentProducts: Product[] = [];
+  usedServices: Product[] = [];
 
 
   ngOnInit(): void {
@@ -37,6 +42,16 @@ export class UserPanelComponent implements OnInit {
       console.log(data);
       this.approvedProducts = data;
     });
+    this.httpClient.get(environment.endpointURL + 'product/mySoldProducts').subscribe((data: Product[]) => {
+      console.log(data);
+      this.soldProducts = data;
+    });
+    this.httpClient.get(environment.endpointURL + 'product/productsIBought').subscribe((data: Product[]) => {
+      console.log(data);
+      this.boughtProducts = data;
+    });
+    // myLentProducts kommt noch
+    // myUsedServices kommt noch
   }
 
   checkUserStatus(): void {
@@ -46,6 +61,10 @@ export class UserPanelComponent implements OnInit {
 
     // Set boolean whether a user is logged in or not
     this.loggedIn = !!(this.userToken);
+  }
+
+  onDelete(productId): void {
+    this.httpClient.delete(environment.endpointURL + 'product/delete/' + productId).subscribe();
   }
 
 }

@@ -2,7 +2,6 @@ import { Component, OnInit} from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import {UserAttributes} from '../../../../backend/src/models/user.model';
 import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 
 
@@ -37,7 +36,7 @@ export class RegistrationComponent implements OnInit {
   });
 
   // convenience getter for easy access to form fields
-  get f() { return this.userForm.controls; }
+  get f(): any { return this.userForm.controls; }
 
   ngOnInit(): void {
     this.checkUserStatus();
@@ -63,7 +62,7 @@ export class RegistrationComponent implements OnInit {
       email: this.userForm.get('email').value,
       lastName: this.userForm.get('lastName').value,
       firstName: this.userForm.get('firstName').value
-    }).subscribe((result: UserAttributes) => {
+    }).subscribe(() => {
       this.registrationDone = true;
       // tslint:disable-next-line:no-unused-expression
     }), (error => {

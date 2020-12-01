@@ -36,7 +36,6 @@ import { ProductDetailComponent } from './catalog/product-detail/product-detail.
 import { UserPanelComponent } from './user-panel/user-panel.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
-import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -58,28 +57,27 @@ import { MatDialogModule } from '@angular/material/dialog';
     ProductDetailComponent,
     UserPanelComponent
   ],
-  imports: [
-    AppRoutingModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    HttpClientModule,
-    MatButtonModule,
-    MatListModule,
-    MatInputModule,
-    MatCheckboxModule,
-    MatCardModule,
-    MatTabsModule,
-    MatToolbarModule,
-    ReactiveFormsModule,
-    MatExpansionModule,
-    RouterModule.forRoot([]),
-    MatRadioModule,
-    MatPaginatorModule,
-    MatIconModule,
-    MatMenuModule,
-    MatDialogModule
-  ],
+    imports: [
+        AppRoutingModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        HttpClientModule,
+        MatButtonModule,
+        MatListModule,
+        MatInputModule,
+        MatCheckboxModule,
+        MatCardModule,
+        MatTabsModule,
+        MatToolbarModule,
+        ReactiveFormsModule,
+        MatExpansionModule,
+        RouterModule.forRoot([]),
+        MatRadioModule,
+        MatPaginatorModule,
+        MatIconModule,
+        MatMenuModule
+    ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
