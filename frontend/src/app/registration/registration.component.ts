@@ -28,7 +28,7 @@ export class RegistrationComponent implements OnInit {
   errorMessage: string;
 
   userForm = this.formBuilder.group({
-    userName: ['', [Validators.required]],
+    userName: ['', Validators.required],
     password: ['', [Validators.required, Validators.pattern(this.passwordPattern)]],
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
