@@ -37,7 +37,11 @@ import { UserPanelComponent } from './user-panel/user-panel.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
-import { SearchComponent } from './search/search.component';
+import { BuyProductComponent } from './catalog/buy-product/buy-product.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatNativeDateModule, MAT_DATE_LOCALE} from '@angular/material/core';
+import { EditUserComponent } from './registration/edit-user/edit-user.component';
+import {SearchComponent} from './search/search.component';
 
 
 @NgModule({
@@ -58,6 +62,8 @@ import { SearchComponent } from './search/search.component';
     EditProductComponent,
     ProductDetailComponent,
     UserPanelComponent,
+    BuyProductComponent,
+    EditUserComponent,
     SearchComponent
   ],
   imports: [
@@ -80,7 +86,9 @@ import { SearchComponent } from './search/search.component';
     MatPaginatorModule,
     MatIconModule,
     MatMenuModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [
     {
@@ -88,8 +96,11 @@ import { SearchComponent } from './search/search.component';
       useClass: AuthInterceptor,
       multi: true,
     },
-    BookmarksService
-  ],
+    BookmarksService,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }
+    ],
   bootstrap: [
     AppComponent
   ]

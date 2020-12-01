@@ -34,7 +34,7 @@ export class CatalogComponent implements OnInit{
 
   ngOnInit(): void {
     this.checkUserStatus();
-    this.httpClient.get(environment.endpointURL + 'product/approvedProducts').subscribe((data: Product[]) => {
+    this.httpClient.get(environment.endpointURL + 'product/approvedAndAvailableProducts').subscribe((data: Product[]) => {
       console.log(data);
       this.products = data;
     });

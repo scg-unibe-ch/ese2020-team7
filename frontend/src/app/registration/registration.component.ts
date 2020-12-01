@@ -65,8 +65,7 @@ export class RegistrationComponent implements OnInit {
       firstName: this.userForm.get('firstName').value
     }).subscribe((result: UserAttributes) => {
       this.registrationDone = true;
-      // tslint:disable-next-line:no-unused-expression
-    }), (error => {
+    }, (error) => {
          this.error = true;
          this.errorMessage = error;
     });

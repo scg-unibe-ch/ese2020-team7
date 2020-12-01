@@ -68,7 +68,7 @@ export class AddProductComponent implements OnInit{
     }).subscribe(() => {
       this.submissionDone = true;
       // tslint:disable-next-line:no-unused-expression
-    }), (error => {
+    }, (error) => {
       this.error = true;
       this.errorMessage = error;
     });
