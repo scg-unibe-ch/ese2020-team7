@@ -37,6 +37,7 @@ import { UserPanelComponent } from './user-panel/user-panel.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
+import { SearchComponent } from './search/search.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     ProductsComponent,
     EditProductComponent,
     ProductDetailComponent,
-    UserPanelComponent
+    UserPanelComponent,
+    SearchComponent
   ],
   imports: [
     AppRoutingModule,
