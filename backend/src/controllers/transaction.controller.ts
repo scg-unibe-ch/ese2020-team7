@@ -1,5 +1,5 @@
 import express, { Router, Request, Response } from 'express';
-import { verifyToken } from '../middlewares/checkAuth';
+import { verifyProductOwner, verifyToken } from '../middlewares/checkAuth';
 import { TransactionService } from '../services/transaction.service';
 
 const transactionController: Router = express.Router();
@@ -23,6 +23,30 @@ transactionController.put('/deliveryDetails/:transactionId', verifyToken,
     (req: Request, res: Response) => {
         transactionService.setDeliveryDetails(parseInt(req.params.transactionId, 10), req.body)
         .then(updated => res.send(updated))
+        .catch(err => res.status(500).send(err));
+    }
+);
+
+transactionController.put('/rentedUntilDate/:productId', verifyToken,
+    (req: Request, res: Response) => {
+        transactionService.setRentedUntilDate(parseInt(req.params.productId, 10), req.body)
+        .then(updated => res.send(updated))
+        .catch(err => res.status(500).send(err));
+    }
+);
+
+transactionController.put('/indicateReturn/:productId', verifyToken,
+    (req: Request, res: Response) => {
+        transactionService.initiateReturn(parseInt(req.params.productId, 10))
+        .then(returned => res.send(returned))
+        .catch(err => res.status(500).send(err));
+    }
+);
+
+transactionController.put('/confirmReturn/:productId', verifyToken, verifyProductOwner,
+    (req: Request, res: Response) => {
+        transactionService.confirmReturn(parseInt(req.params.productId, 10))
+        .then(confirmed => res.send(confirmed))
         .catch(err => res.status(500).send(err));
     }
 );
