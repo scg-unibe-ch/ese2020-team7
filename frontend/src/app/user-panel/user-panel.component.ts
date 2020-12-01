@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Product} from '../models/product.model';
-import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-panel',
@@ -11,9 +10,7 @@ import {MatDialog} from '@angular/material/dialog';
 })
 export class UserPanelComponent implements OnInit {
 
-  constructor(private httpClient: HttpClient,
-              public dialog: MatDialog) {
-  }
+  constructor(private httpClient: HttpClient) {}
 
   userName = '';
   userToken: string;
