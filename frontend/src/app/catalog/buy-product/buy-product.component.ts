@@ -39,12 +39,15 @@ export class BuyProductComponent implements OnInit {
 
   zipPattern = '^[0-9]*$';
 
-  transactionForm = this.formBuilder.group({
-    returnDate: [null, Validators.required],
+  deliveryForm = this.formBuilder.group({
     deliveryStreet: [null, Validators.required],
     deliveryPinCode: [null, [Validators.required, Validators.pattern(this.zipPattern)]],
     deliveryCity: [null, Validators.required],
     deliveryCountry: [null, Validators.required],
+  });
+
+  returnDateForm = this.formBuilder.group({
+    returnDate: [null, Validators.required],
   });
 
 
@@ -52,7 +55,7 @@ export class BuyProductComponent implements OnInit {
               private route: ActivatedRoute,
               private formBuilder: FormBuilder) {}
 
-  get f(): any { return this.transactionForm.controls; }
+  get f(): any { return this.deliveryForm.controls; }
 
 
   ngOnInit(): void {
@@ -72,11 +75,11 @@ export class BuyProductComponent implements OnInit {
         this.deliver = true;
       }
       if ((!product.isDeliverable) || (!product.isProduct)) {
-        this.transactionForm.disable({ emitEvent: false });
+        this.deliveryForm.disable({ emitEvent: false });
       }
-      if (product.isSelling){
-        this.transactionForm.controls.requiredControl.clearValidators();
-        this.transactionForm.updateValueAndValidity();
+      if (product.isSelling && product.isProduct){
+        this.returnDateForm.controls.requiredControl.clearValidators();
+        this.returnDateForm.updateValueAndValidity();
       }
 
     });
@@ -91,22 +94,22 @@ export class BuyProductComponent implements OnInit {
   buy(): void {
     this.submitted = true;
     if (!this.deliver) {
-      this.transactionForm.patchValue({
+      this.deliveryForm.patchValue({
         deliveryStreet: null,
         deliveryPinCode: null,
         deliveryCity: null,
         deliveryCountry: null
       });
     }
-    if (this.transactionForm.invalid) {
+    if (this.deliveryForm.invalid) {
       return;
     }
     this.httpClient.post(environment.endpointURL + 'transaction/buy/' + this.productId, {
-      returnDate: this.transactionForm.get('returnDate').value,
-      deliveryStreet: this.transactionForm.get('deliveryStreet').value,
-      deliveryPinCode: this.transactionForm.get('deliveryPinCode').value,
-      deliveryCity: this.transactionForm.get('deliveryCity').value,
-      deliveryCountry: this.transactionForm.get('deliveryCountry').value,
+      returnDate: this.returnDateForm.get('returnDate').value,
+      deliveryStreet: this.deliveryForm.get('deliveryStreet').value,
+      deliveryPinCode: this.deliveryForm.get('deliveryPinCode').value,
+      deliveryCity: this.deliveryForm.get('deliveryCity').value,
+      deliveryCountry: this.deliveryForm.get('deliveryCountry').value,
     }).subscribe((res: any) => {
       console.log(res);
       this.transaction = res;
@@ -118,7 +121,7 @@ export class BuyProductComponent implements OnInit {
   }
 
   useAddress(): void{
-    this.transactionForm.patchValue({
+    this.deliveryForm.patchValue({
       deliveryStreet: this.buyer.street,
       deliveryPinCode: this.buyer.pinCode,
       deliveryCity: this.buyer.city,
@@ -135,19 +138,19 @@ export class BuyProductComponent implements OnInit {
 
   checkDeliver(): void {
     this.deliver = true;
-    this.transactionForm.enable({ emitEvent: false });
-    this.transactionForm.controls.requiredControl.setValidators([Validators.required]);
-    this.transactionForm.controls.deliveryPincode.setValidators([Validators.pattern(this.zipPattern)]);
-    this.transactionForm.updateValueAndValidity(); // this is to rerun form validation after removing the validation for a field.
+    this.deliveryForm.enable({ emitEvent: false });
+    this.deliveryForm.controls.requiredControl.setValidators([Validators.required]);
+    this.deliveryForm.controls.deliveryPincode.setValidators([Validators.pattern(this.zipPattern)]);
+    this.deliveryForm.updateValueAndValidity(); // this is to rerun form validation after removing the validation for a field.
   }
   uncheckDeliver(): void {
     this.deliver = false;
-    this.transactionForm.disable({ emitEvent: false });
-    this.transactionForm.controls.requiredControl.clearValidators();
-    this.transactionForm.updateValueAndValidity(); // this is to rerun form validation after removing the validation for a field.
+    this.deliveryForm.disable({ emitEvent: false });
+    this.deliveryForm.controls.requiredControl.clearValidators();
+    this.deliveryForm.updateValueAndValidity(); // this is to rerun form validation after removing the validation for a field.
   }
 
   getDate(): void{
-    this.testDate = this.transactionForm.get('returnDate').value;
+    this.testDate = this.returnDateForm.get('returnDate').value;
   }
 }
