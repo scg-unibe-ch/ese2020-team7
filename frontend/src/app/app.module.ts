@@ -37,6 +37,12 @@ import { UserPanelComponent } from './user-panel/user-panel.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
+import { BuyProductComponent } from './catalog/buy-product/buy-product.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatNativeDateModule, MAT_DATE_LOCALE, DateAdapter} from '@angular/material/core';
+import { MAT_DATE_FORMATS } from '@angular/material/core';
+import { MY_DATE_FORMATS } from './my-date-formats';
+import {MomentDateAdapter, MomentDateModule} from '@angular/material-moment-adapter';
 
 
 @NgModule({
@@ -56,7 +62,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     ProductsComponent,
     EditProductComponent,
     ProductDetailComponent,
-    UserPanelComponent
+    UserPanelComponent,
+    BuyProductComponent
   ],
   imports: [
     AppRoutingModule,
@@ -78,7 +85,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatPaginatorModule,
     MatIconModule,
     MatMenuModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MomentDateModule
   ],
   providers: [
     {
@@ -86,8 +96,12 @@ import { MatDialogModule } from '@angular/material/dialog';
       useClass: AuthInterceptor,
       multi: true,
     },
-    BookmarksService
-  ],
+    BookmarksService,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
+    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS }
+    ],
   bootstrap: [
     AppComponent
   ]

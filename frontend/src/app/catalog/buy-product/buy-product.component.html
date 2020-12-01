@@ -1,0 +1,140 @@
+
+<div *ngIf="transactionError" class="error">
+  {{ errorMessage }}
+</div>
+
+<div *ngIf="!loggedIn">
+  <h2>You aren't logged in yet! Please <a routerLink="/login" class="link">log in</a> to make a transaction.</h2>
+</div>
+
+<div class="main-div" *ngIf="loggedIn">
+  <div class="inline-block" *ngIf="((product.isProduct && product.isDeliverable) || !product.isSelling) && !submissionDone">
+    <mat-card *ngIf="!product.isSelling && product.isProduct">
+      <form [formGroup]="transactionForm">
+        <p>This product is for rent only. Please specify a date at which you would like to return the product.</p>
+        <mat-form-field appearance="fill">
+          <mat-label>Rent until</mat-label>
+          <label>
+            <input matInput [matDatepicker]="dp" formControlName="returnDate">
+          </label>
+          <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+          <mat-datepicker #dp></mat-datepicker>
+        </mat-form-field>
+      </form>
+
+
+    </mat-card>
+    <mat-card *ngIf="product.isProduct && product.isDeliverable">
+      <h2>Shipping Address</h2><hr style="border: 2px; border-top-style: solid">
+
+          <form [formGroup]="transactionForm">
+            <div class="form-group">
+              <br *ngIf="!(submitted && f.deliveryStreet.errors)" class="invalid-feedback">
+              <div *ngIf="submitted && f.deliveryStreet.errors" class="invalid-feedback">
+                <div *ngIf="f.deliveryStreet.errors.required" style="color:#ff0000; font-size:13px;">Street and house number is required</div>
+              </div>
+              <mat-form-field appearance="fill" style="width: 250px;">
+                <mat-label>Street and house number</mat-label>
+                <label>
+                  <input matInput
+                         type="text"
+                         formControlName="deliveryStreet">
+                </label>
+              </mat-form-field>
+              <hr>
+              <br *ngIf="!(submitted && f.deliveryPinCode.errors)" class="invalid-feedback">
+              <div *ngIf="submitted && f.deliveryPinCode.errors" class="invalid-feedback">
+                <div *ngIf="f.deliveryPinCode.errors.required" style="color:red; font-size:13px;">Zip Code is required</div>
+                <div *ngIf="f.deliveryPinCode.errors.pattern" style="color:red; font-size:13px;">Zip Code must only contain numbers</div>
+              </div>
+              <mat-form-field appearance="fill" style="width: 250px;">
+                <mat-label>Zip Code</mat-label>
+                <label>
+                  <input matInput
+                         type="number"
+                         placeholder="Example: 2500"
+                         formControlName="deliveryPinCode"/>
+                </label>
+              </mat-form-field>
+              <hr>
+              <br *ngIf="!(submitted && f.deliveryCity.errors)" class="invalid-feedback">
+              <div *ngIf="submitted && f.deliveryCity.errors" class="invalid-feedback">
+                <div *ngIf="f.deliveryCity.errors.required" style="color:#ff0000; font-size:13px;">City is required</div>
+              </div>
+              <mat-form-field appearance="fill" style="width: 250px;">
+                <mat-label>City</mat-label>
+                <label>
+                  <input matInput
+                         type="text"
+                         formControlName="deliveryCity">
+                </label>
+              </mat-form-field>
+
+              <hr>
+
+              <br *ngIf="!(submitted && f.deliveryCountry.errors)" class="invalid-feedback">
+              <div *ngIf="submitted && f.deliveryCountry.errors" class="invalid-feedback">
+                <div *ngIf="f.deliveryCountry.errors.required" style="color:red; font-size:13px;">Country is required</div>
+              </div>
+              <mat-form-field appearance="fill" style="width: 250px;">
+                <mat-label>Country</mat-label>
+                <label>
+                  <input matInput
+                         type="text"
+                         placeholder="Country"
+                         formControlName="deliveryCountry"/>
+                </label>
+              </mat-form-field>
+            </div>
+            <hr><hr>
+          </form>
+          <button *ngIf="deliver" mat-flat-button color="warn" (click)="useAddress()">Use Address saved to account</button>
+          <button *ngIf="!deliver" mat-flat-button color="warn" disabled >Use Address saved to account</button>
+
+        <div *ngIf="transactionError" class="error">
+          {{ errorMessage }}
+        </div>
+
+
+    </mat-card>
+  </div>
+  <div class="inline-block" *ngIf="!submissionDone">
+    <mat-card>
+      <h2>Your Order</h2><hr style="border: 2px; border-top-style: solid">
+
+      <p>{{product.title}} CHF {{product.price | number:'1.2-2' }}</p>
+      <p>Your wallet: CHF {{buyer.wallet | number:'1.2-2'}}</p>
+      <button *ngIf="deliver" mat-flat-button color="warn" (click)="buy()">Buy</button>
+      <button *ngIf="!deliver" mat-flat-button color="warn" (click)="buy()">Buy</button>
+
+    </mat-card>
+    <mat-card *ngIf="product.isProduct && product.isDeliverable">
+      <p>This product can be shipped to the Address you provide.</p>
+      <p>You may also pick it up at the address given by the seller.</p>
+      <mat-radio-group [(ngModel)]="deliver" >
+        <mat-radio-button value=true  checked [checked]=true (click)="checkDeliver()">Deliver</mat-radio-button>
+        <mat-radio-button value=false (click)="uncheckDeliver()" >Pick up</mat-radio-button>
+      </mat-radio-group>
+
+    </mat-card>
+
+    <mat-card *ngIf="product.isProduct && !product.isDeliverable">
+      <p>This product cannot be shipped. Please pick it up at the address given by the seller.</p>
+    </mat-card>
+  </div>
+
+
+  <div *ngIf="submissionDone">
+    Thank you for your purchase! <br><br>
+  </div>
+
+</div>
+<p>{{deliver}}</p>
+
+<button mat-flat-button color="warn" (click)="getDate()">Buy</button>
+<p>{{this.testDate}}</p>
+
+
+
+
+

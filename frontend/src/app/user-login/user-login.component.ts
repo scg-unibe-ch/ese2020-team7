@@ -49,6 +49,7 @@ export class UserLoginComponent implements OnInit {
       localStorage.setItem('userId', res.user.userId);
       this.isAdmin = res.user.admin;
       this.checkUserStatus();
+      window.location.reload();
     }, (error) => {
       this.loginError = true;
       this.errorMessage = error?.message;
@@ -59,8 +60,11 @@ export class UserLoginComponent implements OnInit {
     // Remove user data from local storage
     localStorage.removeItem('userToken');
     localStorage.removeItem('userName');
+    localStorage.removeItem('admin');
+    localStorage.removeItem('userId');
 
     this.checkUserStatus();
+    window.location.reload();
   }
 
   /**

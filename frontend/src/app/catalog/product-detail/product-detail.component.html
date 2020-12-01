@@ -21,7 +21,7 @@
   <p style="font-size: 20px;">Seller: {{seller.userName}}</p>
 </a>
 <a class="buttons">
-  <button mat-flat-button *ngIf="!(product.userId == this.userId)" color="primary" >Purchase</button>
+  <button mat-flat-button color="primary" *ngIf="!(product.userId == this.userId)" [routerLink]="['/buy', product.productId]">Buy</button>
 
   <app-add-to-shopping-cart *ngIf="!(product.userId == this.userId)"></app-add-to-shopping-cart>
 
@@ -29,5 +29,7 @@
 </a>
 
 </mat-card>
+
+
 
 
