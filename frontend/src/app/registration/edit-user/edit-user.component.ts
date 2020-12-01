@@ -41,8 +41,8 @@ export class EditUserComponent implements OnInit {
   });
 
   passwordForm = this.formBuilder.group({
-    oldPassword: [null, Validators.pattern(this.passwordPattern)],
-    password: [null, Validators.pattern(this.passwordPattern)],
+    oldPassword: [null, Validators.required],
+    password: [null, Validators.required, Validators.pattern(this.passwordPattern)],
   });
 
   constructor(private httpClient: HttpClient,
@@ -94,8 +94,8 @@ export class EditUserComponent implements OnInit {
       lastName: this.userForm.get('lastName').value,
       email: this.userForm.get('email').value,
       gender: this.userForm.get('gender').value,
-      telephoneNumber: this.userForm.get('street').value,
-      street: this.userForm.get('').value,
+      telephoneNumber: this.userForm.get('telephoneNumber').value,
+      street: this.userForm.get('street').value,
       pinCode: this.userForm.get('pinCode').value,
       city: this.userForm.get('city').value,
       country: this.userForm.get('country').value,
@@ -109,8 +109,8 @@ export class EditUserComponent implements OnInit {
 
   changePassword(): void {
     this.httpClient.post(environment.endpointURL + 'user/login', {
-      userNameOrMail: this.userNameOrMail,
-      password: this.passwordForm.get('oldPassword').value,
+      userNameOrMail: 'Lewis', // this.userNameOrMail,
+      password: 'notSecure20', // this.passwordForm.get('oldPassword').value,
     }).subscribe(() => {
       this.httpClient.put(environment.endpointURL + 'user/update/' + this.userId, {
         password: this.passwordForm.get('password').value,
