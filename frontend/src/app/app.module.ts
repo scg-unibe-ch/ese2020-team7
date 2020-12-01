@@ -43,6 +43,7 @@ import {MatNativeDateModule, MAT_DATE_LOCALE, DateAdapter} from '@angular/materi
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 import { MY_DATE_FORMATS } from './my-date-formats';
 import {MomentDateAdapter, MomentDateModule} from '@angular/material-moment-adapter';
+import { EditUserComponent } from './registration/edit-user/edit-user.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import {MomentDateAdapter, MomentDateModule} from '@angular/material-moment-adap
     EditProductComponent,
     ProductDetailComponent,
     UserPanelComponent,
-    BuyProductComponent
+    BuyProductComponent,
+    EditUserComponent
   ],
   imports: [
     AppRoutingModule,

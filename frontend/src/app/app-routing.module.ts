@@ -10,6 +10,7 @@ import {EditProductComponent} from './catalog/edit-product/edit-product.componen
 import {ProductDetailComponent} from './catalog/product-detail/product-detail.component';
 import {AdminPanelComponent} from './admin-panel/admin-panel.component';
 import {BuyProductComponent} from './catalog/buy-product/buy-product.component';
+import {EditUserComponent} from './registration/edit-user/edit-user.component';
 
 
 const routes: Routes = [
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'edit/:id', component: EditProductComponent },
   { path: 'product/:id', component: ProductDetailComponent },
   { path: 'admin', component: AdminPanelComponent},
-  { path: 'buy/:id', component: BuyProductComponent }
+  { path: 'buy/:id', component: BuyProductComponent },
+  { path: 'settings', component: EditUserComponent }
 ];
 
 @NgModule({
