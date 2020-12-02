@@ -20,11 +20,17 @@ export class EditUserComponent implements OnInit {
   loggedIn = false;
   submissionDone = false;
   changePasswordDone = false;
-  submitted = false;
+  userSubmitted = false;
+  passwordSubmitted = false;
+  oldHide = true;
+  newHide = true;
+
+
   userNameOrMail = '';
   loginError: boolean;
   error: boolean;
   errorMessage: string;
+  passwordErrorMessage: string;
   passwordPattern = '^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{7,}$';
 
   userForm = this.formBuilder.group({
@@ -42,7 +48,7 @@ export class EditUserComponent implements OnInit {
 
   passwordForm = this.formBuilder.group({
     oldPassword: [null, Validators.required],
-    password: [null, Validators.required, Validators.pattern(this.passwordPattern)],
+    password: [null, [Validators.required, Validators.pattern(this.passwordPattern)]],
   });
 
   constructor(private httpClient: HttpClient,
@@ -84,7 +90,7 @@ export class EditUserComponent implements OnInit {
   }
 
   edit(): void {
-    this.submitted = true;
+    this.userSubmitted = true;
     if (this.userForm.invalid) {
       return;
     }
@@ -108,10 +114,14 @@ export class EditUserComponent implements OnInit {
   }
 
   changePassword(): void {
+    this.passwordSubmitted = true;
     this.httpClient.post(environment.endpointURL + 'user/login', {
-      userNameOrMail: 'Lewis', // this.userNameOrMail,
-      password: 'notSecure20', // this.passwordForm.get('oldPassword').value,
+      userNameOrMail: this.userNameOrMail,
+      password: this.passwordForm.get('oldPassword').value,
     }).subscribe(() => {
+      if (this.passwordForm.invalid) {
+        return;
+      }
       this.httpClient.put(environment.endpointURL + 'user/update/' + this.userId, {
         password: this.passwordForm.get('password').value,
       }).subscribe(() => {
@@ -122,7 +132,10 @@ export class EditUserComponent implements OnInit {
       });
     }, (error) => {
       this.loginError = true;
-      this.errorMessage = error?.message;
+      this.passwordErrorMessage = error?.message;
     });
+  }
+  changingPassword(): void {
+    this.loginError = false;
   }
 }

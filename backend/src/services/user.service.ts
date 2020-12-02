@@ -56,7 +56,9 @@ export class UserService {
 
     public update(userId: number, user: UserAttributes): Promise<User> {
         const saltRounds = 12;
-        user.password = bcrypt.hashSync(user.password, saltRounds);
+        if (!(user.password == null)) {
+            user.password = bcrypt.hashSync(user.password, saltRounds);
+        }
         return User.findByPk(userId)
         .then(found =>
             found.update(user)
