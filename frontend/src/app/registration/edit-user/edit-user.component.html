@@ -1,40 +1,208 @@
 <div class="main-div">
-  <mat-card>
-    <div *ngIf="!loggedIn">
-      <h2>You have no permission to visit this page. Please <a routerLink="/login" class="link">log in</a> to edit a listing.</h2>
-    </div>
-    <div *ngIf="loggedIn">
-      <div *ngIf="!submissionDone">
+  <div *ngIf="!loggedIn">
+    <h2>You have no permission to visit this page. Please <a routerLink="/login" class="link">log in</a> to edit a listing.</h2>
+  </div>
+  <div *ngIf="loggedIn">
+
+  <mat-card class="user">
+    <h2>Account Information</h2>
         <form [formGroup]="userForm">
           <div class="form-group">
             <!-----------------------------------------------------------------------------------------------TITLE----->
-              <br *ngIf="!(submitted && f.userName.errors)" class="invalid-feedback">
-              <div *ngIf="submitted && f.userName.errors" class="invalid-feedback">
-                <div *ngIf="f.userName.errors.required" style="color:#ff0000; font-size:13px;">Username is required</div>
+            <div class="inline-block">
+
+              <br *ngIf="!(userSubmitted && f.userName.errors)" class="invalid-feedback">
+                <div *ngIf="userSubmitted && f.userName.errors" class="invalid-feedback">
+                  <div *ngIf="f.userName.errors.required" style="color:#ff0000; font-size:13px;">Username is required</div>
+                </div>
+                <mat-form-field appearance="fill" style="width: 250px;">
+                  <mat-label>Username</mat-label>
+                  <label>
+                    <input matInput
+                           type="text"
+                           formControlName="userName">
+                  </label>
+                </mat-form-field>
+
+              <div *ngIf="!(userSubmitted && f.firstName.errors)" class="invalid-feedback"><br></div>
+              <div *ngIf="userSubmitted && f.firstName.errors" class="invalid-feedback">
+                <div *ngIf="f.firstName.errors.required" style="color:#ff0000; font-size:13px;">First Name is required</div>
               </div>
               <mat-form-field appearance="fill" style="width: 250px;">
-                <mat-label>Listing Name</mat-label>
+                <mat-label>First Name</mat-label>
                 <label>
                   <input matInput
                          type="text"
-                         formControlName="userName">
+                         formControlName="firstName">
+                </label>
+              </mat-form-field>
+
+
+
+              <div *ngIf="!(userSubmitted && f.lastName.errors)" class="invalid-feedback"><br></div>
+              <div *ngIf="userSubmitted && f.lastName.errors" class="invalid-feedback">
+                <div *ngIf="f.lastName.errors.required" style="color:#ff0000; font-size:13px;">Last Name is required</div>
+              </div>
+              <mat-form-field appearance="fill" style="width: 250px;">
+                <mat-label>Last Name</mat-label>
+                <label>
+                  <input matInput
+                         type="text"
+                         formControlName="lastName">
+                </label>
+              </mat-form-field>
+
+
+
+
+              <div *ngIf="!(userSubmitted && f.email.errors)" class="invalid-feedback"><br></div>
+              <div *ngIf="userSubmitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required" style="color:#ff0000; font-size:13px;">E-Mail is required</div>
+              </div>
+              <mat-form-field appearance="fill" style="width: 250px;">
+                <mat-label>E-Mail</mat-label>
+                <label>
+                  <input matInput
+                         type="text"
+                         formControlName="email">
+                </label>
+              </mat-form-field>
+
+
+
+              <br><br>
+
+              <mat-form-field appearance="fill" style="width: 250px;">
+                <mat-label>Gender</mat-label>
+                <label>
+                  <input matInput
+                         type="text"
+                         formControlName="gender">
+                </label>
+              </mat-form-field>
+
+              <br><br>
+              <mat-form-field appearance="fill" style="width: 250px;">
+                <mat-label>Telephone Number</mat-label>
+                <label>
+                  <input matInput
+                         type="text"
+                         formControlName="telephoneNumber">
+                </label>
+              </mat-form-field>
+            </div><div class="inline-block">
+              <h3>Address</h3>
+              <mat-form-field appearance="fill" style="width: 250px;">
+                <mat-label>Street</mat-label>
+                <label>
+                  <input matInput
+                         type="text"
+                         formControlName="street">
+                </label>
+              </mat-form-field>
+              <br><br>
+              <mat-form-field appearance="fill" style="width: 250px;">
+                <mat-label>Pin Code</mat-label>
+                <label>
+                  <input matInput
+                         type="text"
+                         formControlName="pinCode">
+                </label>
+              </mat-form-field>
+              <br><br>
+              <mat-form-field appearance="fill" style="width: 250px;">
+                <mat-label>City</mat-label>
+                <label>
+                  <input matInput
+                         type="text"
+                         formControlName="city">
+                </label>
+              </mat-form-field>
+              <br><br>
+              <mat-form-field appearance="fill" style="width: 250px;">
+                <mat-label>Country</mat-label>
+                <label>
+                  <input matInput
+                         type="text"
+                         formControlName="country">
                 </label>
               </mat-form-field>
             </div>
+          </div>
           <hr><hr><br>
         </form>
 
-        <button mat-flat-button color="warn" (click)="edit()">Submit</button>
-        <br>
-      </div>
+        <button mat-flat-button color="warn" (click)="edit()">Save</button>
+
 
       <div *ngIf="error" class="error">
         {{ errorMessage }}
       </div>
 
-      <div *ngIf="submissionDone">
-        Thank you for your edit. It will be reviewed by an admin. <br><br>
-      </div>
-    </div>
+      <a *ngIf="submissionDone">
+        Your change has been saved.
+      </a>
   </mat-card>
+
+    <mat-card class="password">
+      <h2>Change Password</h2>
+
+      <form [formGroup]="passwordForm">
+        <br *ngIf="!loginError && !(passwordSubmitted && g.oldPassword.errors)" class="invalid-feedback">
+        <div *ngIf="passwordSubmitted && g.oldPassword.errors" class="invalid-feedback">
+          <div *ngIf="g.oldPassword.errors.required" style="color:#ff0000; font-size:13px;">Old Password is required</div>
+          </div>
+        <div *ngIf="passwordSubmitted && loginError && !g.oldPassword.errors" class="invalid-feedback" style="color:#ff0000; font-size:13px;">Password is wrong. {{errorMessage}}</div>
+            <div></div>
+              <mat-form-field appearance="fill" style="width: 250px;">
+                <mat-label>Old Password</mat-label>
+                <label>
+                  <input matInput
+                         type="text"
+                         formControlName="oldPassword"
+                         [type]="oldHide ? 'password' : 'text'"
+                          (click) = "changingPassword()">
+                </label>
+                <mat-icon matSuffix (click)="oldHide = !oldHide">{{oldHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+
+              </mat-form-field>
+
+        <div *ngIf="!(passwordSubmitted && g.password.errors)" class="invalid-feedback"><br></div>
+        <div *ngIf="passwordSubmitted && g.password.errors" class="invalid-feedback">
+            <div *ngIf="g.password.errors.required" style="color:#ff0000; font-size:13px;">New Password is required</div>
+            <div *ngIf="g.password.errors.pattern" style="color:#ff0000; font-size:13px;" class="tooltip">
+              Password invalid
+              <span class="tooltiptext">
+              Password must be at least 7 characters and contain uppercase letters,
+              lowercase letters, numbers and special characters
+              </span>
+            </div>
+          </div>
+
+        <mat-form-field appearance="fill" style="width: 250px;">
+            <mat-label>New password</mat-label>
+            <label>
+              <input matInput
+                     type="text"
+                     formControlName="password"
+                     [type]="newHide ? 'password' : 'text'">
+            </label>
+          <mat-icon matSuffix (click)="newHide = !newHide">{{newHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+
+        </mat-form-field>
+
+
+          <hr><hr><br>
+        </form>
+
+        <button mat-flat-button color="warn" (click)="changePassword()">Save</button>
+<br><br>
+
+      <a *ngIf="changePasswordDone">
+        Your password has been changed.
+      </a>
+
+    </mat-card>
+
+  </div>
 </div>
