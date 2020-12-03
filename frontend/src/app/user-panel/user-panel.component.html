@@ -9,8 +9,9 @@
 
 <div *ngIf="loggedIn" class="main-div">
   <mat-tab-group animationDuration="800ms">
-    <mat-tab label="My offers">
+    <mat-tab label="My current offers">
 
+      <div *ngIf="approvedProducts.length != 0 || uncheckedProducts.length != 0 || rejectedProducts.length != 0; else listProduct">
       <h2>Posted products waiting to be approved</h2>
       <div *ngFor="let product of uncheckedProducts">
         <mat-card>
@@ -107,6 +108,16 @@
       <div *ngIf="rejectedProducts.length === 0">
         <p>No rejected products</p>
       </div>
+      </div>
+
+      <ng-template #listProduct>
+        <mat-card>
+          <h2>You have no listed products at the moment <br></h2>
+          <button mat-flat-button routerLink="/add-offer" color="primary">
+            <mat-icon>add</mat-icon>  List a new offer
+          </button>
+        </mat-card>
+      </ng-template>
 
     </mat-tab>
 
@@ -114,6 +125,7 @@
 
     <mat-tab label="acquired">
 
+      <div *ngIf="boughtProducts.length != 0 || lentProducts.length != 0 || usedServices.length != 0; else lookProducts">
       <h2>Bought products</h2>
       <div *ngFor="let product of boughtProducts">
         <mat-card>
@@ -189,6 +201,13 @@
       <div *ngIf="usedServices.length === 0">
         <p>You haven't used any services yet</p>
       </div>
+      </div>
+
+      <ng-template #lookProducts>
+        <mat-card>
+          <h3>You haven't bought or lent any products yet</h3>
+        </mat-card>
+      </ng-template>
 
     </mat-tab>
 
