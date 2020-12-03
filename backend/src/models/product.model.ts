@@ -13,8 +13,6 @@ export interface ProductAttributes {
     isAvailable: boolean;
     isDeliverable: boolean;
     rejectionReason: string;
-    image: Blob;
-    review: string;
     userId: number;
     buyerId: number;
     dateBought: Date;
@@ -35,8 +33,6 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
     isAvailable!: boolean;
     isDeliverable!: boolean;
     rejectionReason!: string;
-    image!: Blob;
-    review!: string;
     userId!: number;
     buyerId!: number;
     dateBought!: Date;
@@ -87,12 +83,6 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
                 allowNull: false
             },
             rejectionReason: {
-                type: DataTypes.STRING
-            },
-            image: {
-                type: DataTypes.BLOB
-            },
-            review: {
                 type: DataTypes.STRING
             },
             userId: {
