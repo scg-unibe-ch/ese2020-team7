@@ -36,7 +36,6 @@ import { ProductDetailComponent } from './catalog/product-detail/product-detail.
 import { UserPanelComponent } from './user-panel/user-panel.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
-import { MatDialogModule } from '@angular/material/dialog';
 import { BuyProductComponent } from './catalog/buy-product/buy-product.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatNativeDateModule, MAT_DATE_LOCALE} from '@angular/material/core';
@@ -87,7 +86,6 @@ import {MatSelectModule} from '@angular/material/select';
         MatPaginatorModule,
         MatIconModule,
         MatMenuModule,
-        MatDialogModule,
         MatDatepickerModule,
         MatNativeDateModule,
         MatSelectModule,

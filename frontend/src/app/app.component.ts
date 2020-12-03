@@ -22,10 +22,11 @@ export class AppComponent implements OnInit {
     // Get user data from local storage
     this.userToken = localStorage.getItem('userToken');
     this.userName = localStorage.getItem('userName');
-    this.isAdmin = JSON.parse(localStorage.getItem('admin'));
+    // this.isAdmin = ((this.loggedIn) && (1 < 10));
 
     // Set boolean whether a user is logged in or not
     this.loggedIn = !!(this.userToken);
+    this.isAdmin = ((JSON.parse(localStorage.getItem('admin'))) && (this.loggedIn));
   }
 
   logout(): void {
