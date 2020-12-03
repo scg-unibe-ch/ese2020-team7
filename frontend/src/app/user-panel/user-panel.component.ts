@@ -23,9 +23,6 @@ export class UserPanelComponent implements OnInit {
   boughtProducts: Product[] = [];
   lentProducts: Product[] = [];
   usedServices: Product[] = [];
-  someProducts: Product[] = [];
-  otherProducts: Product[] = [];
-
 
   ngOnInit(): void {
     this.checkUserStatus();
