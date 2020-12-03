@@ -1,6 +1,7 @@
 import { UserService } from '../../src/services/user.service';
 import { User, UserAttributes } from '../../src/models/user.model';
 import { expect } from 'chai';
+import { Product } from '../../src/models/product.model';
 
 describe('UserService Tests', () => {
 
@@ -41,14 +42,14 @@ describe('UserService Tests', () => {
     };
 
     before('create admin', function() {
-        User.create(user2)
+        User.create(user2);
     });
 
     describe('Test registration', () => {
         it('register user successfully', function() {
             testUserService.register(user1).then(user => {
-                expect(user.userName).to.be.eq('Luca');
-                expect(user.city).to.be.eq('Schmitten');
+                expect(user.userName).eq('Luca');
+                expect(user.city).eq('Schmitten');
                 expect(user.street).to.be.null;
                 User.findOne({
                     where: {
@@ -99,7 +100,7 @@ describe('UserService Tests', () => {
                 wallet: 500
             };
             testUserService.register(user3).catch(err => {
-                expect(err.message).to.be.eq('This username is already taken!');
+                expect(err.message).eq('This username is already taken!');
             });
         });
         it('can not register with taken email', function() {
@@ -120,7 +121,7 @@ describe('UserService Tests', () => {
                 wallet: 500
             };
             testUserService.register(user3).catch(err => {
-                expect(err.message).to.be.eq('This e-mail is already taken!');
+                expect(err.message).eq('This e-mail is already taken!');
             });
         });
     });
@@ -146,7 +147,7 @@ describe('UserService Tests', () => {
                 userNameOrMail: 'Luca1',
                 password: 'notSecure10'
             }).catch(err => {
-                expect(err.message).to.be.eq('not authorized');
+                expect(err.message).eq('not authorized');
             });
         });
         it('can not log in with wrong password', function() {
@@ -154,7 +155,7 @@ describe('UserService Tests', () => {
                 userNameOrMail: 'Luca',
                 password: 'hello'
             }).catch(err => {
-                expect(err.message).to.be.eq('not authorized');
+                expect(err.message).eq('not authorized');
             });
         });
     });
@@ -175,9 +176,15 @@ describe('UserService Tests', () => {
                 country: 'Switzerland',
                 admin: false,
                 wallet: 500
-            }).then(updated => {
-                expect(updated.city).to.be.eq('Freiburg');
-                expect(updated.country).to.be.eq('Switzerland');
+            }).then(() => {
+                User.findOne({
+                    where: {
+                        userName: 'Luca'
+                    }
+                }).then(foundUser => {
+                    expect(foundUser.city).eq('Freiburg');
+                    expect(foundUser.country).eq('Switzerland');
+                });
             });
         });
         it('can not update user with unallowed data', function() {
@@ -221,18 +228,18 @@ describe('UserService Tests', () => {
             });
         });
     });
-    describe('Test get all', () => {
+    describe('Test get all users', () => {
         it('can return all registered users', function() {
             testUserService.getAll().then(users => {
-                expect(users[1].userName).to.be.eq('Luca');
-                expect(users.length).to.be.eq(2);
+                expect(users[0].userName).eq('Luca');
+                expect(users.length).eq(2);
             });
         });
     });
     describe('Test get user', () => {
         it('can return one registered user', function() {
             testUserService.getUser(1).then(user => {
-                expect(user.userName).to.be.eq('Luca');
+                expect(user.userName).eq('Luca');
             })
         });
         it('can not return nonregistered user', function() {
@@ -249,8 +256,14 @@ describe('UserService Tests', () => {
                 }
             }).then(foundUser => {
                 expect(foundUser.admin).to.be.false;
-                testUserService.makeAdmin(user1).then(promoted => {
-                    expect(promoted.admin).to.be.true;
+                testUserService.makeAdmin(user1).then(() => {
+                    User.findOne({
+                        where: {
+                            userName: 'Luca'
+                        }
+                    }).then(foundUser => {
+                        expect(foundUser.admin).to.be.true;
+                    });
                 });
             });       
         });
@@ -284,8 +297,14 @@ describe('UserService Tests', () => {
                 }
             }).then(foundUser => {
                 expect(foundUser.admin).to.be.true;
-                testUserService.removeAdmin(user2).then(promoted => {
-                    expect(promoted.admin).to.be.false;
+                testUserService.removeAdmin(user2).then(() => {
+                    User.findOne({
+                        where: {
+                            userName: 'Lewis'
+                        }
+                    }).then(foundUser => {
+                        expect(foundUser.admin).to.be.false;
+                    });
                 });
             });       
         });
