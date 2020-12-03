@@ -18,6 +18,9 @@ export class SearchComponent implements OnInit {
   location: string;
   selectedValue: string;
   productLocation: Product[] = [];
+  min: number;
+  max: number;
+  priceFilter: Product[] = [];
 
   constructor(private httpClient: HttpClient) {
   }
@@ -41,6 +44,22 @@ export class SearchComponent implements OnInit {
       this.products1 = data;
     });
   }
+  minPrice(): void {
+    this.httpClient.post(environment.endpointURL + 'product/searchedProducts', {
+      minPrice: this.min, maxPrice: this.max
+    }).subscribe((data: Product[]) => {
+      console.log(data);
+      this.priceFilter = data;
+    });
+  }
+  /*maxPrice(): void {
+    this.httpClient.post(environment.endpointURL + 'product/searchedProducts', {
+      maxPrice: this.max
+    }).subscribe((data: Product[]) => {
+      console.log(data);
+      this.priceFilter = data;
+    });
+  }*/
   getLocation(): void {
     this.httpClient.get(environment.endpointURL + 'product/approvedAndAvailableProducts').subscribe((data: Product[]) => {
       console.log(data);
