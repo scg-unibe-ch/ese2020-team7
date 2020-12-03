@@ -1,19 +1,18 @@
 .error {
   color: red;
+  font-size:13px;
 }
 
 .main-div{
   display: flex;
   justify-content: center;
   align-items: baseline;
-  width: max-content;
   height: fit-content; /* Make this site really long */
   overflow:hidden
 }
 
 
 .mat-card {
-  width: max-content;
-  alignment: top;
+  width: 80%
 }
 

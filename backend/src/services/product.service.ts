@@ -265,4 +265,16 @@ export class ProductService {
             where: options
         });
     }
+
+    public getApprovedAndAvailableProducts(): Promise<Product[]> {
+        const { Op } = require('sequelize');
+        return Product.findAll({
+            where: {
+                [ Op.and ]: [
+                    { isApproved: true },
+                    { isAvailable: true}
+                ]
+            }
+        });
+    }
 }

@@ -8,7 +8,10 @@ import {AddProductComponent} from './catalog/add-product/add-product.component';
 import {UserPanelComponent} from './user-panel/user-panel.component';
 import {EditProductComponent} from './catalog/edit-product/edit-product.component';
 import {ProductDetailComponent} from './catalog/product-detail/product-detail.component';
-import { AdminPanelComponent} from './admin-panel/admin-panel.component';
+import {AdminPanelComponent} from './admin-panel/admin-panel.component';
+import {BuyProductComponent} from './catalog/buy-product/buy-product.component';
+import {EditUserComponent} from './registration/edit-user/edit-user.component';
+import {SearchComponent} from './search/search.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,7 +22,10 @@ const routes: Routes = [
   { path: 'user-products', component: UserPanelComponent},
   { path: 'edit/:id', component: EditProductComponent },
   { path: 'product/:id', component: ProductDetailComponent },
-  { path: 'admin', component: AdminPanelComponent}
+  { path: 'admin', component: AdminPanelComponent},
+  { path: 'buy/:id', component: BuyProductComponent },
+  { path: 'settings', component: EditUserComponent },
+  { path: 'search', component: SearchComponent}
 ];
 
 @NgModule({
@@ -27,5 +33,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-
 // link: <a routerLink="/login">bla</a>

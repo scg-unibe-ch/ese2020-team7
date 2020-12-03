@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Product} from '../models/product.model';
-import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-panel',
@@ -11,17 +10,19 @@ import {MatDialog} from '@angular/material/dialog';
 })
 export class UserPanelComponent implements OnInit {
 
-  constructor(private httpClient: HttpClient,
-              public dialog: MatDialog) {
-  }
+  constructor(private httpClient: HttpClient) {}
 
   userName = '';
   userToken: string;
   loggedIn = false;
+
   rejectedProducts: Product[] = [];
   uncheckedProducts: Product[] = [];
   approvedProducts: Product[] = [];
-
+  soldProducts: Product[] = [];
+  boughtProducts: Product[] = [];
+  lentProducts: Product[] = [];
+  usedServices: Product[] = [];
 
   ngOnInit(): void {
     this.checkUserStatus();
@@ -37,6 +38,16 @@ export class UserPanelComponent implements OnInit {
       console.log(data);
       this.approvedProducts = data;
     });
+    this.httpClient.get(environment.endpointURL + 'product/mySoldProducts').subscribe((data: Product[]) => {
+      console.log(data);
+      this.soldProducts = data;
+    });
+    this.httpClient.get(environment.endpointURL + 'product/productsIBought').subscribe((data: Product[]) => {
+      console.log(data);
+      this.boughtProducts = data;
+    });
+    // myLentProducts kommt noch
+    // myUsedServices kommt noch
   }
 
   checkUserStatus(): void {
@@ -46,6 +57,10 @@ export class UserPanelComponent implements OnInit {
 
     // Set boolean whether a user is logged in or not
     this.loggedIn = !!(this.userToken);
+  }
+
+  onDelete(productId): void {
+    this.httpClient.delete(environment.endpointURL + 'product/delete/' + productId).subscribe();
   }
 
 }

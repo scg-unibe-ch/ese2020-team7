@@ -168,4 +168,12 @@ productController.post('/searchedProducts',
     }
 ); // needs attributes from search model but not all have to have a value
 
+productController.get('/approvedAndAvailableProducts',
+    (req: Request, res: Response) => {
+        productService.getApprovedAndAvailableProducts()
+            .then(products => res.send(products))
+            .catch(err => res.status(500).send(err));
+    }
+);
+
 export const ProductController: Router = productController;

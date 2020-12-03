@@ -17,6 +17,8 @@ export interface ProductAttributes {
     buyerId: number;
     dateBought: Date;
     deletedAfterSold: boolean;
+    rentedUntil: Date;
+    returnedAfterLoan: boolean;
 }
 
 export interface ProductCreationAttributes extends Optional<ProductAttributes, 'productId'> { }
@@ -37,6 +39,8 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
     buyerId!: number;
     dateBought!: Date;
     deletedAfterSold!: boolean;
+    rentedUntil!: Date;
+    returnedAfterLoan!: boolean;
 
     public static initialize(sequelize: Sequelize) {
         Product.init({
@@ -99,6 +103,12 @@ export class Product extends Model<ProductAttributes, ProductCreationAttributes>
                 type: DataTypes.BOOLEAN,
                 defaultValue: false,
                 allowNull: false
+            },
+            rentedUntil: {
+                type: DataTypes.DATE
+            },
+            returnedAfterLoan: {
+                type: DataTypes.BOOLEAN
             }
         },
             {

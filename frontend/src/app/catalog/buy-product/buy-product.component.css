@@ -1,0 +1,24 @@
+hr {
+  margin-left: 0;
+  border-top-style: dashed;
+
+}
+
+.inline-block {
+  display: inline-block;
+  width: 35%;
+  margin-left: 30px;
+  margin-right: 30px;
+  vertical-align:top;
+}
+
+.main-div{
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  height: fit-content;
+  overflow:hidden
+}
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}

@@ -1,0 +1,91 @@
+<form>
+  <label>
+    <input type="search" [(ngModel)]="searchText" name="text"
+           placeholder="Search Products">
+  </label>
+  <button mat-icon-button (click)="search()"><mat-icon>search</mat-icon></button>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Choose a location</mat-label>
+    <mat-select [(ngModel)]="selectedValue" name="location">
+      <mat-option *ngFor="let product of productLocation" [value]="product.location">
+        {{product.location}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-button (click)="filterLocation()">Search</button>
+
+  <label>
+    <input type="text" [(ngModel)]="min" name="range"
+           placeholder="Min." >
+  </label>
+  <!--  <button mat-button (click)="filterLocation()">Search</button>-->
+  <label>
+    <input type="text" [(ngModel)]="max" name="range"
+           placeholder="Max.">
+  </label>
+  <button mat-button (click)="minPrice()">Search</button>
+</form>
+
+<div *ngFor="let product of products">
+  <mat-card *ngIf="searchText">
+    <h2>
+      <a [title]="product.title + ' details'">
+        {{ product.title }}
+      </a>
+      <span class="redText">
+        <b>{{ product.price }}CHF</b>
+      </span>
+    </h2>
+
+    <p *ngIf="product.description">
+      {{ product.description }}
+    </p>
+
+    <button mat-flat-button color="primary"  [routerLink]="['/product', product.productId]">Detail</button>
+
+  </mat-card>
+</div>
+
+<div *ngFor="let product of products1">
+  <mat-card *ngIf="productLocation">
+    <h2>
+      <a [title]="product.title + ' details'">
+        {{ product.title }}
+      </a>
+      <span class="redText">
+        <b>{{ product.price }}CHF</b>
+      </span>
+      <a >
+        {{ product.location }}
+      </a>
+    </h2>
+
+    <p *ngIf="product.description">
+      {{ product.description }}
+    </p>
+
+    <button mat-flat-button color="primary"  [routerLink]="['/product', product.productId]">Detail</button>
+
+  </mat-card>
+</div>
+
+<div *ngFor="let product of priceFilter">
+  <mat-card>
+    <h2>
+      <a [title]="product.title + ' details'">
+        {{ product.title }}
+      </a>
+      <span class="redText">
+        <b>{{ product.price }}CHF</b>
+      </span>
+    </h2>
+
+    <p *ngIf="product.description">
+      {{ product.description }}
+    </p>
+
+    <button mat-flat-button color="primary"  [routerLink]="['/product', product.productId]">Detail</button>
+
+  </mat-card>
+</div>

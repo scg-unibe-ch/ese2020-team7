@@ -36,7 +36,12 @@ import { ProductDetailComponent } from './catalog/product-detail/product-detail.
 import { UserPanelComponent } from './user-panel/user-panel.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
-import { MatDialogModule } from '@angular/material/dialog';
+import { BuyProductComponent } from './catalog/buy-product/buy-product.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatNativeDateModule, MAT_DATE_LOCALE} from '@angular/material/core';
+import { EditUserComponent } from './registration/edit-user/edit-user.component';
+import {SearchComponent} from './search/search.component';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -56,38 +61,46 @@ import { MatDialogModule } from '@angular/material/dialog';
     ProductsComponent,
     EditProductComponent,
     ProductDetailComponent,
-    UserPanelComponent
+    UserPanelComponent,
+    BuyProductComponent,
+    EditUserComponent,
+    SearchComponent
   ],
-  imports: [
-    AppRoutingModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    HttpClientModule,
-    MatButtonModule,
-    MatListModule,
-    MatInputModule,
-    MatCheckboxModule,
-    MatCardModule,
-    MatTabsModule,
-    MatToolbarModule,
-    ReactiveFormsModule,
-    MatExpansionModule,
-    RouterModule.forRoot([]),
-    MatRadioModule,
-    MatPaginatorModule,
-    MatIconModule,
-    MatMenuModule,
-    MatDialogModule
-  ],
+    imports: [
+        AppRoutingModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        HttpClientModule,
+        MatButtonModule,
+        MatListModule,
+        MatInputModule,
+        MatCheckboxModule,
+        MatCardModule,
+        MatTabsModule,
+        MatToolbarModule,
+        ReactiveFormsModule,
+        MatExpansionModule,
+        RouterModule.forRoot([]),
+        MatRadioModule,
+        MatPaginatorModule,
+        MatIconModule,
+        MatMenuModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatSelectModule,
+    ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true,
     },
-    BookmarksService
-  ],
+    BookmarksService,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }
+    ],
   bootstrap: [
     AppComponent
   ]
