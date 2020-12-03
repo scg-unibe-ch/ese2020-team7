@@ -14,11 +14,15 @@ export class SearchComponent implements OnInit {
 
   products: Product[] = [];
   searchText: string;
+  products1: Product[] = [];
+  location: string;
+  selectedValue: string;
+  productLocation: Product[] = [];
 
   constructor(private httpClient: HttpClient) {
   }
-
   ngOnInit(): void {
+    this.getLocation();
   }
 
   search(): void {
@@ -27,6 +31,20 @@ export class SearchComponent implements OnInit {
     }).subscribe((data: Product[]) => {
       console.log(data);
       this.products = data;
+    });
+  }
+  filterLocation(): void {
+    this.httpClient.post(environment.endpointURL + 'product/searchedProducts', {
+      location: this.selectedValue
+    }).subscribe((data: Product[]) => {
+      console.log(data);
+      this.products1 = data;
+    });
+  }
+  getLocation(): void {
+    this.httpClient.get(environment.endpointURL + 'product/approvedAndAvailableProducts').subscribe((data: Product[]) => {
+      console.log(data);
+      this.productLocation = data;
     });
   }
 }

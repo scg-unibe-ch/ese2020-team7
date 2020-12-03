@@ -42,6 +42,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatNativeDateModule, MAT_DATE_LOCALE} from '@angular/material/core';
 import { EditUserComponent } from './registration/edit-user/edit-user.component';
 import {SearchComponent} from './search/search.component';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -66,30 +67,31 @@ import {SearchComponent} from './search/search.component';
     EditUserComponent,
     SearchComponent
   ],
-  imports: [
-    AppRoutingModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    HttpClientModule,
-    MatButtonModule,
-    MatListModule,
-    MatInputModule,
-    MatCheckboxModule,
-    MatCardModule,
-    MatTabsModule,
-    MatToolbarModule,
-    ReactiveFormsModule,
-    MatExpansionModule,
-    RouterModule.forRoot([]),
-    MatRadioModule,
-    MatPaginatorModule,
-    MatIconModule,
-    MatMenuModule,
-    MatDialogModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-  ],
+    imports: [
+        AppRoutingModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        HttpClientModule,
+        MatButtonModule,
+        MatListModule,
+        MatInputModule,
+        MatCheckboxModule,
+        MatCardModule,
+        MatTabsModule,
+        MatToolbarModule,
+        ReactiveFormsModule,
+        MatExpansionModule,
+        RouterModule.forRoot([]),
+        MatRadioModule,
+        MatPaginatorModule,
+        MatIconModule,
+        MatMenuModule,
+        MatDialogModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatSelectModule,
+    ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
