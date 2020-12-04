@@ -1,5 +1,5 @@
 import { SearchRequest } from '../models/search.model';
-import { Product, ProductAttributes } from './../models/product.model';
+import { Product, ProductAttributes } from '../models/product.model';
 
 export class ProductService {
 
@@ -17,6 +17,16 @@ export class ProductService {
                 })
         )
         .catch(err => Promise.reject(err));
+    }
+
+    public rent(productId: number, rentedUntil: Date): Promise<Product> {
+        return Product.findByPk(productId)
+            .then(found =>
+                found.update({rentedUntil: rentedUntil})
+                    .then(() => { return Promise.resolve(found);
+                    })
+            )
+            .catch(err => Promise.reject(err));
     }
 
     public approve(productId: number): Promise<Product> {
