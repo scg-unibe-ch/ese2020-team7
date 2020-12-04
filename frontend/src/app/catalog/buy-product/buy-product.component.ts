@@ -74,7 +74,9 @@ export class BuyProductComponent implements OnInit {
       }
       if ((!product.isDeliverable) || (!product.isProduct)) {
         this.deliveryForm.disable({ emitEvent: false });
-        this.returnDateForm.disable({ emitEvent: false });
+      }
+      if ((product.isSelling) || (!product.isProduct)) {
+        this.returnDateForm.disable({emitEvent: false});
       }
       if (product.isSelling && product.isProduct){
         this.returnDateForm.controls.requiredControl.clearValidators();
