@@ -57,7 +57,9 @@ describe('ProductService Tests', () => {
         userId: 1,
         buyerId: null,
         dateBought: null,
-        deletedAfterSold: false
+        deletedAfterSold: false,
+        rentedUntil: null,
+        returnedAfterLoan: null
     };
 
     const product2: ProductAttributes = {
@@ -75,7 +77,9 @@ describe('ProductService Tests', () => {
         userId: 1,
         buyerId: 2,
         dateBought: new Date(Date.now()),
-        deletedAfterSold: false
+        deletedAfterSold: false,
+        rentedUntil: null,
+        returnedAfterLoan: null
     };
 
     const product3: ProductAttributes = {
@@ -93,7 +97,9 @@ describe('ProductService Tests', () => {
         userId: 1,
         buyerId: null,
         dateBought: null,
-        deletedAfterSold: false
+        deletedAfterSold: false,
+        rentedUntil: null,
+        returnedAfterLoan: null
     };
 
     const product4: ProductAttributes = {
@@ -111,7 +117,9 @@ describe('ProductService Tests', () => {
         userId: 1,
         buyerId: 2,
         dateBought: new Date(Date.now()),
-        deletedAfterSold: false
+        deletedAfterSold: false,
+        rentedUntil: null,
+        returnedAfterLoan: null
     };
 
     const product5: ProductAttributes = {
@@ -129,7 +137,9 @@ describe('ProductService Tests', () => {
         userId: 1,
         buyerId: 2,
         dateBought: new Date(Date.now()),
-        deletedAfterSold: false
+        deletedAfterSold: false,
+        rentedUntil: null,
+        returnedAfterLoan: null
     };
 
     const product6: ProductAttributes = {
@@ -147,7 +157,9 @@ describe('ProductService Tests', () => {
         userId: 1,
         buyerId: null,
         dateBought: null,
-        deletedAfterSold: false
+        deletedAfterSold: false,
+        rentedUntil: null,
+        returnedAfterLoan: null
     };
 
     const product7: ProductAttributes = {
@@ -165,7 +177,9 @@ describe('ProductService Tests', () => {
         userId: 1,
         buyerId: null,
         dateBought: null,
-        deletedAfterSold: false
+        deletedAfterSold: false,
+        rentedUntil: null,
+        returnedAfterLoan: null
     };
 
     const product8: ProductAttributes = {
@@ -183,7 +197,9 @@ describe('ProductService Tests', () => {
         userId: 1,
         buyerId: null,
         dateBought: null,
-        deletedAfterSold: false
+        deletedAfterSold: false,
+        rentedUntil: null,
+        returnedAfterLoan: null
     };
 
     before('create admin', function() {
@@ -229,7 +245,9 @@ describe('ProductService Tests', () => {
                 userId: 1,
                 buyerId: null,
                 dateBought: null,
-                deletedAfterSold: false
+                deletedAfterSold: false,
+                rentedUntil: null,
+                returnedAfterLoan: null
             };
             testProductService.create(product1).catch(err => {
                 expect(err).not.to.be.null;
@@ -253,7 +271,9 @@ describe('ProductService Tests', () => {
                 userId: 1,
                 buyerId: null,
                 dateBought: null,
-                deletedAfterSold: false
+                deletedAfterSold: false,
+                rentedUntil: null,
+                returnedAfterLoan: null
             };
             testProductService.update(1, product1).then(() => {
                 Product.findOne({
@@ -282,7 +302,9 @@ describe('ProductService Tests', () => {
                 userId: 1,
                 buyerId: null,
                 dateBought: null,
-                deletedAfterSold: false
+                deletedAfterSold: false,
+                rentedUntil: null,
+                returnedAfterLoan: null
             };
             testProductService.update(1, product1).catch(err => {
                 expect(err).not.to.be.null;
@@ -304,7 +326,9 @@ describe('ProductService Tests', () => {
                 userId: 1,
                 buyerId: null,
                 dateBought: null,
-                deletedAfterSold: false
+                deletedAfterSold: false,
+                rentedUntil: null,
+                returnedAfterLoan: null
             };
             testProductService.update(10, product10).catch(err => {
                 expect(err).not.to.be.null;

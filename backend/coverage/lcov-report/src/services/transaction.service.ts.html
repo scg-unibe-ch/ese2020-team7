@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/services/product.service.ts</title>
+    <title>Code coverage report for src/services/transaction.service.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/services</a> product.service.ts</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/services</a> transaction.service.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80.28% </span>
+                <span class="strong">8.22% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>57/71</span>
+                <span class='fraction'>6/73</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">95.45% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>21/22</span>
+                <span class='fraction'>0/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">68.42% </span>
+                <span class="strong">4% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>26/38</span>
+                <span class='fraction'>2/50</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80.28% </span>
+                <span class="strong">8.22% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>57/71</span>
+                <span class='fraction'>6/73</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -276,333 +276,29 @@
 <a name='L217'></a><a href='#L217'>217</a>
 <a name='L218'></a><a href='#L218'>218</a>
 <a name='L219'></a><a href='#L219'>219</a>
-<a name='L220'></a><a href='#L220'>220</a>
-<a name='L221'></a><a href='#L221'>221</a>
-<a name='L222'></a><a href='#L222'>222</a>
-<a name='L223'></a><a href='#L223'>223</a>
-<a name='L224'></a><a href='#L224'>224</a>
-<a name='L225'></a><a href='#L225'>225</a>
-<a name='L226'></a><a href='#L226'>226</a>
-<a name='L227'></a><a href='#L227'>227</a>
-<a name='L228'></a><a href='#L228'>228</a>
-<a name='L229'></a><a href='#L229'>229</a>
-<a name='L230'></a><a href='#L230'>230</a>
-<a name='L231'></a><a href='#L231'>231</a>
-<a name='L232'></a><a href='#L232'>232</a>
-<a name='L233'></a><a href='#L233'>233</a>
-<a name='L234'></a><a href='#L234'>234</a>
-<a name='L235'></a><a href='#L235'>235</a>
-<a name='L236'></a><a href='#L236'>236</a>
-<a name='L237'></a><a href='#L237'>237</a>
-<a name='L238'></a><a href='#L238'>238</a>
-<a name='L239'></a><a href='#L239'>239</a>
-<a name='L240'></a><a href='#L240'>240</a>
-<a name='L241'></a><a href='#L241'>241</a>
-<a name='L242'></a><a href='#L242'>242</a>
-<a name='L243'></a><a href='#L243'>243</a>
-<a name='L244'></a><a href='#L244'>244</a>
-<a name='L245'></a><a href='#L245'>245</a>
-<a name='L246'></a><a href='#L246'>246</a>
-<a name='L247'></a><a href='#L247'>247</a>
-<a name='L248'></a><a href='#L248'>248</a>
-<a name='L249'></a><a href='#L249'>249</a>
-<a name='L250'></a><a href='#L250'>250</a>
-<a name='L251'></a><a href='#L251'>251</a>
-<a name='L252'></a><a href='#L252'>252</a>
-<a name='L253'></a><a href='#L253'>253</a>
-<a name='L254'></a><a href='#L254'>254</a>
-<a name='L255'></a><a href='#L255'>255</a>
-<a name='L256'></a><a href='#L256'>256</a>
-<a name='L257'></a><a href='#L257'>257</a>
-<a name='L258'></a><a href='#L258'>258</a>
-<a name='L259'></a><a href='#L259'>259</a>
-<a name='L260'></a><a href='#L260'>260</a>
-<a name='L261'></a><a href='#L261'>261</a>
-<a name='L262'></a><a href='#L262'>262</a>
-<a name='L263'></a><a href='#L263'>263</a>
-<a name='L264'></a><a href='#L264'>264</a>
-<a name='L265'></a><a href='#L265'>265</a>
-<a name='L266'></a><a href='#L266'>266</a>
-<a name='L267'></a><a href='#L267'>267</a>
-<a name='L268'></a><a href='#L268'>268</a>
-<a name='L269'></a><a href='#L269'>269</a>
-<a name='L270'></a><a href='#L270'>270</a>
-<a name='L271'></a><a href='#L271'>271</a>
-<a name='L272'></a><a href='#L272'>272</a>
-<a name='L273'></a><a href='#L273'>273</a>
-<a name='L274'></a><a href='#L274'>274</a>
-<a name='L275'></a><a href='#L275'>275</a>
-<a name='L276'></a><a href='#L276'>276</a>
-<a name='L277'></a><a href='#L277'>277</a>
-<a name='L278'></a><a href='#L278'>278</a>
-<a name='L279'></a><a href='#L279'>279</a>
-<a name='L280'></a><a href='#L280'>280</a>
-<a name='L281'></a><a href='#L281'>281</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L220'></a><a href='#L220'>220</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -614,287 +310,408 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { SearchRequest } from '../models/search.model';
-import { Product, ProductAttributes } from './../models/product.model';
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&nbsp;
+import { Product, ProductAttributes } from '../models/product.model';
+import { Transaction, TransactionAttributes } from '../models/transaction.model';
+import { User } from '../models/user.model';
 &nbsp;
-export class ProductService {
+export class TransactionService {
 &nbsp;
-    public create(product: ProductAttributes): Promise&lt;Product&gt; {
-        return Product.create(product)
-        .then(<span class="fstat-no" title="function not covered" >inserted </span>=&gt; <span class="cstat-no" title="statement not covered" >Promise.resolve(inserted))</span>
-        .catch(err =&gt; Promise.reject(err));
-    }
-&nbsp;
-    public update(productId: number, product: ProductAttributes): Promise&lt;Product&gt; {
-        return Product.findByPk(productId)
-        .then(<span class="fstat-no" title="function not covered" >found </span>=&gt;
-<span class="cstat-no" title="statement not covered" >                found.update(product)</span>
-                .then(<span class="fstat-no" title="function not covered" >() =</span>&gt; { <span class="cstat-no" title="statement not covered" >return Promise.resolve(found);</span>
+    public async buy(transaction: TransactionAttributes): Promise&lt;TransactionAttributes&gt; {
+        return Transaction.create(transaction)
+        .then(<span class="fstat-no" title="function not covered" >createdTransaction </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            if (createdTransaction) {</span>
+<span class="cstat-no" title="statement not covered" >                return Product.findByPk(transaction.productId)</span>
+                .then(<span class="fstat-no" title="function not covered" >foundProduct </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >                    return User.findByPk(transaction.buyerId)</span>
+                    .then(<span class="fstat-no" title="function not covered" >foundBuyer </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >                        if (foundBuyer.wallet &gt;= foundProduct.price) {</span>
+<span class="cstat-no" title="statement not covered" >                            return foundProduct.update({</span>
+                                isAvailable: false,
+                                dateBought: Date.now(),
+                                buyerId: createdTransaction.buyerId
+                            });
+                        } else {
+<span class="cstat-no" title="statement not covered" >                            return Promise.reject('The buyer does not have enough money!');</span>
+                        }
+                    })
+                    .then(<span class="fstat-no" title="function not covered" >() =</span>&gt; {
+<span class="cstat-no" title="statement not covered" >                        if (!foundProduct.isSelling &amp;&amp; foundProduct.isProduct) {</span>
+<span class="cstat-no" title="statement not covered" >                            return foundProduct.update({</span>
+                                returnedAfterLoan: false
+                            });
+                        }
+                    });
                 })
-        )
+                .then(<span class="fstat-no" title="function not covered" >() =</span>&gt; {
+<span class="cstat-no" title="statement not covered" >                    return createdTransaction.update({</span>
+                            transactionStatus: 1
+                    });
+                })
+                .then(<span class="fstat-no" title="function not covered" >async () =</span>&gt;<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" > {</span></span>
+<span class="cstat-no" title="statement not covered" >                    if  (createdTransaction.transactionStatus === 1) {</span>
+                        const statusMakePayment = <span class="cstat-no" title="statement not covered" >await this.makePayment(createdTransaction);</span>
+<span class="cstat-no" title="statement not covered" >                        return createdTransaction.update({</span>
+                            transactionStatus: statusMakePayment
+                        });
+                    } else {
+<span class="cstat-no" title="statement not covered" >                        this.createTransactionCallback(createdTransaction);</span>
+<span class="cstat-no" title="statement not covered" >                        return Promise.reject('Something went wrong in step 1!');</span>
+                    }
+                })
+                .then(<span class="fstat-no" title="function not covered" >async () =</span>&gt;<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" > {</span></span>
+<span class="cstat-no" title="statement not covered" >                    if (createdTransaction.transactionStatus === 2) {</span>
+                        const statusReceivePayment = <span class="cstat-no" title="statement not covered" >await this.receivePayment(createdTransaction);</span>
+<span class="cstat-no" title="statement not covered" >                        return createdTransaction.update({</span>
+                            transactionStatus: statusReceivePayment
+                        });
+                    } else {
+<span class="cstat-no" title="statement not covered" >                        this.createTransactionCallback(createdTransaction);</span>
+<span class="cstat-no" title="statement not covered" >                        this.makePaymentCallback(createdTransaction);</span>
+<span class="cstat-no" title="statement not covered" >                        return Promise.reject('Something went wrong in step 2!');</span>
+                    }
+                })
+                .then(<span class="fstat-no" title="function not covered" >() =</span>&gt; {
+<span class="cstat-no" title="statement not covered" >                    if (createdTransaction.transactionStatus === 3) {</span>
+<span class="cstat-no" title="statement not covered" >                        return Promise.resolve(createdTransaction);</span>
+                    } else {
+<span class="cstat-no" title="statement not covered" >                        this.createTransactionCallback(createdTransaction);</span>
+<span class="cstat-no" title="statement not covered" >                        this.makePaymentCallback(createdTransaction);</span>
+<span class="cstat-no" title="statement not covered" >                        this.receivePaymentCallback(createdTransaction);</span>
+<span class="cstat-no" title="statement not covered" >                        return Promise.reject('Something went wrong in step 3!');</span>
+                    }
+&nbsp;
+                })
+                .catch(<span class="fstat-no" title="function not covered" >err </span>=&gt; <span class="cstat-no" title="statement not covered" >Promise.reject(err))</span>;
+            } else {
+<span class="cstat-no" title="statement not covered" >                return Promise.reject('Transaction could not be created!');</span>
+            }
+        })
         .catch(err =&gt; Promise.reject(err));
     }
 &nbsp;
-    public approve(productId: number): Promise&lt;Product&gt; {
-        return Product.findByPk(productId)
-        .then(<span class="fstat-no" title="function not covered" >found </span>=&gt;
-<span class="cstat-no" title="statement not covered" >            found.update({isApproved: true})</span>
-            .then(<span class="fstat-no" title="function not covered" >() =</span>&gt; { <span class="cstat-no" title="statement not covered" >return Promise.resolve(found);</span>
+    private <span class="fstat-no" title="function not covered" >makePayment(</span>transaction: Transaction): Promise&lt;number&gt; {
+<span class="cstat-no" title="statement not covered" >        return Product.findByPk(transaction.productId)</span>
+        .then(<span class="fstat-no" title="function not covered" >foundProduct </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            return User.increment({ wallet: -foundProduct.price }, {</span>
+                where: {
+                    userId: transaction.buyerId
+                }
+            });
+        })
+        .then(<span class="fstat-no" title="function not covered" >() =</span>&gt; {
+<span class="cstat-no" title="statement not covered" >            return Promise.resolve(2);</span>
+        })
+        .catch(<span class="fstat-no" title="function not covered" >err </span>=&gt; <span class="cstat-no" title="statement not covered" >Promise.reject(err))</span>;
+    }
+&nbsp;
+    private <span class="fstat-no" title="function not covered" >receivePayment(</span>transaction: Transaction): Promise&lt;number&gt; {
+<span class="cstat-no" title="statement not covered" >        return Product.findByPk(transaction.productId)</span>
+        .then(<span class="fstat-no" title="function not covered" >foundProduct </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            return User.increment({ wallet: foundProduct.price }, {</span>
+                where: {
+                    userId: foundProduct.userId
+                }
+            });
+        })
+        .then(<span class="fstat-no" title="function not covered" >() =</span>&gt; {
+<span class="cstat-no" title="statement not covered" >            return Promise.resolve(3);</span>
+        })
+        .catch(<span class="fstat-no" title="function not covered" >err </span>=&gt; <span class="cstat-no" title="statement not covered" >Promise.reject(err))</span>;
+    }
+&nbsp;
+    private <span class="fstat-no" title="function not covered" >createTransactionCallback(</span>transaction: Transaction): Promise&lt;void&gt; {
+<span class="cstat-no" title="statement not covered" >        return Product.findByPk(transaction.productId)</span>
+        .then(<span class="fstat-no" title="function not covered" >foundProduct </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            return foundProduct.update({</span>
+                isAvailable: true,
+                dateBought: null,
+                buyerId: null,
+                returnedAfterLoan: null
+            });
+        })
+        .then(<span class="fstat-no" title="function not covered" >() =</span>&gt; {
+<span class="cstat-no" title="statement not covered" >            return Promise.resolve();</span>
+        })
+        .catch(<span class="fstat-no" title="function not covered" >err </span>=&gt; <span class="cstat-no" title="statement not covered" >Promise.reject(err))</span>;
+    }
+&nbsp;
+    private <span class="fstat-no" title="function not covered" >makePaymentCallback(</span>transaction: Transaction): Promise&lt;void&gt; {
+<span class="cstat-no" title="statement not covered" >        return Product.findByPk(transaction.productId)</span>
+        .then(<span class="fstat-no" title="function not covered" >foundProduct </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            return User.increment({ wallet: foundProduct.price }, {</span>
+                where: {
+                    userId: transaction.buyerId
+                }
+            });
+        })
+        .then(<span class="fstat-no" title="function not covered" >() =</span>&gt; {
+<span class="cstat-no" title="statement not covered" >            return Promise.resolve();</span>
+        })
+        .catch(<span class="fstat-no" title="function not covered" >err </span>=&gt; <span class="cstat-no" title="statement not covered" >Promise.reject(err))</span>;
+    }
+&nbsp;
+    private <span class="fstat-no" title="function not covered" >receivePaymentCallback(</span>transaction: Transaction): Promise&lt;void&gt; {
+<span class="cstat-no" title="statement not covered" >        return Product.findByPk(transaction.productId)</span>
+        .then(<span class="fstat-no" title="function not covered" >foundProduct </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            return User.increment({ wallet: -foundProduct.price }, {</span>
+                where: {
+                    userId: foundProduct.userId
+                }
+            });
+        })
+        .then(<span class="fstat-no" title="function not covered" >() =</span>&gt; {
+<span class="cstat-no" title="statement not covered" >            return Promise.resolve();</span>
+        })
+        .catch(<span class="fstat-no" title="function not covered" >err </span>=&gt; <span class="cstat-no" title="statement not covered" >Promise.reject(err))</span>;
+    }
+&nbsp;
+    public <span class="fstat-no" title="function not covered" >setDeliveryDetails(</span>transactionId: number, transaction: TransactionAttributes): Promise&lt;TransactionAttributes&gt; {
+<span class="cstat-no" title="statement not covered" >        return Transaction.findByPk(transactionId)</span>
+        .then(<span class="fstat-no" title="function not covered" >foundTransaction </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            return foundTransaction.update({</span>
+                deliveryStreet: transaction.deliveryStreet,
+                deliveryPinCode: transaction.deliveryPinCode,
+                deliveryCity: transaction.deliveryCity,
+                deliveryCountry: transaction.deliveryCountry
             })
-        )
-        .catch(err =&gt; Promise.reject(err));
+            .then(<span class="fstat-no" title="function not covered" >() =</span>&gt; {
+<span class="cstat-no" title="statement not covered" >                return Promise.resolve(foundTransaction);</span>
+            });
+        })
+        .catch(<span class="fstat-no" title="function not covered" >err </span>=&gt; <span class="cstat-no" title="statement not covered" >Promise.reject(err))</span>;
     }
 &nbsp;
-    public reject(productId: number, rejectionReason: string): Promise&lt;Product&gt; {
-        return Product.findByPk(productId)
-        .then(<span class="fstat-no" title="function not covered" >found </span>=&gt;
-<span class="cstat-no" title="statement not covered" >            found.update({isApproved: false, rejectionReason: rejectionReason})</span>
-            .then(<span class="fstat-no" title="function not covered" >() =</span>&gt; { <span class="cstat-no" title="statement not covered" >return Promise.resolve(found);</span>
+    public <span class="fstat-no" title="function not covered" >setRentedUntilDate(</span>productId: number, product: ProductAttributes): Promise&lt;Product&gt; {
+<span class="cstat-no" title="statement not covered" >        return Product.findByPk(productId)</span>
+        .then(<span class="fstat-no" title="function not covered" >foundProduct </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            return foundProduct.update({</span>
+                rentedUntil: product.rentedUntil
             })
-        )
-        .catch(err =&gt; Promise.reject(err));
+            .then(<span class="fstat-no" title="function not covered" >() =</span>&gt; {
+<span class="cstat-no" title="statement not covered" >                return Promise.resolve(foundProduct);</span>
+            });
+        })
+        .catch(<span class="fstat-no" title="function not covered" >err </span>=&gt; <span class="cstat-no" title="statement not covered" >Promise.reject(err))</span>;
     }
 &nbsp;
-    public delete(productId: number): Promise&lt;Product&gt; {
-        return Product.findByPk(productId)
-        .then(<span class="fstat-no" title="function not covered" >found </span>=&gt;
-<span class="cstat-no" title="statement not covered" >            found.destroy()</span>
-            .then(<span class="fstat-no" title="function not covered" >() =</span>&gt; <span class="cstat-no" title="statement not covered" >Promise.resolve(found))</span>
-        )
-        .catch(err =&gt; Promise.reject(err));
-    }
-&nbsp;
-    public getAllProducts(): Promise&lt;Product[]&gt; {
-        return Product.findAll();
-    }
-&nbsp;
-    public getApprovedProducts(): Promise&lt;Product[]&gt; {
-        return Product.findAll({
-            where: {
-                isApproved: true
-            }
-        });
-    }
-&nbsp;
-    public getRejectedProducts(): Promise&lt;Product[]&gt; {
-        const { Op } = require('sequelize');
-        return Product.findAll({
-            where: {
-                [ Op.and ]: [
-                    { isApproved: false },
-                    { rejectionReason: { [ Op.not ]: null }}
-                ]
-            }
-        });
-    }
-&nbsp;
-    public getUncheckedProducts(): Promise&lt;Product[]&gt; {
-        const { Op } = require('sequelize');
-        return Product.findAll({
-            where: {
-                [ Op.and ]: [
-                    { isApproved: false },
-                    { rejectionReason: null}
-                ]
-            }
-        });
-    }
-&nbsp;
-    public getMyProducts(thisUserId: number): Promise&lt;Product[]&gt; {
-        const { Op } = require('sequelize');
-        return Product.findAll({
-            where: {
-                [ Op.and ]: [
-                    { buyerId: thisUserId},
-                    { deletedAfterSold: false }
-                ]
-            }
-        });
-    }
-&nbsp;
-    public getProduct(thisProductId: number): Promise&lt;Product&gt; {
-        return Product.findOne({
-            where: {
-                productId: thisProductId
-            }
-        });
-    }
-&nbsp;
-    public getMyRejectedProducts(thisUserId: number): Promise&lt;Product[]&gt; {
-        const { Op } = require('sequelize');
-        return Product.findAll({
-            where: {
-                [ Op.and ]: [
-                    { userId: thisUserId },
-                    { isApproved: false},
-                    { rejectionReason: { [ Op.not ]: null }}
-                ]
-            }
-        });
-    }
-&nbsp;
-    public getMyPendingProducts(thisUserId: number): Promise&lt;Product[]&gt; {
-        const { Op } = require('sequelize');
-        return Product.findAll({
-            where: {
-                [ Op.and ]: [
-                    { userId: thisUserId},
-                    { isApproved: false},
-                    { rejectionReason: null}
-                ]
-            }
-        });
-    }
-&nbsp;
-    public getMyApprovedProducts(thisUserId: number): Promise&lt;Product[]&gt; {
-        const { Op } = require('sequelize');
-        return Product.findAll({
-            where: {
-                [ Op.and ]: [
-                    { userId: thisUserId},
-                    { isApproved: true},
-                    { isAvailable: true }
-                ]
-            }
-        });
-    }
-&nbsp;
-    public getProductsIBought(thisUserId: number): Promise&lt;Product[]&gt; {
-        const { Op } = require('sequelize');
-        return Product.findAll({
-            where: {
-                [ Op.and ]: [
-                    { buyerId: thisUserId},
-                    { isProduct: true },
-                    { isSelling: true }
-                ]
-            }
-        });
-    }
-&nbsp;
-    public getProductsImRenting(thisUserId: number): Promise&lt;Product[]&gt; {
-        const { Op } = require('sequelize');
-        return Product.findAll({
-            where: {
-                [ Op.and ]: [
-                    { buyerId: thisUserId},
-                    { isProduct: true },
-                    { isSelling: false }
-                ]
-            }
-        });
-    }
-&nbsp;
-    public getServiceImUtilize(thisUserId: number): Promise&lt;Product[]&gt; {
-        const { Op } = require('sequelize');
-        return Product.findAll({
-            where: {
-                [ Op.and ]: [
-                    { buyerId: thisUserId},
-                    { isProduct: false },
-                ]
-            }
-        });
-    }
-&nbsp;
-    public getMySoldProducts(thisUserId: number): Promise&lt;Product[]&gt; {
-        const { Op } = require('sequelize');
-        return Product.findAll({
-            where: {
-                [ Op.and ]: [
-                    { userId: thisUserId },
-                    { buyerId: { [ Op.not ]: null }},
-                    { deletedAfterSold: false }
-                ]
-            }
-        });
-    }
-&nbsp;
-    public deleteProductAfterSold(productId: number): Promise&lt;Product&gt; {
-        return Product.findByPk(productId)
-        .then(<span class="fstat-no" title="function not covered" >found </span>=&gt;
-<span class="cstat-no" title="statement not covered" >            found.update({deletedAfterSold: true})</span>
-            .then(<span class="fstat-no" title="function not covered" >() =</span>&gt; { <span class="cstat-no" title="statement not covered" >return Promise.resolve(found);</span>
+    public <span class="fstat-no" title="function not covered" >initiateReturn(</span>productId: number): Promise&lt;Product&gt; {
+<span class="cstat-no" title="statement not covered" >        return Product.findByPk(productId)</span>
+        .then(<span class="fstat-no" title="function not covered" >foundProduct </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            return foundProduct.update({</span>
+                returnedAfterLoan: true
             })
-        )
-        .catch(err =&gt; Promise.reject(err));
+            .then(<span class="fstat-no" title="function not covered" >() =</span>&gt; {
+<span class="cstat-no" title="statement not covered" >                return Promise.resolve(foundProduct);</span>
+            });
+        })
+        .catch(<span class="fstat-no" title="function not covered" >err </span>=&gt; <span class="cstat-no" title="statement not covered" >Promise.reject(err))</span>;
     }
 &nbsp;
-    public search(filters: SearchRequest): Promise&lt;Product[]&gt; {
-        const { Op } = require('sequelize');
-&nbsp;
-        const options: any = {};
-&nbsp;
-        if (filters.title) {
-            options.title = {
-                [ Op.substring ]: filters.title
-            };
-        }
-&nbsp;
-        if (filters.location) {
-            options.location = {
-                [ Op.substring ]: filters.location
-            };
-        }
-&nbsp;
-        if (filters.minPrice &amp;&amp; filters.maxPrice) {
-            options.price = {
-                [ Op.between ]: [ filters.minPrice, filters.maxPrice]
-            };
-        } else if (filters.minPrice &amp;&amp; !filters.maxPrice) {
-            options.price = {
-                [ Op.gte ]: filters.minPrice
-            };
-        } else <span class="missing-if-branch" title="if path not taken" >I</span>if (!filters.minPrice &amp;&amp; filters.maxPrice) {
-<span class="cstat-no" title="statement not covered" >            options.price = {</span>
-                [ Op.lte ]: filters.maxPrice
-            };
-        }
-&nbsp;
-        if (filters.isDeliverable != null) {
-            options.isDeliverable = {
-                [ Op.is ]: filters.isDeliverable
-            };
-        }
-&nbsp;
-        if (filters.isProduct != null) {
-            options.isProduct = {
-                [ Op.is ]: filters.isProduct
-            };
-        }
-&nbsp;
-        if (filters.isSelling != null) {
-            options.isSelling = {
-                [ Op.is ]: filters.isSelling
-            };
-        }
-&nbsp;
-        options.isApproved = {
-            [ Op.is ]: true
-        };
-&nbsp;
-        options.isAvailable = {
-            [ Op.is ]: true
-        };
-&nbsp;
-        return Product.findAll({
-            where: options
-        });
+    public <span class="fstat-no" title="function not covered" >confirmReturn(</span>productId: number): Promise&lt;Product&gt; {
+<span class="cstat-no" title="statement not covered" >        return Product.findByPk(productId)</span>
+        .then(<span class="fstat-no" title="function not covered" >foundProduct </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            return foundProduct.update({</span>
+                isAvailable: true,
+                dateBought: null,
+                buyerId: null,
+                rentedUntil: null,
+                returnedAfterLoan: null
+            })
+            .then(<span class="fstat-no" title="function not covered" >() =</span>&gt; {
+<span class="cstat-no" title="statement not covered" >                return Promise.resolve(foundProduct);</span>
+            });
+        })
+        .catch(<span class="fstat-no" title="function not covered" >err </span>=&gt; <span class="cstat-no" title="statement not covered" >Promise.reject(err))</span>;
     }
 &nbsp;
-    public <span class="fstat-no" title="function not covered" >getApprovedAndAvailableProducts(</span>): Promise&lt;Product[]&gt; {
-        const { Op } = <span class="cstat-no" title="statement not covered" >require('sequelize');</span>
-<span class="cstat-no" title="statement not covered" >        return Product.findAll({</span>
-            where: {
-                [ Op.and ]: [
-                    { isApproved: true },
-                    { isAvailable: true}
-                ]
-            }
-        });
+    public <span class="fstat-no" title="function not covered" >getAll(</span>): Promise&lt;Transaction[]&gt; {
+<span class="cstat-no" title="statement not covered" >        return Transaction.findAll();</span>
     }
 }
 &nbsp;</pre></td></tr></table></pre>

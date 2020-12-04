@@ -2,6 +2,7 @@ import { UserService } from '../../src/services/user.service';
 import { User, UserAttributes } from '../../src/models/user.model';
 import { expect } from 'chai';
 import { Product } from '../../src/models/product.model';
+import { doesNotMatch } from 'assert';
 
 describe('UserService Tests', () => {
 
