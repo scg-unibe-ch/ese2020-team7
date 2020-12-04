@@ -42,8 +42,8 @@ import {MatNativeDateModule, MAT_DATE_LOCALE} from '@angular/material/core';
 import { EditUserComponent } from './registration/edit-user/edit-user.component';
 import {SearchComponent} from './search/search.component';
 import {MatSelectModule} from '@angular/material/select';
-import { DeleteProductDialogComponent } from './user-panel/delete-product-dialog/delete-product-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { DeleteProductDialogComponent } from './user-panel/delete-product-dialog/delete-product-dialog.component';
 
 
 @NgModule({

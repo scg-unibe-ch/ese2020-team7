@@ -88,7 +88,7 @@ export class UserPanelComponent implements OnInit {
   }
 
   onDeleteAfterSold(productId): void {
-    this.httpClient.delete(environment.endpointURL + 'product/deleteProductAfterSold/' + productId).subscribe();
+    this.httpClient.put(environment.endpointURL + 'product/deleteProductAfterSold/' + productId, {}).subscribe();
   }
 
 }
