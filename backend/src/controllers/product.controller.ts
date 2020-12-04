@@ -24,6 +24,14 @@ productController.put('/update/:productId', verifyToken, verifyProductOwner,
     }
 );  // needs attribute subject to change and updated information
 
+productController.put('/rent/:productId', verifyToken,
+    (req: Request, res: Response) => {
+        productService.rent(parseInt(req.params.productId, 10), req.body.rentedUntil)
+            .then(rented => res.send(rented))
+            .catch(err => res.status(500).send(err));
+    }
+);  // needs rentedUntil date
+
 productController.put('/approve/:productId', verifyToken, verifyAdmin,
     (req: Request, res: Response) => {
         productService.approve(parseInt(req.params.productId, 10))
