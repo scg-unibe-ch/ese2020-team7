@@ -4,6 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {environment} from '../../../environments/environment';
 import {Product} from '../../models/product.model';
 import {User} from '../../models/user.model';
+import {Location} from '@angular/common';
 
 
 @Component({
@@ -25,7 +26,8 @@ export class ProductDetailComponent implements OnInit {
   sellerId: number;
 
   constructor(private httpClient: HttpClient,
-              private route: ActivatedRoute) {}
+              private route: ActivatedRoute,
+              private location: Location) {}
 
   ngOnInit(): void {
     this.productId = JSON.parse(this.route.snapshot.paramMap.get('id'));
@@ -49,5 +51,8 @@ export class ProductDetailComponent implements OnInit {
     this.userToken = localStorage.getItem('userToken');
     this.userNameOrMail = localStorage.getItem('userName');
     this.loggedIn = !!(this.userToken);
+  }
+  back(): void {
+    this.location.back();
   }
 }

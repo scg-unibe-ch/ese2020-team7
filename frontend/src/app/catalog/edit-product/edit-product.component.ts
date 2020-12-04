@@ -4,6 +4,9 @@ import {environment} from '../../../environments/environment';
 import {Product} from '../../models/product.model';
 import {HttpClient} from '@angular/common/http';
 import {FormBuilder, Validators} from '@angular/forms';
+import {DeleteProductDialogComponent} from '../../user-panel/delete-product-dialog/delete-product-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
+import {Location} from '@angular/common';
 
 
 
@@ -54,7 +57,9 @@ export class EditProductComponent implements OnInit {
   });
   constructor(private httpClient: HttpClient,
               private formBuilder: FormBuilder,
-              private route: ActivatedRoute) {}
+              private route: ActivatedRoute,
+              public dialog: MatDialog,
+              private location: Location) {}
 
   get f(): any { return this.productForm.controls; }
 
@@ -79,6 +84,9 @@ export class EditProductComponent implements OnInit {
       if (product.isProduct === true){
         this.isProductChecked = true;
       }
+    }, (error) => {
+      this.error = true;
+      this.errorMessage = error;
     });
   }
 
@@ -108,7 +116,6 @@ export class EditProductComponent implements OnInit {
       userId: this.userId
     }).subscribe(() => {
       this.submissionDone = true;
-      // tslint:disable-next-line:no-unused-expression
     }, (error) => {
       this.error = true;
       this.errorMessage = error;
@@ -156,5 +163,28 @@ export class EditProductComponent implements OnInit {
 
   radioChange(): void{
     console.log(this.selectedRadio);
+  }
+
+  openDialog(productId): any {
+    const dialogRef = this.dialog.open(DeleteProductDialogComponent);
+    dialogRef.afterClosed().subscribe(res => {
+      console.log(res);
+      if (res) {
+        this.onDelete(productId);
+      }
+      this.back();
+    });
+  }
+
+  onDelete(productId): void {
+    this.httpClient.delete(environment.endpointURL + 'product/delete/' + productId).subscribe();
+  }
+
+  delete(): void{
+    this.openDialog(this.product.productId);
+  }
+
+  back(): void {
+    this.location.back();
   }
 }

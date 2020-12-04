@@ -6,6 +6,7 @@ import {HttpClient} from '@angular/common/http';
 import {ActivatedRoute} from '@angular/router';
 import {environment} from '../../../environments/environment';
 import {FormBuilder, Validators} from '@angular/forms';
+import {Location} from '@angular/common';
 
 
 
@@ -51,7 +52,8 @@ export class BuyProductComponent implements OnInit {
 
   constructor(private httpClient: HttpClient,
               private route: ActivatedRoute,
-              private formBuilder: FormBuilder) {}
+              private formBuilder: FormBuilder,
+              private location: Location) {}
 
   get f(): any { return this.deliveryForm.controls; }
   get g(): any { return this.returnDateForm.controls; }
@@ -169,5 +171,8 @@ export class BuyProductComponent implements OnInit {
     if (event.checked){
       this.uncheckDeliver();
     }
+  }
+  back(): void {
+    this.location.back();
   }
 }
