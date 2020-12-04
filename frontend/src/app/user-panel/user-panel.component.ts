@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Product} from '../models/product.model';
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
+import {DeleteProductDialogComponent} from './delete-product-dialog/delete-product-dialog.component';
 
 @Component({
   selector: 'app-user-panel',
@@ -12,16 +13,20 @@ import {MatDialog} from '@angular/material/dialog';
 export class UserPanelComponent implements OnInit {
 
   constructor(private httpClient: HttpClient,
-              public dialog: MatDialog) {
-  }
+              public dialog: MatDialog) {}
 
   userName = '';
   userToken: string;
   loggedIn = false;
+  id: null;
+
   rejectedProducts: Product[] = [];
   uncheckedProducts: Product[] = [];
   approvedProducts: Product[] = [];
-
+  soldProducts: Product[] = [];
+  boughtProducts: Product[] = [];
+  lentProducts: Product[] = [];
+  usedServices: Product[] = [];
 
   ngOnInit(): void {
     this.checkUserStatus();
@@ -37,6 +42,16 @@ export class UserPanelComponent implements OnInit {
       console.log(data);
       this.approvedProducts = data;
     });
+    this.httpClient.get(environment.endpointURL + 'product/mySoldProducts').subscribe((data: Product[]) => {
+      console.log(data);
+      this.soldProducts = data;
+    });
+    this.httpClient.get(environment.endpointURL + 'product/productsIBought').subscribe((data: Product[]) => {
+      console.log(data);
+      this.boughtProducts = data;
+    });
+    // myLentProducts kommt noch
+    // myUsedServices kommt noch
   }
 
   checkUserStatus(): void {
@@ -46,6 +61,34 @@ export class UserPanelComponent implements OnInit {
 
     // Set boolean whether a user is logged in or not
     this.loggedIn = !!(this.userToken);
+  }
+
+  openDialog(productId): any {
+    const dialogRef = this.dialog.open(DeleteProductDialogComponent);
+    dialogRef.afterClosed().subscribe(res => {
+      console.log(res);
+      if (res) {
+        this.onDelete(productId);
+      }
+    });
+  }
+
+  openSoldDialog(productId): any {
+    const dialogRef = this.dialog.open(DeleteProductDialogComponent);
+    dialogRef.afterClosed().subscribe(res => {
+      console.log(res);
+      if (res) {
+        this.onDeleteAfterSold(productId);
+      }
+    });
+  }
+
+  onDelete(productId): void {
+    this.httpClient.delete(environment.endpointURL + 'product/delete/' + productId).subscribe();
+  }
+
+  onDeleteAfterSold(productId): void {
+    this.httpClient.put(environment.endpointURL + 'product/deleteProductAfterSold/' + productId, {}).subscribe();
   }
 
 }

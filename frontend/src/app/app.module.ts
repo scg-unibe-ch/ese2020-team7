@@ -36,12 +36,14 @@ import { ProductDetailComponent } from './catalog/product-detail/product-detail.
 import { UserPanelComponent } from './user-panel/user-panel.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
-import { MatDialogModule } from '@angular/material/dialog';
 import { BuyProductComponent } from './catalog/buy-product/buy-product.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatNativeDateModule, MAT_DATE_LOCALE} from '@angular/material/core';
 import { EditUserComponent } from './registration/edit-user/edit-user.component';
 import {SearchComponent} from './search/search.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DeleteProductDialogComponent } from './user-panel/delete-product-dialog/delete-product-dialog.component';
 
 
 @NgModule({
@@ -64,8 +66,10 @@ import {SearchComponent} from './search/search.component';
     UserPanelComponent,
     BuyProductComponent,
     EditUserComponent,
-    SearchComponent
+    SearchComponent,
+    DeleteProductDialogComponent
   ],
+  entryComponents: [DeleteProductDialogComponent],
   imports: [
     AppRoutingModule,
     BrowserModule,
@@ -86,9 +90,10 @@ import {SearchComponent} from './search/search.component';
     MatPaginatorModule,
     MatIconModule,
     MatMenuModule,
-    MatDialogModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSelectModule,
+    MatDialogModule,
   ],
   providers: [
     {

@@ -1,13 +1,42 @@
-label {
-  display: block;
-  font: 1rem 'Fira Sans', sans-serif;
-
-
+input[type=search] {
+  width: 280px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  margin-top: 10px;
+}
+input[type=search]:focus {
+  width: 50%;
+}
+input[type=text] {
+  width: 70px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 5px;
+  margin-top: 10px;
 }
 
-input,
-label {
-  margin: .4rem 0;
-  padding-inline: inherit;
 
+.mat-select{
+  margin-top: 10px;
 }
+.mat-button {
+  background-color: #cccccc;
+  display: table-cell;
+  font-size: 14px;
+  min-width: 80px;
+}
+
+
