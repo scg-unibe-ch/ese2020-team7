@@ -136,9 +136,17 @@ productController.get('/productsImRenting', verifyToken,
     }
 );
 
+productController.get('/productsIRented', verifyToken,
+    (req: Request, res: Response) => {
+        productService.getProductsIRented(req.body.tokenPayload.userId)
+        .then(products => res.send(products))
+        .catch(err => res.status(500).send(err));
+    }
+);
+
 productController.get('/servicesImUtilizing', verifyToken,
     (req: Request, res: Response) => {
-        productService.getServiceImUtilize(req.body.tokenPayload.userId)
+        productService.getServicesImUtilizing(req.body.tokenPayload.userId)
         .then(services => res.send(services))
         .catch(err => res.status(500).send(err));
     }

@@ -42,6 +42,8 @@ import {MatNativeDateModule, MAT_DATE_LOCALE} from '@angular/material/core';
 import { EditUserComponent } from './registration/edit-user/edit-user.component';
 import {SearchComponent} from './search/search.component';
 import {MatSelectModule} from '@angular/material/select';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DeleteProductDialogComponent } from './user-panel/delete-product-dialog/delete-product-dialog.component';
 
 
 @NgModule({
@@ -64,32 +66,35 @@ import {MatSelectModule} from '@angular/material/select';
     UserPanelComponent,
     BuyProductComponent,
     EditUserComponent,
-    SearchComponent
+    SearchComponent,
+    DeleteProductDialogComponent
   ],
-    imports: [
-        AppRoutingModule,
-        BrowserModule,
-        BrowserAnimationsModule,
-        FormsModule,
-        HttpClientModule,
-        MatButtonModule,
-        MatListModule,
-        MatInputModule,
-        MatCheckboxModule,
-        MatCardModule,
-        MatTabsModule,
-        MatToolbarModule,
-        ReactiveFormsModule,
-        MatExpansionModule,
-        RouterModule.forRoot([]),
-        MatRadioModule,
-        MatPaginatorModule,
-        MatIconModule,
-        MatMenuModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        MatSelectModule,
-    ],
+  entryComponents: [DeleteProductDialogComponent],
+  imports: [
+    AppRoutingModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule,
+    MatButtonModule,
+    MatListModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatCardModule,
+    MatTabsModule,
+    MatToolbarModule,
+    ReactiveFormsModule,
+    MatExpansionModule,
+    RouterModule.forRoot([]),
+    MatRadioModule,
+    MatPaginatorModule,
+    MatIconModule,
+    MatMenuModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
+    MatDialogModule,
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

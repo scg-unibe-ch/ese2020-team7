@@ -26,7 +26,7 @@
             <button mat-mini-fab color="primary" [routerLink]="['/edit', product.productId]">
               <mat-icon>edit</mat-icon>
             </button>
-            <button mat-mini-fab color="warn" (click)="onDelete(product.productId)">
+            <button mat-mini-fab color="warn" (click)="openDialog(product.productId)">
               <mat-icon>delete</mat-icon>
             </button>
           </h2>
@@ -58,7 +58,7 @@
             <button mat-mini-fab color="primary" [routerLink]="['/edit', product.productId]">
               <mat-icon>edit</mat-icon>
             </button>
-            <button mat-mini-fab color="warn" (click)="onDelete(product.productId)">
+            <button mat-mini-fab color="warn" (click)="openDialog(product.productId)">
               <mat-icon>delete</mat-icon>
             </button>
           </h2>
@@ -90,7 +90,7 @@
             <button mat-mini-fab color="primary" [routerLink]="['/edit', product.productId]">
               <mat-icon>edit</mat-icon>
             </button>
-            <button mat-mini-fab color="warn" (click)="onDelete(product.productId)">
+            <button mat-mini-fab color="warn" (click)="openDialog(product.productId)">
               <mat-icon>delete</mat-icon>
             </button>
           </h2>
@@ -121,9 +121,42 @@
 
     </mat-tab>
 
+    <!-- *************************** sold Products **************************-->
+
+    <mat-tab label="Sold products">
+      <div *ngFor="let product of soldProducts">
+        <mat-card>
+          <h2>
+            <a [title]="product.title + ' details'">
+              {{ product.title }}
+            </a>
+            <span class="redText">
+              <b>{{ product.price }}CHF</b>
+            </span>
+            <span class="max-spacer"></span>
+
+            <button mat-mini-fab color="warn" (click)="openSoldDialog(product.productId)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </h2>
+
+          <p *ngIf="product.description">
+            {{ product.description }}
+          </p>
+
+        </mat-card>
+      </div>
+
+      <div *ngIf="soldProducts.length === 0">
+        <mat-card>
+          <p>No approved products</p>
+        </mat-card>
+      </div>
+    </mat-tab>
+
     <!--**************************** Acquired *******************************-->
 
-    <mat-tab label="acquired">
+    <mat-tab label="Acquired">
 
       <div *ngIf="boughtProducts.length != 0 || lentProducts.length != 0 || usedServices.length != 0; else lookProducts">
       <h2>Bought products</h2>
