@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Product} from '../models/product.model';
+import { MatDialog } from '@angular/material/dialog';
+import {DeleteProductDialogComponent} from './delete-product-dialog/delete-product-dialog.component';
 
 @Component({
   selector: 'app-user-panel',
@@ -10,11 +12,13 @@ import {Product} from '../models/product.model';
 })
 export class UserPanelComponent implements OnInit {
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient,
+              public dialog: MatDialog) {}
 
   userName = '';
   userToken: string;
   loggedIn = false;
+  id: null;
 
   rejectedProducts: Product[] = [];
   uncheckedProducts: Product[] = [];
@@ -59,8 +63,32 @@ export class UserPanelComponent implements OnInit {
     this.loggedIn = !!(this.userToken);
   }
 
+  openDialog(productId): any {
+    const dialogRef = this.dialog.open(DeleteProductDialogComponent);
+    dialogRef.afterClosed().subscribe(res => {
+      console.log(res);
+      if (res) {
+        this.onDelete(productId);
+      }
+    });
+  }
+
+  openSoldDialog(productId): any {
+    const dialogRef = this.dialog.open(DeleteProductDialogComponent);
+    dialogRef.afterClosed().subscribe(res => {
+      console.log(res);
+      if (res) {
+        this.onDeleteAfterSold(productId);
+      }
+    });
+  }
+
   onDelete(productId): void {
     this.httpClient.delete(environment.endpointURL + 'product/delete/' + productId).subscribe();
+  }
+
+  onDeleteAfterSold(productId): void {
+    this.httpClient.delete(environment.endpointURL + 'product/deleteProductAfterSold/' + productId).subscribe();
   }
 
 }
