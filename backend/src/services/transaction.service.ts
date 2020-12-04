@@ -14,11 +14,13 @@ export class TransactionService {
                     return User.findByPk(transaction.buyerId)
                     .then(foundBuyer => {
                         if (foundBuyer.wallet >= foundProduct.price) {
-                            return foundProduct.update({
-                                isAvailable: false,
-                                dateBought: Date.now(),
-                                buyerId: createdTransaction.buyerId
-                            });
+                            if (foundProduct.isProduct) {
+                                return foundProduct.update({
+                                    isAvailable: false,
+                                    dateBought: Date.now(),
+                                    buyerId: createdTransaction.buyerId
+                                });
+                            }
                         } else {
                             return Promise.reject('The buyer does not have enough money!');
                         }
