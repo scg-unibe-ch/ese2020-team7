@@ -1,33 +1,35 @@
-<p>product-detail works!</p>
-<mat-card>
-<img  src="/assets/placeholder.png" alt="image" style="width:400px;height:400px; vertical-align:top; float: left">
+<button mat-mini-fab color="primary" (click)="back()"><mat-icon>arrow_back</mat-icon></button>
+<mat-card *ngIf="!product.isAvailable">
+  This listing is not available anymore.
+</mat-card>
 
-<a class="information">
-    <a style="font-size: 40px; font-weight: 400">{{product.title}}</a>
-  <br><br>
+<mat-card *ngIf="product.isAvailable">
+  <img  src="/assets/placeholder.png" alt="image" style="width:400px;height:400px; vertical-align:top; float: left">
+  <a class="information">
+      <a style="font-size: 40px; font-weight: 400">{{product.title}}</a>
+    <br><br>
 
-  <p style="font-size: 20px;">{{product.description}}</p>
-  <p style="font-size: 20px;">{{product.price}}CHF</p>
+    <p style="font-size: 20px;">{{product.description}}</p>
+    <p style="font-size: 20px;">CHF {{product.price | number:'1.2-2' }}</p>
 
-  <a *ngIf="product.isProduct">
-    <p style="font-size: 20px;">Type: Product</p>
-    <p style="font-size: 20px;"><a *ngIf="product.isSelling">Is for Sale</a><a *ngIf="!product.isSelling">Is for rent</a></p>
-    <p style="font-size: 20px;"><a *ngIf="product.isDeliverable">Deliverable</a><a *ngIf="!product.isSelling">Not Deliverable</a></p>
+    <a *ngIf="product.isProduct">
+      <p style="font-size: 20px;">Type: Product</p>
+      <p style="font-size: 20px;"><a *ngIf="product.isSelling">Is for Sale</a><a *ngIf="!product.isSelling">Is for rent</a></p>
+      <p style="font-size: 20px;"><a *ngIf="product.isDeliverable">Deliverable</a><a *ngIf="!product.isSelling">Not Deliverable</a></p>
+    </a>
+    <a *ngIf="!product.isProduct">
+      <p style="font-size: 20px;">Type: Service</p>
+    </a>
+
+    <p style="font-size: 20px;">Seller: {{seller.userName}}</p>
   </a>
-  <a *ngIf="!product.isProduct">
-    <p style="font-size: 20px;">Type: Service</p>
+  <a class="buttons">
+    <button mat-flat-button color="primary" *ngIf="!(product.userId == this.userId)" [routerLink]="['/buy', product.productId]">Buy</button>
+
+    <!-- <app-add-to-shopping-cart *ngIf="!(product.userId == this.userId)"></app-add-to-shopping-cart> -->
+
+    <button mat-flat-button color="primary" *ngIf="product.userId == this.userId" [routerLink]="['/edit', product.productId]">Edit</button>
   </a>
-
-  <p style="font-size: 20px;">Seller: {{seller.userName}}</p>
-</a>
-<a class="buttons">
-  <button mat-flat-button color="primary" *ngIf="!(product.userId == this.userId)" [routerLink]="['/buy', product.productId]">Buy</button>
-
-  <app-add-to-shopping-cart *ngIf="!(product.userId == this.userId)"></app-add-to-shopping-cart>
-
-  <button mat-flat-button color="primary" *ngIf="product.userId == this.userId" [routerLink]="['/edit', product.productId]">Edit</button>
-</a>
-
 </mat-card>
 
 

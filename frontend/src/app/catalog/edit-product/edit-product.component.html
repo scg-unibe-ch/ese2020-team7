@@ -1,9 +1,14 @@
 <div class="main-div">
+  <button mat-mini-fab color="primary" (click)="back()"><mat-icon>arrow_back</mat-icon></button>
+
   <mat-card>
     <div *ngIf="!loggedIn">
       <h2>You have no permission to visit this page. Please <a routerLink="/login" class="link">log in</a> to edit a listing.</h2>
     </div>
-    <div *ngIf="loggedIn">
+    <div *ngIf="loggedIn && !(product.userId === userId)">
+      <h2>You have no permission to visit this page.</h2>
+    </div>
+    <div *ngIf="loggedIn && product.userId === userId">
       <div *ngIf="!submissionDone">
         <form [formGroup]="productForm">
           <div class="form-group">
@@ -299,16 +304,19 @@
           <hr><hr><br>
         </form>
 
-        <button mat-flat-button color="warn" (click)="edit()">Submit</button>
-        <br>
+        <button mat-flat-button color="primary" (click)="edit()">Submit Changes</button>
+        <button mat-flat-button color="warn" (click)="delete()">
+          <mat-icon>delete</mat-icon> Delete Listing
+        </button>
       </div>
 
       <div *ngIf="error" class="error">
-        {{ errorMessage }}
+        <br>
+        You do not have the authority to edit this listing.
       </div>
 
       <div *ngIf="submissionDone">
-        Thank you for your edit. It will be reviewed by an admin. <br><br>
+        Thank you for your edit. It will be reviewed by an admin.
       </div>
     </div>
   </mat-card>

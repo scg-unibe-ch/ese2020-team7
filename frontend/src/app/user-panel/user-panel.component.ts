@@ -34,7 +34,7 @@ export class UserPanelComponent implements OnInit {
       console.log(data);
       this.rejectedProducts = data;
     });
-    this.httpClient.get(environment.endpointURL + 'product/myPendantProducts').subscribe((data: Product[]) => {
+    this.httpClient.get(environment.endpointURL + 'product/myPendingProducts').subscribe((data: Product[]) => {
       console.log(data);
       this.uncheckedProducts = data;
     });
