@@ -16,6 +16,7 @@ export class Product{
     public review: string,
     public userId: number,
     public dateBought: Date,
-    public deletedAfterSold: boolean
+    public deletedAfterSold: boolean,
+    public isBookmarked: boolean
   ) {}
 }

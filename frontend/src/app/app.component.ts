@@ -1,5 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import { BookmarksService } from './bookmarks/bookmarks.service';
+import {Product} from './models/product.model';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +10,13 @@ import {HttpClient} from '@angular/common/http';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private bookmarksService: BookmarksService) { }
 
   userName = '';
   userToken: string;
   loggedIn = false;
   isAdmin: boolean;
+  products: Product[] = [];
 
   ngOnInit(): void {
     this.checkUserStatus();
@@ -26,6 +29,12 @@ export class AppComponent implements OnInit {
 
     // Set boolean whether a user is logged in or not
     this.loggedIn = !!(this.userToken);
+  }
+
+  checkBookmarks(): void {
+    for (let i = 0; i < this.products.length; i++) {
+      this.bookmarksService.checkBookmarked(this.products[i]);
+    }
   }
 
   logout(): void {

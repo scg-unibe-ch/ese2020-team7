@@ -17,7 +17,7 @@ import {FormBuilder, Validators} from '@angular/forms';
 export class BuyProductComponent implements OnInit {
 
   transaction: Transaction = new Transaction(null, null, null, null, '', null, '', '');
-  product: Product = new Product(null, null, '', null, null, '', '', null, null, null, '', null, '', null, null, null);
+  product: Product = new Product(null, null, '', null, null, '', '', null, null, null, '', null, '', null, null, null, false);
   seller: User = new User(null, '', '', '', '', '', '', null, null, null, null, null, null, null);
   buyer: User = new User(null, '', '', '', '', '', '', null, null, null, null, null, null, null);
 
