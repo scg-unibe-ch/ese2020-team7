@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-user-login',
@@ -22,7 +22,8 @@ export class UserLoginComponent implements OnInit {
   secureEndpointResponse = '';
 
   constructor(private httpClient: HttpClient,
-              private  router: Router) { }
+              private  router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.checkUserStatus();
@@ -64,7 +65,11 @@ export class UserLoginComponent implements OnInit {
     localStorage.removeItem('userId');
 
     this.checkUserStatus();
-    window.location.reload();
+    this.back();
+  }
+
+  back(): void {
+    this.router.navigate(['../../..'], { relativeTo: this.route });
   }
 
   /**
@@ -73,7 +78,7 @@ export class UserLoginComponent implements OnInit {
   accessSecuredEndpoint(): void {
     this.httpClient.get(environment.endpointURL + 'secured').subscribe((res: any) => {
       this.secureEndpointResponse = 'Successfully accessed secure endpoint. Message from server: ' + res.message;
-    }, (error: any) => {
+    }, () => {
       this.secureEndpointResponse = 'Unauthorized';
     });
   }

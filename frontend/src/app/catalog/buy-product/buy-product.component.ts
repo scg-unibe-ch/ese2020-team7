@@ -19,7 +19,8 @@ import {Location} from '@angular/common';
 export class BuyProductComponent implements OnInit {
 
   transaction: Transaction = new Transaction(null, null, null, null, '', null, '', '');
-  product: Product = new Product(null, null, '', null, null, '', '', null, null, null, '', null, '', null, null, null);
+  product: Product = new Product(null, null, '', null, null, '', '', null, null, null, '', null, '',
+    null, null, null, null, null, null, null);
   seller: User = new User(null, '', '', '', '', '', '', null, null, null, null, null, null, null);
   buyer: User = new User(null, '', '', '', '', '', '', null, null, null, null, null, null, null);
 

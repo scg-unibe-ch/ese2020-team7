@@ -17,7 +17,8 @@ import {Location} from '@angular/common';
 })
 export class EditProductComponent implements OnInit {
 
-  product: Product = new Product(null, null, '', null, null, '', '', null, null, null, '', null, '', null, null, null);
+  product: Product = new Product(null, null, '', null, null, '', '', null, null, null, '', null, '',
+    null, null, null, null, null, null, null);
 
   id: string;
   productId: number;
