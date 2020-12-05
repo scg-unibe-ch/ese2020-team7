@@ -2,6 +2,8 @@
 <div *ngIf="transactionError" class="error">
   {{ errorMessage }}
 </div>
+<button mat-mini-fab color="primary" (click)="back()"><mat-icon>arrow_back</mat-icon></button>
+
 <div *ngIf="!product.isAvailable">
   <mat-card>This product is not available anymore.</mat-card>
 </div>

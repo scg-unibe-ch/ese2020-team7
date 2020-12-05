@@ -44,7 +44,7 @@ import {SearchComponent} from './search/search.component';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DeleteProductDialogComponent } from './user-panel/delete-product-dialog/delete-product-dialog.component';
-
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [
@@ -94,6 +94,7 @@ import { DeleteProductDialogComponent } from './user-panel/delete-product-dialog
     MatNativeDateModule,
     MatSelectModule,
     MatDialogModule,
+    MatButtonToggleModule,
   ],
   providers: [
     {

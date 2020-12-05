@@ -28,7 +28,6 @@ input[type=text] {
   margin-top: 10px;
 }
 
-
 .mat-select{
   margin-top: 10px;
 }
@@ -38,5 +37,6 @@ input[type=text] {
   font-size: 14px;
   min-width: 80px;
 }
-
-
+mat-button-toggle-group {
+  margin-left: 12px;
+}
