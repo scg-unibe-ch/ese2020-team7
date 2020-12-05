@@ -1,7 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import { BookmarksService } from './bookmarks/bookmarks.service';
-import {Product} from './models/product.model';
+import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +9,14 @@ import {Product} from './models/product.model';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private httpClient: HttpClient, private bookmarksService: BookmarksService) { }
+  constructor(private httpClient: HttpClient,
+              private  router: Router,
+              private route: ActivatedRoute) { }
 
   userName = '';
   userToken: string;
   loggedIn = false;
   isAdmin: boolean;
-  products: Product[] = [];
 
   ngOnInit(): void {
     this.checkUserStatus();
@@ -25,23 +25,25 @@ export class AppComponent implements OnInit {
     // Get user data from local storage
     this.userToken = localStorage.getItem('userToken');
     this.userName = localStorage.getItem('userName');
-    this.isAdmin = JSON.parse(localStorage.getItem('admin'));
+    // this.isAdmin = ((this.loggedIn) && (1 < 10));
 
     // Set boolean whether a user is logged in or not
     this.loggedIn = !!(this.userToken);
-  }
-
-  checkBookmarks(): void {
-    for (let i = 0; i < this.products.length; i++) {
-      this.bookmarksService.checkBookmarked(this.products[i]);
-    }
+    this.isAdmin = ((JSON.parse(localStorage.getItem('admin'))) && (this.loggedIn));
   }
 
   logout(): void {
     // Remove user data from local storage
     localStorage.removeItem('userToken');
     localStorage.removeItem('userName');
+    localStorage.removeItem('admin');
+    localStorage.removeItem('userId');
 
     this.checkUserStatus();
+    this.back();
+  }
+
+  back(): void {
+    this.router.navigate(['../../..'], { relativeTo: this.route });
   }
 }

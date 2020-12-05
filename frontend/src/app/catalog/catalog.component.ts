@@ -39,6 +39,11 @@ export class CatalogComponent implements OnInit {
   ngOnInit(): void {
     this.checkUserStatus();
     this.httpClient.get(environment.endpointURL + 'product/approvedAndAvailableProducts').subscribe((data: Product[]) => {
+      data.sort((f, n): number => {
+        if (f.createdAt > n.createdAt){ return -1; }
+        if (f.createdAt < n.createdAt){ return 1; }
+        return 0;
+      });
       console.log(data);
       this.products = data;
     });

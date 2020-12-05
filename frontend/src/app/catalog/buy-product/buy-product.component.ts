@@ -6,6 +6,8 @@ import {HttpClient} from '@angular/common/http';
 import {ActivatedRoute} from '@angular/router';
 import {environment} from '../../../environments/environment';
 import {FormBuilder, Validators} from '@angular/forms';
+import {Location} from '@angular/common';
+
 
 
 
@@ -17,7 +19,7 @@ import {FormBuilder, Validators} from '@angular/forms';
 export class BuyProductComponent implements OnInit {
 
   transaction: Transaction = new Transaction(null, null, null, null, '', null, '', '');
-  product: Product = new Product(null, null, '', null, null, '', '', null, null, null, '', null, '', null, null, null, false);
+  product: Product = new Product(null, null, '', null, null, '', '', null, null, null, '', null, '', null, null, null, false, null, null, null, null);
   seller: User = new User(null, '', '', '', '', '', '', null, null, null, null, null, null, null);
   buyer: User = new User(null, '', '', '', '', '', '', null, null, null, null, null, null, null);
 
@@ -35,7 +37,6 @@ export class BuyProductComponent implements OnInit {
   deliver = false;
   testDate = null;
 
-
   zipPattern = '^[0-9]*$';
 
   deliveryForm = this.formBuilder.group({
@@ -49,13 +50,13 @@ export class BuyProductComponent implements OnInit {
     returnDate: [null, Validators.required],
   });
 
-
   constructor(private httpClient: HttpClient,
               private route: ActivatedRoute,
-              private formBuilder: FormBuilder) {}
+              private formBuilder: FormBuilder,
+              private location: Location) {}
 
   get f(): any { return this.deliveryForm.controls; }
-
+  get g(): any { return this.returnDateForm.controls; }
 
   ngOnInit(): void {
     this.productId = JSON.parse(this.route.snapshot.paramMap.get('id'));
@@ -75,6 +76,9 @@ export class BuyProductComponent implements OnInit {
       }
       if ((!product.isDeliverable) || (!product.isProduct)) {
         this.deliveryForm.disable({ emitEvent: false });
+      }
+      if ((product.isSelling) || (!product.isProduct)) {
+        this.returnDateForm.disable({emitEvent: false});
       }
       if (product.isSelling && product.isProduct){
         this.returnDateForm.controls.requiredControl.clearValidators();
@@ -103,8 +107,10 @@ export class BuyProductComponent implements OnInit {
     if (this.deliveryForm.invalid) {
       return;
     }
+    if (!this.product.isSelling && this.returnDateForm.invalid) {
+      return;
+    }
     this.httpClient.post(environment.endpointURL + 'transaction/buy/' + this.productId, {
-      returnDate: this.returnDateForm.get('returnDate').value,
       deliveryStreet: this.deliveryForm.get('deliveryStreet').value,
       deliveryPinCode: this.deliveryForm.get('deliveryPinCode').value,
       deliveryCity: this.deliveryForm.get('deliveryCity').value,
@@ -112,6 +118,14 @@ export class BuyProductComponent implements OnInit {
     }).subscribe((res: any) => {
       console.log(res);
       this.transaction = res;
+      this.httpClient.put(environment.endpointURL + 'product/rent/' + this.productId, {
+        rentedUntil: this.returnDateForm.get('returnDate').value,
+      }).subscribe(() => {
+        this.submissionDone = true;
+      }, (error) => {
+        this.transactionError = true;
+        this.errorMessage = error;
+      });
       this.submissionDone = true;
     }, (error) => {
       this.transactionError = true;
@@ -146,10 +160,19 @@ export class BuyProductComponent implements OnInit {
     this.deliver = false;
     this.deliveryForm.disable({ emitEvent: false });
     this.deliveryForm.controls.requiredControl.clearValidators();
-    this.deliveryForm.updateValueAndValidity(); // this is to rerun form validation after removing the validation for a field.
+    this.deliveryForm.updateValueAndValidity();
   }
 
-  getDate(): void{
-    this.testDate = this.returnDateForm.get('returnDate').value;
+  showOptions(event): void {
+    console.log(event.checked);
+    if (!event.checked){
+      this.checkDeliver();
+    }
+    if (event.checked){
+      this.uncheckDeliver();
+    }
+  }
+  back(): void {
+    this.location.back();
   }
 }
