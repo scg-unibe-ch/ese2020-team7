@@ -5,7 +5,6 @@ export interface TransactionAttributes {
     productId: number;
     buyerId: number;
     transactionStatus: number;
-    complete: boolean;
     deliveryStreet: string;
     deliveryPinCode: number;
     deliveryCity: string;
@@ -19,7 +18,6 @@ export class Transaction extends Model<TransactionAttributes, TransactionCreatio
     productId!: number;
     buyerId!: number;
     transactionStatus!: number;
-    complete!: boolean;
     deliveryStreet!: string;
     deliveryPinCode!: number;
     deliveryCity!: string;
@@ -43,11 +41,6 @@ export class Transaction extends Model<TransactionAttributes, TransactionCreatio
             transactionStatus: {
                 type: DataTypes.INTEGER,
                 defaultValue: 0,
-                allowNull: false
-            },
-            complete: {
-                type: DataTypes.BOOLEAN,
-                defaultValue: false,
                 allowNull: false
             },
             deliveryStreet: {

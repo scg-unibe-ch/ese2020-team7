@@ -480,7 +480,7 @@ describe('ProductService Tests', () => {
     });
     describe('Test get services Im utilizing', () => {
         it('can return services Im utilizing', function() {
-            testProductService.getServiceImUtilize(2).then(products => {
+            testProductService.getServicesImUtilizing(2).then(products => {
                 expect(products[0].productId).eq(4);
                 expect(products.length).eq(1);
             });
