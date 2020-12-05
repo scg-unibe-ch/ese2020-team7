@@ -9,8 +9,7 @@
     "prestart": "npm run build",
     "dev": "nodemon",
     "start": "node .",
-    "test": "mocha -r ts-node/register tests/**/*.test.ts",
-    "coverage": "nyc -r lcov -e .ts -x \"*.test.ts\" npm run test"
+    "test": "mocha -r ts-node/register tests/**/*.test.ts"
   },
   "dependencies": {
     "@types/cors": "^2.8.7",

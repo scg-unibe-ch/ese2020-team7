@@ -1,8 +1,6 @@
 import { UserService } from '../../src/services/user.service';
 import { User, UserAttributes } from '../../src/models/user.model';
 import { expect } from 'chai';
-import { Product } from '../../src/models/product.model';
-import { doesNotMatch } from 'assert';
 
 describe('UserService Tests', () => {
 
@@ -63,7 +61,7 @@ describe('UserService Tests', () => {
             });
         });
         it('can not register with missing necassary attributes', function() {
-            const user3: UserAttributes = {
+            testUserService.register({
                 userId: 3,
                 userName: null,
                 password: 'notSecure12',
@@ -78,13 +76,12 @@ describe('UserService Tests', () => {
                 country: null,
                 admin: false,
                 wallet: 500
-            };
-            testUserService.register(user3).catch(err => {
+            }).catch(err => {
                 expect(err).not.to.be.null;
             });
         });
         it('can not register with taken userName', function() {
-            const user3: UserAttributes = {
+            testUserService.register({
                 userId: 3,
                 userName: 'Luca',
                 password: 'notSecure12',
@@ -99,13 +96,12 @@ describe('UserService Tests', () => {
                 country: null,
                 admin: false,
                 wallet: 500
-            };
-            testUserService.register(user3).catch(err => {
+            }).catch(err => {
                 expect(err.message).eq('This username is already taken!');
             });
         });
         it('can not register with taken email', function() {
-            const user3: UserAttributes = {
+            testUserService.register({
                 userId: 3,
                 userName: 'Nora',
                 password: 'notSecure12',
@@ -120,8 +116,7 @@ describe('UserService Tests', () => {
                 country: null,
                 admin: false,
                 wallet: 500
-            };
-            testUserService.register(user3).catch(err => {
+            }).catch(err => {
                 expect(err.message).eq('This e-mail is already taken!');
             });
         });
@@ -205,7 +200,7 @@ describe('UserService Tests', () => {
                 admin: false,
                 wallet: 500
             }).catch(err => {
-                expect(err).not.to.be.null;;
+                expect(err).not.to.be.null;
             });
         });
         it('can not update user which can not be found', function() {
@@ -241,7 +236,7 @@ describe('UserService Tests', () => {
         it('can return one registered user', function() {
             testUserService.getUser(1).then(user => {
                 expect(user.userName).eq('Luca');
-            })
+            });
         });
         it('can not return nonregistered user', function() {
             testUserService.getUser(5).catch(err => {
@@ -262,14 +257,14 @@ describe('UserService Tests', () => {
                         where: {
                             userName: 'Luca'
                         }
-                    }).then(foundUser => {
-                        expect(foundUser.admin).to.be.true;
+                    }).then(foundOtherUser => {
+                        expect(foundOtherUser.admin).to.be.true;
                     });
                 });
-            });       
+            });
         });
         it('can not promote user who is not registered', function() {
-            const user4: UserAttributes = {
+            testUserService.makeAdmin({
                 userId: 4,
                 userName: 'Hans',
                 password: 'notSecure20',
@@ -284,8 +279,7 @@ describe('UserService Tests', () => {
                 country: null,
                 admin: false,
                 wallet: 500
-            };
-            testUserService.makeAdmin(user4).catch(err => {
+            }).catch(err => {
                 expect(err).not.to.be.null;
             });
         });
@@ -303,14 +297,14 @@ describe('UserService Tests', () => {
                         where: {
                             userName: 'Lewis'
                         }
-                    }).then(foundUser => {
-                        expect(foundUser.admin).to.be.false;
+                    }).then(foundOtherUser => {
+                        expect(foundOtherUser.admin).to.be.false;
                     });
                 });
-            });       
+            });
         });
         it('can not demote admin who is not registered', function() {
-            const user3: UserAttributes = {
+            testUserService.removeAdmin({
                 userId: 3,
                 userName: 'Hans',
                 password: 'notSecure20',
@@ -325,10 +319,9 @@ describe('UserService Tests', () => {
                 country: null,
                 admin: true,
                 wallet: 500
-            };
-            testUserService.removeAdmin(user3).catch(err => {
+            }).catch(err => {
                 expect(err).not.to.be.null;
             });
         });
     });
-})
+});

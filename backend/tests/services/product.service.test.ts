@@ -230,7 +230,7 @@ describe('ProductService Tests', () => {
             });
         });
         it('can not list product with missing necassary attributes', function() {
-            const product10: ProductAttributes = {
+            testProductService.create({
                 productId: 1,
                 isApproved: false,
                 title: null,
@@ -248,15 +248,14 @@ describe('ProductService Tests', () => {
                 deletedAfterSold: false,
                 rentedUntil: null,
                 returnedAfterLoan: null
-            };
-            testProductService.create(product1).catch(err => {
+            }).catch(err => {
                 expect(err).not.to.be.null;
             });
         });
     });
     describe('Test update product', () => {
         it('can update product', function() {
-            const product1: ProductAttributes = {
+            testProductService.update(1, {
                 productId: 1,
                 isApproved: false,
                 title: 'Phone',
@@ -274,8 +273,7 @@ describe('ProductService Tests', () => {
                 deletedAfterSold: false,
                 rentedUntil: null,
                 returnedAfterLoan: null
-            };
-            testProductService.update(1, product1).then(() => {
+            }).then(() => {
                 Product.findOne({
                     where: {
                         title: 'Phone'
@@ -287,7 +285,7 @@ describe('ProductService Tests', () => {
             });
         });
         it('can not update product with unallowed data', function() {
-            const product1: ProductAttributes = {
+            testProductService.update(1, {
                 productId: 1,
                 isApproved: false,
                 title: null,
@@ -305,13 +303,12 @@ describe('ProductService Tests', () => {
                 deletedAfterSold: false,
                 rentedUntil: null,
                 returnedAfterLoan: null
-            };
-            testProductService.update(1, product1).catch(err => {
+            }).catch(err => {
                 expect(err).not.to.be.null;
             });
         });
         it('can not update product which does not exist', function() {
-            const product10: ProductAttributes = {
+            testProductService.update(10, {
                 productId: 10,
                 isApproved: false,
                 title: 'Phone',
@@ -329,8 +326,7 @@ describe('ProductService Tests', () => {
                 deletedAfterSold: false,
                 rentedUntil: null,
                 returnedAfterLoan: null
-            };
-            testProductService.update(10, product10).catch(err => {
+            }).catch(err => {
                 expect(err).not.to.be.null;
             });
         });
@@ -516,7 +512,7 @@ describe('ProductService Tests', () => {
         it('can return products searched with title containing Lap', function() {
             const filter: SearchRequest = {
                 title: 'Lap'
-            }
+            };
             testProductService.search(filter).then(products => {
                 expect(products[0].productId).to.be.eq(3);
                 expect(products.length).to.be.eq(1);
@@ -525,7 +521,7 @@ describe('ProductService Tests', () => {
         it('can return products searched with location containing M', function() {
             const filter: SearchRequest = {
                 location: 'M'
-            }
+            };
             testProductService.search(filter).then(products => {
                 expect(products[0].productId).to.be.eq(6);
                 expect(products.length).to.be.eq(1);
@@ -534,7 +530,7 @@ describe('ProductService Tests', () => {
         it('can return products searched with minimum price', function() {
             const filter: SearchRequest = {
                 minPrice: 100
-            }
+            };
             testProductService.search(filter).then(products => {
                 expect(products[0].productId).to.be.eq(3);
                 expect(products.length).to.be.eq(2);
@@ -543,7 +539,7 @@ describe('ProductService Tests', () => {
         it('can return products searched with maximum price', function() {
             const filter: SearchRequest = {
                 minPrice: 100
-            }
+            };
             testProductService.search(filter).then(products => {
                 expect(products[0].productId).to.be.eq(4);
                 expect(products.length).to.be.eq(1);
@@ -553,7 +549,7 @@ describe('ProductService Tests', () => {
             const filter: SearchRequest = {
                 minPrice: 100,
                 maxPrice: 400
-            }
+            };
             testProductService.search(filter).then(products => {
                 expect(products[0].productId).to.be.eq(3);
                 expect(products.length).to.be.eq(1);
@@ -562,7 +558,7 @@ describe('ProductService Tests', () => {
         it('can return products searched with isDeliverable', function() {
             const filter: SearchRequest = {
                 isDeliverable: false
-            }
+            };
             testProductService.search(filter).then(products => {
                 expect(products[0].productId).to.be.eq(4);
                 expect(products.length).to.be.eq(2);
@@ -571,7 +567,7 @@ describe('ProductService Tests', () => {
         it('can return products searched with isProduct', function() {
             const filter: SearchRequest = {
                 isProduct: true
-            }
+            };
             testProductService.search(filter).then(products => {
                 expect(products[0].productId).to.be.eq(3);
                 expect(products.length).to.be.eq(2);
@@ -580,7 +576,7 @@ describe('ProductService Tests', () => {
         it('can return products searched with isSelling', function() {
             const filter: SearchRequest = {
                 isSelling: false
-            }
+            };
             testProductService.search(filter).then(products => {
                 expect(products[0].productId).to.be.eq(6);
                 expect(products.length).to.be.eq(1);
