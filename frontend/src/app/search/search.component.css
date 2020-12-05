@@ -12,6 +12,22 @@ input[type=search] {
   transition: width 0.4s ease-in-out;
   margin-top: 10px;
 }
+input[type=search]:focus {
+  width: 50%;
+}
+input[type=text] {
+  width: 70px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 5px;
+  margin-top: 10px;
+}
+
 .mat-select{
   margin-top: 10px;
 }
@@ -19,8 +35,8 @@ input[type=search] {
   background-color: #cccccc;
   display: table-cell;
   font-size: 14px;
-  min-width: 120px;
+  min-width: 80px;
 }
-input[type=search]:focus {
-  width: 50%;
+mat-button-toggle-group {
+  margin-left: 12px;
 }

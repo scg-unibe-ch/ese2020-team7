@@ -1,4 +1,5 @@
 import { SearchRequest } from '../models/search.model';
+import { Transaction, TransactionAttributes } from '../models/transaction.model';
 import { Product, ProductAttributes } from './../models/product.model';
 
 export class ProductService {
@@ -17,6 +18,16 @@ export class ProductService {
                 })
         )
         .catch(err => Promise.reject(err));
+    }
+
+    public rent(productId: number, rentedUntil: Date): Promise<Product> {
+        return Product.findByPk(productId)
+            .then(found =>
+                found.update({rentedUntil: rentedUntil})
+                    .then(() => { return Promise.resolve(found);
+                    })
+            )
+            .catch(err => Promise.reject(err));
     }
 
     public approve(productId: number): Promise<Product> {
@@ -169,15 +180,41 @@ export class ProductService {
         });
     }
 
-    public getServiceImUtilize(thisUserId: number): Promise<Product[]> {
-        const { Op } = require('sequelize');
-        return Product.findAll({
+    public getProductsIRented(thisUserId: number): Promise<Product[]> {
+        const Rented: Product[] = [];
+        return Transaction.findAll({
             where: {
-                [ Op.and ]: [
-                    { buyerId: thisUserId},
-                    { isProduct: false },
-                ]
+                buyerId: thisUserId
+
             }
+        }).then(async foundTransactions => {
+            for await (const element of foundTransactions) {
+                const product = await Product.findByPk(element.productId);
+                if (product.isProduct && !product.isSelling) {
+                    Rented.push(product);
+                }
+            }
+        }).then(() => {
+            return Promise.resolve(Rented);
+        });
+    }
+
+    public getServicesImUtilizing(thisUserId: number): Promise<Product[]> {
+        const Services: Product[] = [];
+        return Transaction.findAll({
+            where: {
+                buyerId: thisUserId
+
+            }
+        }).then(async foundTransactions => {
+            for await (const element of foundTransactions) {
+                const service = await Product.findByPk(element.productId);
+                if (!service.isProduct) {
+                    Services.push(service);
+                }
+            }
+        }).then(() => {
+            return Promise.resolve(Services);
         });
     }
 

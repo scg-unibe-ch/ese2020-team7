@@ -36,14 +36,15 @@ import { ProductDetailComponent } from './catalog/product-detail/product-detail.
 import { UserPanelComponent } from './user-panel/user-panel.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
-import { MatDialogModule } from '@angular/material/dialog';
 import { BuyProductComponent } from './catalog/buy-product/buy-product.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatNativeDateModule, MAT_DATE_LOCALE} from '@angular/material/core';
 import { EditUserComponent } from './registration/edit-user/edit-user.component';
 import {SearchComponent} from './search/search.component';
 import {MatSelectModule} from '@angular/material/select';
-
+import {MatDialogModule} from '@angular/material/dialog';
+import { DeleteProductDialogComponent } from './user-panel/delete-product-dialog/delete-product-dialog.component';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [
@@ -65,33 +66,36 @@ import {MatSelectModule} from '@angular/material/select';
     UserPanelComponent,
     BuyProductComponent,
     EditUserComponent,
-    SearchComponent
+    SearchComponent,
+    DeleteProductDialogComponent
   ],
-    imports: [
-        AppRoutingModule,
-        BrowserModule,
-        BrowserAnimationsModule,
-        FormsModule,
-        HttpClientModule,
-        MatButtonModule,
-        MatListModule,
-        MatInputModule,
-        MatCheckboxModule,
-        MatCardModule,
-        MatTabsModule,
-        MatToolbarModule,
-        ReactiveFormsModule,
-        MatExpansionModule,
-        RouterModule.forRoot([]),
-        MatRadioModule,
-        MatPaginatorModule,
-        MatIconModule,
-        MatMenuModule,
-        MatDialogModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        MatSelectModule,
-    ],
+  entryComponents: [DeleteProductDialogComponent],
+  imports: [
+    AppRoutingModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule,
+    MatButtonModule,
+    MatListModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatCardModule,
+    MatTabsModule,
+    MatToolbarModule,
+    ReactiveFormsModule,
+    MatExpansionModule,
+    RouterModule.forRoot([]),
+    MatRadioModule,
+    MatPaginatorModule,
+    MatIconModule,
+    MatMenuModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
+    MatDialogModule,
+    MatButtonToggleModule,
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

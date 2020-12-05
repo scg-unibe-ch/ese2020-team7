@@ -14,31 +14,40 @@ export class SearchComponent implements OnInit {
 
   products: Product[] = [];
   searchText: string;
-  products1: Product[] = [];
   location: string;
   selectedValue: string;
   productLocation: Product[] = [];
+  min: number;
+  max: number;
+  isDeliverable: boolean;
+  isProduct: boolean;
+  isSelling: boolean;
+
 
   constructor(private httpClient: HttpClient) {
   }
   ngOnInit(): void {
     this.getLocation();
   }
+    reset(): void {
+    this.products = [];
+    this.searchText = null;
+    this.location = null;
+    this.selectedValue = null;
+    this.min = null;
+    this.max = null;
+    this.isDeliverable = null;
+    this.isProduct = null;
+    this.isSelling = null;
+  }
 
-  search(): void {
+    search(): void {
     this.httpClient.post(environment.endpointURL + 'product/searchedProducts', {
-      title: this.searchText
+      title: this.searchText, location: this.selectedValue, minPrice: this.min, maxPrice: this.max,
+      isDeliverable: this.isDeliverable, isSelling: this.isSelling, isProduct: this.isProduct
     }).subscribe((data: Product[]) => {
       console.log(data);
       this.products = data;
-    });
-  }
-  filterLocation(): void {
-    this.httpClient.post(environment.endpointURL + 'product/searchedProducts', {
-      location: this.selectedValue
-    }).subscribe((data: Product[]) => {
-      console.log(data);
-      this.products1 = data;
     });
   }
   getLocation(): void {

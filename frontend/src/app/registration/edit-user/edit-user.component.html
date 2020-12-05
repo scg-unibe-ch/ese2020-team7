@@ -161,7 +161,8 @@
                          type="text"
                          formControlName="oldPassword"
                          [type]="oldHide ? 'password' : 'text'"
-                          (click) = "changingPassword()">
+                          (click) = "changingPassword()"
+                         (keyup.enter)="changePassword()">
                 </label>
                 <mat-icon matSuffix (click)="oldHide = !oldHide">{{oldHide ? 'visibility_off' : 'visibility'}}</mat-icon>
 
@@ -185,7 +186,8 @@
               <input matInput
                      type="text"
                      formControlName="password"
-                     [type]="newHide ? 'password' : 'text'">
+                     [type]="newHide ? 'password' : 'text'"
+                     (keyup.enter)="changePassword()">
             </label>
           <mat-icon matSuffix (click)="newHide = !newHide">{{newHide ? 'visibility_off' : 'visibility'}}</mat-icon>
 
