@@ -5,7 +5,7 @@
 mat-toolbar a{
   display: inline-block;
   margin: 0 10px;
-  color: white;
+  color: var(--primary);
   text-decoration: none;
 }
 
