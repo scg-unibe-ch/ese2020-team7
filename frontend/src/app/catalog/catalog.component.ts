@@ -12,17 +12,19 @@ import { BookmarksService } from '../bookmarks/bookmarks.service';
 export class CatalogComponent implements OnInit {
 
   products: Product[] = [];
-  savedProducts: String[];
+  savedProducts: string[];
   allProducts: string;
-  allProductsArray: String[];
+  allProductsArray: string[];
   userNameOrMail = '';
   userToken: string;
   loggedIn = false;
   isAdmin: boolean;
   userId: number;
   name: string;
+  public localBookmarks: Product[] = [];
 
-  constructor(private httpClient: HttpClient, public bookmarksService: BookmarksService) {}
+  constructor(private httpClient: HttpClient,
+              public bookmarksService: BookmarksService) {}
 
   purchase(): void {
     window.alert('The add-product has been bought! Hooray!');
@@ -32,8 +34,8 @@ export class CatalogComponent implements OnInit {
     console.log('product', product);
     this.bookmarksService.addFinalToBookmarks(product);
     this.bookmarksService.fetchBookmarksProduct();
-    localStorage.setItem("productBookmarked", "true");
-    product.isBookmarked = !!(localStorage.getItem("productBookmarked"));
+    localStorage.setItem('productBookmarked', 'true');
+    product.isBookmarked = !!(localStorage.getItem('productBookmarked'));
   }
 
   ngOnInit(): void {
@@ -47,6 +49,7 @@ export class CatalogComponent implements OnInit {
       console.log(data);
       this.products = data;
     });
+    this.localBookmarks = this.bookmarksService.fetchBookmarksProduct();
   }
 
   checkUserStatus(): void {
@@ -57,6 +60,15 @@ export class CatalogComponent implements OnInit {
     this.userId = JSON.parse(localStorage.getItem('userId'));
     // Set boolean whether a user is logged in or not
     this.loggedIn = !!(this.userToken);
+  }
+
+  checkBookmarked(product: Product): boolean {
+    for (let i = 0; i < this.localBookmarks.length; i++) {
+      if (this.localBookmarks[i].productId === product.productId) {
+        return true;
+      }
+    }
+    return false;
   }
 
   checkBookmarks(): void {

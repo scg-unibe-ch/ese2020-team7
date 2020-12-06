@@ -18,13 +18,13 @@ export class BookmarksComponent implements OnInit {
     this.localBookmarks = this.bookmarkService.fetchBookmarksProduct();
   }
 
-  addItemToBookmarks(product: Product) : void {
-    this.bookmarkService.addFinalToBookmarks(product)
+  addItemToBookmarks(product: Product): void {
+    this.bookmarkService.addFinalToBookmarks(product);
     this.localBookmarks = this.bookmarkService.fetchBookmarksProduct();
   }
 
   deleteBookmarksItem(product: Product): void {
-    console.log("0000>>>", product);
+    console.log('0000>>>', product);
     this.bookmarkService.removeBookmarksItem(product);
     this.localBookmarks = this.bookmarkService.fetchBookmarksProduct();
   }

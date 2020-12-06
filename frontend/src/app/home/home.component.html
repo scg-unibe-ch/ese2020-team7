@@ -1,5 +1,13 @@
 
 <mat-tab-group animationDuration="800ms">
+
+  <mat-tab label="Catalog">
+    <p></p>
+    <h1>Current Listings</h1>
+    <app-catalog></app-catalog>
+  </mat-tab>
+
+  <!--
   <mat-tab label="Todo List Example">
     <mat-card>
       <mat-form-field>
@@ -14,15 +22,16 @@
       (delete)="onListDelete($event)"
     ></app-todo-list>
   </mat-tab>
+  -->
 
-  <mat-tab label="Catalog">
-    <p></p>
-    <h1>Current Listings</h1>
-    <app-catalog></app-catalog>
-  </mat-tab>
-
+  <!--
   <mat-tab label="Admin-Panel">
     <app-admin-panel></app-admin-panel>
+  </mat-tab>
+  -->
+
+  <mat-tab label="My Bookmarks">
+    <app-bookmarks></app-bookmarks>
   </mat-tab>
 
 </mat-tab-group>
