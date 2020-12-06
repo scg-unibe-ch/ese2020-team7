@@ -219,13 +219,13 @@ describe('ProductService Tests', () => {
             testProductService.create(product1).then(product => {
                 expect(product.title).eq('Phone');
                 expect(product.price).eq(300);
-                expect(product.rejectionReason).to.be.null;
+                expect(product.rejectionReason).to.be.null();
                 Product.findOne({
                     where: {
                         title: 'Phone'
                     }
                 }).then(foundProduct => {
-                    expect(foundProduct).not.to.be.null;
+                    expect(foundProduct).not.to.be.null();
                 });
             });
         });
@@ -249,7 +249,7 @@ describe('ProductService Tests', () => {
                 rentedUntil: null,
                 returnedAfterLoan: null
             }).catch(err => {
-                expect(err).not.to.be.null;
+                expect(err).not.to.be.null();
             });
         });
     });
@@ -280,7 +280,7 @@ describe('ProductService Tests', () => {
                     }
                 }).then(foundProduct => {
                     expect(foundProduct.location).eq('Freiburg');
-                    expect(foundProduct.isDeliverable).to.be.false;
+                    expect(foundProduct.isDeliverable).to.be.false();
                 });
             });
         });
@@ -304,7 +304,7 @@ describe('ProductService Tests', () => {
                 rentedUntil: null,
                 returnedAfterLoan: null
             }).catch(err => {
-                expect(err).not.to.be.null;
+                expect(err).not.to.be.null();
             });
         });
         it('can not update product which does not exist', function() {
@@ -327,7 +327,7 @@ describe('ProductService Tests', () => {
                 rentedUntil: null,
                 returnedAfterLoan: null
             }).catch(err => {
-                expect(err).not.to.be.null;
+                expect(err).not.to.be.null();
             });
         });
     });
@@ -339,13 +339,13 @@ describe('ProductService Tests', () => {
                         title: 'Phone'
                     }
                 }).then(foundProduct => {
-                    expect(foundProduct.isApproved).to.be.true;
+                    expect(foundProduct.isApproved).to.be.true();
                 });
             });
         });
         it('can not approve product which does not exist', function() {
             testProductService.approve(10).catch(err => {
-                expect(err).not.to.be.null;
+                expect(err).not.to.be.null();
             });
         });
     });
@@ -357,14 +357,14 @@ describe('ProductService Tests', () => {
                         title: 'Phone'
                     }
                 }).then(foundProduct => {
-                    expect(foundProduct.isApproved).to.be.false;
+                    expect(foundProduct.isApproved).to.be.false();
                     expect(foundProduct.rejectionReason).eq('Please enter a better description!');
                 });
             });
         });
         it('can not reject product which does not exist', function() {
             testProductService.reject(10, 'Please enter a better description!').catch(err => {
-                expect(err).not.to.be.null;
+                expect(err).not.to.be.null();
             });
         });
     });
@@ -382,7 +382,7 @@ describe('ProductService Tests', () => {
         });
         it('can not delete product which does not exist', function() {
             testProductService.delete(10).catch(err => {
-                expect(err).not.to.be.null;
+                expect(err).not.to.be.null();
             });
         });
     });
@@ -498,13 +498,13 @@ describe('ProductService Tests', () => {
                         productId: 2
                     }
                 }).then(foundProduct => {
-                    expect(foundProduct.deletedAfterSold).to.be.true;
+                    expect(foundProduct.deletedAfterSold).to.be.true();
                 });
             });
         });
         it('can not delete product after it sold which does not exist', function() {
             testProductService.deleteProductAfterSold(10).catch(err => {
-                expect(err).not.to.be.null;
+                expect(err).not.to.be.null();
             });
         });
     });
