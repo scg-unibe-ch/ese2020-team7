@@ -1,8 +1,12 @@
 import { expect } from 'chai';
+import dirtychai from 'dirty-chai';
 import { ProductAttributes, Product } from '../../src/models/product.model';
 import { Transaction, TransactionAttributes } from '../../src/models/transaction.model';
 import { User, UserAttributes } from '../../src/models/user.model';
 import { TransactionService } from '../../src/services/transaction.service';
+
+const chai = require('chai');
+chai.use(dirtychai);
 
 describe('TransactionService Tests', () => {
 

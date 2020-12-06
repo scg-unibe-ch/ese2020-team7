@@ -3,6 +3,7 @@ import { User, UserAttributes } from '../../src/models/user.model';
 import dirtychai from 'dirty-chai';
 import { expect } from 'chai';
 
+const chai = require('chai');
 chai.use(dirtychai);
 
 describe('UserService Tests', () => {

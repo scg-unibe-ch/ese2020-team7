@@ -2,7 +2,11 @@ import { ProductService } from '../../src/services/product.service';
 import { Product, ProductAttributes } from '../../src/models/product.model';
 import { User, UserAttributes } from '../../src/models/user.model';
 import { expect } from 'chai';
+import dirtychai from 'dirty-chai';
 import { SearchRequest } from '../../src/models/search.model';
+
+const chai = require('chai');
+chai.use(dirtychai);
 
 describe('ProductService Tests', () => {
 
