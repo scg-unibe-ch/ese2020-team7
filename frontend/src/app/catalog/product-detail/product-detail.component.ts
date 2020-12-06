@@ -14,8 +14,7 @@ import {Location} from '@angular/common';
 })
 export class ProductDetailComponent implements OnInit {
 
-  product: Product = new Product(null, null, '', null, null, '', '', null, null, null,
-    '', null, '', null, null, null, null, null, null, null);
+  product: Product = new Product(null, null, '', null, null, '', '', null, null, null, '', null, '', null, null, null, false, null, null, null, null);
   seller: User = new User(null, '', '', '', '', '', '', null, null, null, null, null, null, null);
 
   productId: number;

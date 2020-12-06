@@ -16,7 +16,7 @@ import { Product } from '../models/product.model';
       this.fetchBookmarksProduct(); 
      }
   
-    addFinalToBookmarks(product:Product) {
+    addFinalToBookmarks(product:Product) : boolean {
       let flagProductExist = false;
       for(let i=0; i<this.bookmarksProductArray.length;i++) {
           if(this.bookmarksProductArray[i].productId == product.productId) {
@@ -28,6 +28,7 @@ import { Product } from '../models/product.model';
         this.bookmarksProductArray.push(product);
       }
       localStorage.setItem("bookmarks",JSON.stringify(this.bookmarksProductArray));
+      //product.isBookmarked = true;
     }
     
     fetchBookmarksProduct() {
@@ -39,8 +40,16 @@ import { Product } from '../models/product.model';
       const index: number = this.bookmarksProductArray.indexOf(product);
       if (index !== -1) {
         this.bookmarksProductArray.splice(index, 1);
+        product.isBookmarked = false;
       localStorage.setItem("bookmarks",JSON.stringify(this.bookmarksProductArray));
       }    
     }
 
+    checkBookmarked(product: Product) {
+      for (let i = 0; i < this.bookmarksProductArray.length; i++) {
+        if(this.bookmarksProductArray[i].productId == product.productId) {
+          product.isBookmarked = true;
+        }
+      }
+    }
   }

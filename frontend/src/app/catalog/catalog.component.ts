@@ -9,15 +9,18 @@ import { BookmarksService } from '../bookmarks/bookmarks.service';
   templateUrl: './catalog.component.html',
   styleUrls: ['./catalog.component.css'],
 })
-export class CatalogComponent implements OnInit{
+export class CatalogComponent implements OnInit {
 
   products: Product[] = [];
-  savedProducts: Product[] = [];
+  savedProducts: String[];
+  allProducts: string;
+  allProductsArray: String[];
   userNameOrMail = '';
   userToken: string;
   loggedIn = false;
   isAdmin: boolean;
   userId: number;
+  name: string;
 
   constructor(private httpClient: HttpClient, public bookmarksService: BookmarksService) {}
 
@@ -29,7 +32,8 @@ export class CatalogComponent implements OnInit{
     console.log('product', product);
     this.bookmarksService.addFinalToBookmarks(product);
     this.bookmarksService.fetchBookmarksProduct();
-    window.alert('The product has been added to your bookmarks!');
+    localStorage.setItem("productBookmarked", "true");
+    product.isBookmarked = !!(localStorage.getItem("productBookmarked"));
   }
 
   ngOnInit(): void {
@@ -53,5 +57,20 @@ export class CatalogComponent implements OnInit{
     this.userId = JSON.parse(localStorage.getItem('userId'));
     // Set boolean whether a user is logged in or not
     this.loggedIn = !!(this.userToken);
+  }
+
+  checkBookmarks(): void {
+    for (let i = 0; i < this.products.length; i++) {
+      this.bookmarksService.checkBookmarked(this.products[i]);
+    }
+  /*this.allProducts = JSON.stringify(this.products);
+  this.savedProducts = localStorage.getItem("bookmarks").split(',');
+  this.allProductsArray = this.allProducts.split(',');
+  for (let i = 0; i < this.allProductsArray.length; i++) {
+    for (let j = 0; j < this.savedProducts.length; j++) {
+      if (this.allProductsArray[i] = this.savedProducts[j]) {
+        this.products[i].isBookmarked = true;
+      }
+    }*/
   }
 }

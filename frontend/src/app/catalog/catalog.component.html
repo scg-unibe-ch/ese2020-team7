@@ -1,5 +1,4 @@
 <!-- list of products-->
-
 <div *ngFor="let product of products">
   <mat-card>
     <h2>
@@ -15,7 +14,7 @@
       {{ product.description }}
     </p>
 
-    <button mat-raised-button color="basic" *ngIf="loggedIn" (click)="addToBookmarks(product)">
+    <button mat-raised-button color="basic" *ngIf="loggedIn" id= "saveBtn" [disabled]="product.isBookmarked" (click)="addToBookmarks(product);">
       <mat-icon>favorite</mat-icon>
       Add to bookmarks!
     </button>
