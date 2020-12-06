@@ -1,6 +1,9 @@
 import { UserService } from '../../src/services/user.service';
 import { User, UserAttributes } from '../../src/models/user.model';
+import dirtychai from 'dirty-chai';
 import { expect } from 'chai';
+
+chai.use(dirtychai);
 
 describe('UserService Tests', () => {
 
@@ -49,13 +52,13 @@ describe('UserService Tests', () => {
             testUserService.register(user1).then(user => {
                 expect(user.userName).eq('Luca');
                 expect(user.city).eq('Schmitten');
-                expect(user.street).to.be.null;
+                expect(user.street).to.be.null();
                 User.findOne({
                     where: {
                         userName: 'Luca'
                     }
                 }).then(foundUser => {
-                    expect(foundUser).not.to.be.null;
+                    expect(foundUser).not.to.be.null();
                     expect(foundUser.password).not.to.be.eq('notSecure10');
                 });
             });
@@ -77,7 +80,7 @@ describe('UserService Tests', () => {
                 admin: false,
                 wallet: 500
             }).catch(err => {
-                expect(err).not.to.be.null;
+                expect(err).not.to.be.null();
             });
         });
         it('can not register with taken userName', function() {
@@ -200,7 +203,7 @@ describe('UserService Tests', () => {
                 admin: false,
                 wallet: 500
             }).catch(err => {
-                expect(err).not.to.be.null;
+                expect(err).not.to.be.null();
             });
         });
         it('can not update user which can not be found', function() {
@@ -220,7 +223,7 @@ describe('UserService Tests', () => {
                 admin: false,
                 wallet: 500
             }).catch(err => {
-                expect(err).not.to.be.null;
+                expect(err).not.to.be.null();
             });
         });
     });
@@ -240,7 +243,7 @@ describe('UserService Tests', () => {
         });
         it('can not return nonregistered user', function() {
             testUserService.getUser(5).catch(err => {
-                expect(err).not.to.be.null;
+                expect(err).not.to.be.null();
             });
         });
     });
@@ -251,14 +254,14 @@ describe('UserService Tests', () => {
                     userName: 'Luca'
                 }
             }).then(foundUser => {
-                expect(foundUser.admin).to.be.false;
+                expect(foundUser.admin).to.be.false();
                 testUserService.makeAdmin(user1).then(() => {
                     User.findOne({
                         where: {
                             userName: 'Luca'
                         }
                     }).then(foundOtherUser => {
-                        expect(foundOtherUser.admin).to.be.true;
+                        expect(foundOtherUser.admin).to.be.true();
                     });
                 });
             });
@@ -280,7 +283,7 @@ describe('UserService Tests', () => {
                 admin: false,
                 wallet: 500
             }).catch(err => {
-                expect(err).not.to.be.null;
+                expect(err).not.to.be.null();
             });
         });
     });
@@ -291,14 +294,14 @@ describe('UserService Tests', () => {
                     userName: 'Lewis'
                 }
             }).then(foundUser => {
-                expect(foundUser.admin).to.be.true;
+                expect(foundUser.admin).to.be.true();
                 testUserService.removeAdmin(user2).then(() => {
                     User.findOne({
                         where: {
                             userName: 'Lewis'
                         }
                     }).then(foundOtherUser => {
-                        expect(foundOtherUser.admin).to.be.false;
+                        expect(foundOtherUser.admin).to.be.false();
                     });
                 });
             });
@@ -320,7 +323,7 @@ describe('UserService Tests', () => {
                 admin: true,
                 wallet: 500
             }).catch(err => {
-                expect(err).not.to.be.null;
+                expect(err).not.to.be.null();
             });
         });
     });
