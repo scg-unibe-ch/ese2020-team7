@@ -5,6 +5,8 @@ import { expect } from 'chai';
 import dirtychai from 'dirty-chai';
 import { SearchRequest } from '../../src/models/search.model';
 
+// use command "npm run test" to run the tests
+
 const chai = require('chai');
 chai.use(dirtychai);
 

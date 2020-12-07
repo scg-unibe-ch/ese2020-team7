@@ -5,6 +5,8 @@ import { Transaction, TransactionAttributes } from '../../src/models/transaction
 import { User, UserAttributes } from '../../src/models/user.model';
 import { TransactionService } from '../../src/services/transaction.service';
 
+// use command "npm run test" to run the tests
+
 const chai = require('chai');
 chai.use(dirtychai);
 
