@@ -70,7 +70,7 @@ export class UserService {
     }
 
     public getAll(): Promise<User[]> {
-        return User.findAll({ include: [User.associations.products] });
+        return User.findAll();
     }
 
     public getUser(thisUserId: number): Promise<User> {
@@ -78,7 +78,8 @@ export class UserService {
             where: {
                 userId: thisUserId
             }
-        });
+        })
+        .catch(err => Promise.reject(err));
     }
 
     public makeAdmin(user: UserAttributes): Promise<User> {
