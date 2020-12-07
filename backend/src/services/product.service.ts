@@ -294,6 +294,10 @@ export class ProductService {
             [ Op.is ]: true
         };
 
+        options.isAvailable = {
+            [ Op.is ]: true
+        };
+
         return Product.findAll({
             where: options
         });
