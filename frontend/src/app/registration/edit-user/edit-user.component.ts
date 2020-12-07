@@ -32,12 +32,13 @@ export class EditUserComponent implements OnInit {
   errorMessage: string;
   passwordErrorMessage: string;
   passwordPattern = '^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{7,}$';
+  emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
 
   userForm = this.formBuilder.group({
     userName: [null, Validators.required],
     firstName: [null, Validators.required],
     lastName: [null, Validators.required],
-    email: [null, Validators.required],
+    email: [null, [Validators.required, Validators.pattern(this.emailPattern)]],
     gender: [null],
     telephoneNumber: [null],
     street: [null],

@@ -1,6 +1,11 @@
 
-<mat-toolbar color="primary">
+<mat-toolbar color="accent">
   <a routerLink="/">ESE-2020 Team 7</a>
+  <label>
+    <input class="round" [(ngModel)]="searchText" name="text"
+           placeholder="Search Products">
+  </label>
+  <button mat-icon-button (click)="searchForNewKey()"><mat-icon>search</mat-icon></button>
 
   <span class="max-spacer"></span>
 
@@ -22,10 +27,10 @@
         arrow_drop_down
       </mat-icon>
     </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="/user-products"><mat-icon>local_offer</mat-icon>My products</button>
-      <button mat-menu-item (click)="logout()"><mat-icon>login</mat-icon>Logout</button>
-      <button mat-menu-item routerLink="/settings"><mat-icon>settings</mat-icon>Settings</button>
+    <mat-menu #menu="matMenu" class="menu-overflow-hidden">
+      <button mat-menu-item style="margin-left: 0 !important;" routerLink="/user-products"><mat-icon>local_offer</mat-icon>My products</button>
+      <button mat-menu-item style="margin-left: 0 !important;" (click)="logout()"><mat-icon>login</mat-icon>Logout</button>
+      <button mat-menu-item style="margin-left: 0 !important;" routerLink="/settings"><mat-icon>settings</mat-icon>Settings</button>
     </mat-menu>
   </div>
 
@@ -34,5 +39,11 @@
   </div>
 
 </mat-toolbar>
-<app-search></app-search>
+
 <router-outlet class="content"></router-outlet>
+
+<!-- ***************** farbschema demo **********************-->
+
+<button mat-flat-button color="primary">Primary</button>
+<button mat-flat-button color="accent">accent</button>
+<button mat-flat-button color="warn">warn</button>

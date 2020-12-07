@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +9,15 @@ import {HttpClient} from '@angular/common/http';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient,
+              private  router: Router,
+              private route: ActivatedRoute) { }
 
   userName = '';
   userToken: string;
   loggedIn = false;
   isAdmin: boolean;
+  searchText: '';
 
   ngOnInit(): void {
     this.checkUserStatus();
@@ -33,7 +37,22 @@ export class AppComponent implements OnInit {
     // Remove user data from local storage
     localStorage.removeItem('userToken');
     localStorage.removeItem('userName');
+    localStorage.removeItem('admin');
+    localStorage.removeItem('userId');
 
     this.checkUserStatus();
+    this.back();
+  }
+
+  back(): void {
+    this.router.navigate(['../../..'], { relativeTo: this.route });
+  }
+
+  searchForNewKey(): void{
+    this.router.navigate(['/search'],
+      {queryParams: {key: this.searchText}})
+      .then(() => {
+        window.location.reload();
+      });
   }
 }

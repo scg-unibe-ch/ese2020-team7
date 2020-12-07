@@ -1,8 +1,99 @@
 @import '~@angular/material/theming';
 @include mat-core();
 
-$my-app-primary: mat-palette($mat-blue-grey);
-$my-app-accent:  mat-palette($mat-pink, 500, 900, A100);
-$my-app-warn:    mat-palette($mat-deep-orange);
+//custom farbpalette, erstellt auf http://mcg.mbitson.com/
+$custom-blue-gray: (
+  50 : #e7ebef,
+  100 : #c2ced6,
+  200 : #9aaebb,
+  300 : #728d9f,
+  400 : #53748b,
+  500 : #355c76,
+  600 : #30546e,
+  700 : #284a63,
+  800 : #224159,
+  900 : #163046,
+  A100 : #84c3ff,
+  A200 : #51aaff,
+  A400 : #1e91ff,
+  A700 : #0485ff,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : map_get($mat-amber, A400),
+    500 : map_get($mat-amber, A400),
+    600 : map_get($mat-amber, A400),
+    700 : map_get($mat-amber, A400),
+    800 : map_get($mat-amber, A400),
+    900 : map_get($mat-amber, A400),
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #ffffff,
+    A700 : #ffffff,
+  )
+);
+
+$mat-amber: (
+  50: #fff8e1,
+  100: #ffecb3,
+  200: #ffe082,
+  300: #ffd54f,
+  400: #ffca28,
+  500: #ffc107,
+  600: #ffb300,
+  700: #ffa000,
+  800: #ff8f00,
+  900: #ff6f00,
+  A100: #ffe57f,
+  A200: #ffd740,
+  A400: #ffc400,
+  A700: #ffab00,
+  contrast: (
+    50: map_get($custom-blue-gray, 600),
+    100: map_get($custom-blue-gray, 600),
+    200: map_get($custom-blue-gray, 600),
+    300: map_get($custom-blue-gray, 600),
+    400: map_get($custom-blue-gray, 600),
+    500: map_get($custom-blue-gray, 600),
+    600: map_get($custom-blue-gray, 600),
+    700: map_get($custom-blue-gray, 600),
+    800: map_get($custom-blue-gray, 600),
+    900: map_get($custom-blue-gray, 600),
+    A100: map_get($custom-blue-gray, 600),
+    A200: map_get($custom-blue-gray, 600),
+    A400: map_get($custom-blue-gray, 600),
+    A700: map_get($custom-blue-gray, 600),
+  )
+);
+
+$mat-light-theme-foreground: (
+  base:              black, // füllung des "choose location"
+  divider:           $dark-dividers,
+  dividers:          $dark-dividers,
+  disabled:          $dark-disabled-text,
+  disabled-button:   rgba(black, 0.26), // text auf disabled button
+  disabled-text:     $dark-disabled-text,
+  elevation:         black, // farbe des schattens, z.B. um mat card
+  hint-text:         $dark-disabled-text,
+  secondary-text:    $dark-secondary-text, // z.B. placeholder text in einem Input Feld
+  icon:              rgba(black, 0.54),
+  icons:             rgba(black, 0.54),
+  text:              rgba(black, 0.87), // Z.B. Text in den Filter-buttons, Tab-Namen...
+);
+
+$mat-light-theme-background: (
+  card:       map_get($mat-grey, 200),
+  dialog:     map_get($mat-orange, 50),
+  disabled-button: rgba(black, 0.12), // farbe des disabled button
+  selected-button: map_get($mat-amber, 200), //z.B. Farbe des gewählten Filters
+  unselected-chip: map_get($mat-grey, 300),
+);
+
+
+$my-app-primary: mat-palette($custom-blue-gray, 500, 400, 800);
+$my-app-accent:  mat-palette($mat-amber, A400, 200, 700);
+$my-app-warn:    mat-palette($mat-red, 500);
 $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
 @include angular-material-theme($my-app-theme);

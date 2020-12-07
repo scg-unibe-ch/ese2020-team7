@@ -20,6 +20,16 @@ export class ProductService {
         .catch(err => Promise.reject(err));
     }
 
+    public rent(productId: number, rentedUntil: Date): Promise<Product> {
+        return Product.findByPk(productId)
+            .then(found =>
+                found.update({rentedUntil: rentedUntil})
+                    .then(() => { return Promise.resolve(found);
+                    })
+            )
+            .catch(err => Promise.reject(err));
+    }
+
     public approve(productId: number): Promise<Product> {
         return Product.findByPk(productId)
         .then(found =>

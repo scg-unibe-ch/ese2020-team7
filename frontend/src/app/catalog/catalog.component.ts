@@ -9,17 +9,22 @@ import { BookmarksService } from '../bookmarks/bookmarks.service';
   templateUrl: './catalog.component.html',
   styleUrls: ['./catalog.component.css'],
 })
-export class CatalogComponent implements OnInit{
+export class CatalogComponent implements OnInit {
 
   products: Product[] = [];
-  savedProducts: Product[] = [];
+  savedProducts: string[];
+  allProducts: string;
+  allProductsArray: string[];
   userNameOrMail = '';
   userToken: string;
   loggedIn = false;
   isAdmin: boolean;
   userId: number;
+  name: string;
+  public localBookmarks: Product[] = [];
 
-  constructor(private httpClient: HttpClient, public bookmarksService: BookmarksService) {}
+  constructor(private httpClient: HttpClient,
+              public bookmarksService: BookmarksService) {}
 
   purchase(): void {
     window.alert('The add-product has been bought! Hooray!');
@@ -29,15 +34,22 @@ export class CatalogComponent implements OnInit{
     console.log('product', product);
     this.bookmarksService.addFinalToBookmarks(product);
     this.bookmarksService.fetchBookmarksProduct();
-    window.alert('The product has been added to your bookmarks!');
+    localStorage.setItem('productBookmarked', 'true');
+    product.isBookmarked = !!(localStorage.getItem('productBookmarked'));
   }
 
   ngOnInit(): void {
     this.checkUserStatus();
     this.httpClient.get(environment.endpointURL + 'product/approvedAndAvailableProducts').subscribe((data: Product[]) => {
+      data.sort((f, n): number => {
+        if (f.createdAt > n.createdAt){ return -1; }
+        if (f.createdAt < n.createdAt){ return 1; }
+        return 0;
+      });
       console.log(data);
       this.products = data;
     });
+    this.localBookmarks = this.bookmarksService.fetchBookmarksProduct();
   }
 
   checkUserStatus(): void {
@@ -48,5 +60,29 @@ export class CatalogComponent implements OnInit{
     this.userId = JSON.parse(localStorage.getItem('userId'));
     // Set boolean whether a user is logged in or not
     this.loggedIn = !!(this.userToken);
+  }
+
+  checkBookmarked(product: Product): boolean {
+    for (let i = 0; i < this.localBookmarks.length; i++) {
+      if (this.localBookmarks[i].productId === product.productId) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  checkBookmarks(): void {
+    for (let i = 0; i < this.products.length; i++) {
+      this.bookmarksService.checkBookmarked(this.products[i]);
+    }
+  /*this.allProducts = JSON.stringify(this.products);
+  this.savedProducts = localStorage.getItem("bookmarks").split(',');
+  this.allProductsArray = this.allProducts.split(',');
+  for (let i = 0; i < this.allProductsArray.length; i++) {
+    for (let j = 0; j < this.savedProducts.length; j++) {
+      if (this.allProductsArray[i] = this.savedProducts[j]) {
+        this.products[i].isBookmarked = true;
+      }
+    }*/
   }
 }

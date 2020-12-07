@@ -16,6 +16,11 @@ export class Product{
     public review: string,
     public userId: number,
     public dateBought: Date,
-    public deletedAfterSold: boolean
+    public deletedAfterSold: boolean,
+    public isBookmarked: boolean,
+    public buyerId: number,
+    public rentedUntil: Date,
+    public returnedAfterLoan: boolean,
+    public createdAt: Date
   ) {}
 }
