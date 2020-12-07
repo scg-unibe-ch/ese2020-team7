@@ -58,6 +58,7 @@
               <div *ngIf="!(userSubmitted && f.email.errors)" class="invalid-feedback"><br></div>
               <div *ngIf="userSubmitted && f.email.errors" class="invalid-feedback">
                 <div *ngIf="f.email.errors.required" style="color:#ff0000; font-size:13px;">E-Mail is required</div>
+                <div *ngIf="f.email.errors.pattern" style="color:#ff0000; font-size:13px;">Email is invalid</div>
               </div>
               <mat-form-field appearance="fill" style="width: 250px;">
                 <mat-label>E-Mail</mat-label>

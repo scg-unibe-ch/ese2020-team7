@@ -5,67 +5,137 @@
   <div *ngIf="!registrationDone">
 
     <h1>Registration</h1>
-    <br>
+      <form [formGroup]="userForm">
+        <div class="inline-block">
+          <br *ngIf="!(submitted && f.firstName.errors)" class="invalid-feedback">
+          <div *ngIf="submitted && f.firstName.errors" class="error">
+            <div *ngIf="f.firstName.errors.required">First Name is required</div>
+          </div>
+          <mat-form-field appearance="fill">
+            <mat-label>First Name*</mat-label>
+            <label>
+              <input matInput type="text" formControlName="firstName">
+            </label>
+          </mat-form-field>
 
-    <form [formGroup]="userForm">
+          <br *ngIf="!(submitted && f.lastName.errors)">
+          <br *ngIf="!(submitted && f.lastName.errors)">
+          <div *ngIf="submitted && f.lastName.errors" class="error">
+            <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+          </div>
+          <mat-form-field appearance="fill">
+            <mat-label>Last Name*</mat-label>
+            <label>
+              <input matInput type="text" formControlName="lastName">
+            </label>
+          </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>First Name</mat-label>
-        <label>
-          <input matInput type="text" formControlName="firstName">
-        </label>
-      </mat-form-field>
-      <div *ngIf="submitted && f.firstName.errors" class="error">
-        <div *ngIf="f.firstName.errors.required">First Name is required</div>
-      </div>
+          <br *ngIf="!(submitted && f.email.errors)">
+          <br *ngIf="!(submitted && f.email.errors)">
+          <div *ngIf="submitted && f.email.errors" class="error">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+            <div *ngIf="f.email.errors.pattern">Email is invalid</div>
+          </div>
+          <mat-form-field appearance="fill">
+            <mat-label>Email*</mat-label>
+            <label>
+              <input matInput formControlName="email">
+            </label>
+          </mat-form-field>
 
+          <!--<div *ngIf="f.email.errors.email">Please enter a valid e-mail address</div>-->
 
-      <mat-form-field appearance="fill">
-        <mat-label>Last Name</mat-label>
-        <label>
-          <input matInput type="text" formControlName="lastName">
-        </label>
-      </mat-form-field>
-      <div *ngIf="submitted && f.lastName.errors" class="error">
-        <div *ngIf="f.lastName.errors.required">Last Name is required</div>
-      </div>
+          <br *ngIf="!(submitted && f.userName.errors)">
+          <br *ngIf="!(submitted && f.userName.errors)">
+          <div *ngIf="submitted && f.userName.errors" class="error">
+            <div *ngIf="f.userName.errors.required">Username is required</div>
+          </div>
+          <mat-form-field appearance="fill">
+            <mat-label>Username*</mat-label>
+            <label>
+              <input matInput formControlName="userName">
+            </label>
+          </mat-form-field>
 
+          <br *ngIf="!(submitted && f.password.errors)">
+          <br *ngIf="!(submitted && f.password.errors)">
+          <div *ngIf="submitted && f.password.errors" class="error">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+            <div *ngIf="f.password.errors.pattern" style="color:#ff0000; font-size:13px;" class="tooltip">
+              Password invalid
+              <span class="tooltiptext">
+              Password must be at least 7 characters and contain uppercase letters,
+              lowercase letters, numbers and special characters
+              </span>
+            </div>
+          </div>
+          <mat-form-field appearance="fill">
+            <mat-label>Password*</mat-label>
+            <label>
+              <input matInput  type="password" formControlName="password">
+            </label>
+          </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Email</mat-label>
-        <label>
-          <input matInput formControlName="email">
-        </label>
-      </mat-form-field>
-      <div *ngIf="submitted && f.email.errors" class="error">
-        <div *ngIf="f.email.errors.required">Email is required</div>
-      </div>
-      <!--<div *ngIf="f.email.errors.email">Please enter a valid e-mail address</div>-->
+          <br><br>
+          <mat-form-field appearance="fill" style="width: 250px;">
+            <mat-label>Gender</mat-label>
+            <label>
+              <input matInput
+                     type="text"
+                     formControlName="gender">
+            </label>
+          </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Username</mat-label>
-        <label>
-          <input matInput formControlName="userName">
-        </label>
-      </mat-form-field>
-      <div *ngIf="submitted && f.userName.errors" class="error">
-        <div *ngIf="f.userName.errors.required">Username is required</div>
-      </div>
-
-      <mat-form-field appearance="fill">
-        <mat-label>Password</mat-label>
-        <label>
-          <input matInput  type="password" formControlName="password">
-        </label>
-      </mat-form-field>
-      <div *ngIf="submitted && f.password.errors" class="error">
-        <div *ngIf="f.password.errors.required">Password is required</div>
-        <div *ngIf="f.password.errors.pattern">
-          Password must be at least 7 characters and contain uppercase letters, lowercase letters, numbers and special characters
+          <br><br>
+          <mat-form-field appearance="fill" style="width: 250px;">
+            <mat-label>Telephone Number</mat-label>
+            <label>
+              <input matInput
+                     type="text"
+                     formControlName="telephoneNumber">
+            </label>
+          </mat-form-field>
         </div>
-      </div>
 
-    </form>
+        <div class="inline-block">
+          <h3>Address</h3>
+          <mat-form-field appearance="fill" style="width: 250px;">
+            <mat-label>Street</mat-label>
+            <label>
+              <input matInput
+                     type="text"
+                     formControlName="street">
+            </label>
+          </mat-form-field>
+          <br><br>
+          <mat-form-field appearance="fill" style="width: 250px;">
+            <mat-label>Pin Code</mat-label>
+            <label>
+              <input matInput
+                     type="text"
+                     formControlName="pinCode">
+            </label>
+          </mat-form-field>
+          <br><br>
+          <mat-form-field appearance="fill" style="width: 250px;">
+            <mat-label>City</mat-label>
+            <label>
+              <input matInput
+                     type="text"
+                     formControlName="city">
+            </label>
+          </mat-form-field>
+          <br><br>
+          <mat-form-field appearance="fill" style="width: 250px;">
+            <mat-label>Country</mat-label>
+            <label>
+              <input matInput
+                     type="text"
+                     formControlName="country">
+            </label>
+          </mat-form-field>
+        </div>
+      </form>
 
     <button mat-flat-button color="primary" (click)="register()">Register</button>
 
@@ -75,7 +145,7 @@
   </div>
 
   <div *ngIf="registrationDone">
-    Thank you , you are registered. You can connect from login page.
+    Thank you, you are registered now. You can connect from the login page.
     <button mat-flat-button color="warn" routerLink="/login"> Log in</button>
   </div>
 
