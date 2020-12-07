@@ -2,15 +2,18 @@
   flex: 1 1 auto;
 }
 
+.main-div{
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  padding: 10px;
+}
+
 mat-toolbar a{
   display: inline-block;
   margin: 0 10px;
   color: var(--primary);
   text-decoration: none;
-}
-
-.content{
-  margin: 30px;
 }
 
 .round {
