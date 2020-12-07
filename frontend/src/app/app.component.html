@@ -40,10 +40,10 @@
 
 </mat-toolbar>
 
-<router-outlet class="content"></router-outlet>
+<div class="main-div">
+  <router-outlet></router-outlet>
+</div>
 
-<!-- ***************** farbschema demo **********************-->
-
-<button mat-flat-button color="primary">Primary</button>
-<button mat-flat-button color="accent">accent</button>
-<button mat-flat-button color="warn">warn</button>
+<mat-toolbar color="primary" class="footer">
+  <p>alert('\u00A9')</p>
+</mat-toolbar>
