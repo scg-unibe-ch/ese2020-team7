@@ -1,4 +1,8 @@
 
+.content{
+  width: 70vw;
+}
+
 input[type=text] {
   width: 70px;
   box-sizing: border-box;
