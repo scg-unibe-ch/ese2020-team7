@@ -1,6 +1,11 @@
 
 <mat-toolbar color="accent">
   <a routerLink="/">ESE-2020 Team 7</a>
+  <label>
+    <input class="round" [(ngModel)]="searchText" name="text"
+           placeholder="Search Products">
+  </label>
+  <button mat-icon-button (click)="searchForNewKey()"><mat-icon>search</mat-icon></button>
 
   <span class="max-spacer"></span>
 
@@ -34,7 +39,6 @@
   </div>
 
 </mat-toolbar>
-<app-search></app-search>
 
 <router-outlet class="content"></router-outlet>
 

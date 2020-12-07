@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
   userToken: string;
   loggedIn = false;
   isAdmin: boolean;
+  searchText: '';
 
   ngOnInit(): void {
     this.checkUserStatus();
@@ -45,5 +46,13 @@ export class AppComponent implements OnInit {
 
   back(): void {
     this.router.navigate(['../../..'], { relativeTo: this.route });
+  }
+
+  searchForNewKey(): void{
+    this.router.navigate(['/search'],
+      {queryParams: {key: this.searchText}})
+      .then(() => {
+        window.location.reload();
+      });
   }
 }

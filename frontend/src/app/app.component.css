@@ -12,3 +12,24 @@ mat-toolbar a{
 .content{
   margin: 30px;
 }
+
+.round {
+  padding: 0 16px;
+  min-width: 64px;
+  margin: 0;
+  line-height: 40px;
+  border-radius: 20px;
+  border-style: none;
+  background: var(--primary);
+  color: var(--accent)
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+*:focus {
+  outline: none;
+}
+
+

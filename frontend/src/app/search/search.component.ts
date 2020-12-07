@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Product} from '../models/product.model';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 
@@ -17,17 +18,24 @@ export class SearchComponent implements OnInit {
   location: string;
   selectedValue: string;
   productLocation: Product[] = [];
-  min: number;
-  max: number;
+  min: number = null;
+  max: number = null;
   isDeliverable: boolean;
   isProduct: boolean;
   isSelling: boolean;
 
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient,
+              private route: ActivatedRoute) {
   }
+
   ngOnInit(): void {
+    this.route.queryParams.subscribe(
+      params => {
+        this.searchText = params.key;
+      });
     this.getLocation();
+    this.search();
   }
     reset(): void {
     this.products = [];

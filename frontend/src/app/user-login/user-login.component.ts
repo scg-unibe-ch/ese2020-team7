@@ -71,15 +71,4 @@ export class UserLoginComponent implements OnInit {
   back(): void {
     this.router.navigate(['../../..'], { relativeTo: this.route });
   }
-
-  /**
-   * Function to access a secure endpoint that can only be accessed by logged in users by providing their token.
-   */
-  accessSecuredEndpoint(): void {
-    this.httpClient.get(environment.endpointURL + 'secured').subscribe((res: any) => {
-      this.secureEndpointResponse = 'Successfully accessed secure endpoint. Message from server: ' + res.message;
-    }, () => {
-      this.secureEndpointResponse = 'Unauthorized';
-    });
-  }
 }

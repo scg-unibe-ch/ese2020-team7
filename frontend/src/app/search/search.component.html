@@ -1,20 +1,15 @@
 <form>
-  <label>
-    <input type="search" [(ngModel)]="searchText" name="text"
-           placeholder="Search Products">
-  </label>
-  <button mat-icon-button (click)="search()"><mat-icon>search</mat-icon></button>
-
-  <mat-form-field appearance="fill">
-    <mat-label>Choose a location</mat-label>
-    <mat-select [(ngModel)]="selectedValue" name="location" >
-      <mat-option *ngFor="let product of productLocation" [value]="product.location" (click)="search()">
-        {{product.location}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
 
   <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Choose a location</mat-label>
+      <mat-select [(ngModel)]="selectedValue" name="location" >
+        <mat-option *ngFor="let product of productLocation" [value]="product.location" (click)="search()">
+          {{product.location}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
     <label>
       <input type="text" [(ngModel)]="min" name="range"
              placeholder="Min." >
@@ -24,7 +19,7 @@
       <input type="text" [(ngModel)]="max" name="range"
              placeholder="Max.">
     </label>
-    <button mat-button (click)="search()">Apply</button>
+    <button mat-flat-button color="primary" [disabled]="min === null && max === null" (click)="search()">Apply</button>
 
     <mat-button-toggle-group [(ngModel)]="isSelling" name="fontStyle" aria-label="Font Style" >
       <mat-button-toggle  [value]="true" (click)="search()">BUY</mat-button-toggle>
@@ -43,7 +38,7 @@
       <mat-button-toggle [value]="false" (click)="search()">SERVICES</mat-button-toggle>
       <mat-button-toggle (click)="search()">ALL</mat-button-toggle>
     </mat-button-toggle-group>
-    <button mat-button (click)="reset()">RESET</button>
+    <button mat-flat-button color="accent" (click)="reset()">RESET</button>
   </div>
 
 </form>
@@ -65,5 +60,10 @@
 
     <button mat-flat-button color="primary"  [routerLink]="['/product', product.productId]">Detail</button>
 
+  </mat-card>
+</div>
+<div *ngIf="products.length == 0">
+  <mat-card style="background: var(--accent-light)">
+    Could not find any products for <b><em>{{searchText}}</em></b>
   </mat-card>
 </div>
