@@ -13,7 +13,7 @@ import {environment} from '../../../environments/environment';
 
 export class AddAdminComponent implements OnInit {
   users: User [] = [];
-  isAdmin: false;
+  isAdmin: boolean;
 
 
   constructor(private httpClient: HttpClient) {
@@ -23,16 +23,26 @@ export class AddAdminComponent implements OnInit {
     this.httpClient.get(environment.endpointURL + 'user/').subscribe((instances: User[]) => {
       console.log(instances);
       this.users = instances;
+      this.checkAdminStatus();
     });
   }
 
   promoteAdmin(user: User): void {
-    this.httpClient.put(environment.endpointURL + 'user/promoteAdmin' + user.userName, {}).subscribe();
+    this.httpClient.put(environment.endpointURL + 'user/promoteAdmin', {
+      userName: user.userName
+    }).subscribe();
+    setTimeout(() => {
+      this.ngOnInit();
+    }, 100);
   }
 
   demoteAdmin(user: User): void {
-    this.httpClient.put(environment.endpointURL + 'user/demoteAdmin' + user.userName, {}).subscribe();
-
+    this.httpClient.put(environment.endpointURL + 'user/demoteAdmin', {
+      userName: user.userName
+    }).subscribe();
+    setTimeout(() => {
+      this.ngOnInit();
+    }, 100);
   }
   checkAdminStatus(): void {
     this.isAdmin = JSON.parse(localStorage.getItem('admin'));
