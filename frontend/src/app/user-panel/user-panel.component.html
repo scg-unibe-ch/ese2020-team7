@@ -133,7 +133,7 @@
             </mat-card>
           </div>
 
-          <div *ngIf="productsImRenting.length === 0">
+          <div *ngIf="productsImLending.length === 0">
             <p>You aren't lending any products right now</p>
           </div>
         </div>
@@ -176,10 +176,11 @@
           </mat-card>
         </div>
 
-      <div *ngIf="soldProducts.length === 0">
+        <div *ngIf="soldProducts.length === 0">
         <mat-card>
           <p>You have no sold products yet</p>
         </mat-card>
+      </div>
       </div>
     </mat-tab>
 
