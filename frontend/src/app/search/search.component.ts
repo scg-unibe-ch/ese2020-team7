@@ -32,6 +32,7 @@ export class SearchComponent implements OnInit {
   isAdmin: boolean;
   userId: number;
   public localBookmarks: Product[] = [];
+  locations: string[];
 
 
 
@@ -119,8 +120,10 @@ export class SearchComponent implements OnInit {
   }
   getLocation(): void {
     this.httpClient.get(environment.endpointURL + 'product/approvedAndAvailableProducts').subscribe((data: Product[]) => {
-      console.log(data);
-      this.productLocation = data;
+      const result = data.map(a => a.location);
+      console.log(result);
+      const mySet = new Set(result);
+      this.locations = [...mySet];
     });
   }
 

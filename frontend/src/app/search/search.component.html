@@ -6,8 +6,8 @@
     <mat-form-field appearance="fill">
       <mat-label>Choose a location</mat-label>
       <mat-select [(ngModel)]="selectedValue" name="location" >
-        <mat-option *ngFor="let product of productLocation" [value]="product.location" (click)="search()">
-          {{product.location}}
+        <mat-option *ngFor="let location of locations" [value]="location" (click)="search()">
+          {{location}}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -90,3 +90,4 @@
   </mat-card>
 </div>
 </div>
+
