@@ -47,5 +47,5 @@ export class AddAdminComponent implements OnInit {
   checkAdminStatus(): void {
     this.isAdmin = JSON.parse(localStorage.getItem('admin'));
   }
-  }
+}
 
