@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import {Product} from '../models/product.model';
 import { BookmarksService } from '../bookmarks/bookmarks.service';
 import { PageEvent } from '@angular/material/paginator';
+import { Bookmark } from '../models/bookmark.model';
 
 @Component({
   selector: 'app-catalog',
@@ -22,7 +23,7 @@ export class CatalogComponent implements OnInit {
   isAdmin: boolean;
   userId: number;
   name: string;
-  public localBookmarks: Product[] = [];
+  public localBookmarks: Bookmark[] = [];
   page: number = 0;
   size: number = 5;
   totalProducts: number = this.products.length;
@@ -36,9 +37,9 @@ export class CatalogComponent implements OnInit {
     window.alert('The add-product has been bought! Hooray!');
   }
 
-  addToBookmarks(product: Product): void {
+  addToBookmarks(userId: number, product: Product): void {
     console.log('product', product);
-    this.bookmarksService.addFinalToBookmarks(product);
+    this.bookmarksService.addFinalToBookmarks({userId, product});
     this.bookmarksService.fetchBookmarksProduct();
     localStorage.setItem('productBookmarked', 'true');
     product.isBookmarked = !!(localStorage.getItem('productBookmarked'));
@@ -70,16 +71,10 @@ export class CatalogComponent implements OnInit {
 
   checkBookmarked(product: Product): boolean {
     for (let i = 0; i < this.localBookmarks.length; i++) {
-      if (this.localBookmarks[i].productId === product.productId) {
+      if (this.localBookmarks[i].product.productId === product.productId) {
         return true;
       }
     }
     return false;
-  }
-
-  checkBookmarks(): void {
-    for (let i = 0; i < this.products.length; i++) {
-      this.bookmarksService.checkBookmarked(this.products[i]);
-    }
   }
 }

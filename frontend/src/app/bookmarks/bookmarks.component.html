@@ -1,4 +1,4 @@
-<div *ngFor="let product of localBookmarks">
+<div *ngFor="let product of myBookmarks">
   <mat-card>
     <h2>
       <a [title]="product.title + ' details'">
@@ -11,9 +11,11 @@
     <p *ngIf="product.description">
       {{ product.description }}
     </p>
+    <!--
     <button mat-flat-button color="primary" (click)="deleteBookmarksItem(product)">
       Remove from bookmarks
     </button>
+    -->
     <button mat-flat-button color="primary"  [routerLink]="['/product', product.productId]">Detail</button>
   </mat-card>
 </div>
