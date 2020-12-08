@@ -27,15 +27,18 @@ export class AddAdminComponent implements OnInit {
   }
 
   promoteAdmin(user: User): void {
-    this.httpClient.put(environment.endpointURL + 'user/promoteAdmin' + user.userName, {}).subscribe();
+    this.httpClient.put(environment.endpointURL + 'user/promoteAdmin', {
+      userName: user.userName,
+    }).subscribe();
   }
 
   demoteAdmin(user: User): void {
-    this.httpClient.put(environment.endpointURL + 'user/demoteAdmin' + user.userName, {}).subscribe();
-
+    this.httpClient.put(environment.endpointURL + 'user/demoteAdmin', {
+      userName: user.userName,
+    }).subscribe();
   }
+
   checkAdminStatus(): void {
     this.isAdmin = JSON.parse(localStorage.getItem('admin'));
   }
-  }
-
+}

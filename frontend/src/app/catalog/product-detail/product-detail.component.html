@@ -5,13 +5,12 @@
 </mat-card>
 
 <mat-card *ngIf="product.isAvailable">
-  <img  src="/assets/placeholder.png" alt="image" style="width:400px;height:400px; vertical-align:top; float: left">
   <a class="information">
       <a style="font-size: 40px; font-weight: 400">{{product.title}}</a>
     <br><br>
 
-    <p style="font-size: 20px;">{{product.description}}</p>
-    <p style="font-size: 20px;">CHF {{product.price | number:'1.2-2' }}</p>
+    <p style="font-size: 20px;">Description: {{product.description}}</p>
+    <p style="font-size: 20px;">Price: CHF {{product.price | number:'1.2-2' }}</p>
 
     <a *ngIf="product.isProduct">
       <p style="font-size: 20px;">Type: Product</p>
@@ -24,8 +23,8 @@
 
     <p style="font-size: 20px;">Seller: {{seller.userName}}</p>
   </a>
-  <a class="buttons">
-    <button mat-flat-button color="primary" *ngIf="!(product.userId == this.userId)" [routerLink]="['/buy', product.productId]">Buy</button>
+  <a class="buttons-buy">
+    <button mat-flat-button color="primary" *ngIf="!(product.userId == this.userId)" [routerLink]="['/buy', product.productId]"><mat-icon>shopping_cart</mat-icon> Buy Now! </button>
 
     <button mat-flat-button color="primary" *ngIf="product.userId == this.userId" [routerLink]="['/edit', product.productId]">Edit</button>
   </a>
