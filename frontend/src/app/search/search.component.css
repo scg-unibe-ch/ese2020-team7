@@ -1,6 +1,6 @@
 
 .content{
-  width: 70vw;
+  width: 74vw;
 }
 
 input[type=text] {
@@ -29,3 +29,7 @@ mat-button-toggle-group {
   margin: 6px;
 }
 
+.redText
+{
+  color: #ff0000;
+}
