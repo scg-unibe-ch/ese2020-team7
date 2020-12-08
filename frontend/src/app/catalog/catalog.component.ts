@@ -3,6 +3,7 @@ import {environment} from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import {Product} from '../models/product.model';
 import { BookmarksService } from '../bookmarks/bookmarks.service';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-catalog',
@@ -22,6 +23,11 @@ export class CatalogComponent implements OnInit {
   userId: number;
   name: string;
   public localBookmarks: Product[] = [];
+  page: number = 0;
+  size: number = 5;
+  totalProducts: number = this.products.length;
+  recordCount: number;
+  pageEvent: PageEvent;
 
   constructor(private httpClient: HttpClient,
               public bookmarksService: BookmarksService) {}
@@ -75,14 +81,17 @@ export class CatalogComponent implements OnInit {
     for (let i = 0; i < this.products.length; i++) {
       this.bookmarksService.checkBookmarked(this.products[i]);
     }
-  /*this.allProducts = JSON.stringify(this.products);
-  this.savedProducts = localStorage.getItem("bookmarks").split(',');
-  this.allProductsArray = this.allProducts.split(',');
-  for (let i = 0; i < this.allProductsArray.length; i++) {
-    for (let j = 0; j < this.savedProducts.length; j++) {
-      if (this.allProductsArray[i] = this.savedProducts[j]) {
-        this.products[i].isBookmarked = true;
-      }
-    }*/
   }
+  
+  /* navigatePage(event? : PageEvent) {
+    console.log(event);
+    this.page = event.pageIndex;
+    this.size = event.pageSize;
+    this.reloadCatalog();
+  }
+
+  reloadCatalog() {
+
+  }
+  */
 }

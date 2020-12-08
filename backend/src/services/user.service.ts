@@ -2,6 +2,7 @@ import { UserAttributes, User } from '../models/user.model';
 import { LoginResponse, LoginRequest } from '../models/login.model';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import { userInfo } from 'os';
 
 export class UserService {
 
@@ -44,7 +45,7 @@ export class UserService {
             }
         })
         .then(user => {
-            if (bcrypt.compareSync(loginRequestee.password, user.password)) {// compares the hash with the password from the lognin request
+            if (bcrypt.compareSync(loginRequestee.password, user.password)) {// compares the hash with the password from the login request
                 const token: string = jwt.sign({ userName: user.userName, userId: user.userId }, secret, { expiresIn: '2h' });
                 return Promise.resolve({ user, token });
             } else {
@@ -69,7 +70,7 @@ export class UserService {
     }
 
     public getAll(): Promise<User[]> {
-        return User.findAll({ include: [User.associations.products] });
+        return User.findAll();
     }
 
     public getUser(thisUserId: number): Promise<User> {
@@ -77,7 +78,8 @@ export class UserService {
             where: {
                 userId: thisUserId
             }
-        });
+        })
+        .catch(err => Promise.reject(err));
     }
 
     public makeAdmin(user: UserAttributes): Promise<User> {

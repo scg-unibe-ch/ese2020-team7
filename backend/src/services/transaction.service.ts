@@ -172,11 +172,11 @@ export class TransactionService {
         .catch(err => Promise.reject(err));
     }
 
-    public setRentedUntilDate(productId: number, product: ProductAttributes): Promise<Product> {
+    public setRentedUntilDate(productId: number, returnDate: Date): Promise<Product> {
         return Product.findByPk(productId)
         .then(foundProduct => {
             return foundProduct.update({
-                rentedUntil: product.rentedUntil
+                rentedUntil: returnDate
             })
             .then(() => {
                 return Promise.resolve(foundProduct);

@@ -1,15 +1,9 @@
-.main-div{
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
-  height: fit-content;
-  overflow:hidden
+.content{
+  width: 70vw;
+  max-width: 600px;
 }
 
-.mat-card {
-  width: 50%;
-  alignment: top;
-}
+
 .mat-radio-button ~ .mat-radio-button {
   margin-left: 16px;
 }

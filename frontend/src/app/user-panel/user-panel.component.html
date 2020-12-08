@@ -1,4 +1,4 @@
-<div *ngIf="!loggedIn">
+<div *ngIf="!loggedIn" class="content">
   <mat-card>
     <h1>Please log in to see your products</h1>
     <button mat-flat-button color="warn" routerLink="/login"> Log in</button>
@@ -7,8 +7,8 @@
 
 <!--***********************************************************************-->
 
-<div *ngIf="loggedIn" class="main-div">
-  <mat-tab-group animationDuration="800ms" >
+<div *ngIf="loggedIn" class="content">
+  <mat-tab-group animationDuration="800ms">
     <mat-tab label="My current offers">
       <div *ngIf="approvedProducts.length != 0 || uncheckedProducts.length != 0 || rejectedProducts.length != 0 || productsImLending.length !=0; else listProduct">
         <div class="inline-block">
@@ -176,11 +176,10 @@
           </mat-card>
         </div>
 
-        <div *ngIf="soldProducts.length === 0">
-          <mat-card>
-            <p>No sold products</p>
-          </mat-card>
-        </div>
+      <div *ngIf="soldProducts.length === 0">
+        <mat-card>
+          <p>You have no sold products yet</p>
+        </mat-card>
       </div>
     </mat-tab>
 

@@ -25,7 +25,6 @@ import {AddAdminComponent} from './admin-panel/add-admin/add-admin.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { RouterModule, Routes } from '@angular/router';
 import {MatRadioModule} from '@angular/material/radio';
-import {MatPaginatorModule} from '@angular/material/paginator';
 import { ConfirmProductsComponent } from './admin-panel/confirm-products/confirm-products.component';
 import { BookmarksComponent } from './bookmarks/bookmarks.component';
 import {HomeComponent} from './home/home.component';
@@ -45,6 +44,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DeleteProductDialogComponent } from './user-panel/delete-product-dialog/delete-product-dialog.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { ForgotPasswordComponent } from './user-login/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     BuyProductComponent,
     EditUserComponent,
     SearchComponent,
-    DeleteProductDialogComponent
+    DeleteProductDialogComponent,
+    ForgotPasswordComponent
   ],
   entryComponents: [DeleteProductDialogComponent],
   imports: [
@@ -87,7 +89,6 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     MatExpansionModule,
     RouterModule.forRoot([]),
     MatRadioModule,
-    MatPaginatorModule,
     MatIconModule,
     MatMenuModule,
     MatDatepickerModule,
@@ -95,6 +96,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     MatSelectModule,
     MatDialogModule,
     MatButtonToggleModule,
+    MatPaginatorModule
   ],
   providers: [
     {
