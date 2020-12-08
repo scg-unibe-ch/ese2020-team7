@@ -82,16 +82,4 @@ export class CatalogComponent implements OnInit {
       this.bookmarksService.checkBookmarked(this.products[i]);
     }
   }
-  
-  /* navigatePage(event? : PageEvent) {
-    console.log(event);
-    this.page = event.pageIndex;
-    this.size = event.pageSize;
-    this.reloadCatalog();
-  }
-
-  reloadCatalog() {
-
-  }
-  */
 }
