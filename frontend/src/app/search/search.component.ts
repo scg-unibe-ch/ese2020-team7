@@ -61,7 +61,8 @@ export class SearchComponent implements OnInit {
     this.isDeliverable = null;
     this.isProduct = null;
     this.isSelling = null;
-  }
+    this.sortBy = 0;
+    }
 
     search(): void {
     this.httpClient.post(environment.endpointURL + 'product/searchedProducts', {

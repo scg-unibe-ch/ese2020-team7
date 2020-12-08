@@ -13,7 +13,8 @@ import {DeleteProductDialogComponent} from './delete-product-dialog/delete-produ
 export class UserPanelComponent implements OnInit {
 
   constructor(private httpClient: HttpClient,
-              public dialog: MatDialog) {}
+              public dialog: MatDialog) {
+  }
 
   userName = '';
   userToken: string;
@@ -54,8 +55,12 @@ export class UserPanelComponent implements OnInit {
     });
     this.httpClient.get(environment.endpointURL + 'product/productsImRenting').subscribe((data: Product[]) => {
       data.sort((f, n): number => {
-        if (f.rentedUntil < n.rentedUntil){ return -1; }
-        if (f.rentedUntil > n.rentedUntil){ return 1; }
+        if (f.rentedUntil < n.rentedUntil) {
+          return -1;
+        }
+        if (f.rentedUntil > n.rentedUntil) {
+          return 1;
+        }
         return 0;
       });
       console.log(data);
@@ -71,8 +76,12 @@ export class UserPanelComponent implements OnInit {
     });
     this.httpClient.get(environment.endpointURL + 'product/productsImLending').subscribe((data: Product[]) => {
       data.sort((f, n): number => {
-        if (f.rentedUntil < n.rentedUntil){ return -1; }
-        if (f.rentedUntil > n.rentedUntil){ return 1; }
+        if (f.rentedUntil < n.rentedUntil) {
+          return -1;
+        }
+        if (f.rentedUntil > n.rentedUntil) {
+          return 1;
+        }
         return 0;
       });
       console.log(data);
@@ -110,22 +119,26 @@ export class UserPanelComponent implements OnInit {
   }
 
   onDelete(productId): void {
-    this.httpClient.delete(environment.endpointURL + 'product/delete/' + productId).subscribe();
+    this.httpClient.delete(environment.endpointURL + 'product/delete/' + productId).subscribe(() => {
+      this.ngOnInit();
+    });
   }
 
   onDeleteAfterSold(productId): void {
-    this.httpClient.put(environment.endpointURL + 'product/deleteProductAfterSold/' + productId, {}).subscribe();
+    this.httpClient.put(environment.endpointURL + 'product/deleteProductAfterSold/' + productId, {}).subscribe(() => {
+      this.ngOnInit();
+    });
   }
 
   onIndicateReturn(productId): void {
-    this.httpClient.put(environment.endpointURL + 'transaction/indicateReturn/' + productId, {}).subscribe();
-    setTimeout(() => {
+    this.httpClient.put(environment.endpointURL + 'transaction/indicateReturn/' + productId, {}).subscribe(() => {
       this.ngOnInit();
-    }, 100);
+    });
   }
+
   onConfirmReturn(productId): void {
-    this.httpClient.put(environment.endpointURL + 'transaction/confirmReturn/' + productId, {}).subscribe();
-    setTimeout(() => {
+    this.httpClient.put(environment.endpointURL + 'transaction/confirmReturn/' + productId, {}).subscribe(() => {
       this.ngOnInit();
-    }, 100);  }
+    });
+  }
 }
