@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {Product} from '../models/product.model';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { BookmarksService } from '../bookmarks/bookmarks.service';
+
 
 
 
@@ -23,19 +25,31 @@ export class SearchComponent implements OnInit {
   isDeliverable: boolean;
   isProduct: boolean;
   isSelling: boolean;
+  sortBy = 0; // 0: newest; 1: oldest; 2: price low; 3: price high
+  userNameOrMail = '';
+  userToken: string;
+  loggedIn = false;
+  isAdmin: boolean;
+  userId: number;
+  public localBookmarks: Product[] = [];
+
 
 
   constructor(private httpClient: HttpClient,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              public bookmarksService: BookmarksService) {
   }
 
   ngOnInit(): void {
+    this.checkUserStatus();
     this.route.queryParams.subscribe(
       params => {
         this.searchText = params.key;
       });
     this.getLocation();
     this.search();
+    this.localBookmarks = this.bookmarksService.fetchBookmarksProduct();
+
   }
     reset(): void {
     this.products = [];
@@ -54,6 +68,50 @@ export class SearchComponent implements OnInit {
       title: this.searchText, location: this.selectedValue, minPrice: this.min, maxPrice: this.max,
       isDeliverable: this.isDeliverable, isSelling: this.isSelling, isProduct: this.isProduct
     }).subscribe((data: Product[]) => {
+      if (this.sortBy === 0) {
+        data.sort((f, n): number => {
+          if (f.createdAt > n.createdAt) {
+            return -1;
+          }
+          if (f.createdAt < n.createdAt) {
+            return 1;
+          }
+          return 0;
+        });
+      }
+      if (this.sortBy === 1) {
+        data.sort((f, n): number => {
+          if (f.createdAt < n.createdAt) {
+            return -1;
+          }
+          if (f.createdAt > n.createdAt) {
+            return 1;
+          }
+          return 0;
+        });
+      }
+      if (this.sortBy === 2) {
+        data.sort((f, n): number => {
+          if (f.price < n.price) {
+            return -1;
+          }
+          if (f.price > n.price) {
+            return 1;
+          }
+          return 0;
+        });
+      }
+      if (this.sortBy === 3) {
+        data.sort((f, n): number => {
+          if (f.price > n.price) {
+            return -1;
+          }
+          if (f.price < n.price) {
+            return 1;
+          }
+          return 0;
+        });
+      }
       console.log(data);
       this.products = data;
     });
@@ -63,5 +121,40 @@ export class SearchComponent implements OnInit {
       console.log(data);
       this.productLocation = data;
     });
+  }
+
+  checkUserStatus(): void {
+    // Get user data from local storage
+    this.userToken = localStorage.getItem('userToken');
+    this.userNameOrMail = localStorage.getItem('userName');
+    this.isAdmin = JSON.parse(localStorage.getItem('admin'));
+    this.userId = JSON.parse(localStorage.getItem('userId'));
+    // Set boolean whether a user is logged in or not
+    this.loggedIn = !!(this.userToken);
+  }
+
+  checkBookmarked(product: Product): boolean {
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < this.localBookmarks.length; i++) {
+      if (this.localBookmarks[i].productId === product.productId) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  checkBookmarks(): void {
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < this.products.length; i++) {
+      this.bookmarksService.checkBookmarked(this.products[i]);
+    }
+  }
+
+  addToBookmarks(product: Product): void {
+    console.log('product', product);
+    this.bookmarksService.addFinalToBookmarks(product);
+    this.bookmarksService.fetchBookmarksProduct();
+    localStorage.setItem('productBookmarked', 'true');
+    product.isBookmarked = !!(localStorage.getItem('productBookmarked'));
   }
 }
