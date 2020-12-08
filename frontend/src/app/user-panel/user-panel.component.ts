@@ -27,6 +27,8 @@ export class UserPanelComponent implements OnInit {
   boughtProducts: Product[] = [];
   lentProducts: Product[] = [];
   usedServices: Product[] = [];
+  productsImRenting: Product[] = [];
+  productsImLending: Product[] = [];
 
   ngOnInit(): void {
     this.checkUserStatus();
@@ -50,8 +52,32 @@ export class UserPanelComponent implements OnInit {
       console.log(data);
       this.boughtProducts = data;
     });
-    // myLentProducts kommt noch
-    // myUsedServices kommt noch
+    this.httpClient.get(environment.endpointURL + 'product/productsImRenting').subscribe((data: Product[]) => {
+      data.sort((f, n): number => {
+        if (f.rentedUntil < n.rentedUntil){ return -1; }
+        if (f.rentedUntil > n.rentedUntil){ return 1; }
+        return 0;
+      });
+      console.log(data);
+      this.productsImRenting = data;
+    });
+    this.httpClient.get(environment.endpointURL + 'product/productsIRented').subscribe((data: Product[]) => {
+      console.log(data);
+      this.lentProducts = data;
+    });
+    this.httpClient.get(environment.endpointURL + 'product/servicesImUtilizing').subscribe((data: Product[]) => {
+      console.log(data);
+      this.usedServices = data;
+    });
+    this.httpClient.get(environment.endpointURL + 'product/productsImLending').subscribe((data: Product[]) => {
+      data.sort((f, n): number => {
+        if (f.rentedUntil < n.rentedUntil){ return -1; }
+        if (f.rentedUntil > n.rentedUntil){ return 1; }
+        return 0;
+      });
+      console.log(data);
+      this.productsImLending = data;
+    });
   }
 
   checkUserStatus(): void {
@@ -91,4 +117,15 @@ export class UserPanelComponent implements OnInit {
     this.httpClient.put(environment.endpointURL + 'product/deleteProductAfterSold/' + productId, {}).subscribe();
   }
 
+  onIndicateReturn(productId): void {
+    this.httpClient.put(environment.endpointURL + 'transaction/indicateReturn/' + productId, {}).subscribe();
+    setTimeout(() => {
+      this.ngOnInit();
+    }, 100);
+  }
+  onConfirmReturn(productId): void {
+    this.httpClient.put(environment.endpointURL + 'transaction/confirmReturn/' + productId, {}).subscribe();
+    setTimeout(() => {
+      this.ngOnInit();
+    }, 100);  }
 }

@@ -180,6 +180,20 @@ export class ProductService {
         });
     }
 
+    public getProductsImLending(thisUserId: number): Promise<Product[]> {
+        const { Op } = require('sequelize');
+        return Product.findAll({
+            where: {
+                [ Op.and ]: [
+                    { userId: thisUserId},
+                    { buyerId: { [ Op.not ]: null }},
+                    { isProduct: true },
+                    { isSelling: false }
+                ]
+            }
+        });
+    }
+
     public getProductsIRented(thisUserId: number): Promise<Product[]> {
         const Rented: Product[] = [];
         return Transaction.findAll({
