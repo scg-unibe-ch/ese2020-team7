@@ -14,7 +14,7 @@
 
   <button mat-flat-button color="primary" (click)="approve()">Approve</button>
 
-  <button *ngIf="!rejectField" mat-flat-button color="primary" (click)="openReject()">Reject</button>
+  <button *ngIf="!rejectField" mat-flat-button color="warn" (click)="openReject()">Reject</button>
 
   <div *ngIf="rejectField">
     <mat-form-field>

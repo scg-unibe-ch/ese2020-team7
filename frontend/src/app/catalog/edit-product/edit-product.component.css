@@ -1,9 +1,5 @@
-.main-div{
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
-  height: fit-content;
-  overflow:hidden
+.content{
+  width: 70vw;
 }
 
 .mat-card {

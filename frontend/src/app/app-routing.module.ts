@@ -12,7 +12,6 @@ import {AdminPanelComponent} from './admin-panel/admin-panel.component';
 import {BuyProductComponent} from './catalog/buy-product/buy-product.component';
 import {EditUserComponent} from './registration/edit-user/edit-user.component';
 import {SearchComponent} from './search/search.component';
-import { ForgotPasswordComponent } from './user-login/forgot-password/forgot-password.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,8 +25,7 @@ const routes: Routes = [
   { path: 'admin', component: AdminPanelComponent},
   { path: 'buy/:id', component: BuyProductComponent },
   { path: 'settings', component: EditUserComponent },
-  { path: 'search', component: SearchComponent},
-  { path: 'forgot-password', component: ForgotPasswordComponent }
+  { path: 'search', component: SearchComponent}
 ];
 
 @NgModule({

@@ -125,7 +125,7 @@
 
       </mat-card>
 
-      <mat-card *ngIf="product.isProduct && !product.isDeliverable">
+      <mat-card *ngIf="product.isProduct && !product.isDeliverable" style="background: var(--accent-light)">
         <p>This product cannot be shipped. Please pick it up at the address given by the seller.</p>
       </mat-card>
     </div>

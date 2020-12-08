@@ -2,16 +2,9 @@
   color: red;
 }
 
-.main-div{
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
-  height: fit-content; /* Make this site really long */
-  overflow:hidden
+.content{
+  width: 50vw;
 }
 
 
-.mat-card {
-  width: 50%;
-}
 
