@@ -12,7 +12,6 @@
       </label>
     </mat-form-field>
     <button mat-flat-button color="primary" (click)="login()">Login</button>
-    <button mat-flat-button color="primary" [routerLink]="'/forgot-password'">Forgot password?</button>
     <div *ngIf="loginError" class="error">
       Username/E-mail or password is incorrect.
     </div>

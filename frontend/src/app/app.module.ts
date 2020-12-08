@@ -44,8 +44,6 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DeleteProductDialogComponent } from './user-panel/delete-product-dialog/delete-product-dialog.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { ForgotPasswordComponent } from './user-login/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +67,6 @@ import { ForgotPasswordComponent } from './user-login/forgot-password/forgot-pas
     EditUserComponent,
     SearchComponent,
     DeleteProductDialogComponent,
-    ForgotPasswordComponent
   ],
   entryComponents: [DeleteProductDialogComponent],
   imports: [
@@ -96,7 +93,6 @@ import { ForgotPasswordComponent } from './user-login/forgot-password/forgot-pas
     MatSelectModule,
     MatDialogModule,
     MatButtonToggleModule,
-    MatPaginatorModule
   ],
   providers: [
     {

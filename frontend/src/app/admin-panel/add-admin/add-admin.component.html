@@ -2,7 +2,7 @@
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
-        Add administrators
+        Add- Remove Administrators
       </mat-panel-title>
     </mat-expansion-panel-header>
     <mat-panel-description>
@@ -12,8 +12,8 @@
             <h3>
               <a [title]="users">
                 {{ user.firstName }} {{user.lastName}}
-                <button mat-flat-button color="basic" (click)="promoteAdmin(user)">Promote</button>
-                <button mat-flat-button color="warn"  (click)="demoteAdmin(user)">Demote</button>
+                <button mat-flat-button color="basic" (click)="promoteAdmin(user)" *ngIf="!user.admin">Promote</button>
+                <button mat-flat-button color="warn"  (click)="demoteAdmin(user)" *ngIf="user.admin">Demote</button>
               </a>
             </h3>
           </mat-card>
