@@ -15,7 +15,7 @@ export class RegistrationComponent implements OnInit {
               private formBuilder: FormBuilder) {
   }
 
-  passwordPattern = '^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{7,}$';
+  passwordPattern = '^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!?-_{}()*/])(?=\\S+$).{7,}$';
   emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
 
 

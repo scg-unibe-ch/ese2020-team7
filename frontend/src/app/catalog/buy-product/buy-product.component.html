@@ -15,7 +15,7 @@
     <h2>You aren't logged in yet! Please <a routerLink="/login" class="link">log in</a> to make a transaction.</h2>
   </div>
 
-  <div class="main-div" *ngIf="loggedIn">
+  <div class="content" *ngIf="loggedIn">
     <div class="inline-block" *ngIf="(product.isProduct && (product.isDeliverable || !product.isSelling)) && !submissionDone">
       <mat-card *ngIf="!product.isSelling && product.isProduct">
         <form [formGroup]="returnDateForm">
