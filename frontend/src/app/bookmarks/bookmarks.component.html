@@ -14,6 +14,7 @@
     <button mat-flat-button color="primary" (click)="deleteBookmarksItem(product)">
       Remove from bookmarks
     </button>
+    <button mat-flat-button color="primary"  [routerLink]="['/product', product.productId]">Detail</button>
   </mat-card>
 </div>
 <div *ngIf="localBookmarks.length === 0">You have not added any products to your bookmarks yet!</div>

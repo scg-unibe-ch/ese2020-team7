@@ -12,6 +12,16 @@
       </mat-select>
     </mat-form-field>
 
+    <mat-form-field appearance="fill">
+      <mat-label>Sort By </mat-label>
+      <mat-select [(ngModel)]="sortBy" name="location" >
+        <mat-option [value]=0 (click)="search()">newest</mat-option>
+        <mat-option [value]=1 (click)="search()">oldest</mat-option>
+        <mat-option [value]=2 (click)="search()">price lowest</mat-option>
+        <mat-option [value]=3 (click)="search()">price highest</mat-option>
+      </mat-select>
+    </mat-form-field>
+
     <label>
       <input type="text" [(ngModel)]="min" name="range"
              placeholder="Min." >
@@ -40,7 +50,11 @@
       <mat-button-toggle [value]="false" (click)="search()">SERVICES</mat-button-toggle>
       <mat-button-toggle (click)="search()">ALL</mat-button-toggle>
     </mat-button-toggle-group>
+
     <button mat-flat-button color="accent" (click)="reset()">RESET</button>
+
+
+
   </div>
 
 </form>
@@ -52,7 +66,7 @@
         {{ product.title }}
       </a>
       <span class="redText">
-        <b>{{ product.price }}CHF</b>
+        <b>CHF {{ product.price | number:'1.2-2' }}</b>
       </span>
     </h2>
 
@@ -60,7 +74,13 @@
       {{ product.description }}
     </p>
 
+    <button mat-raised-button color="accent" *ngIf="loggedIn" [disabled]="this.checkBookmarked(product) || product.isBookmarked" (click)="addToBookmarks(product);">
+      <mat-icon>favorite</mat-icon>
+      Add to bookmarks!
+    </button>
+    <button mat-flat-button color="primary" *ngIf="product.userId == this.userId" [routerLink]="['/edit', product.productId]"><mat-icon>edit</mat-icon> Edit</button>
     <button mat-flat-button color="primary"  [routerLink]="['/product', product.productId]">Detail</button>
+    <button mat-flat-button color="primary" *ngIf="!(product.userId == this.userId)" [routerLink]="['/buy', product.productId]">Buy</button>
 
   </mat-card>
 </div>
