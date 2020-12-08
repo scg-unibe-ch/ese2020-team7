@@ -5,29 +5,39 @@
 </mat-card>
 
 <mat-card *ngIf="product.isAvailable">
-  <a class="information">
-      <a style="font-size: 40px; font-weight: 400">{{product.title}}</a>
-    <br><br>
+  <div class="inline-block">
+    <img  src="/assets/placeholder_image.png" alt="image" style="width:400px;height:400px; vertical-align:top; float: left">
+  </div>
+
+  <div class="inline-block">
+    <br>
+    <a style="font-size: 40px; font-weight: 400">{{product.title}}</a>
+    <br><hr>
+    <p style="font-size: 15px;">Product ID: {{product.productId}} --  Listing created at: {{product.createdAt | date: 'dd.MM.yyyy'}}</p>
+
 
     <p style="font-size: 20px;">Description: {{product.description}}</p>
-    <p style="font-size: 20px;">Price: CHF {{product.price | number:'1.2-2' }}</p>
 
     <a *ngIf="product.isProduct">
       <p style="font-size: 20px;">Type: Product</p>
       <p style="font-size: 20px;"><a *ngIf="product.isSelling">Is for Sale</a><a *ngIf="!product.isSelling">Is for rent</a></p>
-      <p style="font-size: 20px;"><a *ngIf="product.isDeliverable">Deliverable</a><a *ngIf="!product.isSelling">Not Deliverable</a></p>
+      <p style="font-size: 20px;"><a *ngIf="product.isDeliverable">Deliverable</a><a *ngIf="!product.isDeliverable">Not Deliverable</a></p>
     </a>
     <a *ngIf="!product.isProduct">
       <p style="font-size: 20px;">Type: Service</p>
     </a>
+    <p style="font-size: 20px;">Location: {{product.location}}</p>
 
     <p style="font-size: 20px;">Seller: {{seller.userName}}</p>
-  </a>
-  <a class="buttons-buy">
-    <button mat-flat-button color="primary" *ngIf="!(product.userId == this.userId)" [routerLink]="['/buy', product.productId]"><mat-icon>shopping_cart</mat-icon> Buy Now! </button>
 
-    <button mat-flat-button color="primary" *ngIf="product.userId == this.userId" [routerLink]="['/edit', product.productId]">Edit</button>
-  </a>
+    <p class="price" style="font-size: 30px; font-weight: bold">CHF {{product.price | number:'1.2-2' }}
+      <a class="buttons-buy" >
+        <button mat-flat-button style="font-size: 30px; font-weight: bold" color="primary" *ngIf="!(product.userId == this.userId)" [routerLink]="['/buy', product.productId]"><mat-icon style="font-size: 30px;">shopping_cart</mat-icon>  Buy Now! </button>
+        <button mat-flat-button style="font-size: 30px; font-weight: bold" color="primary" *ngIf="product.userId == this.userId" [routerLink]="['/edit', product.productId]">Edit</button>
+      </a>
+    </p>
+
+  </div>
 </mat-card>
 
 </div>
