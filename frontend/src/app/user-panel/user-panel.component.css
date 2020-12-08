@@ -1,9 +1,9 @@
 .main-div{
-  display: flex;
+  /* display: flex;*/
   justify-content: center;
-  align-items: baseline;
+  align-items: center;
   height: fit-content; /* Make this site really long */
-  overflow:hidden
+  overflow:hidden;
 }
 
 .redText
@@ -12,10 +12,29 @@
 }
 
 .mat-card {
-  width: 80%;
+  width: 90%;
   alignment: top;
+  overflow-y: hidden !important;
 }
 
 .max-spacer{
-  flex: 1 1 auto;
+   flex: 1 1 auto;
+}
+.mat-tab-group{
+  /* width: fit-content;*/
+
+}
+
+.mat-tab-label {
+  width: 50% !important;
+}
+
+.inline-block {
+  display: inline-block;
+  width: 35%;
+  margin-left: 60px;
+  margin-right: 60px;
+  vertical-align:top;
+  align-items: center;
+
 }

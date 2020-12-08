@@ -144,6 +144,14 @@ productController.get('/productsImRenting', verifyToken,
     }
 );
 
+productController.get('/productsImLending', verifyToken,
+    (req: Request, res: Response) => {
+        productService.getProductsImLending(req.body.tokenPayload.userId)
+            .then(products => res.status(200).send(products))
+            .catch(err => res.status(404).send(err));
+    }
+);
+
 productController.get('/productsIRented', verifyToken,
     (req: Request, res: Response) => {
         productService.getProductsIRented(req.body.tokenPayload.userId)

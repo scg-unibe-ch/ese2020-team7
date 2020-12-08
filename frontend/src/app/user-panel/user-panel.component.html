@@ -8,108 +8,136 @@
 <!--***********************************************************************-->
 
 <div *ngIf="loggedIn" class="main-div">
-  <mat-tab-group animationDuration="800ms">
+  <mat-tab-group animationDuration="800ms" >
     <mat-tab label="My current offers">
+      <div *ngIf="approvedProducts.length != 0 || uncheckedProducts.length != 0 || rejectedProducts.length != 0 || productsImLending.length !=0; else listProduct">
+        <div class="inline-block">
+          <h2>Posted products waiting to be approved</h2>
+          <div *ngFor="let product of uncheckedProducts">
+            <mat-card>
+              <h2>
+                <a [title]="product.title + ' details'">
+                  {{ product.title }}
+                </a>
+                <span class="redText">
+                  <b>CHF {{ product.price | number:'1.2-2' }}</b>
+                </span>
+                <span class="max-spacer"></span>
+                <button mat-mini-fab color="primary" [routerLink]="['/edit', product.productId]">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-mini-fab color="warn" (click)="openDialog(product.productId)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </h2>
 
-      <div *ngIf="approvedProducts.length != 0 || uncheckedProducts.length != 0 || rejectedProducts.length != 0; else listProduct">
-      <h2>Posted products waiting to be approved</h2>
-      <div *ngFor="let product of uncheckedProducts">
-        <mat-card>
-          <h2>
-            <a [title]="product.title + ' details'">
-              {{ product.title }}
-            </a>
-            <span class="redText">
-              <b>{{ product.price }}CHF</b>
-            </span>
-            <span class="max-spacer"></span>
-            <button mat-mini-fab color="primary" [routerLink]="['/edit', product.productId]">
-              <mat-icon>edit</mat-icon>
-            </button>
-            <button mat-mini-fab color="warn" (click)="openDialog(product.productId)">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </h2>
+              <p *ngIf="product.description">
+                {{ product.description }}
+              </p>
 
-          <p *ngIf="product.description">
-            {{ product.description }}
-          </p>
+            </mat-card>
+          </div>
 
-        </mat-card>
+          <div *ngIf="uncheckedProducts.length === 0">
+              <p>No approved products</p>
+          </div>
+
+          <mat-divider></mat-divider>
+
+          <h2>Approved products</h2>
+          <div *ngFor="let product of approvedProducts">
+            <mat-card style="background: #E4EEB5">
+              <h2>
+                <a [title]="product.title + ' details'">
+                  {{ product.title }}
+                </a>
+                <span class="redText">
+                  <b>CHF {{ product.price | number:'1.2-2' }}</b>
+                </span>
+                <span class="max-spacer"></span>
+                <button mat-mini-fab color="primary" [routerLink]="['/edit', product.productId]">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-mini-fab color="warn" (click)="openDialog(product.productId)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </h2>
+
+              <p *ngIf="product.description">
+                {{ product.description }}
+              </p>
+
+            </mat-card>
+          </div>
+
+          <div *ngIf="approvedProducts.length === 0">
+            <p>No approved products</p>
+          </div>
+
+          <mat-divider></mat-divider>
+
+          <h2>Rejected products</h2>
+          <div *ngFor="let product of rejectedProducts">
+            <mat-card style="background: #FFDAC9">
+              <h2>
+                <a [title]="product.title + ' details'">
+                  {{ product.title }}
+                </a>
+                <span class="redText">
+                  <b>CHF {{ product.price | number:'1.2-2' }}</b>
+                </span>
+                <span class="max-spacer"></span>
+                <button mat-mini-fab color="primary" [routerLink]="['/edit', product.productId]">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-mini-fab color="warn" (click)="openDialog(product.productId)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </h2>
+
+              <p *ngIf="product.description">
+                {{ product.description }}
+              </p>
+
+              <p class="redText"><strong>Rejection reason: </strong>{{product.rejectionReason}}</p>
+
+
+            </mat-card>
+          </div>
+
+          <div *ngIf="rejectedProducts.length === 0">
+            <p>No rejected products</p>
+          </div>
+          </div>
+
+        <div class="inline-block">
+          <h2>Products I am lending</h2>
+          <div *ngFor="let product of productsImLending">
+            <mat-card>
+              <h2>
+                <a [title]="product.title + ' details'">
+                  {{ product.title }}
+                </a>
+                <span class="redText">
+                      <b>CHF {{ product.price | number:'1.2-2' }}</b>
+                    </span>
+                <span class="max-spacer"></span>
+              </h2>
+
+              <p *ngIf="product.description">
+                {{ product.description }}<br><br>Return date: {{ product.rentedUntil | date: 'MMMM dd, yyyy'}}
+              </p>
+              <button *ngIf="product.returnedAfterLoan" mat-flat-button color="warn" (click)="onConfirmReturn(product.productId)">Confirm Return</button>
+              <p *ngIf="!product.returnedAfterLoan">Waiting for the buyer to return this product.</p>
+
+            </mat-card>
+          </div>
+
+          <div *ngIf="productsImRenting.length === 0">
+            <p>You aren't lending any products right now</p>
+          </div>
+        </div>
       </div>
-
-      <div *ngIf="uncheckedProducts.length === 0">
-          <p>No approved products</p>
-      </div>
-
-      <mat-divider></mat-divider>
-
-      <h2>Approved products</h2>
-      <div *ngFor="let product of approvedProducts">
-        <mat-card style="background: #E4EEB5">
-          <h2>
-            <a [title]="product.title + ' details'">
-              {{ product.title }}
-            </a>
-            <span class="redText">
-              <b>{{ product.price }}CHF</b>
-            </span>
-            <span class="max-spacer"></span>
-            <button mat-mini-fab color="primary" [routerLink]="['/edit', product.productId]">
-              <mat-icon>edit</mat-icon>
-            </button>
-            <button mat-mini-fab color="warn" (click)="openDialog(product.productId)">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </h2>
-
-          <p *ngIf="product.description">
-            {{ product.description }}
-          </p>
-
-        </mat-card>
-      </div>
-
-      <div *ngIf="approvedProducts.length === 0">
-        <p>No approved products</p>
-      </div>
-
-      <mat-divider></mat-divider>
-
-      <h2>Rejected products</h2>
-      <div *ngFor="let product of rejectedProducts">
-        <mat-card style="background: #FFDAC9">
-          <h2>
-            <a [title]="product.title + ' details'">
-              {{ product.title }}
-            </a>
-            <span class="redText">
-              <b>{{ product.price }}CHF</b>
-            </span>
-            <span class="max-spacer"></span>
-            <button mat-mini-fab color="primary" [routerLink]="['/edit', product.productId]">
-              <mat-icon>edit</mat-icon>
-            </button>
-            <button mat-mini-fab color="warn" (click)="openDialog(product.productId)">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </h2>
-
-          <p *ngIf="product.description">
-            {{ product.description }}
-          </p>
-
-          <p class="redText"><strong>Rejection reason: </strong>{{product.rejectionReason}}</p>
-
-
-        </mat-card>
-      </div>
-
-      <div *ngIf="rejectedProducts.length === 0">
-        <p>No rejected products</p>
-      </div>
-      </div>
-
       <ng-template #listProduct>
         <mat-card>
           <h2>You have no listed products at the moment <br></h2>
@@ -124,118 +152,156 @@
     <!-- *************************** sold Products **************************-->
 
     <mat-tab label="Sold products">
-      <div *ngFor="let product of soldProducts">
-        <mat-card>
-          <h2>
-            <a [title]="product.title + ' details'">
-              {{ product.title }}
-            </a>
-            <span class="redText">
-              <b>{{ product.price }}CHF</b>
-            </span>
-            <span class="max-spacer"></span>
+      <div class="inline-block">
+        <div *ngFor="let product of soldProducts">
+          <mat-card>
+            <h2>
+              <a [title]="product.title + ' details'">
+                {{ product.title }}
+              </a>
+              <span class="redText">
+                <b>CHF {{ product.price | number:'1.2-2' }}</b>
+              </span>
+              <span class="max-spacer"></span>
 
-            <button mat-mini-fab color="warn" (click)="openSoldDialog(product.productId)">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </h2>
+              <button mat-mini-fab color="warn" (click)="openSoldDialog(product.productId)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </h2>
 
-          <p *ngIf="product.description">
-            {{ product.description }}
-          </p>
+            <p *ngIf="product.description">
+              {{ product.description }}
+            </p>
 
-        </mat-card>
-      </div>
+          </mat-card>
+        </div>
 
-      <div *ngIf="soldProducts.length === 0">
-        <mat-card>
-          <p>No approved products</p>
-        </mat-card>
+        <div *ngIf="soldProducts.length === 0">
+          <mat-card>
+            <p>No sold products</p>
+          </mat-card>
+        </div>
       </div>
     </mat-tab>
 
     <!--**************************** Acquired *******************************-->
 
     <mat-tab label="Acquired">
-
       <div *ngIf="boughtProducts.length != 0 || lentProducts.length != 0 || usedServices.length != 0; else lookProducts">
-      <h2>Bought products</h2>
-      <div *ngFor="let product of boughtProducts">
-        <mat-card>
-          <h2>
-            <a [title]="product.title + ' details'">
-              {{ product.title }}
-            </a>
-            <span class="redText">
-              <b>{{ product.price }}CHF</b>
-            </span>
-            <span class="max-spacer"></span>
-          </h2>
+        <div class="inline-block">
 
-          <p *ngIf="product.description">
-            {{ product.description }}
-          </p>
+        <h2>Bought products</h2>
+          <div *ngFor="let product of boughtProducts">
+              <mat-card>
+                <h2>
+                  <a [title]="product.title + ' details'">
+                    {{ product.title }}
+                  </a>
+                  <span class="redText">
+                    <b>CHF {{ product.price | number:'1.2-2' }}</b>
+                  </span>
+                  <span class="max-spacer"></span>
+                </h2>
 
-        </mat-card>
+                <p *ngIf="product.description">
+                  {{ product.description }}
+                </p>
+
+              </mat-card>
+            </div>
+
+          <div *ngIf="boughtProducts.length === 0">
+            <mat-card>
+              <p>You haven't bought any products yet</p>
+            </mat-card>
+          </div>
+
+          <mat-divider></mat-divider>
+
+          <h2>Rented products</h2>
+          <div *ngFor="let product of lentProducts">
+              <mat-card>
+                <h2>
+                  <a [title]="product.title + ' details'">
+                    {{ product.title }}
+                  </a>
+                  <span class="redText">
+                    <b>CHF {{ product.price | number:'1.2-2' }}</b>
+                  </span>
+                  <span class="max-spacer"></span>
+                </h2>
+
+                <p *ngIf="product.description">
+                  {{ product.description }}
+                </p>
+
+              </mat-card>
+            </div>
+
+          <div *ngIf="lentProducts.length === 0">
+            <mat-card>
+              <p>You haven't rented any products yet</p>
+            </mat-card>
+          </div>
+
+          <mat-divider></mat-divider>
+
+          <h2>Used services</h2>
+          <div *ngFor="let product of usedServices">
+              <mat-card>
+                <h2>
+                  <a [title]="product.title + ' details'">
+                    {{ product.title }}
+                  </a>
+                  <span class="redText">
+                    <b>CHF {{ product.price | number:'1.2-2' }}</b>
+                  </span>
+                  <span class="max-spacer"></span>
+                </h2>
+
+                <p *ngIf="product.description">
+                  {{ product.description }}
+                </p>
+
+              </mat-card>
+            </div>
+
+          <div *ngIf="usedServices.length === 0">
+            <mat-card>
+              <p>You haven't used any services yet</p>
+            </mat-card>
+          </div>
+        </div>
+        <div class="inline-block">
+          <h2>Products I am renting</h2>
+          <div *ngFor="let product of productsImRenting">
+            <mat-card>
+              <h2>
+                <a [title]="product.title + ' details'">
+                  {{ product.title }}
+                </a>
+                <span class="redText">
+                    <b>CHF {{ product.price | number:'1.2-2' }}</b>
+                  </span>
+                <span class="max-spacer"></span>
+              </h2>
+
+              <p *ngIf="product.description">
+                {{ product.description }}<br><br>Return date: {{ product.rentedUntil | date: 'MMMM dd, yyyy'}}
+              </p>
+              <button *ngIf="!product.returnedAfterLoan" mat-flat-button color="warn" (click)="onIndicateReturn(product.productId)">Mark as returned</button>
+              <p *ngIf="product.returnedAfterLoan"> This product has been marked as returned. Waiting for the sellers confirmation.</p>
+
+            </mat-card>
+          </div>
+
+          <div *ngIf="productsImRenting.length === 0">
+            <mat-card>
+              <p>You aren't renting any products right now</p>
+            </mat-card>
+          </div>
+        </div>
       </div>
-
-      <div *ngIf="boughtProducts.length === 0">
-        <p>You haven't bought any products yet</p>
-      </div>
-
-      <mat-divider></mat-divider>
-
-      <h2>Lent products</h2>
-      <div *ngFor="let product of lentProducts">
-        <mat-card>
-          <h2>
-            <a [title]="product.title + ' details'">
-              {{ product.title }}
-            </a>
-            <span class="redText">
-              <b>{{ product.price }}CHF</b>
-            </span>
-            <span class="max-spacer"></span>
-          </h2>
-
-          <p *ngIf="product.description">
-            {{ product.description }}
-          </p>
-
-        </mat-card>
-      </div>
-
-      <div *ngIf="lentProducts.length === 0">
-        <p>You haven't lent any products yet</p>
-      </div>
-
-      <mat-divider></mat-divider>
-
-      <h2>Used services</h2>
-      <div *ngFor="let product of usedServices">
-        <mat-card>
-          <h2>
-            <a [title]="product.title + ' details'">
-              {{ product.title }}
-            </a>
-            <span class="redText">
-              <b>{{ product.price }}CHF</b>
-            </span>
-            <span class="max-spacer"></span>
-          </h2>
-
-          <p *ngIf="product.description">
-            {{ product.description }}
-          </p>
-
-        </mat-card>
-      </div>
-
-      <div *ngIf="usedServices.length === 0">
-        <p>You haven't used any services yet</p>
-      </div>
-      </div>
-
       <ng-template #lookProducts>
         <mat-card>
           <h3>You haven't bought or lent any products yet</h3>

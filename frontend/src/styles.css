@@ -31,3 +31,7 @@ button, input {
 .menu-overflow-hidden {
   overflow: hidden !important;
 }
+
+.mat-tab-label {
+  width: 50% !important;
+}
