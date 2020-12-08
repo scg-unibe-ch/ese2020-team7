@@ -53,6 +53,11 @@ export class UserPanelComponent implements OnInit {
       this.boughtProducts = data;
     });
     this.httpClient.get(environment.endpointURL + 'product/productsImRenting').subscribe((data: Product[]) => {
+      data.sort((f, n): number => {
+        if (f.rentedUntil < n.rentedUntil){ return -1; }
+        if (f.rentedUntil > n.rentedUntil){ return 1; }
+        return 0;
+      });
       console.log(data);
       this.productsImRenting = data;
     });
@@ -65,6 +70,11 @@ export class UserPanelComponent implements OnInit {
       this.usedServices = data;
     });
     this.httpClient.get(environment.endpointURL + 'product/productsImLending').subscribe((data: Product[]) => {
+      data.sort((f, n): number => {
+        if (f.rentedUntil < n.rentedUntil){ return -1; }
+        if (f.rentedUntil > n.rentedUntil){ return 1; }
+        return 0;
+      });
       console.log(data);
       this.productsImLending = data;
     });
