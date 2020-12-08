@@ -320,4 +320,20 @@ describe('TransactionService Tests', () => {
             });
         });
     });
+    after('clean up', function() {
+        User.destroy({
+            truncate: true,
+            restartIdentity: true
+        }).then(() => {
+            Product.destroy({
+                truncate: true,
+                restartIdentity: true
+            }).then(() => {
+                Transaction.destroy({
+                    truncate: true,
+                    restartIdentity: true
+                });
+            });
+        });
+    });
 });

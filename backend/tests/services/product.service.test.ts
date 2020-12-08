@@ -589,4 +589,15 @@ describe('ProductService Tests', () => {
             });
         });
     });
+    after('clean up', function() {
+        User.destroy({
+            truncate: true,
+            restartIdentity: true
+        }).then(() => {
+            Product.destroy({
+                truncate: true,
+                restartIdentity: true
+            });
+        });
+    });
 });
